@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="82dp">
+
+        <TextView
+            android:id="@+id/tvcomppartiname"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:text="Rameesha"
+            android:theme="@style/TextView" />
+
+        <TextView
+            android:id="@+id/tvcompparticontact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="03362451199"
+            android:theme="@style/TextView" />
+    </LinearLayout>
+
+</RelativeLayout>
