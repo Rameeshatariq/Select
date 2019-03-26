@@ -3,16 +3,69 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    
 
 
-    <string name="RiskAndTriageQ1">Have you ever been told by a doctor that you had a stroke?</string>
-    <string name="RiskAndTriageQ2">Have you ever been told by a doctor that you had a mild stroke or almost had a stroke (TIA)?</string>
-    <string name="RiskAndTriageQ3">Have you ever had sudden painless weakness on one side of your body?</string>
-    <string name="RiskAndTriageQ4">Have you ever had sudden numbness or a dead feeling on one side of your body?</string>
-    <string name="RiskAndTriageQ5">Have you ever had sudden painless loss of vision in one or both eyes?</string>
-    <string name="RiskAndTriageQ6">Have you ever suddenly lost one half of your vision?</string>
-    <string name="RiskAndTriageQ7">Have you ever suddenly lost the ability to understand what people are saying?</string>
-    <string name="RiskAndTriageQ8">Have you ever suddenly lost the ability to express yourself verbally or in writing?</string>
+    <string name="RiskAndTriageQ1">1. Have you ever been told by a doctor that you had a stroke?</string>
+    <string name="RiskAndTriageQ2">2. Have you ever been told by a doctor that you had a mild stroke or almost had a stroke (TIA)?</string>
+    <string name="RiskAndTriageQ3">3. Have you ever had sudden painless weakness on one side of your body?</string>
+    <string name="RiskAndTriageQ4">4. Have you ever had sudden numbness or a dead feeling on one side of your body?</string>
+    <string name="RiskAndTriageQ5">5. Have you ever had sudden painless loss of vision in one or both eyes?</string>
+    <string name="RiskAndTriageQ6">6. Have you ever suddenly lost one half of your vision?</string>
+    <string name="RiskAndTriageQ7">7. Have you ever suddenly lost the ability to understand what people are saying?</string>
+    <string name="RiskAndTriageQ8">8. Have you ever suddenly lost the ability to express yourself verbally or in writing?</string>
+
+
+    <string name="RiskAndTriageMIQ1">1. Within the last 1 year, have you ever had a severe pain across the front of your chest, lasting for half an hour or more?</string>
+    <string name="RiskAndTriageMIQ2">2. Did the pain occur for the first time in the last year?</string>
+    <string name="RiskAndTriageMIQ3">3. Have you had an MI, stent, CAD?</string>
+    <string name="RiskAndTriageMIQ4">4. Do you have any of the following conditions</string>
+
+    <string name="IDRSModifiedQ1">1. Do you have a family history of Diabetes? </string>
+
+    <string name="PhysicalActivityQ1">1. During the last 7 days, on how many days did you do vigorous physical activities like heavy lifting, digging, aerobics, or fast bicycling?</string>
+    <string name="PhysicalActivityQ2">2. How much time did you usually spend doing vigorous physical activities on one of those days?</string>
+    <string name="PhysicalActivityQ3">3. During the last 7 days, on how many days did you do moderate physical activities like carrying light loads, bicycling at a regular pace, or doubles tennis? Do not include walking.</string>
+    <string name="PhysicalActivityQ4">4. How many time did you usually spend doing moderate physical activities on one of those days? </string>
+    <string name="PhysicalActivityQ5">5. During the last 7 days, on how many days did you walk?</string>
+    <string name="PhysicalActivityQ6">6. How much time did you usually spend walking on one those days?</string>
+
+    <string name="TobbaccoSmokingQ1">1. Do you currently smoke tobacco on daily basis, less than daily, or not at all?</string>
+    <string name="TobbaccoSmokingQ2">2. In the ‘past’, have you smoked tobacco on daily basis, less than daily, or not at all?</string>
+
+    <string name="TobbaccoSmokingSLQ1">1. Do you currently smoke tobacco on daily basis, less than daily, or not at all?</string>
+    <string name="TobbaccoSmokingSLQ2">2. In the past have you used smokeless tobacco on daily basis, less than daily ,or not at all?</string>
+
+    <string name="DietLifestyleQ1">1. Do you cook in ghee?</string>
+    <string name="DietLifestyleQ2">1. Do you add salt at the table while consuming food?</string>
+    <string name="DietLifestyleQ3">3. How many fruits/ vegetables do you consume in a week?</string>
+    <string name="DietLifestyleQ4">4. How much bakery products and refined sugar do you consume in a week?</string>
+    <string name="DietLifestyleQ5">5. How many pizzas, burgers etc. (Western diet) do you consume in a week?</string>
+    <string name="DietLifestyleQ6">6. How many plates of white rice do you consume per week?</string>
+    <string name="DietLifestyleQ7">7. How many fish do you consume per week?</string>
+
+    <string-array name="DietLifestyle">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+    </string-array>
+
+
 
 </resources>

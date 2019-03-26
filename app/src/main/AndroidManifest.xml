@@ -24,7 +24,13 @@
         <activity
             android:name=".Modules"
             android:theme="@style/AppTheme" />
-        <activity android:name=".RiskAndTriageCVA"></activity>
+        <activity android:name=".RiskAndTriageCVA" />
+        <activity android:name=".RiskAndTriageMI" />
+        <activity android:name=".IDRSModified" />
+        <activity android:name=".PhysicalActivity" />
+        <activity android:name=".TobbaccoSmoking" />
+        <activity android:name=".TobbaccoSmokingSL" />
+        <activity android:name=".DietLifestyle"></activity>
     </application>
 
 </manifest>

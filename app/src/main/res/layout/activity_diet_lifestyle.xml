@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DietLifestyle">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvHeading"
+                android:text="Diet Lifestyle"
+                android:layout_centerHorizontal="true"
+                android:theme="@style/TextViewHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/linear_DL_Q1"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvHeading">
+
+                <TextView
+                    android:id="@+id/tv_DL_Q1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/DietLifestyleQ1" />
+                <RadioGroup
+                    android:id="@+id/rd_DL_Q1"
+                    android:theme="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <RadioButton
+                            android:id="@+id/rd_DL_Q1_yes"
+                            android:theme="@style/RadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/TextView"
+                            android:text="Yes" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <RadioButton
+                            android:id="@+id/rd_DL_Q1_no"
+                            android:theme="@style/RadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/TextView"
+                            android:text="No" />
+
+                    </LinearLayout>
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_DL_Q2"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_DL_Q1">
+
+                <TextView
+                    android:id="@+id/tv_DL_Q2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/DietLifestyleQ2" />
+                <RadioGroup
+                    android:id="@+id/rd_DL_2"
+                    android:theme="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <RadioButton
+                            android:id="@+id/rd_DL_Q2_yes"
+                            android:theme="@style/RadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/TextView"
+                            android:text="Yes" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <RadioButton
+                            android:id="@+id/rd_DL_Q2_no"
+                            android:theme="@style/RadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/TextView"
+                            android:text="No" />
+
+                    </LinearLayout>
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_DL_Q3"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_DL_Q2">
+
+                <TextView
+                    android:id="@+id/tv_DL_Q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/DietLifestyleQ3" />
+                <Spinner
+                    android:id="@+id/sp_DL_Q3"
+                    android:entries="@array/DietLifestyle"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_DL_Q4"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_DL_Q3">
+
+                <TextView
+                    android:id="@+id/tv_DL_Q4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/DietLifestyleQ4" />
+                <Spinner
+                    android:id="@+id/sp_DL_Q4"
+                    android:entries="@array/DietLifestyle"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_DL_Q5"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_DL_Q4">
+
+                <TextView
+                    android:id="@+id/tv_DL_Q5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/DietLifestyleQ5" />
+                <Spinner
+                    android:id="@+id/sp_DL_Q5"
+                    android:entries="@array/DietLifestyle"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_DL_Q6"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_DL_Q5">
+
+                <TextView
+                    android:id="@+id/tv_DL_Q6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/DietLifestyleQ6" />
+                <Spinner
+                    android:id="@+id/sp_DL_Q6"
+                    android:entries="@array/DietLifestyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_DL_Q7"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_DL_Q6">
+
+                <TextView
+                    android:id="@+id/tv_DL_Q7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/DietLifestyleQ7" />
+                <Spinner
+                    android:id="@+id/sp_DL_Q7"
+                    android:entries="@array/DietLifestyle"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

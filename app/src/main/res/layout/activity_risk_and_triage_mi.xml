@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RiskAndTriageMI">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:gravity="center"
+                android:text="Risk and Triage Screening for MI target event (rb)"
+                android:theme="@style/TextViewHeading" />
+
+            <LinearLayout
+                android:id="@+id/linear_rtMI_Q1"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvHeading">
+
+
+                    <TextView
+                        android:id="@+id/tv_rtMI_Q1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="@string/RiskAndTriageMIQ1" />
+
+                <RadioGroup
+                    android:id="@+id/rd_rtMI_Q1"
+                    android:theme="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <RadioButton
+                            android:id="@+id/rd_rtMI_Q1_yes"
+                            android:theme="@style/RadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/TextView"
+                            android:text="Yes" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <RadioButton
+                            android:id="@+id/rd_rtMI_Q1_no"
+                            android:theme="@style/RadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/TextView"
+                            android:text="No" />
+                    </LinearLayout>
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_rtMI_Q2"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear_rtMI_Q1">
+
+                    <TextView
+                        android:id="@+id/tv_rtMI_Q2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="@string/RiskAndTriageMIQ2" />
+
+                <RadioGroup
+                    android:id="@+id/rd_rtMI_Q2"
+                    android:theme="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <RadioButton
+                            android:id="@+id/rd_rtMI_Q2_yes"
+                            android:theme="@style/RadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/TextView"
+                            android:text="Yes" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <RadioButton
+                            android:id="@+id/rd_rtMI_Q2_no"
+                            android:theme="@style/RadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/TextView"
+                            android:text="No" />
+                    </LinearLayout>
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_rtMI_Q3"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear_rtMI_Q2">
+
+                    <TextView
+                        android:id="@+id/tv_rtMI_Q3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="@string/RiskAndTriageMIQ3" />
+
+                <RadioGroup
+                    android:id="@+id/rd_rtMI_Q3"
+                    android:theme="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <RadioButton
+                            android:id="@+id/rd_rtMI_Q3_yes"
+                            android:theme="@style/RadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/TextView"
+                            android:text="Yes" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <RadioButton
+                            android:id="@+id/rd_rtMI_Q3_no"
+                            android:theme="@style/RadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/TextView"
+                            android:text="No" />
+                    </LinearLayout>
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_rtMI_Q4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear_rtMI_Q3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_rtMI_Q4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/RiskAndTriageMIQ4"
+                    android:theme="@style/TextView" />
+
+                <com.rey.material.widget.CheckBox
+                    android:id="@+id/ck_rtMI_Q4_DM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Diabetes Mellitus "
+                    android:theme="@style/Checkbox" />
+
+                <RelativeLayout
+                    android:id="@+id/relative_rtMI_Q4_DM_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="109dp">
+
+                    <TextView
+                        android:id="@+id/tv_rtMI_Q4_DM_options"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Is Controlled By:"
+                        android:textStyle="bold"
+                        android:theme="@style/TextView" />
+
+                    <com.rey.material.widget.CheckBox
+                        android:id="@+id/ck_rtMI_Q4_DM_med"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginEnd="116dp"
+                        android:text="Medicines"
+                        android:theme="@style/Checkbox" />
+
+                    <com.rey.material.widget.CheckBox
+                        android:id="@+id/ck_rtMI_Q4_DM_insulin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginEnd="32dp"
+                        android:text="Insulin"
+                        android:theme="@style/Checkbox" />
+
+                    <com.rey.material.widget.CheckBox
+                        android:id="@+id/ck_rtMI_Q4_DM_diet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/ck_rtMI_Q4_DM_med"
+                        android:text="Diet Only"
+                        android:theme="@style/Checkbox" />
+
+                    <com.rey.material.widget.CheckBox
+                        android:id="@+id/ck_rtMI_Q4_DM_altmed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@+id/ck_rtMI_Q4_DM_med"
+                        android:layout_below="@+id/ck_rtMI_Q4_DM_med"
+                        android:text="Alternate medication"
+                        android:theme="@style/Checkbox" />
+
+                    <com.rey.material.widget.CheckBox
+                        android:id="@+id/ck_rtMI_Q4_DM_pnrmed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/ck_rtMI_Q4_DM_diet"
+                        android:text="PRN medication"
+                        android:theme="@style/Checkbox" />
+
+                </RelativeLayout>
+
+                <com.rey.material.widget.CheckBox
+                    android:id="@+id/ck_rtMI_Q4_hypertension"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hypertension"
+                    android:theme="@style/Checkbox" />
+
+                <RelativeLayout
+                    android:id="@+id/relative_rtMI_Q4_ht_otions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.rey.material.widget.CheckBox
+                        android:id="@+id/ck_rtMI_Q4_ht_notmed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Not onMedicines"
+                        android:theme="@style/Checkbox" />
+
+                    <com.rey.material.widget.CheckBox
+                        android:id="@+id/ck_rtMI_Q4_ht_med"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@+id/ck_rtMI_Q4_ht_notmed"
+                        android:text="Medicines"
+                        android:theme="@style/Checkbox" />
+
+                    <com.rey.material.widget.CheckBox
+                        android:id="@+id/ck_rtMI_Q4_ht_dietmed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ck_rtMI_Q4_ht_notmed"
+                        android:text="Diet/Medicines"
+                        android:theme="@style/Checkbox" />
+
+                    <com.rey.material.widget.CheckBox
+                        android:id="@+id/ck_rtMI_Q4_ht_pnrmed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ck_rtMI_Q4_ht_notmed"
+                        android:layout_toEndOf="@+id/ck_rtMI_Q4_ht_notmed"
+                        android:text="PRN medicines"
+                        android:theme="@style/Checkbox" />
+
+                    <com.rey.material.widget.CheckBox
+                        android:id="@+id/ck_rtMI_Q4_ht_altmed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/ck_rtMI_Q4_ht_dietmed"
+                        android:text="Alternate medication"
+                        android:theme="@style/Checkbox" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_rtMI_submit"
+                android:theme="@style/Button"
+                android:text="Submit"
+                android:layout_below="@id/linear_rtMI_Q4"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

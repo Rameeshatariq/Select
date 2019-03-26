@@ -7,7 +7,7 @@
     tools:context=".Modules">
 
     <Button
-        android:id="@+id/btn_risktriage"
+        android:id="@+id/btn_risktriageCVA"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -15,10 +15,20 @@
         android:layout_marginTop="120dp"
         android:text="Risk and Triage Screening for CVA target event (rb)"
         android:theme="@style/Button" />
+
+    <Button
+        android:id="@+id/btn_risktriageMI"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="175dp"
+        android:text="Risk and Triage Screening for MI target event (rb)"
+        android:theme="@style/Button" />
     <Button
         android:id="@+id/btn_IDRSmodified"
         android:layout_width="300dp"
-        android:layout_below="@id/btn_risktriage"
+        android:layout_below="@id/btn_risktriageMI"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="IDRS Modified"
