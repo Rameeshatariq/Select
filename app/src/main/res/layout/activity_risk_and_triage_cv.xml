@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RiskAndTriageCVA">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvHeading"
+                android:text="Risk and Triage Screening for CVA target event (rb)"
+                android:gravity="center"
+                android:layout_marginBottom="15dp"
+                android:theme="@style/TextViewHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/linear_rt_Q1"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvHeading">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="1." />
+
+                    <TextView
+                        android:id="@+id/tv_rt_Q1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="@string/RiskAndTriageQ1" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/rd_rt_Q1"
+                    android:theme="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Yes" />
+
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q1_yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="No" />
+
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q1_no"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_rt_Q2"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear_rt_Q1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="2." />
+
+                    <TextView
+                        android:id="@+id/tv_rt_Q2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="@string/RiskAndTriageQ2" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/rd_rt_Q2"
+                    android:theme="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Yes" />
+
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q2_yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="No" />
+
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q2_no"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_rt_Q3"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear_rt_Q2">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="3." />
+
+                    <TextView
+                        android:id="@+id/tv_rt_Q3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="@string/RiskAndTriageQ3" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/rd_rt_Q3"
+                    android:theme="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Yes" />
+
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q3_yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="No" />
+
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q3_no"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_rt_Q4"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear_rt_Q3">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="4." />
+
+                    <TextView
+                        android:id="@+id/tv_rt_Q4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="@string/RiskAndTriageQ4" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/rd_rt_Q4"
+                    android:theme="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Yes" />
+
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q4_yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="No" />
+
+                    <RadioButton
+                        android:id="@+id/rd_Q4_rt_no"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_rt_Q5"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear_rt_Q4">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="5." />
+
+                    <TextView
+                        android:id="@+id/tv_rt_Q5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="@string/RiskAndTriageQ5" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/rd_rt_Q5"
+                    android:theme="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Yes" />
+
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q5_yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="No" />
+
+                    <RadioButton
+                        android:id="@+id/rd_Q5_rt_no"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_rt_Q6"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear_rt_Q5">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="6." />
+
+                    <TextView
+                        android:id="@+id/tv_rt_Q6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="@string/RiskAndTriageQ6" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/rd_rt_Q6"
+                    android:theme="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Yes" />
+
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q6_yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="No" />
+
+                    <RadioButton
+                        android:id="@+id/rd_Q6_rt_no"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_rt_Q7"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear_rt_Q6">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="7." />
+
+                    <TextView
+                        android:id="@+id/tv_rt_Q7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="@string/RiskAndTriageQ7" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/rd_rt_Q7"
+                    android:theme="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Yes" />
+
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q7_yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="No" />
+
+                    <RadioButton
+                        android:id="@+id/rd_Q7_rt_no"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_rt_Q8"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear_rt_Q7">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="8." />
+
+                    <TextView
+                        android:id="@+id/tv_rt_Q8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="@string/RiskAndTriageQ8" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/rd_rt_Q8"
+                    android:theme="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Yes" />
+
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q8_yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="No" />
+
+                    <RadioButton
+                        android:id="@+id/rd_Q8_rt_no"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_rt_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/Button"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/linear_rt_Q8"
+                android:text="Submit" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+
+</RelativeLayout>

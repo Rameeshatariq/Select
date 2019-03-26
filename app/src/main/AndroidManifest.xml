@@ -18,7 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterParticipant"></activity>
+        <activity
+            android:name=".RegisterParticipant"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Modules"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".RiskAndTriageCVA"></activity>
     </application>
 
 </manifest>

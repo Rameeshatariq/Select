@@ -1,9 +1,438 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:padding="16dp"
     android:layout_height="match_parent"
     tools:context=".RegisterParticipant">
 
-</android.support.constraint.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/linear_pname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="Participant Name:" />
+
+                <EditText
+                    android:id="@+id/ed_pname"
+                    android:theme="@style/EditText"
+                    android:hint="Full Name"
+                    android:inputType="textPersonName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_studyID"
+                android:layout_below="@id/linear_pname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="Study ID:" />
+
+                <EditText
+                    android:id="@+id/ed_studyID"
+                    android:theme="@style/EditText"
+                    android:hint="Study ID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear_page"
+                android:layout_below="@id/linear_studyID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="Age:" />
+
+                <EditText
+                    android:id="@+id/ed_page"
+                    android:theme="@style/EditText"
+                    android:hint="Range Between 20 - 40"
+                    android:inputType="number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_pgender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/linear_page"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="Gender" />
+
+                <RadioGroup
+                    android:id="@+id/rd_pgender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvmale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Male" />
+
+                    <RadioButton
+                        android:id="@+id/rd_male"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/tvfemale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Female" />
+
+                    <RadioButton
+                        android:id="@+id/female"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linear_pcontact"
+                android:layout_below="@+id/linear_pgender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="Contact Sim:" />
+
+                <EditText
+                    android:id="@+id/ed_pcontact"
+                    android:theme="@style/EditText"
+                    android:hint="0300xxxxxxx"
+                    android:inputType="number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear_p_altsim"
+                android:layout_below="@+id/linear_pcontact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="Alternate Sim:" />
+
+                <EditText
+                    android:id="@+id/ed_p_altsim"
+                    android:theme="@style/EditText"
+                    android:hint="0300xxxxxxx"
+                    android:inputType="number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_paddress"
+                android:layout_below="@+id/linear_p_altsim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="Address:" />
+
+                <EditText
+                    android:id="@+id/ed_paddress"
+                    android:theme="@style/EditText"
+                    android:hint="Complete Address"
+                    android:inputType="text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_plives"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_paddress"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="Lives in Malir" />
+
+                <RadioGroup
+                    android:id="@+id/rd_plives"
+                    android:theme="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Yes" />
+
+                    <RadioButton
+                        android:id="@+id/rd_plives_yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="No" />
+
+                    <RadioButton
+                        android:id="@+id/rd_plives_no"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_p_notmoving"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear_plives"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="Not moving out in the next 6 months" />
+
+                <RadioGroup
+                    android:id="@+id/rd_p_notmoving"
+                    android:theme="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Yes" />
+
+                    <RadioButton
+                        android:id="@+id/rd_p_notmoving_yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="No" />
+
+                    <RadioButton
+                        android:id="@+id/rd_p_notmoving_no"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linear_smartphone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_p_notmoving"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="Smart phone to receive SMS?" />
+
+                <RadioGroup
+                    android:id="@+id/rd_p_smrtph"
+                    android:theme="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Yes" />
+
+                    <RadioButton
+                        android:id="@+id/rd_p_smrtph_yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="No" />
+
+                    <RadioButton
+                        android:id="@+id/rd_p_smrtph_no"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_participate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear_smartphone"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="Willing to participate for 6 months ?" />
+
+                <RadioGroup
+                    android:id="@+id/rd_participate"
+                    android:theme="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Yes" />
+
+                    <RadioButton
+                        android:id="@+id/rd_participate_yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="No" />
+
+                    <RadioButton
+                        android:id="@+id/rd_participate_no"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_p_consenttaken"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear_participate"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="Willing to participate for 6 months ?" />
+
+                <RadioGroup
+                    android:id="@+id/rd_p_consenttaken"
+                    android:theme="@style/RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Yes" />
+
+                    <RadioButton
+                        android:id="@+id/rd_p_consenttaken_yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="No" />
+
+                    <RadioButton
+                        android:id="@+id/rd_p_consenttaken_no"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btn_p_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/Button"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/linear_p_consenttaken"
+                android:text="Submit" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

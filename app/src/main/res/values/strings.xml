@@ -3,4 +3,16 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    
+
+
+    <string name="RiskAndTriageQ1">Have you ever been told by a doctor that you had a stroke?</string>
+    <string name="RiskAndTriageQ2">Have you ever been told by a doctor that you had a mild stroke or almost had a stroke (TIA)?</string>
+    <string name="RiskAndTriageQ3">Have you ever had sudden painless weakness on one side of your body?</string>
+    <string name="RiskAndTriageQ4">Have you ever had sudden numbness or a dead feeling on one side of your body?</string>
+    <string name="RiskAndTriageQ5">Have you ever had sudden painless loss of vision in one or both eyes?</string>
+    <string name="RiskAndTriageQ6">Have you ever suddenly lost one half of your vision?</string>
+    <string name="RiskAndTriageQ7">Have you ever suddenly lost the ability to understand what people are saying?</string>
+    <string name="RiskAndTriageQ8">Have you ever suddenly lost the ability to express yourself verbally or in writing?</string>
+
 </resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Modules">
+
+    <Button
+        android:id="@+id/btn_risktriage"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:text="Risk and Triage Screening for CVA target event (rb)"
+        android:theme="@style/Button" />
+    <Button
+        android:id="@+id/btn_IDRSmodified"
+        android:layout_width="300dp"
+        android:layout_below="@id/btn_risktriage"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="IDRS Modified"
+        android:theme="@style/Button" />
+    <Button
+        android:id="@+id/btn_physicalActivity"
+        android:layout_width="300dp"
+        android:layout_below="@id/btn_IDRSmodified"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Physical Activity"
+        android:theme="@style/Button" />
+    <Button
+        android:id="@+id/btn_tobaccoSmoking"
+        android:layout_width="300dp"
+        android:layout_below="@id/btn_physicalActivity"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Tobacco Smoking"
+        android:theme="@style/Button" />
+    <Button
+        android:id="@+id/btn_dietLifestyle"
+        android:layout_width="300dp"
+        android:layout_below="@id/btn_tobaccoSmoking"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Diet Lifestyle"
+        android:theme="@style/Button" />
+
+</RelativeLayout>
