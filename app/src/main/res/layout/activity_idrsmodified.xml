@@ -29,7 +29,7 @@
                 android:id="@+id/linear_IDRS_Q1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:layout_below="@+id/tvHeading"
                 android:orientation="vertical">
 
@@ -45,67 +45,44 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
                         <RadioButton
                             android:id="@+id/rd_IDRS_Q1_none"
+                            android:text="None"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:theme="@style/RadioButton" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="None"
-                            android:theme="@style/TextView" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
 
                         <RadioButton
                             android:id="@+id/rd_IDRS_Q1_ep"
+                            android:text="Either Parents"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:theme="@style/RadioButton" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Either Parents"
-                            android:theme="@style/TextView" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
 
                         <RadioButton
                             android:id="@+id/rd_IDRS_Q1_bp"
+                            android:text="Both Parents"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:theme="@style/RadioButton" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Both Parents"
-                            android:theme="@style/TextView" />
-                    </LinearLayout>
                 </RadioGroup>
-
             </LinearLayout>
+
+            <View
+                android:id="@+id/view_IDRS_Q1"
+                android:layout_below="@id/linear_IDRS_Q1"
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+            </View>
 
             <Button
                 android:id="@+id/btn_IDRS_submit"
                 android:theme="@style/Button"
                 android:text="Submit"
-                android:layout_below="@id/linear_IDRS_Q1"
+                android:background="@drawable/rounded_button"
+                android:layout_below="@id/view_IDRS_Q1"
                 android:layout_centerHorizontal="true"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
         </RelativeLayout>

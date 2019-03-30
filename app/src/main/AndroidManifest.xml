@@ -30,7 +30,10 @@
         <activity android:name=".PhysicalActivity" />
         <activity android:name=".TobbaccoSmoking" />
         <activity android:name=".TobbaccoSmokingSL" />
-        <activity android:name=".DietLifestyle"></activity>
+        <activity android:name=".DietLifestyle" />
+        <activity android:name=".HighRisk" />
+        <activity android:name=".ModerateRisk" />
+        <activity android:name=".LowRisk"></activity>
     </application>
 
 </manifest>

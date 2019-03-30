@@ -1,30 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TobbaccoSmoking">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <LinearLayout
+            android:padding="16dp"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/tvHeading"
-                android:text="Tobbacco Smoking"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="15dp"
+                android:text="Tobacco Smoking"
+                android:layout_gravity="center"
                 android:theme="@style/TextViewHeading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <LinearLayout
                 android:id="@+id/linear_TS_Q1"
                 android:orientation="vertical"
+                android:layout_marginTop="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvHeading">
@@ -41,89 +39,53 @@
             android:theme="@style/RadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
                 <RadioButton
                     android:id="@+id/rd_TS_Q1_daily"
                     android:theme="@style/RadioButton"
+                    android:text="Daily"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/TextView"
-                    android:text="Daily" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
                 <RadioButton
                     android:id="@+id/rd_TS_Q1_less"
+                    android:text="Less than Daily"
                     android:theme="@style/RadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/TextView"
-                    android:text="Less than Daily" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
                 <RadioButton
                     android:id="@+id/rd_TS_Q1_not"
                     android:theme="@style/RadioButton"
+                    android:text="Not At All"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/TextView"
-                    android:text="Not At All" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
                 <RadioButton
                     android:id="@+id/rd_TS_Q1_dntknw"
+                    android:text="Don't Know"
                     android:theme="@style/RadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/TextView"
-                    android:text="Don't Know" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
                 <RadioButton
                     android:id="@+id/rd_TS_Q1_refused"
+                    android:text="Refused"
                     android:theme="@style/RadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/TextView"
-                    android:text="Refused" />
-            </LinearLayout>
         </RadioGroup>
     </LinearLayout>
+
+            <View
+                android:id="@+id/view_TS_Q1"
+                android:layout_below="@id/linear_TS_Q1"
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+            </View>
+
 
             <LinearLayout
                 android:id="@+id/linear_TS_Q2"
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/linear_TS_Q1">
+                android:layout_below="@+id/view_TS_Q1">
 
                 <TextView
                     android:id="@+id/tv_TS_Q2"
@@ -137,92 +99,53 @@
                     android:theme="@style/RadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
                         <RadioButton
                             android:id="@+id/rd_TS_Q2_daily"
+                            android:text="Daily"
                             android:theme="@style/RadioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:theme="@style/TextView"
-                            android:text="Daily" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
                         <RadioButton
                             android:id="@+id/rd_TS_Q2_less"
+                            android:text="Less than Daily"
                             android:theme="@style/RadioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:theme="@style/TextView"
-                            android:text="Less than Daily" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
                         <RadioButton
                             android:id="@+id/rd_TS_Q2_not"
                             android:theme="@style/RadioButton"
+                            android:text="Not At All"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:theme="@style/TextView"
-                            android:text="Not At All" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
                         <RadioButton
                             android:id="@+id/rd_TS_Q2_dntknw"
                             android:theme="@style/RadioButton"
+                            android:text="Don't Know"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:theme="@style/TextView"
-                            android:text="Don't Know" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
                         <RadioButton
                             android:id="@+id/rd_TS_Q2_refused"
                             android:theme="@style/RadioButton"
+                            android:text="Refused"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:theme="@style/TextView"
-                            android:text="Refused" />
-                    </LinearLayout>
                 </RadioGroup>
             </LinearLayout>
 
+            <View
+                android:id="@+id/view_TS_Q2"
+                android:layout_below="@id/linear_TS_Q2"
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+            </View>
 
             <Button
                 android:id="@+id/btn_TS_submit"
                 android:theme="@style/Button"
+                android:background="@drawable/rounded_button"
                 android:text="Submit"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/linear_TS_Q2"
-                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
-</RelativeLayout>

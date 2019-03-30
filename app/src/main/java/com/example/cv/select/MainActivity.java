@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
     private TabLayout tabLayout;
-    private FloatingActionButton floatingActionButton;
+    private FloatingActionButton floatingActionButton, floatingModulesBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent (MainActivity.this, RegisterParticipant.class);
+                startActivity(intent);
+            }
+        });
+
+        floatingModulesBtn=(FloatingActionButton)findViewById(R.id.floatbtn_modules);
+        floatingModulesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, Modules.class);
                 startActivity(intent);
             }
         });

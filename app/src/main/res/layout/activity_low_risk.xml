@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LowRisk">
+
+    <TextView
+        android:id="@+id/tvHeading"
+        android:text="Low Risk"
+        android:theme="@style/TextViewHeading"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/linear_LR_VE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:layout_below="@id/tvHeading">
+        <TextView
+            android:id="@+id/tv_LR_vascularEvent"
+            android:text="Target Vascular Event"
+            android:theme="@style/TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_LR_VE_np"
+            android:theme="@style/TextView"
+            android:text="- Not Present"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linear_LR_VR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:layout_below="@id/linear_LR_VE">
+        <TextView
+            android:id="@+id/tv_LR_vascularRisk"
+            android:text="Target Vascular Risk"
+            android:theme="@style/TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_LR_VR_np"
+            android:theme="@style/TextView"
+            android:text="- Not Present"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_LR_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:layout_below="@id/linear_LR_VR">
+        <TextView
+            android:id="@+id/tv_LR_other"
+            android:text="Others/Optional"
+            android:theme="@style/TextViewHighlighted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_LR_other_IDRS"
+            android:theme="@style/TextView"
+            android:text="- IDRS Modified = 10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_LR_other_LS"
+            android:theme="@style/TextView"
+            android:text="- Lifestyle Choices >=1/3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_LR_other_risk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="- Risk (Diet, Activity, Smoking)"
+            android:theme="@style/TextView"/>
+    </LinearLayout>
+
+</RelativeLayout>
