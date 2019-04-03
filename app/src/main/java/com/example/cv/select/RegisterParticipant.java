@@ -120,9 +120,12 @@ public class RegisterParticipant extends AppCompatActivity {
                 pNotMoving, pHaveSmartphone, participate, pConsentTaken,pReason, switchState);
         if (isUpdate == true) {
             Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
+            Intent intent=new Intent(RegisterParticipant.this, MainActivity.class);
+            startActivity(intent);
         } else {
             Toast.makeText(this, "Data Not Updated Successfully", Toast.LENGTH_SHORT).show();
-
+            Intent intent=new Intent(RegisterParticipant.this, MainActivity.class);
+            startActivity(intent);
         }
     }
 
