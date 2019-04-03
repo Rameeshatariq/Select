@@ -18,7 +18,7 @@
     <string name="RiskAndTriageMIQ1">1. Within the last 1 year, have you ever had a severe pain across the front of your chest, lasting for half an hour or more?</string>
     <string name="RiskAndTriageMIQ2">2. Did the pain occur for the first time in the last year?</string>
     <string name="RiskAndTriageMIQ3">3. Have you had an MI, stent, CAD?</string>
-    <string name="RiskAndTriageMIQ4">4. Do you have any of the following conditions</string>
+    <string name="RiskAndTriageMIQ4">1. Do you have any of the following conditions</string>
 
     <string name="IDRSModifiedQ1">1. Do you have a family history of Diabetes? </string>
 
@@ -36,7 +36,7 @@
     <string name="TobbaccoSmokingSLQ2">2. In the past have you used smokeless tobacco on daily basis, less than daily ,or not at all?</string>
 
     <string name="DietLifestyleQ1">1. Do you cook in ghee?</string>
-    <string name="DietLifestyleQ2">1. Do you add salt at the table while consuming food?</string>
+    <string name="DietLifestyleQ2">2. Do you add salt at the table while consuming food?</string>
     <string name="DietLifestyleQ3">3. How many fruits/ vegetables do you consume in a week?</string>
     <string name="DietLifestyleQ4">4. How much bakery products and refined sugar do you consume in a week?</string>
     <string name="DietLifestyleQ5">5. How many pizzas, burgers etc. (Western diet) do you consume in a week?</string>
@@ -64,6 +64,16 @@
         <item>18</item>
         <item>19</item>
         <item>20</item>
+    </string-array>
+
+    <string-array name="PhysicalActivity">
+        <item>1 day</item>
+        <item>2 days</item>
+        <item>3 days</item>
+        <item>4 days</item>
+        <item>5 days</item>
+        <item>6 days</item>
+        <item>1 week</item>
     </string-array>
 
 

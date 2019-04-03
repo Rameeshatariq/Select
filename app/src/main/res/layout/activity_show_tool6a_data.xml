@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ShowTool6aData">
+
+    <TextView
+        android:theme="@style/TextViewHeading"
+        android:text="Tobacco Smoking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <ListView
+        android:id="@+id/tool6a_data"
+        android:layout_width="match_parent"
+        android:layout_height="520dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="31dp">
+
+    </ListView>
+
+    <Button
+        android:id="@+id/nextTool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tool6a_data"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/rounded_button"
+        android:text="Next"
+        android:theme="@style/Button" />
+
+</RelativeLayout>

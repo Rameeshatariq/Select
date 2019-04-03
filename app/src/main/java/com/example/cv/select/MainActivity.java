@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
     private TabLayout tabLayout;
-    private FloatingActionButton floatingActionButton, floatingModulesBtn;
+    private FloatingActionButton floatingActionButton, floatingModulesBtn, floatingShowPatientDataBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+   /*     floatingShowPatientDataBtn=(FloatingActionButton)findViewById(R.id.floatbtnShowPatientData);
+        floatingShowPatientDataBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent (MainActivity.this, ShowPatientData.class);
+                startActivity(intent);
+            }
+        });*/
+
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Select");
@@ -55,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
        viewPager = (ViewPager) findViewById(R.id.viewpager);
         adapter= new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.AddFragment(new CompletedParticipantsFragment(), "Completed Participants");
-        adapter.AddFragment(new InprogressParticipantsFragment(), "Inprogress Participants");
+        adapter.AddFragment(new CompletedParticipantsFragment(), "Completed");
+        adapter.AddFragment(new InprogressParticipantsFragment(), "Inprogress");
 
         viewPager.setAdapter(adapter);
 

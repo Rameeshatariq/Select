@@ -49,33 +49,7 @@
             </View>
 
             <LinearLayout
-                android:id="@+id/linear_studyID"
-                android:layout_below="@id/view_pname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-               <android.support.design.widget.TextInputLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content">
-                   <EditText
-                       android:id="@+id/ed_studyID"
-                       android:theme="@style/EditText"
-                       android:hint="Study ID"
-                       android:layout_width="wrap_content"
-                       android:layout_height="match_parent" />
-               </android.support.design.widget.TextInputLayout>
-            </LinearLayout>
-
-            <View
-                android:id="@+id/view_studyID"
-                android:layout_below="@id/linear_studyID"
-                android:layout_width="match_parent"
-                android:layout_height="25dp">
-            </View>
-
-            <LinearLayout
                 android:id="@+id/linear_page"
-                android:layout_below="@id/view_studyID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -423,6 +397,20 @@
             </LinearLayout>
 
             <View
+                android:layout_below="@id/linear_p_consenttaken"
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+            </View>
+
+
+            <Switch
+                android:id="@+id/syncData"
+                android:text="Sync Data"
+                android:theme="@style/Switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <View
                 android:id="@+id/view_p_consenttaken"
                 android:layout_below="@id/linear_p_consenttaken"
                 android:layout_width="match_parent"
@@ -439,12 +427,17 @@
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/view_p_consenttaken"
                 android:text="Submit"/>
+            <Button
+                android:id="@+id/btn_p_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_button"
+                android:theme="@style/Button"
+                android:layout_centerHorizontal="true"
+                android:text="Update Patient Detail"/>
 
-            <Switch
-                android:id="@+id/syncData"
-                android:text="Sync Data"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+
         </LinearLayout>
 
 </ScrollView>

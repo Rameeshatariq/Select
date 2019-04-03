@@ -139,157 +139,9 @@
                 </RadioGroup>
             </LinearLayout>
 
-            <View
-                android:id="@+id/view_rtMI_Q3"
-                android:layout_below="@id/linear_rtMI_Q3"
-                android:layout_width="match_parent"
-                android:layout_height="25dp">
-            </View>
-
-
-            <LinearLayout
-                android:id="@+id/linear_rtMI_Q4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/view_rtMI_Q3"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_rtMI_Q4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/RiskAndTriageMIQ4"
-                    android:theme="@style/TextView" />
-
-                <CheckBox
-                    android:id="@+id/ck_rtMI_Q4_DM"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Diabetes Mellitus "
-                    android:theme="@style/Checkbox" />
-
-                <RelativeLayout
-                    android:id="@+id/relative_rtMI_Q4_DM_options"
-                    android:layout_width="wrap_content"
-                    android:layout_height="96dp">
-
-                    <TextView
-                        android:id="@+id/tv_rtMI_Q4_DM_options"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" Is Controlled By:"
-                        android:textStyle="bold"
-                        android:theme="@style/TextView" />
-
-                    <CheckBox
-                        android:id="@+id/ck_rtMI_Q4_DM_med"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/tv_rtMI_Q4_DM_options"
-                        android:text="Medicines"
-                        android:theme="@style/Checkbox" />
-
-                    <CheckBox
-                        android:id="@+id/ck_rtMI_Q4_DM_insulin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/tv_rtMI_Q4_DM_options"
-                        android:layout_marginStart="118dp"
-                        android:text="Insulin"
-                        android:theme="@style/Checkbox" />
-
-                    <CheckBox
-                        android:id="@+id/ck_rtMI_Q4_DM_diet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_below="@+id/tv_rtMI_Q4_DM_options"
-                        android:layout_marginEnd="56dp"
-                        android:text="Diet Only"
-                        android:theme="@style/Checkbox" />
-
-                    <CheckBox
-                        android:id="@+id/ck_rtMI_Q4_DM_altmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignStart="@+id/ck_rtMI_Q4_DM_med"
-                        android:layout_below="@+id/ck_rtMI_Q4_DM_med"
-                        android:text="Alternate medication"
-                        android:theme="@style/Checkbox" />
-
-                    <CheckBox
-                        android:id="@+id/ck_rtMI_Q4_DM_pnrmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_below="@+id/ck_rtMI_Q4_DM_med"
-                        android:layout_marginEnd="43dp"
-                        android:text="PRN medication"
-                        android:theme="@style/Checkbox" />
-                </RelativeLayout>
-
-                <CheckBox
-                    android:id="@+id/ck_rtMI_Q4_hypertension"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hypertension"
-                    android:theme="@style/Checkbox" />
-
-                <RelativeLayout
-                    android:id="@+id/relative_rtMI_Q4_ht_otions"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <CheckBox
-                        android:id="@+id/ck_rtMI_Q4_ht_notmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Not onMedicines"
-                        android:theme="@style/Checkbox" />
-
-                    <CheckBox
-                        android:id="@+id/ck_rtMI_Q4_ht_med"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_toEndOf="@+id/ck_rtMI_Q4_ht_notmed"
-                        android:text="Medicines"
-                        android:theme="@style/Checkbox" />
-
-                    <CheckBox
-                        android:id="@+id/ck_rtMI_Q4_ht_dietmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/ck_rtMI_Q4_ht_notmed"
-                        android:text="Diet/Medicines"
-                        android:theme="@style/Checkbox" />
-
-                    <CheckBox
-                        android:id="@+id/ck_rtMI_Q4_ht_pnrmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/ck_rtMI_Q4_ht_notmed"
-                        android:layout_toEndOf="@+id/ck_rtMI_Q4_ht_notmed"
-                        android:text="PRN medicines"
-                        android:theme="@style/Checkbox" />
-
-                    <CheckBox
-                        android:id="@+id/ck_rtMI_Q4_ht_altmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/ck_rtMI_Q4_ht_dietmed"
-                        android:text="Alternate medication"
-                        android:theme="@style/Checkbox" />
-
-                </RelativeLayout>
-            </LinearLayout>
 
             <View
                 android:id="@+id/view_rtMI_Q4"
-                android:layout_below="@id/linear_rtMI_Q4"
                 android:layout_width="match_parent"
                 android:layout_height="30dp">
             </View>
@@ -299,7 +151,6 @@
                 android:id="@+id/btn_rtMI_submit"
                 android:theme="@style/Button"
                 android:text="Submit"
-                android:layout_below="@id/view_rtMI_Q4"
                 android:layout_centerHorizontal="true"
                 android:layout_width="match_parent"
                 android:background="@drawable/rounded_button"

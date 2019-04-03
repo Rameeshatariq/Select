@@ -75,7 +75,7 @@
                     android:theme="@style/TextView"
                     android:text="@string/DietLifestyleQ2" />
                 <RadioGroup
-                    android:id="@+id/rd_DL_2"
+                    android:id="@+id/rd_DL_Q2"
                     android:theme="@style/RadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -117,7 +117,8 @@
                 <Spinner
                     android:id="@+id/sp_DL_Q3"
                     android:entries="@array/DietLifestyle"
-                    android:layout_width="80dp"
+                    android:theme="@style/Spinner"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
             <View
@@ -143,7 +144,8 @@
                 <Spinner
                     android:id="@+id/sp_DL_Q4"
                     android:entries="@array/DietLifestyle"
-                    android:layout_width="80dp"
+                    android:theme="@style/Spinner"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
 
@@ -170,7 +172,8 @@
                 <Spinner
                     android:id="@+id/sp_DL_Q5"
                     android:entries="@array/DietLifestyle"
-                    android:layout_width="80dp"
+                    android:theme="@style/Spinner"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
 
@@ -197,7 +200,8 @@
                 <Spinner
                     android:id="@+id/sp_DL_Q6"
                     android:entries="@array/DietLifestyle"
-                    android:layout_width="wrap_content"
+                    android:theme="@style/Spinner"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
 
@@ -224,7 +228,8 @@
                 <Spinner
                     android:id="@+id/sp_DL_Q7"
                     android:entries="@array/DietLifestyle"
-                    android:layout_width="80dp"
+                    android:theme="@style/Spinner"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
 

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".Modules">
 
     <Button
@@ -12,7 +14,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp"
         android:text="Risk and Triage Screening for CVA target event (rb)"
         android:theme="@style/Button" />
 
@@ -22,8 +23,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="175dp"
         android:text="Risk and Triage Screening for MI target event (rb)"
+        android:theme="@style/Button" />
+    <Button
+        android:id="@+id/btn_risktriageDiabetic"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Risk and Triage Screening for Diabetic"
         android:theme="@style/Button" />
     <Button
         android:id="@+id/btn_IDRSmodified"
@@ -50,6 +58,14 @@
         android:text="Tobacco Smoking"
         android:theme="@style/Button" />
     <Button
+        android:id="@+id/btn_tobaccoSmokingSL"
+        android:layout_width="300dp"
+        android:layout_below="@id/btn_physicalActivity"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Tobacco Smoking (SL)"
+        android:theme="@style/Button" />
+    <Button
         android:id="@+id/btn_dietLifestyle"
         android:layout_width="300dp"
         android:layout_below="@id/btn_tobaccoSmoking"
@@ -58,4 +74,4 @@
         android:text="Diet Lifestyle"
         android:theme="@style/Button" />
 
-</RelativeLayout>
+</LinearLayout>

@@ -24,6 +24,20 @@
         <item name="android:textColor">@android:color/black</item>
     </style>
 
+    <style name="Spinner" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:colorActivatedHighlight">@color/colorPrimary</item>
+        <item name="android:colorControlActivated">@color/colorPrimary</item>
+        <item name="android:colorControlNormal">@color/colorPrimary</item>
+        <item name="android:colorControlHighlight">@color/colorPrimary</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+    </style>
+
+    <style name="Switch" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+    </style>
+
+
     <style name="TextViewHeading" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:textSize">20dp</item>
         <item name="android:textStyle">bold</item>
@@ -43,7 +57,6 @@
     </style>
 
     <style name="ToolBar"  parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:titleTextColor"></item>
         <item name="colorControlNormal">@android:color/white</item>
     </style>
 

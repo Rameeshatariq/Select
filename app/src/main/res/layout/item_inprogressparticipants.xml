@@ -15,14 +15,12 @@
             android:id="@+id/tvinprogpartiname"
             android:layout_width="185dp"
             android:layout_height="wrap_content"
-            android:text="Rameesha"
             android:theme="@style/TextView" />
 
         <TextView
             android:id="@+id/tvinprogparticontact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="03362451199"
             android:theme="@style/TextView" />
     </LinearLayout>
 

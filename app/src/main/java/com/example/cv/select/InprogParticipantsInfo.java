@@ -1,11 +1,19 @@
 package com.example.cv.select;
 
+import android.provider.BaseColumns;
+
 public class InprogParticipantsInfo {
 
     private String participantName;
     private String participantContact;
 
     public InprogParticipantsInfo() {
+    }
+
+    public static final class participantsInfo implements BaseColumns{
+        public static final String TABLE_NAME="patient";
+        public static final String COLUMN_NAME="Name";
+        public static final String COLUMN_Contact="ContactSim";
     }
 
     public InprogParticipantsInfo(String participantName, String participantContact) {
