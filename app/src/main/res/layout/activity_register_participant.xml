@@ -132,6 +132,7 @@
                         android:theme="@style/EditText"
                         android:hint="Contact Sim"
                         android:inputType="number"
+                        android:maxLength="11"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </android.support.design.widget.TextInputLayout>
@@ -156,6 +157,7 @@
                         android:id="@+id/ed_p_altsim"
                         android:theme="@style/EditText"
                         android:hint="Alternate Sim"
+                        android:maxLength="11"
                         android:inputType="number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />

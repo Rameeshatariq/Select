@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -19,10 +20,11 @@ import java.util.ArrayList;
 public class ShowIndividualPartiData extends AppCompatActivity {
 
     private DatabaseHelperRP mDatabaseHeperRP;
-    private ListView patientData;
     Context ctx = ShowIndividualPartiData.this;
     Button btn_toolDetails;
     private String ContactNo;
+    private TextView tv_pname, tv_page, tv_pgender, tv_pcontact, tv_paltSim, tv_paddress, tv_plives, tv_pnotmoving, tv_psmartphone, tv_pparticipate,
+    tv_pinformedconsent, tv_pReason, tv_ptool1, tv_ptool2, tv_ptool3, tv_ptool4, tv_ptool5, tv_ptool6a, tv_ptool6b, tv_ptool7, tv_pEnroll, tv_pSyncData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,31 @@ public class ShowIndividualPartiData extends AppCompatActivity {
         ContactNo = intent.getStringExtra("ContactNo");
 
         mDatabaseHeperRP = new DatabaseHelperRP(this);
-        patientData = (ListView) findViewById(R.id.patient_Data);
+
+        tv_pname=(TextView)findViewById(R.id.tv_pname);
+        tv_page=(TextView)findViewById(R.id.tv_page);
+        tv_pgender=(TextView)findViewById(R.id.tv_pgender);
+        tv_pcontact=(TextView)findViewById(R.id.tv_pcontact);
+        tv_paltSim=(TextView)findViewById(R.id.tv_p_altsim);
+        tv_paddress=(TextView)findViewById(R.id.tv_paddress);
+        tv_plives=(TextView)findViewById(R.id.tv_plives);
+        tv_pnotmoving=(TextView)findViewById(R.id.tv_p_notmoving);
+        tv_psmartphone=(TextView)findViewById(R.id.tv_psmartphone);
+        tv_pparticipate=(TextView)findViewById(R.id.tv_participate);
+        tv_pinformedconsent=(TextView)findViewById(R.id.tv_p_informedConsent);
+        tv_pReason=(TextView)findViewById(R.id.tv_pReason);
+        tv_ptool1=(TextView)findViewById(R.id.tv_ptool1);
+        tv_ptool2=(TextView)findViewById(R.id.tv_ptool2);
+        tv_ptool3=(TextView)findViewById(R.id.tv_ptool3);
+        tv_ptool4=(TextView)findViewById(R.id.tv_ptool4);
+        tv_ptool5=(TextView)findViewById(R.id.tv_ptool5);
+        tv_ptool6a=(TextView)findViewById(R.id.tv_ptool6a);
+        tv_ptool6b=(TextView)findViewById(R.id.tv_ptool6b);
+        tv_ptool7=(TextView)findViewById(R.id.tv_ptool7);
+        tv_pEnroll=(TextView)findViewById(R.id.tv_pEnroll);
+        tv_pSyncData=(TextView)findViewById(R.id.tv_pSyncData);
+
+
         btn_toolDetails=(Button) findViewById(R.id.showTool1Data);
         viewAllPatientData();
         btn_toolDetails.setOnClickListener(new View.OnClickListener() {
@@ -55,34 +81,29 @@ public class ShowIndividualPartiData extends AppCompatActivity {
             return;
         }
 
-
-        ArrayList<String> listData = new ArrayList<>();
         while (data.moveToNext()) {
-            listData.add("Name : "+ data.getString(0)+"\n");
-            listData.add("Age : "+ data.getString(1)+"\n");
-            listData.add("Gender : "+ data.getString(2)+"\n");
-            listData.add("ContactSim : "+ data.getString(3)+"\n");
-            listData.add("AlternateSim : "+ data.getString(4)+"\n");
-            listData.add("Address : "+ data.getString(5)+"\n");
-            listData.add("LivesInMalir : "+ data.getString(6)+"\n");
-            listData.add("NotMovingFor6Months : "+ data.getString(7)+"\n");
-            listData.add("SmartPhone : "+ data.getString(8)+"\n");
-            listData.add("ParticipateFor6Months : "+ data.getString(9)+"\n");
-            listData.add("InformedConsentTaken : "+ data.getString(10)+"\n");
-            listData.add("Reason : "+ data.getString(11)+"\n");
-            listData.add("Tool 1 : "+ data.getString(12)+"\n");
-            listData.add("Tool 2 : "+ data.getString(13)+"\n");
-            listData.add("Tool 3 : "+ data.getString(14)+"\n");
-            listData.add("Tool 4 : "+ data.getString(15)+"\n");
-            listData.add("Tool 5 : "+ data.getString(16)+"\n");
-            listData.add("Tool 6a : "+ data.getString(17)+"\n");
-            listData.add("Tool 6b : "+ data.getString(18)+"\n");
-            listData.add("Tool 7 : "+ data.getString(19)+"\n");
-            listData.add("Enroll : "+ data.getString(20)+"\n");
-            listData.add("IsSync : "+ data.getString(21)+"\n");
-
-            ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
-            patientData.setAdapter(adapter);
+            tv_pname.setText(data.getString(0));
+            tv_page.setText(data.getString(1));
+            tv_pgender.setText(data.getString(2));
+            tv_pcontact.setText(data.getString(3));
+            tv_paltSim.setText(data.getString(4));
+            tv_paddress.setText(data.getString(5));
+            tv_plives.setText(data.getString(6));
+            tv_pnotmoving.setText(data.getString(7));
+            tv_psmartphone.setText(data.getString(8));
+            tv_pparticipate.setText(data.getString(9));
+            tv_pinformedconsent.setText(data.getString(10));
+            tv_pReason.setText(data.getString(11));
+            tv_ptool1.setText(data.getString(12));
+            tv_ptool2.setText(data.getString(13));
+            tv_ptool3.setText(data.getString(14));
+            tv_ptool4.setText(data.getString(15));
+            tv_ptool5.setText(data.getString(16));
+            tv_ptool6a.setText(data.getString(17));
+            tv_ptool6b.setText(data.getString(18));
+            tv_ptool7.setText(data.getString(19));
+            tv_pEnroll.setText(data.getString(20));
+            tv_pSyncData.setText(data.getString(21));
 
         }
     }

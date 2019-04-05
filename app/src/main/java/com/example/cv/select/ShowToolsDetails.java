@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.List;
 
 public class ShowToolsDetails extends AppCompatActivity {
     private DatabaseHelperRP mDatabaseHeperRP;
-    private ListView tool1ListView;
+    private TextView tv_tl1_contact, tv_tl1_Q1, tv_tl1_Q2, tv_tl1_Q3, tv_tl1_Q4, tv_tl1_Q5,tv_tl1_Q6, tv_tl1_Q7,tv_tl1_Q8;
     Button next;
     private  String ContactNo;
     @Override
@@ -28,9 +29,18 @@ public class ShowToolsDetails extends AppCompatActivity {
         ContactNo = intent.getStringExtra("ContactNo");
         Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
 
-
         mDatabaseHeperRP=new DatabaseHelperRP(this);
-        tool1ListView=(ListView)findViewById(R.id.tool1_Data);
+
+        tv_tl1_contact=(TextView)findViewById(R.id.pcontact);
+        tv_tl1_Q1=(TextView)findViewById(R.id.tv_rt_Q1);
+        tv_tl1_Q2=(TextView)findViewById(R.id.tv_rt_Q2);
+        tv_tl1_Q3=(TextView)findViewById(R.id.tv_rt_Q3);
+        tv_tl1_Q4=(TextView)findViewById(R.id.tv_rt_Q4);
+        tv_tl1_Q5=(TextView)findViewById(R.id.tv_rt_Q5);
+        tv_tl1_Q6=(TextView)findViewById(R.id.tv_rt_Q6);
+        tv_tl1_Q7=(TextView)findViewById(R.id.tv_rt_Q7);
+        tv_tl1_Q8=(TextView)findViewById(R.id.tv_rt_Q8);
+
         next=(Button)findViewById(R.id.nextTool);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,21 +59,17 @@ public class ShowToolsDetails extends AppCompatActivity {
                 return;
             }
 
-            ArrayList<String> listData= new ArrayList<>();
             while(data.moveToNext()){
+                tv_tl1_contact.setText(data.getString(0));
+                tv_tl1_Q1.setText(data.getString(1));
+                tv_tl1_Q2.setText(data.getString(2));
+                tv_tl1_Q3.setText(data.getString(3));
+                tv_tl1_Q4.setText(data.getString(4));
+                tv_tl1_Q5.setText(data.getString(5));
+                tv_tl1_Q6.setText(data.getString(6));
+                tv_tl1_Q7.setText(data.getString(7));
+                tv_tl1_Q8.setText(data.getString(8));
 
-                listData.add("ContactNo : "+ data.getString(0));
-                listData.add("tool1_Q1 : "+ data.getString(1));
-                listData.add("tool1_Q2 : "+ data.getString(2));
-                listData.add("tool1_Q3 : "+ data.getString(3));
-                listData.add("tool1_Q4 : "+ data.getString(4));
-                listData.add("tool1_Q5 : "+ data.getString(5));
-                listData.add("tool1_Q6 : "+ data.getString(6));
-                listData.add("tool1_Q7 : "+ data.getString(7));
-                listData.add("tool1_Q8 : "+ data.getString(8));
-
-                ListAdapter adapter= new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
-                tool1ListView.setAdapter(adapter);
             }
     }
 }
