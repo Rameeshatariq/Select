@@ -1,29 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     android:layout_height="match_parent"
     tools:context=".ShowTool1bData">
 
-    <TextView
-        android:theme="@style/TextViewHeading"
-        android:text="Risk And Triage MI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-
-    <ListView
-        android:id="@+id/tool1b_data"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="520dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="31dp">
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:orientation="vertical">
 
-    </ListView>
+    <TextView
+        android:id="@+id/tvHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Risk and Triage Screening for MI target event (rb)"
+        android:theme="@style/TextViewHeading" />
+
+        <LinearLayout
+            android:id="@+id/linear_rtMI_contact"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Contact Sim:" />
+            <TextView
+                android:id="@+id/pcontact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:theme="@style/TextView"
+                android:text="contact" />
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_rtMI_Q1"
+        android:orientation="vertical"
+        android:layout_marginTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvHeading">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/TextViewHeading"
+            android:text="@string/RiskAndTriageMIQ1" />
+        <TextView
+            android:id="@+id/tv_rtMI_Q1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/TextView"
+            android:text="@string/RiskAndTriageMIQ1" />
+
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_rtMI_Q1"
+        android:layout_below="@id/linear_rtMI_Q1"
+        android:layout_width="match_parent"
+        android:layout_height="25dp">
+    </View>
+
+    <LinearLayout
+        android:id="@+id/linear_rtMI_Q2"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_rtMI_Q1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/TextViewHeading"
+            android:text="@string/RiskAndTriageMIQ2" />
+        <TextView
+            android:id="@+id/tv_rtMI_Q2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/TextView"
+            android:text="@string/RiskAndTriageMIQ2" />
+
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_rtMI_Q2"
+        android:layout_below="@id/linear_rtMI_Q2"
+        android:layout_width="match_parent"
+        android:layout_height="25dp">
+    </View>
+
+
+    <LinearLayout
+        android:id="@+id/linear_rtMI_Q3"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_rtMI_Q2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/TextViewHeading"
+            android:text="@string/RiskAndTriageMIQ3" />
+        <TextView
+            android:id="@+id/tv_rtMI_Q3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/TextView"
+            android:text="@string/RiskAndTriageMIQ3" />
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/view_rtMI_Q4"
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+    </View>
+
+
 
     <Button
         android:id="@+id/nextTool"
@@ -32,6 +140,8 @@
         android:layout_alignBottom="@+id/tool1b_data"
         android:layout_alignEnd="@+id/tool1b_data"
         android:background="@drawable/rounded_button"
+        android:layout_gravity="center"
         android:text="Next"
         android:theme="@style/Button" />
-</RelativeLayout>
+    </LinearLayout>
+</ScrollView>

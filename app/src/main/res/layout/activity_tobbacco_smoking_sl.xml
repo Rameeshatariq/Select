@@ -135,7 +135,7 @@
                 android:id="@+id/view_TS_SL_Q2"
                 android:layout_below="@id/linear_TS_SL_Q2"
                 android:layout_width="match_parent"
-                android:layout_height="15dp">
+                android:layout_height="30dp">
             </View>
 
             <Button

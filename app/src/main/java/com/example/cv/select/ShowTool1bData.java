@@ -9,13 +9,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class ShowTool1bData extends AppCompatActivity {
     private DatabaseHelperRP mDatabaseHeperRP;
-    private ListView tool1bListView;
+    private TextView tv_tl2_contact, tv_tl2_Q1, tv_tl2_Q2, tv_tl2_Q3;
     private Button next;
     private String ContactNo;
 
@@ -29,7 +30,12 @@ public class ShowTool1bData extends AppCompatActivity {
         Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
 
         mDatabaseHeperRP = new DatabaseHelperRP(this);
-        tool1bListView = (ListView) findViewById(R.id.tool1b_data);
+
+        tv_tl2_contact=(TextView)findViewById(R.id.pcontact);
+        tv_tl2_Q1=(TextView)findViewById(R.id.tv_rtMI_Q1);
+        tv_tl2_Q2=(TextView)findViewById(R.id.tv_rtMI_Q2);
+        tv_tl2_Q3=(TextView)findViewById(R.id.tv_rtMI_Q3);
+
         next=(Button)findViewById(R.id.nextTool);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,17 +54,12 @@ public class ShowTool1bData extends AppCompatActivity {
             return;
         }
 
-        ArrayList<String> listData = new ArrayList<>();
         while (data.moveToNext()) {
 
-            listData.add("Contact : " + data.getString(0));
-            listData.add("tool2_Q1 : " + data.getString(1));
-            listData.add("tool2_Q2 : " + data.getString(2));
-            listData.add("tool2_Q3 : " + data.getString(3));
-
-
-            ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
-            tool1bListView.setAdapter(adapter);
+            tv_tl2_contact.setText(data.getString(0));
+            tv_tl2_Q1.setText(data.getString(1));
+            tv_tl2_Q2.setText(data.getString(2));
+            tv_tl2_Q3.setText(data.getString(3));
         }
 
     }

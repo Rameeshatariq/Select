@@ -7,13 +7,14 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class ShowTool7Data extends AppCompatActivity {
     private DatabaseHelperRP mDatabaseHeperRP;
-    private ListView tool7ListView;
+    private TextView tv_tl7_contact, tv_tl7_Q1, tv_tl7_Q2,tv_tl7_Q3,tv_tl7_Q4,tv_tl7_Q5,tv_tl7_Q6,tv_tl7_Q7;
     String ContactNo;
 
     @Override
@@ -22,7 +23,15 @@ public class ShowTool7Data extends AppCompatActivity {
         setContentView(R.layout.activity_show_tool7_data);
 
         mDatabaseHeperRP = new DatabaseHelperRP(this);
-        tool7ListView = (ListView) findViewById(R.id.tool7_data);
+
+        tv_tl7_contact=(TextView)findViewById(R.id.pcontact);
+        tv_tl7_Q1=(TextView)findViewById(R.id.tv_DL_Q1);
+        tv_tl7_Q2=(TextView)findViewById(R.id.tv_DL_Q2);
+        tv_tl7_Q3=(TextView)findViewById(R.id.tv_DL_Q3);
+        tv_tl7_Q4=(TextView)findViewById(R.id.tv_DL_Q4);
+        tv_tl7_Q5=(TextView)findViewById(R.id.tv_DL_Q5);
+        tv_tl7_Q6=(TextView)findViewById(R.id.tv_DL_Q6);
+        tv_tl7_Q7=(TextView)findViewById(R.id.tv_DL_Q7);
 
         Intent intent = getIntent();
         ContactNo = intent.getStringExtra("ContactNo");
@@ -37,21 +46,17 @@ public class ShowTool7Data extends AppCompatActivity {
             return;
         }
 
-        ArrayList<String> listData = new ArrayList<>();
         while (data.moveToNext()) {
 
-            listData.add("Contact : " + data.getString(0));
-            listData.add("Tool7_Q1 : " + data.getString(1));
-            listData.add("Tool7_Q2 : " + data.getString(2));
-            listData.add("Tool7_Q3 : " + data.getString(3));
-            listData.add("Tool7_Q4 : " + data.getString(4));
-            listData.add("Tool7_Q5 : " + data.getString(5));
-            listData.add("Tool7_Q6 : " + data.getString(6));
-            listData.add("Tool7_Q7 : " + data.getString(7));
+            tv_tl7_contact.setText(data.getString(0));
+            tv_tl7_Q1.setText(data.getString(1));
+            tv_tl7_Q2.setText(data.getString(2));
+            tv_tl7_Q3.setText(data.getString(3));
+            tv_tl7_Q4.setText(data.getString(4));
+            tv_tl7_Q5.setText(data.getString(5));
+            tv_tl7_Q6.setText(data.getString(6));
+            tv_tl7_Q7.setText(data.getString(7));
 
-
-            ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
-            tool7ListView.setAdapter(adapter);
         }
     }
 }

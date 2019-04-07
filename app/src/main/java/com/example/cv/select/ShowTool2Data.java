@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ import java.util.ArrayList;
 public class ShowTool2Data extends AppCompatActivity {
     private DatabaseHelperRP mDatabaseHeperRP;
     private ListView tool3ListView;
+    private TextView tv_tl3_contact, tv_tl3_DM, tv_tl3_DM_med, tv_tl3_DM_insulin, tv_tl3_DM_diet, tv_tl3_DM_pnrMed, tv_tl3_DM_altMed, tv_tl3_Hyp, tv_tl3_Hyp_notMed,
+            tv_tl3_Hyp_med, tv_tl3_Hyp_medOrDiet, tv_tl3_Hyp_pnrMed, tv_tl3_Hyp_altMed;
     Button next;
     private String ContactNo;
     @Override
@@ -24,7 +27,20 @@ public class ShowTool2Data extends AppCompatActivity {
         setContentView(R.layout.activity_show_tool2_data);
 
         mDatabaseHeperRP = new DatabaseHelperRP(this);
-        tool3ListView = (ListView) findViewById(R.id.tool3_data);
+
+        tv_tl3_contact=(TextView)findViewById(R.id.pcontact);
+        tv_tl3_DM=(TextView)findViewById(R.id.tv_rtD_Q1_DM);
+        tv_tl3_DM_med=(TextView)findViewById(R.id.tv_rtD_Q1_DM_med);
+        tv_tl3_DM_insulin=(TextView)findViewById(R.id.tv_rtD_Q1_DM_insulin);
+        tv_tl3_DM_diet=(TextView)findViewById(R.id.tv_rtD_Q1_DM_diet);
+        tv_tl3_DM_pnrMed=(TextView)findViewById(R.id.tv_rtD_Q1_DM_pnrmed);
+        tv_tl3_DM_altMed=(TextView)findViewById(R.id.tv_rtD_Q1_DM_altmed);
+        tv_tl3_Hyp=(TextView)findViewById(R.id.tv_rtD_Q1_hypertension);
+        tv_tl3_Hyp_notMed=(TextView)findViewById(R.id.tv_rtD_Q1_ht_notmed);
+        tv_tl3_Hyp_med=(TextView)findViewById(R.id.tv_rtD_Q1_ht_med);
+        tv_tl3_Hyp_medOrDiet=(TextView)findViewById(R.id.tv_rtD_Q1_ht_dietmed);
+        tv_tl3_Hyp_pnrMed=(TextView)findViewById(R.id.tv_rtD_Q1_ht_pnrmed);
+        tv_tl3_Hyp_altMed=(TextView)findViewById(R.id.tv_rtD_Q1_ht_altmed);
 
         Intent intent = getIntent();
         ContactNo = intent.getStringExtra("ContactNo");
@@ -48,27 +64,22 @@ public class ShowTool2Data extends AppCompatActivity {
             return;
         }
 
-        ArrayList<String> listData = new ArrayList<>();
         while (data.moveToNext()) {
 
-            listData.add("Contact : " + data.getString(0));
-            listData.add("Diabetic : " + data.getString(1));
-            listData.add("DiabeticControlByMed : " + data.getString(2));
-            listData.add("DiabeticControlByInsulin : " + data.getString(3));
-            listData.add("DiabeticControlByDiet : " + data.getString(4));
-            listData.add("DiabeticControlByPnrMed : " + data.getString(5));
-            listData.add("DiabeticControlByAltMed : " + data.getString(6));
-            listData.add("Hypertension : " + data.getString(7));
-            listData.add("HypertensionControlByNotMed : " + data.getString(8));
-            listData.add("HypertensionControlByMed : " + data.getString(9));
-            listData.add("HypertensionControlByDiet/Med : " + data.getString(10));
-            listData.add("HypertensionControlByPnrMed : " + data.getString(11));
-            listData.add("HypertensionControlByAltMed : " + data.getString(12));
+            tv_tl3_contact.setText(data.getString(0));
+            tv_tl3_DM.setText(data.getString(1));
+            tv_tl3_DM_med.setText(data.getString(2));
+            tv_tl3_DM_insulin.setText(data.getString(3));
+            tv_tl3_DM_diet.setText(data.getString(4));
+            tv_tl3_DM_pnrMed.setText(data.getString(5));
+            tv_tl3_DM_altMed.setText(data.getString(6));
+            tv_tl3_Hyp.setText(data.getString(7));
+            tv_tl3_Hyp_notMed.setText(data.getString(8));
+            tv_tl3_Hyp_med.setText(data.getString(9));
+            tv_tl3_Hyp_medOrDiet.setText(data.getString(10));
+            tv_tl3_Hyp_pnrMed.setText(data.getString(11));
+            tv_tl3_Hyp_altMed.setText(data.getString(12));
 
-
-
-            ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
-            tool3ListView.setAdapter(adapter);
         }
 
     }

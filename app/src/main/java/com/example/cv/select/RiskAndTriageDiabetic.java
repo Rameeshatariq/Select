@@ -106,42 +106,54 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
     }
 
     private void addTool3data() {
+        diabetic="null";
+        diabeticControlByDiet="null";
+        diabeticControlByIsulin="null";
+        diabeticControlByAlternateMed="null";
+        diabeticControlByPnrMed="null";
+        hypertension="null";
+        hypertenControlByNotMedicines="null";
+        hypertenControlByMedicines="null";
+        hypertenControlByDietOrtMed="null";
+        hypertenControlByPnrMed="null";
+        hypertenControlByAlternateMed="null";
+
         if(ck_rtD_Q1_DM.isChecked()){
-            diabetic=ck_rtD_Q1_DM.getText().toString();
+            diabetic="Yes";
         }
 
         if(ck_rtD_Q1_DM_med.isChecked()){
-            diabeticControlByMedicines=ck_rtD_Q1_DM_med.getText().toString();
+            diabeticControlByMedicines="Yes";
         }
         if(ck_rtD_Q1_DM_insulin.isChecked()){
-            diabeticControlByIsulin=ck_rtD_Q1_DM_insulin.getText().toString();
+            diabeticControlByIsulin="Yes";
         }
         if(ck_rtD_Q1_DM_diet.isChecked()){
-            diabeticControlByDiet=ck_rtD_Q1_DM_diet.getText().toString();
+            diabeticControlByDiet="Yes";
         }
         if(ck_rtD_Q1_DM_altMed.isChecked()){
-            diabeticControlByAlternateMed=ck_rtD_Q1_DM_altMed.getText().toString();
+            diabeticControlByAlternateMed="Yes";
         }
         if (ck_rtD_Q1_DM_pnrMed.isChecked()){
-            diabeticControlByPnrMed=ck_rtD_Q1_DM_pnrMed.getText().toString();
+            diabeticControlByPnrMed="Yes";
         }
         if (ck_rtD_Q1_Hyp.isChecked()){
-            hypertension=ck_rtD_Q1_Hyp.getText().toString();
+            hypertension="Yes";
         }
         if(ck_rtD_Q1_ht_notMedicines.isChecked()){
-            hypertenControlByNotMedicines=ck_rtD_Q1_ht_notMedicines.getText().toString();
+            hypertenControlByNotMedicines="Yes";
         }
         if(ck_rtD_Q1_ht_med.isChecked()){
-            hypertenControlByMedicines=ck_rtD_Q1_ht_med.getText().toString();
+            hypertenControlByMedicines="Yes";
         }
         if(ck_rtD_Q1_ht_dietOrMed.isChecked()){
-            hypertenControlByDietOrtMed=ck_rtD_Q1_ht_dietOrMed.getText().toString();
+            hypertenControlByDietOrtMed="Yes";
         }
         if(ck_rtD_Q1_ht_pnrMed.isChecked()){
-            hypertenControlByPnrMed=ck_rtD_Q1_ht_pnrMed.getText().toString();
+            hypertenControlByPnrMed="Yes";
         }
         if(ck_rtD_Q1_ht_altMed.isChecked()){
-            hypertenControlByAlternateMed=ck_rtD_Q1_ht_altMed.getText().toString();
+            hypertenControlByAlternateMed="Yes";
         }
         boolean isInserted = mDatabaseHelper.addTool3Data(ContactNo, diabetic, diabeticControlByMedicines, diabeticControlByIsulin, diabeticControlByDiet,
                 diabeticControlByPnrMed, diabeticControlByAlternateMed, hypertension, hypertenControlByNotMedicines, hypertenControlByMedicines, hypertenControlByDietOrtMed,

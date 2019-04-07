@@ -9,13 +9,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 public class ShowTool4Data extends AppCompatActivity {
     private DatabaseHelperRP mDatabaseHeperRP;
-    private ListView tool4ListView;
+    TextView tv_tl4_contact, tv_tl4_Q1;
     Button next;
     String ContactNo;
 
@@ -25,7 +28,9 @@ public class ShowTool4Data extends AppCompatActivity {
         setContentView(R.layout.activity_show_tool4_data);
 
         mDatabaseHeperRP = new DatabaseHelperRP(this);
-        tool4ListView = (ListView) findViewById(R.id.tool4_data);
+
+        tv_tl4_contact=(TextView)findViewById(R.id.pcontact);
+        tv_tl4_Q1=(TextView)findViewById(R.id.tv_IDRS_Q1);
 
         Intent intent = getIntent();
         ContactNo = intent.getStringExtra("ContactNo");
@@ -49,16 +54,10 @@ public class ShowTool4Data extends AppCompatActivity {
             return;
         }
 
-        ArrayList<String> listData = new ArrayList<>();
         while (data.moveToNext()) {
 
-            listData.add("Contact : " + data.getString(0));
-            listData.add("Tool4 Q1 : " + data.getString(1));
-
-
-
-            ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
-            tool4ListView.setAdapter(adapter);
+            tv_tl4_contact.setText(data.getString(0));
+            tv_tl4_Q1.setText(data.getString(1));
         }
 
     }

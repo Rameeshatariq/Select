@@ -76,6 +76,9 @@ public class PhysicalActivity extends AppCompatActivity {
                 else{
                     linear_PA_Q2.setVisibility(View.INVISIBLE);
                     sp_PA_Q1.setVisibility(View.INVISIBLE);
+                    sp_Q1="";
+                    tool5_Q2_hoursMins="";
+
                 }
             }
         });
@@ -90,6 +93,8 @@ public class PhysicalActivity extends AppCompatActivity {
                 else{
                     linear_PA_Q4.setVisibility(View.INVISIBLE);
                     sp_PA_Q3.setVisibility(View.INVISIBLE);
+                    sp_Q3="";
+                    tool5_Q4_hoursMins="";
                 }
             }
         });
@@ -100,11 +105,15 @@ public class PhysicalActivity extends AppCompatActivity {
                     linear_PA_Q6.setVisibility(View.VISIBLE);
                     sp_PA_Q5.setVisibility(View.VISIBLE);
                     sp_Q5=sp_PA_Q5.getSelectedItem().toString();
+                    sp_Q5="";
+
 
                 }
                 else{
                     linear_PA_Q6.setVisibility(View.INVISIBLE);
                     sp_PA_Q5.setVisibility(View.INVISIBLE);
+                    sp_Q5="";
+                    tool5_Q6_hoursMins="";
                 }
             }
         });
@@ -142,9 +151,9 @@ public class PhysicalActivity extends AppCompatActivity {
         tool5_Q6_hours= et_PA_Q6_hours.getText().toString();
         tool5_Q6_mins=et_PA_Q6_mins.getText().toString();
 
-        tool5_Q2_hoursMins= tool5_Q2_hours + "Hours " + tool5_Q2_mins + "Mins";
-        tool5_Q4_hoursMins= tool5_Q4_hours + "Hours " + tool5_Q4_mins + "Mins";
-        tool5_Q6_hoursMins= tool5_Q6_hours + "Hours " + tool5_Q6_mins + "Mins";
+        tool5_Q2_hoursMins= tool5_Q2_hours + " Hours " + tool5_Q2_mins + " Mins";
+        tool5_Q4_hoursMins= tool5_Q4_hours + " Hours " + tool5_Q4_mins + " Mins";
+        tool5_Q6_hoursMins= tool5_Q6_hours + " Hours " + tool5_Q6_mins + " Mins";
 
         if(ck_PA_Q2.isChecked()) {
             tool5_Q2 = ck_PA_Q2.getText().toString();

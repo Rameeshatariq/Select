@@ -270,19 +270,10 @@
         </View>
 
         <Button
-            android:id="@+id/btn_rt_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/Button"
-            android:background="@drawable/rounded_button"
-            android:layout_gravity="center"
-            android:layout_below="@+id/view_rt_Q8"
-            android:text="Submit" />
-
-        <Button
             android:id="@+id/nextTool"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:background="@drawable/rounded_button"
             android:text="Next"
             android:theme="@style/Button"></Button>

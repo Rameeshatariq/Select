@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,31 +7,83 @@
     android:padding="16dp"
     tools:context=".ShowTool4Data">
 
-    <TextView
-        android:theme="@style/TextViewHeading"
-        android:text="IDRS Modified"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-
-    <ListView
-        android:id="@+id/tool4_data"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="520dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="31dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    </ListView>
+        <TextView
+            android:id="@+id/tvHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:text="IDRS Modified"
+            android:theme="@style/TextViewHeading" />
 
-    <Button
-        android:id="@+id/nextTool"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tool4_data"
-        android:layout_alignEnd="@+id/tool4_data"
-        android:background="@drawable/rounded_button"
-        android:text="Next"
-        android:theme="@style/Button" />
+        <LinearLayout
+            android:id="@+id/linear_IDRS_contact"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-</RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Contact Sim:" />
+            <TextView
+                android:id="@+id/pcontact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:theme="@style/TextView"
+                android:text="contact" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_IDRS_Q1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/tvHeading"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/IDRSModifiedQ1"
+                android:theme="@style/TextViewHeading" />
+            <TextView
+                android:id="@+id/tv_IDRS_Q1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/IDRSModifiedQ1"
+                android:theme="@style/TextView" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_IDRS_Q1"
+            android:layout_below="@id/linear_IDRS_Q1"
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+        </View>
+
+        <Button
+            android:id="@+id/nextTool"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tool4_data"
+            android:layout_alignEnd="@+id/tool4_data"
+            android:background="@drawable/rounded_button"
+            android:layout_gravity="center"
+            android:text="Next"
+            android:theme="@style/Button" />
+    </LinearLayout>
+
+
+
+</ScrollView>

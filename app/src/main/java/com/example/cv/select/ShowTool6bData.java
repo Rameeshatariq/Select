@@ -9,13 +9,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class ShowTool6bData extends AppCompatActivity {
     private DatabaseHelperRP mDatabaseHeperRP;
-    private ListView tool6bListView;
+    private TextView tv_tl6b_contact, tv_tl6b_Q1, tv_tl6b_Q2;
     Button next;
     String ContactNo;
 
@@ -25,7 +26,10 @@ public class ShowTool6bData extends AppCompatActivity {
         setContentView(R.layout.activity_show_tool6b_data);
 
         mDatabaseHeperRP = new DatabaseHelperRP(this);
-        tool6bListView = (ListView) findViewById(R.id.tool6b_data);
+
+        tv_tl6b_contact=(TextView)findViewById(R.id.pcontact);
+        tv_tl6b_Q1=(TextView)findViewById(R.id.tv_TS_SL_Q1);
+        tv_tl6b_Q2=(TextView)findViewById(R.id.tv_TS_SL_Q2);
 
         Intent intent = getIntent();
         ContactNo = intent.getStringExtra("ContactNo");
@@ -49,15 +53,11 @@ public class ShowTool6bData extends AppCompatActivity {
             return;
         }
 
-        ArrayList<String> listData = new ArrayList<>();
         while (data.moveToNext()) {
 
-            listData.add("Contact : " + data.getString(0));
-            listData.add("Tool6b_Q1 : " + data.getString(1));
-            listData.add("Tool6b_Q2 : " + data.getString(2));
-
-            ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
-            tool6bListView.setAdapter(adapter);
+            tv_tl6b_contact.setText(data.getString(0));
+            tv_tl6b_Q1.setText(data.getString(1));
+            tv_tl6b_Q2.setText(data.getString(2));
         }
 
     }
