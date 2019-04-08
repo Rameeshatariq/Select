@@ -3,16 +3,20 @@ package com.example.cv.select;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 
 public class Modules extends AppCompatActivity {
-    private Button btn_risktriageCVA, btn_risktriageMI, btn_risktriageDiabetic, btn_IDRSmodified, btn_physicalActivity, btn_tobaccoSmoking, btn_tobaccoSmoking_SL, btn_dietLifestyle;
-    String ContactNo;
+    private Button btn_risktriageCVA, btn_risktriageMI, btn_risktriageDiabetic, btn_IDRSmodified, btn_physicalActivity, btn_tobaccoSmoking,
+            btn_tobaccoSmoking_SL, btn_dietLifestyle, btn_summary;
+    private Toolbar toolbar;
+    String ContactNo, Tool1, Tool2, Tool3, Tool7;
     private DatabaseHelperRP mDatabaseHelper;
 
     @Override
@@ -29,6 +33,19 @@ public class Modules extends AppCompatActivity {
 
         mDatabaseHelper=new DatabaseHelperRP(this);
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Modules");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(Modules.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         btn_risktriageCVA=(Button)findViewById(R.id.btn_risktriageCVA);
         btn_risktriageMI=(Button)findViewById(R.id.btn_risktriageMI);
         btn_risktriageDiabetic=(Button)findViewById(R.id.btn_risktriageDiabetic);
@@ -37,10 +54,20 @@ public class Modules extends AppCompatActivity {
         btn_tobaccoSmoking=(Button)findViewById(R.id.btn_tobaccoSmoking);
         btn_tobaccoSmoking_SL=(Button)findViewById(R.id.btn_tobaccoSmokingSL);
         btn_dietLifestyle=(Button)findViewById(R.id.btn_dietLifestyle);
+        btn_summary=(Button)findViewById(R.id.btn_summary);
 
         Intent intent=getIntent();
         ContactNo=intent.getStringExtra("ContactNo");
+        Tool1=intent.getStringExtra("tool1");
+        Tool2=intent.getStringExtra("tool2");
+        Tool3=intent.getStringExtra("tool3");
+        Tool7=intent.getStringExtra("tool7");
+
         Toast.makeText(this, "" +ContactNo, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "" +Tool1, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "" +Tool2, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "" +Tool3, Toast.LENGTH_SHORT).show();
+
 
 
 
@@ -68,6 +95,7 @@ public class Modules extends AppCompatActivity {
                 } else {
                     Intent intent = new Intent(Modules.this, RiskAndTriageMI.class);
                     intent.putExtra("ContactNo", ContactNo);
+                    intent.putExtra("tool1",Tool1);
                     Toast.makeText(Modules.this, "" + ContactNo, Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 }
@@ -82,6 +110,8 @@ public class Modules extends AppCompatActivity {
                 } else {
                     Intent intent = new Intent(Modules.this, RiskAndTriageDiabetic.class);
                     intent.putExtra("ContactNo", ContactNo);
+                    intent.putExtra("tool1",Tool1);
+                    intent.putExtra("tool2",Tool2);
                     startActivity(intent);
                 }
             }
@@ -96,6 +126,9 @@ public class Modules extends AppCompatActivity {
                 } else {
                     Intent intent = new Intent(Modules.this, IDRSModified.class);
                     intent.putExtra("ContactNo", ContactNo);
+                    intent.putExtra("tool1",Tool1);
+                    intent.putExtra("tool2",Tool2);
+                    intent.putExtra("tool3",Tool3);
                     startActivity(intent);
                 }
             }
@@ -109,6 +142,9 @@ public class Modules extends AppCompatActivity {
                 } else {
                     Intent intent = new Intent(Modules.this, PhysicalActivity.class);
                     intent.putExtra("ContactNo", ContactNo);
+                    intent.putExtra("tool1",Tool1);
+                    intent.putExtra("tool2",Tool2);
+                    intent.putExtra("tool3",Tool3);
                     startActivity(intent);
                 }
             }
@@ -122,6 +158,9 @@ public class Modules extends AppCompatActivity {
                 } else {
                     Intent intent = new Intent(Modules.this, TobbaccoSmoking.class);
                     intent.putExtra("ContactNo", ContactNo);
+                    intent.putExtra("tool1",Tool1);
+                    intent.putExtra("tool2",Tool2);
+                    intent.putExtra("tool3",Tool3);
                     startActivity(intent);
                 }
             }
@@ -135,6 +174,9 @@ public class Modules extends AppCompatActivity {
                 } else {
                     Intent intent = new Intent(Modules.this, TobbaccoSmokingSL.class);
                     intent.putExtra("ContactNo", ContactNo);
+                    intent.putExtra("tool1",Tool1);
+                    intent.putExtra("tool2",Tool2);
+                    intent.putExtra("tool3",Tool3);
                     startActivity(intent);
                 }
             }
@@ -148,8 +190,24 @@ public class Modules extends AppCompatActivity {
                 } else {
                     Intent intent = new Intent(Modules.this, DietLifestyle.class);
                     intent.putExtra("ContactNo", ContactNo);
+                    intent.putExtra("ContactNo", ContactNo);
+                    intent.putExtra("tool1",Tool1);
+                    intent.putExtra("tool2",Tool2);
+                    intent.putExtra("tool3",Tool3);
                     startActivity(intent);
                 }
+            }
+        });
+        btn_summary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    Intent intent = new Intent(Modules.this, Summary.class);
+                    intent.putExtra("ContactNo", ContactNo);
+                    intent.putExtra("tool1",Tool1);
+                    intent.putExtra("tool2",Tool2);
+                    intent.putExtra("tool3",Tool3);
+                    intent.putExtra("tool7",Tool7);
+                startActivity(intent);
             }
         });
 

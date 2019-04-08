@@ -4,74 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
     tools:context=".Modules">
 
-    <Button
-        android:id="@+id/btn_risktriageCVA"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="Risk and Triage Screening for CVA target event (rb)"
-        android:theme="@style/Button" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ToolBar"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <Button
-        android:id="@+id/btn_risktriageMI"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="Risk and Triage Screening for MI target event (rb)"
-        android:theme="@style/Button" />
-    <Button
-        android:id="@+id/btn_risktriageDiabetic"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="Risk and Triage Screening for Diabetic"
-        android:theme="@style/Button" />
-    <Button
-        android:id="@+id/btn_IDRSmodified"
-        android:layout_width="300dp"
-        android:layout_below="@id/btn_risktriageMI"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="IDRS Modified"
-        android:theme="@style/Button" />
-    <Button
-        android:id="@+id/btn_physicalActivity"
-        android:layout_width="300dp"
-        android:layout_below="@id/btn_IDRSmodified"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Physical Activity"
-        android:theme="@style/Button" />
-    <Button
-        android:id="@+id/btn_tobaccoSmoking"
-        android:layout_width="300dp"
-        android:layout_below="@id/btn_physicalActivity"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Tobacco Smoking"
-        android:theme="@style/Button" />
-    <Button
-        android:id="@+id/btn_tobaccoSmokingSL"
-        android:layout_width="300dp"
-        android:layout_below="@id/btn_physicalActivity"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Tobacco Smoking (SL)"
-        android:theme="@style/Button" />
-    <Button
-        android:id="@+id/btn_dietLifestyle"
-        android:layout_width="300dp"
-        android:layout_below="@id/btn_tobaccoSmoking"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Diet Lifestyle"
-        android:theme="@style/Button" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
+        <Button
+            android:id="@+id/btn_risktriageCVA"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="Risk and Triage Screening for CVA target event (rb)"
+            android:theme="@style/Button" />
+
+        <Button
+            android:id="@+id/btn_risktriageMI"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="Risk and Triage Screening for MI target event (rb)"
+            android:theme="@style/Button" />
+        <Button
+            android:id="@+id/btn_risktriageDiabetic"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="Risk and Triage Screening for Diabetic"
+            android:theme="@style/Button" />
+        <Button
+            android:id="@+id/btn_IDRSmodified"
+            android:layout_width="300dp"
+            android:layout_below="@id/btn_risktriageMI"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="IDRS Modified"
+            android:theme="@style/Button" />
+        <Button
+            android:id="@+id/btn_physicalActivity"
+            android:layout_width="300dp"
+            android:layout_below="@id/btn_IDRSmodified"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Physical Activity"
+            android:theme="@style/Button" />
+        <Button
+            android:id="@+id/btn_tobaccoSmoking"
+            android:layout_width="300dp"
+            android:layout_below="@id/btn_physicalActivity"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Tobacco Smoking"
+            android:theme="@style/Button" />
+        <Button
+            android:id="@+id/btn_tobaccoSmokingSL"
+            android:layout_width="300dp"
+            android:layout_below="@id/btn_physicalActivity"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Tobacco Smoking (SL)"
+            android:theme="@style/Button" />
+        <Button
+            android:id="@+id/btn_dietLifestyle"
+            android:layout_width="300dp"
+            android:layout_below="@id/btn_tobaccoSmoking"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Diet Lifestyle"
+            android:theme="@style/Button" />
+        <Button
+            android:id="@+id/btn_summary"
+            android:layout_width="300dp"
+            android:layout_below="@id/btn_tobaccoSmoking"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Tools Summary"
+            android:theme="@style/Button" />
+
+    </LinearLayout>
 </LinearLayout>

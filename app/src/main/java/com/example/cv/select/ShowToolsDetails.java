@@ -2,8 +2,10 @@ package com.example.cv.select;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,6 +19,7 @@ import java.util.List;
 
 public class ShowToolsDetails extends AppCompatActivity {
     private DatabaseHelperRP mDatabaseHeperRP;
+    private Toolbar toolbar;
     private TextView tv_tl1_contact, tv_tl1_Q1, tv_tl1_Q2, tv_tl1_Q3, tv_tl1_Q4, tv_tl1_Q5,tv_tl1_Q6, tv_tl1_Q7,tv_tl1_Q8;
     Button next;
     private  String ContactNo;
@@ -40,6 +43,21 @@ public class ShowToolsDetails extends AppCompatActivity {
         tv_tl1_Q6=(TextView)findViewById(R.id.tv_rt_Q6);
         tv_tl1_Q7=(TextView)findViewById(R.id.tv_rt_Q7);
         tv_tl1_Q8=(TextView)findViewById(R.id.tv_rt_Q8);
+
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Tool 1 Details");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(ShowToolsDetails.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         next=(Button)findViewById(R.id.nextTool);
         next.setOnClickListener(new View.OnClickListener() {

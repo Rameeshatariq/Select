@@ -3,12 +3,17 @@ package com.example.cv.select;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.Toast;
 
 
@@ -16,8 +21,11 @@ public class RiskAndTriageCVA extends AppCompatActivity {
     private RadioButton rd_tl1a_Q1_yes, rd_tl1a_Q1_no, rd_tl1a_Q2_yes, rd_tl1a_Q2_no, rd_tl1a_Q3_yes, rd_tl1a_Q3_no, rd_tl1a_Q4_yes, rd_tl1a_Q4_no,
             rd_tl1a_Q5_yes, rd_tl1a_Q5_no, rd_tl1a_Q6_yes, rd_tl1a_Q6_no, rd_tl1a_Q7_yes, rd_tl1a_Q7_no, rd_tl1a_Q8_yes, rd_tl1a_Q8_no;
     private Button submitRT_CVA;
+    private boolean switchState;
+    private Toolbar toolbar;
     private String tool1_Q1, tool1_Q2,tool1_Q3,tool1_Q4,tool1_Q5,tool1_Q6,tool1_Q7,tool1_Q8;
     static String CVAEvent = null;
+    private Switch syncData;
     private RadioGroup rd_tl1a_Q1, rd_tl1a_Q2, rd_tl1a_Q3,rd_tl1a_Q4, rd_tl1a_Q5,rd_tl1a_Q6,rd_tl1a_Q7,rd_tl1a_Q8;
     private RadioButton radiovalueQ1, radiovalueQ2, radiovalueQ3, radiovalueQ4, radiovalueQ5, radiovalueQ6, radiovalueQ7, radiovalueQ8;
     private DatabaseHelperRP mDatabaseHelper;
@@ -29,6 +37,19 @@ public class RiskAndTriageCVA extends AppCompatActivity {
         setContentView(R.layout.activity_risk_and_triage_cv);
 
         mDatabaseHelper=new DatabaseHelperRP(this);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Tool 1");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(RiskAndTriageCVA.this, Modules.class);
+                startActivity(intent);
+            }
+        });
 
        Intent intent=getIntent();
        ContactNo=intent.getStringExtra("ContactNo");
@@ -68,6 +89,19 @@ public class RiskAndTriageCVA extends AppCompatActivity {
 
         submitRT_CVA=(Button)findViewById(R.id.btn_rt_register);
 
+        syncData=(Switch)findViewById(R.id.syncData);
+        syncData.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(syncData.isChecked()){
+                    switchState=true;
+                }
+                else{
+                    switchState=false;
+                }
+            }
+        });
+
         submitRT_CVA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,12 +117,14 @@ public class RiskAndTriageCVA extends AppCompatActivity {
                 || rd_tl1a_Q5_yes.isChecked() == true || rd_tl1a_Q6_yes.isChecked() == true || rd_tl1a_Q7_yes.isChecked() == true || rd_tl1a_Q8_yes.isChecked() == true){
 
             Toast.makeText(this, "CVA Event", Toast.LENGTH_SHORT).show();
+            CVAEvent="CVA Event";
             addTool1Data();
             String tool1="Completed";
             mDatabaseHelper.updateTool1Status(ContactNo,tool1);
             Toast.makeText(this, "Tool1 Completed", Toast.LENGTH_SHORT).show();
             Intent intent= new Intent(RiskAndTriageCVA.this, Modules.class);
             intent.putExtra("ContactNo", ContactNo);
+            intent.putExtra("tool1", CVAEvent);
             startActivity(intent);
         }
         else{
@@ -124,7 +160,9 @@ public class RiskAndTriageCVA extends AppCompatActivity {
         radiovalueQ8 = (RadioButton) this.findViewById(rd_tl1a_Q8.getCheckedRadioButtonId());
         tool1_Q8 = radiovalueQ8.getText().toString();
 
-        boolean isInserted = mDatabaseHelper.addTool1Data(ContactNo, tool1_Q1, tool1_Q2, tool1_Q3, tool1_Q4, tool1_Q5, tool1_Q6, tool1_Q7, tool1_Q8);
+        boolean isInserted = mDatabaseHelper.addTool1Data(ContactNo, tool1_Q1, tool1_Q2, tool1_Q3, tool1_Q4, tool1_Q5,
+                tool1_Q6, tool1_Q7, tool1_Q8,switchState);
+
         if (isInserted == true) {
             Toast.makeText(this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
         } else {

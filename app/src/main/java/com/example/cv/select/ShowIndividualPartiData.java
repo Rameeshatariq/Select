@@ -3,8 +3,10 @@ package com.example.cv.select;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -23,6 +25,7 @@ public class ShowIndividualPartiData extends AppCompatActivity {
     Context ctx = ShowIndividualPartiData.this;
     Button btn_toolDetails;
     private String ContactNo;
+    private Toolbar toolbar;
     private TextView tv_pname, tv_page, tv_pgender, tv_pcontact, tv_paltSim, tv_paddress, tv_plives, tv_pnotmoving, tv_psmartphone, tv_pparticipate,
     tv_pinformedconsent, tv_pReason, tv_ptool1, tv_ptool2, tv_ptool3, tv_ptool4, tv_ptool5, tv_ptool6a, tv_ptool6b, tv_ptool7, tv_pEnroll, tv_pSyncData;
 
@@ -33,6 +36,19 @@ public class ShowIndividualPartiData extends AppCompatActivity {
 
         Intent intent = getIntent();
         ContactNo = intent.getStringExtra("ContactNo");
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Patient Detail");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(ShowIndividualPartiData.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         mDatabaseHeperRP = new DatabaseHelperRP(this);
 

@@ -6,318 +6,331 @@
     android:layout_height="match_parent"
     tools:context=".ShowTool2Data">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvHeading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Risk and Triage Screening (Diabetic)"
-            android:theme="@style/TextViewHeading" />
-
-
-        <LinearLayout
-            android:id="@+id/linear_rtD_contact"
-            android:orientation="horizontal"
-            android:layout_marginTop="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Contact Sim:" />
-            <TextView
-                android:id="@+id/pcontact"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:theme="@style/TextView"
-                android:text="contact" />
-
-        </LinearLayout>
-        <View
-            android:layout_below="@id/linear_rtMI_Q3"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="25dp">
-        </View>
-
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/ToolBar"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
         <LinearLayout
-            android:id="@+id/linear_rtD_Q1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
             <TextView
+                android:id="@+id/tvHeading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextViewHeading"
-                android:text="@string/RiskAndTriageMIQ4"
-                android:theme="@style/TextView" />
+                android:layout_gravity="center"
+                android:text="Risk and Triage Screening (Diabetic)"
+                android:theme="@style/TextViewHeading" />
+
+
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:id="@+id/linear_rtD_contact"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Diabetes Mellitus: "
-                    android:theme="@style/TextViewHeading" />
+                    android:theme="@style/TextViewHeading"
+                    android:text="Contact Sim:" />
                 <TextView
-                    android:id="@+id/tv_rtD_Q1_DM"
+                    android:id="@+id/pcontact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="Diabetes Mellitus "
-                    android:theme="@style/TextView" />
+                    android:theme="@style/TextView"
+                    android:text="contact" />
+
             </LinearLayout>
+            <View
+                android:layout_below="@id/linear_rtMI_Q3"
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+            </View>
 
             <LinearLayout
-                android:id="@+id/linear_rtD_Q1_DM_options"
-                android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_height="match_parent">
+                android:id="@+id/linear_rtD_Q1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
                 <TextView
-                    android:id="@+id/tv_rtD_Q1_DM_options"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" Is Controlled By:"
-                    android:textStyle="bold"
+                    style="@style/TextViewHeading"
+                    android:text="@string/RiskAndTriageMIQ4"
                     android:theme="@style/TextView" />
-
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Medicines:"
+                        android:text="Diabetes Mellitus: "
                         android:theme="@style/TextViewHeading" />
                     <TextView
-                        android:id="@+id/tv_rtD_Q1_DM_med"
+                        android:id="@+id/tv_rtD_Q1_DM"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="Medicines:"
-                        android:theme="@style/TextView" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Insulin:"
-                        android:theme="@style/TextViewHeading" />
-
-                    <TextView
-                        android:id="@+id/tv_rtD_Q1_DM_insulin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="Insulin"
+                        android:text="Diabetes Mellitus "
                         android:theme="@style/TextView" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linear_rtD_Q1_DM_options"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/tv_rtD_Q1_DM_options"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Is Controlled By:"
+                        android:textStyle="bold"
+                        android:theme="@style/TextView" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Medicines:"
+                            android:theme="@style/TextViewHeading" />
+                        <TextView
+                            android:id="@+id/tv_rtD_Q1_DM_med"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="Medicines:"
+                            android:theme="@style/TextView" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Insulin:"
+                            android:theme="@style/TextViewHeading" />
+
+                        <TextView
+                            android:id="@+id/tv_rtD_Q1_DM_insulin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="Insulin"
+                            android:theme="@style/TextView" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Diet Only:"
+                            android:theme="@style/TextViewHeading" />
+                        <TextView
+                            android:id="@+id/tv_rtD_Q1_DM_diet"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_height="wrap_content"
+                            android:text="Diet Only"
+                            android:theme="@style/TextView" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Alternate medication:"
+                            android:theme="@style/TextViewHeading" />
+                        <TextView
+                            android:id="@+id/tv_rtD_Q1_DM_altmed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="yes"
+                            android:layout_marginLeft="10dp"
+                            android:theme="@style/TextView" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PRN medication:"
+                            android:theme="@style/TextViewHeading" />
+                        <TextView
+                            android:id="@+id/tv_rtD_Q1_DM_pnrmed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="PRN medication"
+                            android:theme="@style/TextView" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                </View>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Diet Only:"
+                        android:text="Hypertension:"
                         android:theme="@style/TextViewHeading" />
                     <TextView
-                        android:id="@+id/tv_rtD_Q1_DM_diet"
+                        android:id="@+id/tv_rtD_Q1_hypertension"
                         android:layout_width="wrap_content"
-                        android:layout_marginLeft="10dp"
                         android:layout_height="wrap_content"
-                        android:text="Diet Only"
+                        android:layout_marginLeft="10dp"
+                        android:text="Hypertension"
                         android:theme="@style/TextView" />
                 </LinearLayout>
 
 
-               <LinearLayout
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/linear_rtD_Q1_ht_otions"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                   <TextView
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="Alternate medication:"
-                       android:theme="@style/TextViewHeading" />
-                   <TextView
-                       android:id="@+id/tv_rtD_Q1_DM_altmed"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="yes"
-                       android:layout_marginLeft="10dp"
-                       android:theme="@style/TextView" />
-               </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Not on Medicines:"
+                            android:theme="@style/TextViewHeading" />
+                        <TextView
+                            android:id="@+id/tv_rtD_Q1_ht_notmed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="Not on Medicines"
+                            android:theme="@style/TextView" />
+                    </LinearLayout>
 
-              <LinearLayout
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Medicines:"
+                            android:theme="@style/TextViewHeading" />
+                        <TextView
+                            android:id="@+id/tv_rtD_Q1_ht_med"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Medicines"
+                            android:layout_marginLeft="10dp"
+                            android:theme="@style/TextView" />
 
-                  <TextView
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:text="PRN medication:"
-                      android:theme="@style/TextViewHeading" />
-                  <TextView
-                      android:id="@+id/tv_rtD_Q1_DM_pnrmed"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:layout_marginLeft="10dp"
-                      android:text="PRN medication"
-                      android:theme="@style/TextView" />
+                    </LinearLayout>
 
-              </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Diet/Medicines:"
+                            android:theme="@style/TextViewHeading" />
+                        <TextView
+                            android:id="@+id/tv_rtD_Q1_ht_dietmed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Diet/Medicines"
+                            android:layout_marginLeft="10dp"
+                            android:theme="@style/TextView" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PRN medicines:"
+                            android:theme="@style/TextViewHeading" />
+                        <TextView
+                            android:id="@+id/tv_rtD_Q1_ht_pnrmed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PRN medicines"
+                            android:layout_marginLeft="10dp"
+                            android:theme="@style/TextView" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Alternate medication:"
+                            android:theme="@style/TextViewHeading" />
+                        <TextView
+                            android:id="@+id/tv_rtD_Q1_ht_altmed"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Alternate medication"
+                            android:theme="@style/TextView" />
+                    </LinearLayout>
+
+                </LinearLayout>
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20dp">
-
+                android:layout_height="30dp">
             </View>
 
-            <LinearLayout
+            <Button
+                android:id="@+id/nextTool"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hypertension:"
-                    android:theme="@style/TextViewHeading" />
-                <TextView
-                    android:id="@+id/tv_rtD_Q1_hypertension"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="Hypertension"
-                    android:theme="@style/TextView" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/linear_rtD_Q1_ht_otions"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Not on Medicines:"
-                        android:theme="@style/TextViewHeading" />
-                    <TextView
-                        android:id="@+id/tv_rtD_Q1_ht_notmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="Not on Medicines"
-                        android:theme="@style/TextView" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Medicines:"
-                        android:theme="@style/TextViewHeading" />
-                    <TextView
-                        android:id="@+id/tv_rtD_Q1_ht_med"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Medicines"
-                        android:layout_marginLeft="10dp"
-                        android:theme="@style/TextView" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Diet/Medicines:"
-                        android:theme="@style/TextViewHeading" />
-                    <TextView
-                        android:id="@+id/tv_rtD_Q1_ht_dietmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Diet/Medicines"
-                        android:layout_marginLeft="10dp"
-                        android:theme="@style/TextView" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="PRN medicines:"
-                        android:theme="@style/TextViewHeading" />
-                    <TextView
-                        android:id="@+id/tv_rtD_Q1_ht_pnrmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="PRN medicines"
-                        android:layout_marginLeft="10dp"
-                        android:theme="@style/TextView" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Alternate medication:"
-                        android:theme="@style/TextViewHeading" />
-                    <TextView
-                        android:id="@+id/tv_rtD_Q1_ht_altmed"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Alternate medication"
-                        android:theme="@style/TextView" />
-                </LinearLayout>
-
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_button"
+                android:text="Next"
+                android:theme="@style/Button"></Button>
         </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="30dp">
-        </View>
-
-        <Button
-            android:id="@+id/nextTool"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/rounded_button"
-            android:text="Next"
-            android:theme="@style/Button"></Button>
-
 
     </LinearLayout>
 

@@ -2,9 +2,11 @@ package com.example.cv.select;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearSmoothScroller;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 public class ShowPatientData extends AppCompatActivity {
     private DatabaseHelperRP mDatabaseHeperRP;
     private ListView listView;
+    private Toolbar toolbar;
     Button btn_ShowDetails;
 
     @Override
@@ -32,6 +35,18 @@ public class ShowPatientData extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i =new Intent (ShowPatientData.this, ShowToolsDetails.class);
                 startActivity(i);
+            }
+        });
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Patient Data");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(ShowPatientData.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -3,14 +3,17 @@ package com.example.cv.select;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.Switch;
 import android.widget.Toast;
 
 
@@ -18,8 +21,11 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
 
     private LinearLayout linear_rtD_Q1_DM_otions, linear_rtD_Q1_ht_otions;
     private String diabetic,hypertension, diabeticControlByMedicines, diabeticControlByDiet, diabeticControlByIsulin, diabeticControlByPnrMed, diabeticControlByAlternateMed, hypertenControlByNotMedicines,
-            hypertenControlByMedicines, hypertenControlByDietOrtMed, hypertenControlByPnrMed, hypertenControlByAlternateMed, ContactNo;
-
+            hypertenControlByMedicines, hypertenControlByDietOrtMed, hypertenControlByPnrMed, hypertenControlByAlternateMed, ContactNo,
+            Diabetic, Hypertension,tool1,tool2;
+    private boolean switchState;
+    private Switch syncData;
+    private Toolbar toolbar;
     private CheckBox ck_rtD_Q1_DM_med, ck_rtD_Q1_DM_diet,ck_rtD_Q1_DM_insulin, ck_rtD_Q1_DM_pnrMed, ck_rtD_Q1_DM_altMed,ck_rtD_Q1_ht_notMedicines, ck_rtD_Q1_ht_med, ck_rtD_Q1_ht_dietOrMed,
             ck_rtD_Q1_ht_altMed, ck_rtD_Q1_ht_pnrMed;
     CheckBox ck_rtD_Q1_DM, ck_rtD_Q1_Hyp;
@@ -31,9 +37,36 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_risk_and_triage_diabetic);
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Tool 3");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(RiskAndTriageDiabetic.this, Modules.class);
+                startActivity(intent);
+            }
+        });
+
         Intent intent=getIntent();
         ContactNo=intent.getStringExtra("ContactNo");
+        tool1=intent.getStringExtra("tool1");
+        tool2=intent.getStringExtra("tool2");
 
+        syncData=(Switch)findViewById(R.id.syncData);
+        syncData.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(syncData.isChecked()){
+                    switchState=true;
+                }
+                else{
+                    switchState=false;
+                }
+            }
+        });
 
         Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
 
@@ -61,10 +94,14 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
             public void onClick(View v) {
                 addTool3data();
                 String tool3="Completed";
+                String tool3_Result=Diabetic + ", " + Hypertension;
                 mDatabaseHelper.updateTool3Status(ContactNo,tool3);
                 Toast.makeText(RiskAndTriageDiabetic.this, "Tool3 Completed", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(RiskAndTriageDiabetic.this, Modules.class);
                 intent.putExtra("ContactNo", ContactNo);
+                intent.putExtra("tool1", tool1);
+                intent.putExtra("tool2", tool2);
+                intent.putExtra("tool3", tool3_Result);
                 startActivity(intent);
             }
         });
@@ -120,6 +157,8 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
 
         if(ck_rtD_Q1_DM.isChecked()){
             diabetic="Yes";
+            Diabetic=ck_rtD_Q1_DM.getText().toString();
+            Toast.makeText(this, "Diabetic", Toast.LENGTH_SHORT).show();
         }
 
         if(ck_rtD_Q1_DM_med.isChecked()){
@@ -139,6 +178,8 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
         }
         if (ck_rtD_Q1_Hyp.isChecked()){
             hypertension="Yes";
+            Hypertension=ck_rtD_Q1_Hyp.getText().toString();
+            Toast.makeText(this, "Hypertension", Toast.LENGTH_SHORT).show();
         }
         if(ck_rtD_Q1_ht_notMedicines.isChecked()){
             hypertenControlByNotMedicines="Yes";
@@ -157,7 +198,7 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
         }
         boolean isInserted = mDatabaseHelper.addTool3Data(ContactNo, diabetic, diabeticControlByMedicines, diabeticControlByIsulin, diabeticControlByDiet,
                 diabeticControlByPnrMed, diabeticControlByAlternateMed, hypertension, hypertenControlByNotMedicines, hypertenControlByMedicines, hypertenControlByDietOrtMed,
-                hypertenControlByPnrMed, hypertenControlByAlternateMed);
+                hypertenControlByPnrMed, hypertenControlByAlternateMed,switchState);
         if (isInserted == true) {
             Toast.makeText(this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
         } else {

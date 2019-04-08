@@ -6,231 +6,246 @@
     android:layout_height="match_parent"
     tools:context=".PhysicalActivity">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="16dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvHeading"
-                android:text="Physical Activity"
-                android:layout_gravity="center"
-                android:theme="@style/TextViewHeading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <LinearLayout
-                android:id="@+id/linear_PA_Q1"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-
-                <TextView
-                    android:id="@+id/tv_PA_Q1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/TextView"
-                    android:layout_marginTop="30dp"
-                    android:text="@string/PhysicalActivityQ1" />
-
-                <RadioGroup
-                    android:id="@+id/rd_PA_Q1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
-                <RadioButton
-                    android:id="@+id/rd_PA_Q1_yes"
-                    android:theme="@style/RadioButton"
-                    android:text="Yes Vigorous Exercise"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <RadioButton
-                    android:id="@+id/rd_PA_Q1_no"
-                    android:theme="@style/RadioButton"
-                    android:text="No Vigorous Exercise"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                </RadioGroup>
-
-                <Spinner
-                    android:id="@+id/sp_PA_Q1"
-                    android:text="Days/Weeks"
-                    android:theme="@style/Spinner"
-                    android:entries="@array/PhysicalActivity"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-            <View
-                android:id="@+id/view_PA_Q1"
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="25dp">
-            </View>
+                android:layout_height="?attr/actionBarSize"
+                android:theme="@style/ToolBar"
+                android:background="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
             <LinearLayout
-                android:id="@+id/linear_PA_Q2"
+                android:layout_width="match_parent"
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:padding="16dp"
+                android:layout_height="match_parent">
+
                 <TextView
-                    android:id="@+id/tv_PA_Q2"
+                    android:id="@+id/tvHeading"
+                    android:text="Physical Activity"
+                    android:layout_gravity="center"
+                    android:theme="@style/TextViewHeading"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/TextView"
-                    android:text="@string/PhysicalActivityQ2" />
+                    android:layout_height="wrap_content" />
+
                 <LinearLayout
+                    android:id="@+id/linear_PA_Q1"
+                    android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <EditText
-                        android:id="@+id/ed_PA_Q2_hours"
-                        android:theme="@style/EditText"
-                        android:ems="3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+
                     <TextView
+                        android:id="@+id/tv_PA_Q1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/TextView"
-                        android:text="hours per day"/>
-                    <EditText
-                        android:id="@+id/ed_PA_Q2_days"
-                        android:theme="@style/EditText"
-                        android:ems="3"
+                        android:theme="@style/TextView"
+                        android:layout_marginTop="30dp"
+                        android:text="@string/PhysicalActivityQ1" />
+
+                    <RadioGroup
+                        android:id="@+id/rd_PA_Q1"
                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+                        <RadioButton
+                            android:id="@+id/rd_PA_Q1_yes"
+                            android:theme="@style/RadioButton"
+                            android:text="Yes Vigorous Exercise"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <RadioButton
+                            android:id="@+id/rd_PA_Q1_no"
+                            android:theme="@style/RadioButton"
+                            android:text="No Vigorous Exercise"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RadioGroup>
+
+                    <Spinner
+                        android:id="@+id/sp_PA_Q1"
+                        android:text="Days/Weeks"
+                        android:theme="@style/Spinner"
+                        android:entries="@array/PhysicalActivity"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TextView"
-                        android:text="minutes per day"/>
                 </LinearLayout>
-                <CheckBox
-                    android:id="@+id/ck_PA_Q2"
-                    android:theme="@style/Checkbox"
-                    android:text="Don't know/Not sure"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
 
-            <View
-                android:id="@+id/view_PA_Q2"
-                android:layout_width="match_parent"
-                android:layout_height="25dp">
-            </View>
+                <View
+                    android:id="@+id/view_PA_Q1"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp">
+                </View>
 
-            <LinearLayout
-                android:id="@+id/linear_PA_Q3"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/tv_PA_Q3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextView"
-                android:text="@string/PhysicalActivityQ3" />
-
-                <RadioGroup
-                    android:id="@+id/rd_PA_Q3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
-                    <RadioButton
-                        android:id="@+id/rd_PA_Q3_yes"
-                        android:theme="@style/RadioButton"
-                        android:text="Yes Moderate Exercise"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <RadioButton
-                        android:id="@+id/rd_PA_Q3_no"
-                        android:theme="@style/RadioButton"
-                        android:text="No Moderate Exercise"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </RadioGroup>
-
-                <Spinner
-                    android:id="@+id/sp_PA_Q3"
-                    android:text="Days/Weeks"
-                    android:theme="@style/Spinner"
-                    android:entries="@array/PhysicalActivity"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-            <View
-                android:id="@+id/view_PA_Q3"
-                android:layout_width="match_parent"
-                android:layout_height="25dp">
-            </View>
-
-            <LinearLayout
-                android:id="@+id/linear_PA_Q4"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tv_PA_Q4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/TextView"
-                    android:text="@string/PhysicalActivityQ4" />
                 <LinearLayout
+                    android:id="@+id/linear_PA_Q2"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tv_PA_Q2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="@string/PhysicalActivityQ2" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/ed_PA_Q2_hours"
+                            android:theme="@style/EditText"
+                            android:ems="3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TextView"
+                            android:text="hours per day"/>
+                        <EditText
+                            android:id="@+id/ed_PA_Q2_days"
+                            android:theme="@style/EditText"
+                            android:ems="3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TextView"
+                            android:text="minutes per day"/>
+                    </LinearLayout>
+                    <CheckBox
+                        android:id="@+id/ck_PA_Q2"
+                        android:theme="@style/Checkbox"
+                        android:text="Don't know/Not sure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view_PA_Q2"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp">
+                </View>
+
+                <LinearLayout
+                    android:id="@+id/linear_PA_Q3"
+                    android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <EditText
-                        android:id="@+id/ed_PA_Q4_hours"
-                        android:theme="@style/EditText"
-                        android:ems="3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
                     <TextView
+                        android:id="@+id/tv_PA_Q3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/TextView"
-                        android:text="hours per day"/>
-                    <EditText
-                        android:id="@+id/ed_PA_Q4_days"
-                        android:theme="@style/EditText"
-                        android:ems="3"
+                        android:theme="@style/TextView"
+                        android:text="@string/PhysicalActivityQ3" />
+
+                    <RadioGroup
+                        android:id="@+id/rd_PA_Q3"
                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+                        <RadioButton
+                            android:id="@+id/rd_PA_Q3_yes"
+                            android:theme="@style/RadioButton"
+                            android:text="Yes Moderate Exercise"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <RadioButton
+                            android:id="@+id/rd_PA_Q3_no"
+                            android:theme="@style/RadioButton"
+                            android:text="No Moderate Exercise"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RadioGroup>
+
+                    <Spinner
+                        android:id="@+id/sp_PA_Q3"
+                        android:text="Days/Weeks"
+                        android:theme="@style/Spinner"
+                        android:entries="@array/PhysicalActivity"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TextView"
-                        android:text="minutes per day"/>
                 </LinearLayout>
-                <CheckBox
-                    android:id="@+id/ck_PA_Q4"
-                    android:theme="@style/Checkbox"
-                    android:text="Don't know/Not sure"
+
+                <View
+                    android:id="@+id/view_PA_Q3"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp">
+                </View>
+
+                <LinearLayout
+                    android:id="@+id/linear_PA_Q4"
+                    android:orientation="vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+                    android:layout_height="wrap_content">
 
-            <View
-                android:id="@+id/view_PA_Q4"
-                android:layout_width="match_parent"
-                android:layout_height="25dp">
-            </View>
+                    <TextView
+                        android:id="@+id/tv_PA_Q4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="@string/PhysicalActivityQ4" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:id="@+id/linear_PA_Q5"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                        <EditText
+                            android:id="@+id/ed_PA_Q4_hours"
+                            android:theme="@style/EditText"
+                            android:ems="3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TextView"
+                            android:text="hours per day"/>
+                        <EditText
+                            android:id="@+id/ed_PA_Q4_days"
+                            android:theme="@style/EditText"
+                            android:ems="3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TextView"
+                            android:text="minutes per day"/>
+                    </LinearLayout>
+                    <CheckBox
+                        android:id="@+id/ck_PA_Q4"
+                        android:theme="@style/Checkbox"
+                        android:text="Don't know/Not sure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_PA_Q5"
+                <View
+                    android:id="@+id/view_PA_Q4"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp">
+                </View>
+
+                <LinearLayout
+                    android:id="@+id/linear_PA_Q5"
+                    android:orientation="vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/TextView"
-                    android:text="@string/PhysicalActivityQ5" />
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_PA_Q5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="@string/PhysicalActivityQ5" />
 
 
                     <RadioGroup
@@ -258,74 +273,90 @@
                         android:entries="@array/PhysicalActivity"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content" />
-            </LinearLayout>
+                </LinearLayout>
 
-            <View
-                android:id="@+id/view_PA_Q5"
-                android:layout_width="match_parent"
-                android:layout_height="25dp">
-            </View>
+                <View
+                    android:id="@+id/view_PA_Q5"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp">
+                </View>
 
-            <LinearLayout
-                android:id="@+id/linear_PA_Q6"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tv_PA_Q6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/TextView"
-                    android:text="@string/PhysicalActivityQ6" />
                 <LinearLayout
+                    android:id="@+id/linear_PA_Q6"
+                    android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <EditText
-                        android:id="@+id/ed_PA_Q6_hours"
-                        android:theme="@style/EditText"
-                        android:ems="3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
                     <TextView
+                        android:id="@+id/tv_PA_Q6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/TextView"
-                        android:text="hours per day"/>
-                    <EditText
-                        android:id="@+id/ed_PA_Q6_days"
-                        android:theme="@style/EditText"
-                        android:ems="3"
+                        android:theme="@style/TextView"
+                        android:text="@string/PhysicalActivityQ6" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/ed_PA_Q6_hours"
+                            android:theme="@style/EditText"
+                            android:ems="3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TextView"
+                            android:text="hours per day"/>
+                        <EditText
+                            android:id="@+id/ed_PA_Q6_days"
+                            android:theme="@style/EditText"
+                            android:ems="3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TextView"
+                            android:text="minutes per day"/>
+                    </LinearLayout>
+                    <CheckBox
+                        android:id="@+id/ck_PA_Q6"
+                        android:theme="@style/Checkbox"
+                        android:text="Don't know/Not sure"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TextView"
-                        android:text="minutes per day"/>
                 </LinearLayout>
-                <CheckBox
-                    android:id="@+id/ck_PA_Q6"
-                    android:theme="@style/Checkbox"
-                    android:text="Don't know/Not sure"
+
+                <View
+                    android:layout_below="@id/linear_p_consenttaken"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp">
+                </View>
+
+
+                <Switch
+                    android:id="@+id/syncData"
+                    android:text="Sync Data"
+                    android:theme="@style/Switch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
+
+                <View
+                    android:id="@+id/view_PA_Q6"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp">
+                </View>
+
+                <Button
+                    android:id="@+id/btn_PA_submit"
+                    android:theme="@style/Button"
+                    android:text="Submit"
+                    android:background="@drawable/rounded_button"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
             </LinearLayout>
-
-            <View
-                android:id="@+id/view_PA_Q6"
-                android:layout_width="match_parent"
-                android:layout_height="30dp">
-            </View>
-
-            <Button
-                android:id="@+id/btn_PA_submit"
-                android:theme="@style/Button"
-                android:text="Submit"
-                android:background="@drawable/rounded_button"
-                android:layout_centerHorizontal="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
         </LinearLayout>
 </ScrollView>

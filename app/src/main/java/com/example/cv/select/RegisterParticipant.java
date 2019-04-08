@@ -3,9 +3,11 @@ package com.example.cv.select;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +33,7 @@ public class RegisterParticipant extends AppCompatActivity {
     private boolean switchState;
     String Tool1, Tool2, Tool3, Tool4, Tool5, Tool6a, Tool6b, Tool7, Enroll;
     View dialogView;
+    private Toolbar toolbar;
     AlertDialog.Builder dialogBuilder;
     AlertDialog alertDialog;
 
@@ -58,9 +61,20 @@ public class RegisterParticipant extends AppCompatActivity {
         rd_psmartphone=(RadioGroup)findViewById(R.id.rd_p_smrtph);
         rd_participate=(RadioGroup)findViewById(R.id.rd_participate);
 
-        syncData = (Switch) findViewById(R.id.syncData);
-
         mDatabaseHelperRP = new DatabaseHelperRP(this);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Register Participant");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(RegisterParticipant.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btn_pregister = (Button) findViewById(R.id.btn_p_register);
         btn_pregister.setOnClickListener(new View.OnClickListener() {

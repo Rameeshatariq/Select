@@ -6,227 +6,254 @@
     android:layout_height="match_parent"
     tools:context=".ShowTool7Data">
 
+
+
     <LinearLayout
         android:orientation="vertical"
-        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvHeading"
-            android:text="Diet Lifestyle"
-            android:layout_gravity="center"
-            android:theme="@style/TextViewHeading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <LinearLayout
-            android:id="@+id/linear_DL_contact"
-            android:orientation="horizontal"
-            android:layout_marginTop="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Contact Sim:" />
-            <TextView
-                android:id="@+id/pcontact"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:theme="@style/TextView"
-                android:text="contact" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linear_DL_Q1"
-            android:orientation="vertical"
-            android:layout_marginTop="25dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvHeading">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="@string/DietLifestyleQ1" />
-            <TextView
-                android:id="@+id/tv_DL_Q1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextView"
-                android:text="@string/DietLifestyleQ1" />
-
-        </LinearLayout>
-
-        <View
-            android:id="@+id/view_DL_Q1"
-            android:layout_below="@id/linear_DL_Q1"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="25dp">
-        </View>
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/ToolBar"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <LinearLayout
-            android:id="@+id/linear_DL_Q2"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/view_DL_Q1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="@string/DietLifestyleQ2" />
-            <TextView
-                android:id="@+id/tv_DL_Q2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextView"
-                android:text="@string/DietLifestyleQ2" />
-
-        </LinearLayout>
-
-        <View
-            android:id="@+id/view_DL_Q2"
-            android:layout_below="@id/linear_DL_Q2"
             android:layout_width="match_parent"
-            android:layout_height="25dp">
-        </View>
-
-        <LinearLayout
-            android:id="@+id/linear_DL_Q3"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/view_DL_Q2">
+            android:padding="16dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/tvHeading"
+                android:text="Diet Lifestyle"
+                android:layout_gravity="center"
                 android:theme="@style/TextViewHeading"
-                android:text="@string/DietLifestyleQ3" />
-            <TextView
-                android:id="@+id/tv_DL_Q3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/linear_DL_contact"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextViewHeading"
+                    android:text="Contact Sim:" />
+                <TextView
+                    android:id="@+id/pcontact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:theme="@style/TextView"
+                    android:text="contact" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_DL_Q1"
+                android:orientation="vertical"
+                android:layout_marginTop="25dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextView"
-                android:text="@string/DietLifestyleQ3" />
+                android:layout_below="@+id/tvHeading">
 
-        </LinearLayout>
-        <View
-            android:id="@+id/view_DL_Q3"
-            android:layout_below="@id/linear_DL_Q3"
-            android:layout_width="match_parent"
-            android:layout_height="25dp">
-        </View>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextViewHeading"
+                    android:text="@string/DietLifestyleQ1" />
+                <TextView
+                    android:id="@+id/tv_DL_Q1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/DietLifestyleQ1" />
 
-        <LinearLayout
-            android:id="@+id/linear_DL_Q4"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/view_DL_Q3">
+            </LinearLayout>
 
-            <TextView
+            <View
+                android:id="@+id/view_DL_Q1"
+                android:layout_below="@id/linear_DL_Q1"
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+            </View>
+
+            <LinearLayout
+                android:id="@+id/linear_DL_Q2"
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="@string/DietLifestyleQ4" />
-            <TextView
-                android:id="@+id/tv_DL_Q4"
+                android:layout_below="@+id/view_DL_Q1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextViewHeading"
+                    android:text="@string/DietLifestyleQ2" />
+                <TextView
+                    android:id="@+id/tv_DL_Q2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/DietLifestyleQ2" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view_DL_Q2"
+                android:layout_below="@id/linear_DL_Q2"
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+            </View>
+
+            <LinearLayout
+                android:id="@+id/linear_DL_Q3"
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextView"
-                android:text="@string/DietLifestyleQ4" />
+                android:layout_below="@+id/view_DL_Q2">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextViewHeading"
+                    android:text="@string/DietLifestyleQ3" />
+                <TextView
+                    android:id="@+id/tv_DL_Q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/DietLifestyleQ3" />
 
-        <View
-            android:id="@+id/view_DL_Q4"
-            android:layout_below="@id/linear_DL_Q4"
-            android:layout_width="match_parent"
-            android:layout_height="25dp">
-        </View>
+            </LinearLayout>
+            <View
+                android:id="@+id/view_DL_Q3"
+                android:layout_below="@id/linear_DL_Q3"
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+            </View>
 
-        <LinearLayout
-            android:id="@+id/linear_DL_Q5"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/view_DL_Q4">
-
-            <TextView
+            <LinearLayout
+                android:id="@+id/linear_DL_Q4"
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="@string/DietLifestyleQ5" />
-            <TextView
-                android:id="@+id/tv_DL_Q5"
+                android:layout_below="@+id/view_DL_Q3">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextViewHeading"
+                    android:text="@string/DietLifestyleQ4" />
+                <TextView
+                    android:id="@+id/tv_DL_Q4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/DietLifestyleQ4" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view_DL_Q4"
+                android:layout_below="@id/linear_DL_Q4"
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+            </View>
+
+            <LinearLayout
+                android:id="@+id/linear_DL_Q5"
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextView"
-                android:text="@string/DietLifestyleQ5" />
+                android:layout_below="@+id/view_DL_Q4">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextViewHeading"
+                    android:text="@string/DietLifestyleQ5" />
+                <TextView
+                    android:id="@+id/tv_DL_Q5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/DietLifestyleQ5" />
 
-        <View
-            android:id="@+id/view_DL_Q5"
-            android:layout_below="@id/linear_DL_Q5"
-            android:layout_width="match_parent"
-            android:layout_height="25dp">
-        </View>
+            </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linear_DL_Q6"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/view_DL_Q5">
+            <View
+                android:id="@+id/view_DL_Q5"
+                android:layout_below="@id/linear_DL_Q5"
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+            </View>
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/linear_DL_Q6"
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="@string/DietLifestyleQ6" />
-            <TextView
-                android:id="@+id/tv_DL_Q6"
+                android:layout_below="@+id/view_DL_Q5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextViewHeading"
+                    android:text="@string/DietLifestyleQ6" />
+                <TextView
+                    android:id="@+id/tv_DL_Q6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/DietLifestyleQ6" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view_DL_Q6"
+                android:layout_below="@id/linear_DL_Q6"
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+            </View>
+
+            <LinearLayout
+                android:id="@+id/linear_DL_Q7"
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextView"
-                android:text="@string/DietLifestyleQ6" />
+                android:layout_below="@+id/view_DL_Q6">
 
-        </LinearLayout>
-
-        <View
-            android:id="@+id/view_DL_Q6"
-            android:layout_below="@id/linear_DL_Q6"
-            android:layout_width="match_parent"
-            android:layout_height="25dp">
-        </View>
-
-        <LinearLayout
-            android:id="@+id/linear_DL_Q7"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/view_DL_Q6">
-
-            <TextView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextViewHeading"
+                    android:text="@string/DietLifestyleQ7" />
+                <TextView
+                    android:id="@+id/tv_DL_Q7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/DietLifestyleQ7" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/nextTool"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="@string/DietLifestyleQ7" />
-            <TextView
-                android:id="@+id/tv_DL_Q7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextView"
-                android:text="@string/DietLifestyleQ7" />
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_button"
+                android:text="Next"
+                android:theme="@style/Button" />
+
+
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -2,8 +2,10 @@ package com.example.cv.select;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,7 +19,7 @@ import java.util.ArrayList;
 public class ShowTool5Data extends AppCompatActivity {
 
     private DatabaseHelperRP mDatabaseHeperRP;
-    private ListView tool5ListView;
+    private Toolbar toolbar;
     private TextView tv_tl5_contact, tv_tl5_Q1, tv_tl5_Q1_days, tv_tl5_Q2, tv_tl5_Q3, tv_tl5_Q3_days, tv_tl5_Q4, tv_tl5_Q5,tv_tl5_Q5_days, tv_tl5_Q6;
     Button next;
     String ContactNo;
@@ -39,6 +41,21 @@ public class ShowTool5Data extends AppCompatActivity {
         tv_tl5_Q5=(TextView)findViewById(R.id.tv_PA_Q5);
         tv_tl5_Q5_days=(TextView)findViewById(R.id.tv_PA_Q5_days);
         tv_tl5_Q6=(TextView)findViewById(R.id.tv_PA_Q6);
+
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Tool 5 Details");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(ShowTool5Data.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         Intent intent = getIntent();
         ContactNo = intent.getStringExtra("ContactNo");

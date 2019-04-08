@@ -1,8 +1,10 @@
 package com.example.cv.select;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
 
 public class PhysicalActivity extends AppCompatActivity {
@@ -24,16 +27,35 @@ public class PhysicalActivity extends AppCompatActivity {
     private EditText  et_PA_Q2_hours, et_PA_Q2_mins, et_PA_Q4_hours, et_PA_Q4_mins, et_PA_Q6_hours, et_PA_Q6_mins;
     CheckBox ck_PA_Q2, ck_PA_Q4, ck_PA_Q6;
     private DatabaseHelperRP databaseHelperRP;
+    private Toolbar toolbar;
+    private Switch syncData;
+    private boolean switchState;
     Button btn_PAsubmit;
-    String tool5_Q2_hours, tool5_Q2_mins, tool5_Q4_hours, tool5_Q4_mins, tool5_Q6_hours, tool5_Q6_mins;
+    String tool5_Q2_hours, tool5_Q2_mins, tool5_Q4_hours, tool5_Q4_mins, tool5_Q6_hours, tool5_Q6_mins,tool1,tool2,tool3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_physical);
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Modules");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(PhysicalActivity.this, Modules.class);
+                startActivity(intent);
+            }
+        });
+
         Intent intent=getIntent();
         ContactNo=intent.getStringExtra("ContactNo");
+        tool1=intent.getStringExtra("tool1");
+        tool2=intent.getStringExtra("tool2");
+        tool3=intent.getStringExtra("tool3");
 
 
         rd_PA_Q1=(RadioGroup) findViewById(R.id.rd_PA_Q1);
@@ -64,6 +86,19 @@ public class PhysicalActivity extends AppCompatActivity {
         linear_PA_Q2=(LinearLayout)findViewById(R.id.linear_PA_Q2);
         linear_PA_Q4=(LinearLayout)findViewById(R.id.linear_PA_Q4);
         linear_PA_Q6=(LinearLayout)findViewById(R.id.linear_PA_Q6);
+
+        syncData=(Switch)findViewById(R.id.syncData);
+        syncData.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(syncData.isChecked()){
+                    switchState=true;
+                }
+                else{
+                    switchState=false;
+                }
+            }
+        });
 
         rd_PA_Q1_yes.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -127,6 +162,9 @@ public class PhysicalActivity extends AppCompatActivity {
                 Toast.makeText(PhysicalActivity.this, "Tool5 Completed", Toast.LENGTH_SHORT).show();
                 Intent intent= new Intent(PhysicalActivity.this, Modules.class);
                 intent.putExtra("ContactNo", ContactNo);
+                intent.putExtra("tool1", tool1);
+                intent.putExtra("tool2", tool2);
+                intent.putExtra("tool3", tool3);
                 startActivity(intent);
             }
         });
@@ -168,7 +206,7 @@ public class PhysicalActivity extends AppCompatActivity {
             tool5_Q6_hoursMins=tool5_Q6;
         }
         boolean isInserted = databaseHelperRP.addTool5Data(ContactNo, tool5_Q1, sp_Q1, tool5_Q2_hoursMins, tool5_Q3, sp_Q3, tool5_Q4_hoursMins,
-                tool5_Q5, sp_Q5, tool5_Q6_hoursMins);
+                tool5_Q5, sp_Q5, tool5_Q6_hoursMins,switchState);
         if (isInserted == true) {
             Toast.makeText(this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
         } else {

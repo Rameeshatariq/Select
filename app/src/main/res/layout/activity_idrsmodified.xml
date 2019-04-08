@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".IDRSModified">
@@ -17,35 +16,49 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tvHeading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_centerHorizontal="true"
-                android:text="IDRS Modified"
-                android:theme="@style/TextViewHeading" />
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:theme="@style/ToolBar"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
             <LinearLayout
-                android:id="@+id/linear_IDRS_Q1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/tvHeading"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
 
                 <TextView
-                    android:id="@+id/tv_IDRS_Q1"
+                    android:id="@+id/tvHeading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/IDRSModifiedQ1"
-                    android:theme="@style/TextView" />
+                    android:layout_gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:text="IDRS Modified"
+                    android:theme="@style/TextViewHeading" />
 
-                <RadioGroup
-                    android:id="@+id/rd_IDRS_Q1"
+                <LinearLayout
+                    android:id="@+id/linear_IDRS_Q1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_below="@+id/tvHeading"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_IDRS_Q1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/IDRSModifiedQ1"
+                        android:theme="@style/TextView" />
+
+                    <RadioGroup
+                        android:id="@+id/rd_IDRS_Q1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
                         <RadioButton
                             android:id="@+id/rd_IDRS_Q1_none"
@@ -67,25 +80,41 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:theme="@style/RadioButton" />
-                </RadioGroup>
+                    </RadioGroup>
+                </LinearLayout>
+
+                <View
+                    android:layout_below="@id/linear_p_consenttaken"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp">
+                </View>
+
+
+                <Switch
+                    android:id="@+id/syncData"
+                    android:text="Sync Data"
+                    android:theme="@style/Switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <View
+                    android:id="@+id/view_IDRS_Q1"
+                    android:layout_below="@id/linear_IDRS_Q1"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp">
+                </View>
+
+                <Button
+                    android:id="@+id/btn_IDRS_submit"
+                    android:theme="@style/Button"
+                    android:text="Submit"
+                    android:background="@drawable/rounded_button"
+                    android:layout_below="@id/view_IDRS_Q1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
             </LinearLayout>
-
-            <View
-                android:id="@+id/view_IDRS_Q1"
-                android:layout_below="@id/linear_IDRS_Q1"
-                android:layout_width="match_parent"
-                android:layout_height="30dp">
-            </View>
-
-            <Button
-                android:id="@+id/btn_IDRS_submit"
-                android:theme="@style/Button"
-                android:text="Submit"
-                android:background="@drawable/rounded_button"
-                android:layout_below="@id/view_IDRS_Q1"
-                android:layout_centerHorizontal="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
 
         </LinearLayout>
     </ScrollView>

@@ -2,8 +2,10 @@ package com.example.cv.select;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 
 public class ShowTool6bData extends AppCompatActivity {
     private DatabaseHelperRP mDatabaseHeperRP;
+    private Toolbar toolbar;
     private TextView tv_tl6b_contact, tv_tl6b_Q1, tv_tl6b_Q2;
     Button next;
     String ContactNo;
@@ -30,6 +33,21 @@ public class ShowTool6bData extends AppCompatActivity {
         tv_tl6b_contact=(TextView)findViewById(R.id.pcontact);
         tv_tl6b_Q1=(TextView)findViewById(R.id.tv_TS_SL_Q1);
         tv_tl6b_Q2=(TextView)findViewById(R.id.tv_TS_SL_Q2);
+
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Tool 6b Details");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(ShowTool6bData.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         Intent intent = getIntent();
         ContactNo = intent.getStringExtra("ContactNo");

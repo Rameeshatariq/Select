@@ -2,8 +2,10 @@ package com.example.cv.select;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,6 +20,7 @@ public class ShowTool1bData extends AppCompatActivity {
     private DatabaseHelperRP mDatabaseHeperRP;
     private TextView tv_tl2_contact, tv_tl2_Q1, tv_tl2_Q2, tv_tl2_Q3;
     private Button next;
+    private Toolbar toolbar;
     private String ContactNo;
 
     @Override
@@ -30,6 +33,19 @@ public class ShowTool1bData extends AppCompatActivity {
         Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
 
         mDatabaseHeperRP = new DatabaseHelperRP(this);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Tool 2 Details");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(ShowTool1bData.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         tv_tl2_contact=(TextView)findViewById(R.id.pcontact);
         tv_tl2_Q1=(TextView)findViewById(R.id.tv_rtMI_Q1);

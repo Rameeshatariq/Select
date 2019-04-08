@@ -7,30 +7,37 @@
     android:orientation="vertical"
     tools:context=".ShowIndividualPartiData">
 
+
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"
-       android:orientation="vertical"
-       android:padding="16dp">
+       android:orientation="vertical">
 
-      <TextView
-          android:id="@+id/tvHeading"
-          android:text="Patient Detail"
-          android:layout_gravity="center"
-          android:theme="@style/TextViewHeading"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
+      <android.support.v7.widget.Toolbar
+          android:id="@+id/toolbar"
+          android:layout_width="match_parent"
+          android:layout_height="?attr/actionBarSize"
+          android:theme="@style/ToolBar"
+          android:background="?attr/colorPrimary"
+          app:layout_scrollFlags="scroll|enterAlways"
+          app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
       <LinearLayout
-          android:id="@+id/linear_pname"
-          android:layout_marginTop="30dp"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content">
-         <TextView
-             android:text="Name:"
-             android:theme="@style/TextViewHeading"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical"
+          android:padding="16dp">
+
+         <LinearLayout
+             android:id="@+id/linear_pname"
+             android:layout_marginTop="30dp"
              android:layout_width="wrap_content"
-             android:layout_height="wrap_content" />
+             android:layout_height="wrap_content">
+            <TextView
+                android:text="Name:"
+                android:theme="@style/TextViewHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/tv_pname"
@@ -39,23 +46,23 @@
                 android:text="Name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-      </LinearLayout>
+         </LinearLayout>
 
-      <View
-          android:id="@+id/view_pname"
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
+         <View
+             android:id="@+id/view_pname"
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
 
-      <LinearLayout
-          android:id="@+id/linear_page"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content">
-         <TextView
+         <LinearLayout
+             android:id="@+id/linear_page"
              android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextViewHeading"
-             android:text="Age:"/>
+             android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Age:"/>
 
             <TextView
                 android:id="@+id/tv_page"
@@ -64,50 +71,50 @@
                 android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-      </LinearLayout>
+         </LinearLayout>
 
-      <View
-          android:id="@+id/view_page"
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
+         <View
+             android:id="@+id/view_page"
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
 
-      <LinearLayout
-          android:id="@+id/linear_pgender"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_below="@+id/view_page">
-
-         <TextView
+         <LinearLayout
+             android:id="@+id/linear_pgender"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:theme="@style/TextViewHeading"
-             android:text="Gender:" />
-         <TextView
-             android:id="@+id/tv_pgender"
+             android:layout_below="@+id/view_page">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Gender:" />
+            <TextView
+                android:id="@+id/tv_pgender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:theme="@style/TextView"
+                android:text="Gender" />
+         </LinearLayout>
+
+         <View
+             android:id="@+id/view_pgender"
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
+
+         <LinearLayout
+             android:id="@+id/linear_pcontact"
              android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="10dp"
-             android:theme="@style/TextView"
-             android:text="Gender" />
-      </LinearLayout>
+             android:layout_height="wrap_content">
 
-      <View
-          android:id="@+id/view_pgender"
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
-
-      <LinearLayout
-          android:id="@+id/linear_pcontact"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content">
-
-         <TextView
-             android:text="Contact Sim:"
-             android:theme="@style/TextViewHeading"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content" />
+            <TextView
+                android:text="Contact Sim:"
+                android:theme="@style/TextViewHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
 
             <TextView
@@ -117,23 +124,23 @@
                 android:text="Contact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-      </LinearLayout>
+         </LinearLayout>
 
-      <View
-          android:id="@+id/view_pcontact"
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
+         <View
+             android:id="@+id/view_pcontact"
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
 
-      <LinearLayout
-          android:id="@+id/linear_p_altsim"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content">
-         <TextView
-             android:text="Alternate Sim:"
-             android:theme="@style/TextViewHeading"
+         <LinearLayout
+             android:id="@+id/linear_p_altsim"
              android:layout_width="wrap_content"
-             android:layout_height="wrap_content" />
+             android:layout_height="wrap_content">
+            <TextView
+                android:text="Alternate Sim:"
+                android:theme="@style/TextViewHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/tv_p_altsim"
                 android:theme="@style/TextView"
@@ -141,24 +148,24 @@
                 android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-      </LinearLayout>
+         </LinearLayout>
 
-      <View
-          android:id="@+id/view_paltsim"
-          android:layout_below="@id/linear_p_altsim"
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
+         <View
+             android:id="@+id/view_paltsim"
+             android:layout_below="@id/linear_p_altsim"
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
 
-      <LinearLayout
-          android:id="@+id/linear_paddress"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content">
+         <LinearLayout
+             android:id="@+id/linear_paddress"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
             <TextView
                 android:text="Address:"
                 android:theme="@style/TextViewHeading"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/tv_paddress"
                 android:theme="@style/TextView"
@@ -166,428 +173,432 @@
                 android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+         </LinearLayout>
+
+         <View
+             android:id="@+id/view_paddress"
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
+
+         <LinearLayout
+             android:id="@+id/linear_plives"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Lives in Malir" />
+            <TextView
+                android:id="@+id/tv_plives"
+                android:text="yes"
+                android:layout_marginLeft="10dp"
+                android:theme="@style/TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+         </LinearLayout>
+         <View
+             android:id="@+id/view_plives"
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
+
+         <LinearLayout
+             android:id="@+id/linear_p_notmoving"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_below="@id/view_plives"
+             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Not moving out in the next 6 months?" />
+            <TextView
+                android:id="@+id/tv_p_notmoving"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextView"
+                android:text="Yes" />
+
+
+         </LinearLayout>
+
+         <View
+             android:id="@+id/view_p_notmoving"
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
+
+         <LinearLayout
+             android:id="@+id/linear_smartphone"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_below="@+id/view_p_notmoving">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Smart phone to receive SMS?" />
+
+            <TextView
+                android:id="@+id/tv_psmartphone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+
+                android:theme="@style/TextView"
+                android:text="Smart phone to receive SMS?" />
+
+
+         </LinearLayout>
+
+         <View
+             android:id="@+id/view_smartphone"
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
+         <LinearLayout
+             android:id="@+id/linear_participate"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+             android:layout_below="@id/view_smartphone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Willing to participate for 6 months ?" />
+
+            <TextView
+                android:id="@+id/tv_participate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextView"
+                android:text="Willing to participate for 6 months ?" />
+
+         </LinearLayout>
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
+         <LinearLayout
+             android:id="@+id/linear_pinformedConsent"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_below="@id/view_smartphone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Informed Consent Taken:" />
+
+            <TextView
+                android:id="@+id/tv_p_informedConsent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextView"
+                android:layout_marginLeft="10dp"
+                android:text="Willing to participate for 6 months ?" />
+
+         </LinearLayout>
+
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
+
+         <LinearLayout
+             android:id="@+id/linear_p_reason"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Reason:" />
+            <TextView
+                android:id="@+id/tv_pReason"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:theme="@style/TextView"
+                android:text="yes" />
+         </LinearLayout>
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
+
+         <LinearLayout
+             android:id="@+id/linear_p_Tool1"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Tool 1:" />
+            <TextView
+                android:id="@+id/tv_ptool1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:theme="@style/TextView"
+                android:text="yes" />
+         </LinearLayout>
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
+
+         <LinearLayout
+             android:id="@+id/linear_p_tool2"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Tool 2:" />
+            <TextView
+                android:id="@+id/tv_ptool2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:theme="@style/TextView"
+                android:text="yes" />
+         </LinearLayout>
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
+
+         <LinearLayout
+             android:id="@+id/linear_p_tool3"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Tool 3:" />
+            <TextView
+                android:id="@+id/tv_ptool3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:theme="@style/TextView"
+                android:text="yes" />
+         </LinearLayout>
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
+
+         <LinearLayout
+             android:id="@+id/linear_p_tool4"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Tool 4:" />
+            <TextView
+                android:id="@+id/tv_ptool4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:theme="@style/TextView"
+                android:text="yes" />
+         </LinearLayout>
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
+
+         <LinearLayout
+             android:id="@+id/linear_p_tool5"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Tool 5:" />
+            <TextView
+                android:id="@+id/tv_ptool5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:theme="@style/TextView"
+                android:text="yes" />
+         </LinearLayout>
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
+
+         <LinearLayout
+             android:id="@+id/linear_p_tool6a"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Tool 6a:" />
+            <TextView
+                android:id="@+id/tv_ptool6a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:theme="@style/TextView"
+                android:text="yes" />
+         </LinearLayout>
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
+
+         <LinearLayout
+             android:id="@+id/linear_p_tool6b"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Tool 6b:" />
+            <TextView
+                android:id="@+id/tv_ptool6b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:theme="@style/TextView"
+                android:text="yes" />
+         </LinearLayout>
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
+
+         <LinearLayout
+             android:id="@+id/linear_p_tool7"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Tool 7:" />
+            <TextView
+                android:id="@+id/tv_ptool7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:theme="@style/TextView"
+                android:text="yes" />
+         </LinearLayout>
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
+
+         <LinearLayout
+             android:id="@+id/linear_p_enroll"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Enroll:" />
+            <TextView
+                android:id="@+id/tv_pEnroll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:theme="@style/TextView"
+                android:text="yes" />
+         </LinearLayout>
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
+
+         <LinearLayout
+             android:id="@+id/linear_p_isSync"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextViewHeading"
+                android:text="Sync Data" />
+            <TextView
+                android:id="@+id/tv_pSyncData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:theme="@style/TextView"
+                android:text="yes" />
+         </LinearLayout>
+
+         <View
+             android:layout_below="@id/linear_p_consenttaken"
+             android:layout_width="match_parent"
+             android:layout_height="30dp">
+         </View>
+
+         <View
+             android:id="@+id/view_participate"
+             android:layout_width="match_parent"
+             android:layout_height="25dp">
+         </View>
+
+         <Button
+             android:id="@+id/showTool1Data"
+             android:layout_width="160dp"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:layout_alignBottom="@+id/patient_Data"
+             android:layout_alignEnd="@+id/patient_Data"
+             android:background="@drawable/rounded_button"
+             android:text="Patient Tools Detail"
+             android:theme="@style/Button" />
+
       </LinearLayout>
 
-      <View
-          android:id="@+id/view_paddress"
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
 
-      <LinearLayout
-          android:id="@+id/linear_plives"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content">
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextViewHeading"
-             android:text="Lives in Malir" />
-         <TextView
-             android:id="@+id/tv_plives"
-             android:text="yes"
-             android:layout_marginLeft="10dp"
-             android:theme="@style/TextView"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content" />
-      </LinearLayout>
-      <View
-          android:id="@+id/view_plives"
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
-
-      <LinearLayout
-          android:id="@+id/linear_p_notmoving"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_below="@id/view_plives"
-          android:orientation="vertical">
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextViewHeading"
-             android:text="Not moving out in the next 6 months?" />
-         <TextView
-             android:id="@+id/tv_p_notmoving"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextView"
-             android:text="Yes" />
-
-
-      </LinearLayout>
-
-      <View
-          android:id="@+id/view_p_notmoving"
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
-
-      <LinearLayout
-          android:id="@+id/linear_smartphone"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_below="@+id/view_p_notmoving">
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextViewHeading"
-             android:text="Smart phone to receive SMS?" />
-
-         <TextView
-             android:id="@+id/tv_psmartphone"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="10dp"
-
-             android:theme="@style/TextView"
-             android:text="Smart phone to receive SMS?" />
-
-
-      </LinearLayout>
-
-      <View
-          android:id="@+id/view_smartphone"
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
-      <LinearLayout
-          android:id="@+id/linear_participate"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:orientation="vertical"
-          android:layout_below="@id/view_smartphone">
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextViewHeading"
-             android:text="Willing to participate for 6 months ?" />
-
-         <TextView
-             android:id="@+id/tv_participate"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextView"
-             android:text="Willing to participate for 6 months ?" />
-
-      </LinearLayout>
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
-      <LinearLayout
-          android:id="@+id/linear_pinformedConsent"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_below="@id/view_smartphone">
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextViewHeading"
-             android:text="Informed Consent Taken:" />
-
-         <TextView
-             android:id="@+id/tv_p_informedConsent"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextView"
-             android:layout_marginLeft="10dp"
-             android:text="Willing to participate for 6 months ?" />
-
-      </LinearLayout>
-
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
-
-      <LinearLayout
-          android:id="@+id/linear_p_reason"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content">
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextViewHeading"
-             android:text="Reason:" />
-         <TextView
-             android:id="@+id/tv_pReason"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="10dp"
-             android:theme="@style/TextView"
-             android:text="yes" />
-      </LinearLayout>
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
-
-      <LinearLayout
-          android:id="@+id/linear_p_Tool1"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content">
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextViewHeading"
-             android:text="Tool 1:" />
-         <TextView
-             android:id="@+id/tv_ptool1"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="10dp"
-             android:theme="@style/TextView"
-             android:text="yes" />
-      </LinearLayout>
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
-
-      <LinearLayout
-          android:id="@+id/linear_p_tool2"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content">
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextViewHeading"
-             android:text="Tool 2:" />
-         <TextView
-             android:id="@+id/tv_ptool2"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="10dp"
-             android:theme="@style/TextView"
-             android:text="yes" />
-      </LinearLayout>
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
-
-      <LinearLayout
-          android:id="@+id/linear_p_tool3"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content">
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextViewHeading"
-             android:text="Tool 3:" />
-         <TextView
-             android:id="@+id/tv_ptool3"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="10dp"
-             android:theme="@style/TextView"
-             android:text="yes" />
-      </LinearLayout>
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
-
-      <LinearLayout
-          android:id="@+id/linear_p_tool4"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content">
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextViewHeading"
-             android:text="Tool 4:" />
-         <TextView
-             android:id="@+id/tv_ptool4"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="10dp"
-             android:theme="@style/TextView"
-             android:text="yes" />
-      </LinearLayout>
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
-
-      <LinearLayout
-          android:id="@+id/linear_p_tool5"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content">
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextViewHeading"
-             android:text="Tool 5:" />
-         <TextView
-             android:id="@+id/tv_ptool5"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="10dp"
-             android:theme="@style/TextView"
-             android:text="yes" />
-      </LinearLayout>
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
-
-      <LinearLayout
-          android:id="@+id/linear_p_tool6a"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content">
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextViewHeading"
-             android:text="Tool 6a:" />
-         <TextView
-             android:id="@+id/tv_ptool6a"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="10dp"
-             android:theme="@style/TextView"
-             android:text="yes" />
-      </LinearLayout>
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
-
-      <LinearLayout
-          android:id="@+id/linear_p_tool6b"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content">
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextViewHeading"
-             android:text="Tool 6b:" />
-         <TextView
-             android:id="@+id/tv_ptool6b"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="10dp"
-             android:theme="@style/TextView"
-             android:text="yes" />
-      </LinearLayout>
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
-
-      <LinearLayout
-          android:id="@+id/linear_p_tool7"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content">
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextViewHeading"
-             android:text="Tool 7:" />
-         <TextView
-             android:id="@+id/tv_ptool7"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="10dp"
-             android:theme="@style/TextView"
-             android:text="yes" />
-      </LinearLayout>
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
-
-      <LinearLayout
-          android:id="@+id/linear_p_enroll"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content">
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextViewHeading"
-             android:text="Enroll:" />
-         <TextView
-             android:id="@+id/tv_pEnroll"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="10dp"
-             android:theme="@style/TextView"
-             android:text="yes" />
-      </LinearLayout>
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
-
-      <LinearLayout
-          android:id="@+id/linear_p_isSync"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content">
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:theme="@style/TextViewHeading"
-             android:text="Sync Data" />
-         <TextView
-             android:id="@+id/tv_pSyncData"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="10dp"
-             android:theme="@style/TextView"
-             android:text="yes" />
-      </LinearLayout>
-
-      <View
-          android:layout_below="@id/linear_p_consenttaken"
-          android:layout_width="match_parent"
-          android:layout_height="30dp">
-      </View>
-
-      <View
-          android:id="@+id/view_participate"
-          android:layout_width="match_parent"
-          android:layout_height="25dp">
-      </View>
-
-   <Button
-       android:id="@+id/showTool1Data"
-       android:layout_width="160dp"
-       android:layout_height="wrap_content"
-       android:layout_gravity="center"
-       android:layout_alignBottom="@+id/patient_Data"
-       android:layout_alignEnd="@+id/patient_Data"
-       android:background="@drawable/rounded_button"
-       android:text="Patient Tools Detail"
-       android:theme="@style/Button" />
    </LinearLayout>
 
 </ScrollView>

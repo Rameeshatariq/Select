@@ -6,11 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".RiskAndTriageCVA">
 
+
     <LinearLayout
         android:orientation="vertical"
-        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/ToolBar"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <TextView
                 android:id="@+id/tvHeading"
@@ -28,29 +42,29 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvHeading">
 
-                    <TextView
-                        android:id="@+id/tv_rt_Q1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:theme="@style/TextView"
-                        android:text="@string/RiskAndTriageQ1" />
+                <TextView
+                    android:id="@+id/tv_rt_Q1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/RiskAndTriageQ1" />
                 <RadioGroup
                     android:id="@+id/rd_rt_Q1"
                     android:theme="@style/RadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
-                        <RadioButton
-                            android:id="@+id/rd_rt_Q1_yes"
-                            android:text="Yes"
-                            android:theme="@style/RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <RadioButton
-                            android:id="@+id/rd_rt_Q1_no"
-                            android:text="No"
-                            android:theme="@style/RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q1_yes"
+                        android:text="Yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q1_no"
+                        android:text="No"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -69,29 +83,29 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/view_rt_Q1">
 
-                    <TextView
-                        android:id="@+id/tv_rt_Q2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:theme="@style/TextView"
-                        android:text="@string/RiskAndTriageQ2" />
+                <TextView
+                    android:id="@+id/tv_rt_Q2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/RiskAndTriageQ2" />
                 <RadioGroup
                     android:id="@+id/rd_rt_Q2"
                     android:theme="@style/RadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
-                        <RadioButton
-                            android:id="@+id/rd_rt_Q2_yes"
-                            android:text="Yes"
-                            android:theme="@style/RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <RadioButton
-                            android:id="@+id/rd_rt_Q2_no"
-                            android:text="No"
-                            android:theme="@style/RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q2_yes"
+                        android:text="Yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q2_no"
+                        android:text="No"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -109,29 +123,29 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/view_rt_Q2">
 
-                    <TextView
-                        android:id="@+id/tv_rt_Q3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:theme="@style/TextView"
-                        android:text="@string/RiskAndTriageQ3" />
+                <TextView
+                    android:id="@+id/tv_rt_Q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/RiskAndTriageQ3" />
                 <RadioGroup
                     android:id="@+id/rd_rt_Q3"
                     android:theme="@style/RadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
-                        <RadioButton
-                            android:id="@+id/rd_rt_Q3_yes"
-                            android:theme="@style/RadioButton"
-                            android:text="Yes"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <RadioButton
-                            android:id="@+id/rd_rt_Q3_no"
-                            android:text="No"
-                            android:theme="@style/RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q3_yes"
+                        android:theme="@style/RadioButton"
+                        android:text="Yes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q3_no"
+                        android:text="No"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
                 </RadioGroup>
             </LinearLayout>
@@ -150,30 +164,30 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/view_rt_Q3">
 
-                    <TextView
-                        android:id="@+id/tv_rt_Q4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:theme="@style/TextView"
-                        android:text="@string/RiskAndTriageQ4" />
+                <TextView
+                    android:id="@+id/tv_rt_Q4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/RiskAndTriageQ4" />
                 <RadioGroup
                     android:id="@+id/rd_rt_Q4"
                     android:theme="@style/RadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
-                        <RadioButton
-                            android:id="@+id/rd_rt_Q4_yes"
-                            android:text="Yes"
-                            android:theme="@style/RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q4_yes"
+                        android:text="Yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
-                       <RadioButton
-                           android:id="@+id/rd_rt_Q4_no"
-                           android:text="No"
-                           android:theme="@style/RadioButton"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q4_no"
+                        android:text="No"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -191,30 +205,30 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/view_rt_Q4">
 
-                    <TextView
-                        android:id="@+id/tv_rt_Q5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:theme="@style/TextView"
-                        android:text="@string/RiskAndTriageQ5" />
+                <TextView
+                    android:id="@+id/tv_rt_Q5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/RiskAndTriageQ5" />
 
                 <RadioGroup
                     android:id="@+id/rd_rt_Q5"
                     android:theme="@style/RadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
-                        <RadioButton
-                            android:id="@+id/rd_rt_Q5_yes"
-                            android:text="Yes"
-                            android:theme="@style/RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <RadioButton
-                            android:id="@+id/rd_rt_Q5_no"
-                            android:text="No"
-                            android:theme="@style/RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q5_yes"
+                        android:text="Yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q5_no"
+                        android:text="No"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -232,29 +246,29 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/view_rt_Q5">
 
-                    <TextView
-                        android:id="@+id/tv_rt_Q6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:theme="@style/TextView"
-                        android:text="@string/RiskAndTriageQ6" />
+                <TextView
+                    android:id="@+id/tv_rt_Q6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/RiskAndTriageQ6" />
                 <RadioGroup
                     android:id="@+id/rd_rt_Q6"
                     android:theme="@style/RadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
-                        <RadioButton
-                            android:id="@+id/rd_rt_Q6_yes"
-                            android:text="Yes"
-                            android:theme="@style/RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                      <RadioButton
-                          android:id="@+id/rd_rt_Q6_no"
-                          android:text="No"
-                          android:theme="@style/RadioButton"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q6_yes"
+                        android:text="Yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q6_no"
+                        android:text="No"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -272,29 +286,29 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/view_rt_Q6">
 
-                    <TextView
-                        android:id="@+id/tv_rt_Q7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:theme="@style/TextView"
-                        android:text="@string/RiskAndTriageQ7" />
+                <TextView
+                    android:id="@+id/tv_rt_Q7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/RiskAndTriageQ7" />
                 <RadioGroup
                     android:id="@+id/rd_rt_Q7"
                     android:theme="@style/RadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
-                        <RadioButton
-                            android:id="@+id/rd_rt_Q7_yes"
-                            android:text="Yes"
-                            android:theme="@style/RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <RadioButton
-                            android:id="@+id/rd_rt_Q7_no"
-                            android:text="No"
-                            android:theme="@style/RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q7_yes"
+                        android:text="Yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q7_no"
+                        android:text="No"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -312,31 +326,45 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/view_rt_Q7">
 
-                    <TextView
-                        android:id="@+id/tv_rt_Q8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:theme="@style/TextView"
-                        android:text="@string/RiskAndTriageQ8" />
+                <TextView
+                    android:id="@+id/tv_rt_Q8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextView"
+                    android:text="@string/RiskAndTriageQ8" />
                 <RadioGroup
                     android:id="@+id/rd_rt_Q8"
                     android:theme="@style/RadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
-                        <RadioButton
-                            android:id="@+id/rd_rt_Q8_yes"
-                            android:text="Yes"
-                            android:theme="@style/RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <RadioButton
-                            android:id="@+id/rd_rt_Q8_no"
-                            android:text="No"
-                            android:theme="@style/RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q8_yes"
+                        android:text="Yes"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q8_no"
+                        android:text="No"
+                        android:theme="@style/RadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </RadioGroup>
             </LinearLayout>
+
+            <View
+                android:layout_below="@id/linear_p_consenttaken"
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+            </View>
+
+
+            <Switch
+                android:id="@+id/syncData"
+                android:text="Sync Data"
+                android:theme="@style/Switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <View
                 android:id="@+id/view_rt_Q8"
@@ -354,10 +382,7 @@
                 android:layout_gravity="center"
                 android:layout_below="@+id/view_rt_Q8"
                 android:text="Submit" />
+        </LinearLayout>
 
     </LinearLayout>
-
-
-
-
 </ScrollView>
