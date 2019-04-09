@@ -11,7 +11,7 @@
         android:supportsRtl="true">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme1">
+            android:theme="@style/AppTheme2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -1,21 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginRight="10dp"
+    app:cardElevation="15dp"
+    android:layout_marginLeft="10dp">
 
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="82dp">
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical">
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"></View>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Participant Name:"
+            android:theme="@style/TextViewHeading" />
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"></View>
 
         <TextView
             android:id="@+id/tvinprogpartiname"
-            android:layout_width="185dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:theme="@style/TextView" />
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"></View>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Participant Contact:"
+            android:theme="@style/TextViewHeading" />
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"></View>
 
         <TextView
             android:id="@+id/tvinprogparticontact"
@@ -24,4 +56,4 @@
             android:theme="@style/TextView" />
     </LinearLayout>
 
-</RelativeLayout>
+</android.support.v7.widget.CardView>

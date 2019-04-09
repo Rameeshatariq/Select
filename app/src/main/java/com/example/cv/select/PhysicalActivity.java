@@ -39,7 +39,7 @@ public class PhysicalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_physical);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Modules");
+        toolbar.setTitle("Tool 5");
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
