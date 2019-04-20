@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".TobbaccoSmokingSL">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/ToolBar"
+        android:background="?attr/colorPrimary"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-        <LinearLayout
+        <ScrollView
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:theme="@style/ToolBar"
-                android:background="?attr/colorPrimary"
-                app:layout_scrollFlags="scroll|enterAlways"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -75,7 +75,7 @@
                         <RadioButton
                             android:id="@+id/rd_TS_SL_Q1_dntknw"
                             android:theme="@style/RadioButton"
-                            android:text="Don't Know"
+                            android:text="Dont Know"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <RadioButton
@@ -135,7 +135,7 @@
                         <RadioButton
                             android:id="@+id/rd_TS_SL_Q2_dntknw"
                             android:theme="@style/RadioButton"
-                            android:text="Don't Know"
+                            android:text="Dont Know"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <RadioButton
@@ -148,22 +148,23 @@
                 </LinearLayout>
 
                 <View
-                    android:layout_below="@id/linear_p_consenttaken"
-                    android:layout_width="match_parent"
-                    android:layout_height="25dp">
-                </View>
-
-
-                <Switch
-                    android:id="@+id/syncData"
-                    android:text="Sync Data"
-                    android:theme="@style/Switch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <View
                     android:id="@+id/view_TS_SL_Q2"
                     android:layout_below="@id/linear_TS_SL_Q2"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp">
+                </View>
+
+                <Button
+                    android:id="@+id/btn_TS_SL_saveExit"
+                    android:text="Save And Exit"
+                    android:theme="@style/Button"
+                    android:background="@drawable/rounded_button"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:id="@+id/view_rt_saveExit"
+                    android:layout_below="@id/linear_rt_Q8"
                     android:layout_width="match_parent"
                     android:layout_height="30dp">
                 </View>
@@ -176,8 +177,9 @@
                     android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+
             </LinearLayout>
 
-        </LinearLayout>
-    </ScrollView>
+        </ScrollView>
+    </LinearLayout>
 

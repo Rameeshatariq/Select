@@ -20,7 +20,6 @@ public class ShowTool6aData extends AppCompatActivity {
     private DatabaseHelperRP mDatabaseHeperRP;
     private Toolbar toolbar;
     private TextView tv_tl6a_contact, tv_tl6a_Q1, tv_tl6a_Q2;
-    Button next;
     String ContactNo;
 
     @Override
@@ -52,16 +51,6 @@ public class ShowTool6aData extends AppCompatActivity {
         Intent intent = getIntent();
         ContactNo = intent.getStringExtra("ContactNo");
         Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
-
-        next=(Button)findViewById(R.id.nextTool);
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(ShowTool6aData.this, ShowTool6bData.class );
-                intent.putExtra("ContactNo", ContactNo);
-                startActivity(intent);
-            }
-        });
         viewAllTool6aData();
     }
 

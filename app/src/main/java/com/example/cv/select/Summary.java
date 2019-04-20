@@ -63,9 +63,9 @@ public class Summary extends AppCompatActivity {
     private void addToolsSummary() {
         boolean isInserted = databaseHelperRP.addToolsSummary(contact, tool1, tool2, tool3,tool7);
         if (isInserted == true) {
-            Toast.makeText(this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Summary Saved In Database Successfully", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Summary not Saved In Database Successfully", Toast.LENGTH_SHORT).show();
 
         }
 

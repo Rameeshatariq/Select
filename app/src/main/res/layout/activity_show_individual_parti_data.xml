@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,77 +7,101 @@
     android:orientation="vertical"
     tools:context=".ShowIndividualPartiData">
 
+   <android.support.v7.widget.Toolbar
+       android:id="@+id/toolbar"
+       android:layout_width="match_parent"
+       android:layout_height="?attr/actionBarSize"
+       android:theme="@style/ToolBar"
+       android:background="?attr/colorPrimary"
+       app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-   <LinearLayout
+
+   <ScrollView
        android:layout_width="match_parent"
        android:layout_height="match_parent"
        android:orientation="vertical">
-
-      <android.support.v7.widget.Toolbar
-          android:id="@+id/toolbar"
-          android:layout_width="match_parent"
-          android:layout_height="?attr/actionBarSize"
-          android:theme="@style/ToolBar"
-          android:background="?attr/colorPrimary"
-          app:layout_scrollFlags="scroll|enterAlways"
-          app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:orientation="vertical"
-          android:padding="16dp">
+          android:padding="10dp">
 
          <LinearLayout
              android:id="@+id/linear_pname"
-             android:layout_marginTop="30dp"
              android:layout_width="wrap_content"
-             android:layout_height="wrap_content">
+             android:layout_height="wrap_content"
+             android:layout_marginTop="30dp">
+
             <TextView
-                android:text="Name:"
-                android:theme="@style/TextViewHeading"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Name:"
+                android:theme="@style/TextViewHeading" />
 
             <TextView
                 android:id="@+id/tv_pname"
-                android:theme="@style/TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="Name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:theme="@style/TextView" />
          </LinearLayout>
 
          <View
              android:id="@+id/view_pname"
              android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
+             android:layout_height="25dp"></View>
 
          <LinearLayout
-             android:id="@+id/linear_page"
+             android:id="@+id/linear_pdateofdob"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Age:"/>
+                android:text="Date of Birth:"
+                android:theme="@style/TextViewHeading" />
 
             <TextView
-                android:id="@+id/tv_page"
-                android:theme="@style/TextView"
-                android:text="Age"
-                android:layout_marginLeft="10dp"
+                android:id="@+id/tv_pdob"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Age"
+                android:theme="@style/TextView" />
          </LinearLayout>
 
          <View
              android:id="@+id/view_page"
              android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
+             android:layout_height="25dp"></View>
+
+         <LinearLayout
+             android:id="@+id/linear_page"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Age:"
+                android:theme="@style/TextViewHeading" />
+
+            <TextView
+                android:id="@+id/tv_page"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Age"
+                android:theme="@style/TextView" />
+         </LinearLayout>
+
+         <View
+             android:id="@+id/view_page"
+             android:layout_width="match_parent"
+             android:layout_height="25dp"></View>
 
          <LinearLayout
              android:id="@+id/linear_pgender"
@@ -88,22 +112,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Gender:" />
+                android:text="Gender:"
+                android:theme="@style/TextViewHeading" />
+
             <TextView
                 android:id="@+id/tv_pgender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:theme="@style/TextView"
-                android:text="Gender" />
+                android:text="Gender"
+                android:theme="@style/TextView" />
          </LinearLayout>
 
          <View
              android:id="@+id/view_pgender"
              android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
+             android:layout_height="25dp"></View>
 
          <LinearLayout
              android:id="@+id/linear_pcontact"
@@ -111,75 +135,76 @@
              android:layout_height="wrap_content">
 
             <TextView
-                android:text="Contact Sim:"
-                android:theme="@style/TextViewHeading"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Contact Sim:"
+                android:theme="@style/TextViewHeading" />
 
 
             <TextView
                 android:id="@+id/tv_pcontact"
-                android:theme="@style/TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="Contact"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:theme="@style/TextView" />
          </LinearLayout>
 
          <View
              android:id="@+id/view_pcontact"
              android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
+             android:layout_height="25dp"></View>
 
          <LinearLayout
              android:id="@+id/linear_p_altsim"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content">
+
             <TextView
-                android:text="Alternate Sim:"
-                android:theme="@style/TextViewHeading"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Alternate Sim:"
+                android:theme="@style/TextViewHeading" />
+
             <TextView
                 android:id="@+id/tv_p_altsim"
-                android:theme="@style/TextView"
-                android:text="Alternate Sim"
-                android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Alternate Sim"
+                android:theme="@style/TextView" />
          </LinearLayout>
 
          <View
              android:id="@+id/view_paltsim"
-             android:layout_below="@id/linear_p_altsim"
              android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
+             android:layout_height="25dp"
+             android:layout_below="@id/linear_p_altsim"></View>
 
          <LinearLayout
              android:id="@+id/linear_paddress"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content">
+
             <TextView
-                android:text="Address:"
-                android:theme="@style/TextViewHeading"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Address:"
+                android:theme="@style/TextViewHeading" />
+
             <TextView
                 android:id="@+id/tv_paddress"
-                android:theme="@style/TextView"
-                android:text="address"
-                android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="address"
+                android:theme="@style/TextView" />
          </LinearLayout>
 
          <View
              android:id="@+id/view_paddress"
              android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
+             android:layout_height="25dp"></View>
 
          <LinearLayout
              android:id="@+id/linear_plives"
@@ -189,21 +214,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Lives in Malir" />
+                android:text="Lives in Malir"
+                android:theme="@style/TextViewHeading" />
+
             <TextView
                 android:id="@+id/tv_plives"
-                android:text="yes"
-                android:layout_marginLeft="10dp"
-                android:theme="@style/TextView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="yes"
+                android:theme="@style/TextView" />
          </LinearLayout>
+
          <View
              android:id="@+id/view_plives"
              android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
+             android:layout_height="25dp"></View>
 
          <LinearLayout
              android:id="@+id/linear_p_notmoving"
@@ -215,14 +241,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Not moving out in the next 6 months?" />
+                android:text="Not moving out in the next 6 months?"
+                android:theme="@style/TextViewHeading" />
+
             <TextView
                 android:id="@+id/tv_p_notmoving"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextView"
-                android:text="Yes" />
+                android:text="Yes"
+                android:theme="@style/TextView" />
 
 
          </LinearLayout>
@@ -230,8 +257,7 @@
          <View
              android:id="@+id/view_p_notmoving"
              android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
+             android:layout_height="25dp"></View>
 
          <LinearLayout
              android:id="@+id/linear_smartphone"
@@ -242,8 +268,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Smart phone to receive SMS?" />
+                android:text="Smart phone to receive SMS?"
+                android:theme="@style/TextViewHeading" />
 
             <TextView
                 android:id="@+id/tv_psmartphone"
@@ -251,8 +277,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
 
-                android:theme="@style/TextView"
-                android:text="Smart phone to receive SMS?" />
+                android:text="Smart phone to receive SMS?"
+                android:theme="@style/TextView" />
 
 
          </LinearLayout>
@@ -260,34 +286,34 @@
          <View
              android:id="@+id/view_smartphone"
              android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
+             android:layout_height="25dp"></View>
+
          <LinearLayout
              android:id="@+id/linear_participate"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:orientation="vertical"
-             android:layout_below="@id/view_smartphone">
+             android:layout_below="@id/view_smartphone"
+             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Willing to participate for 6 months ?" />
+                android:text="Willing to participate for 6 months ?"
+                android:theme="@style/TextViewHeading" />
 
             <TextView
                 android:id="@+id/tv_participate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextView"
-                android:text="Willing to participate for 6 months ?" />
+                android:text="Willing to participate for 6 months ?"
+                android:theme="@style/TextView" />
 
          </LinearLayout>
 
          <View
              android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
+             android:layout_height="25dp"></View>
+
          <LinearLayout
              android:id="@+id/linear_pinformedConsent"
              android:layout_width="wrap_content"
@@ -297,24 +323,23 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Informed Consent Taken:" />
+                android:text="Informed Consent Taken:"
+                android:theme="@style/TextViewHeading" />
 
             <TextView
                 android:id="@+id/tv_p_informedConsent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextView"
                 android:layout_marginLeft="10dp"
-                android:text="Willing to participate for 6 months ?" />
+                android:text="Willing to participate for 6 months ?"
+                android:theme="@style/TextView" />
 
          </LinearLayout>
 
 
          <View
              android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
+             android:layout_height="25dp"></View>
 
          <LinearLayout
              android:id="@+id/linear_p_reason"
@@ -324,211 +349,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Reason:" />
+                android:text="Reason:"
+                android:theme="@style/TextViewHeading" />
+
             <TextView
                 android:id="@+id/tv_pReason"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:theme="@style/TextView"
-                android:text="yes" />
+                android:text="yes"
+                android:theme="@style/TextView" />
          </LinearLayout>
+
 
          <View
              android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
-
-         <LinearLayout
-             android:id="@+id/linear_p_Tool1"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Tool 1:" />
-            <TextView
-                android:id="@+id/tv_ptool1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:theme="@style/TextView"
-                android:text="yes" />
-         </LinearLayout>
-         <View
-             android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
-
-         <LinearLayout
-             android:id="@+id/linear_p_tool2"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Tool 2:" />
-            <TextView
-                android:id="@+id/tv_ptool2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:theme="@style/TextView"
-                android:text="yes" />
-         </LinearLayout>
-
-         <View
-             android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
-
-         <LinearLayout
-             android:id="@+id/linear_p_tool3"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Tool 3:" />
-            <TextView
-                android:id="@+id/tv_ptool3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:theme="@style/TextView"
-                android:text="yes" />
-         </LinearLayout>
-
-         <View
-             android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
-
-         <LinearLayout
-             android:id="@+id/linear_p_tool4"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Tool 4:" />
-            <TextView
-                android:id="@+id/tv_ptool4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:theme="@style/TextView"
-                android:text="yes" />
-         </LinearLayout>
-
-         <View
-             android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
-
-         <LinearLayout
-             android:id="@+id/linear_p_tool5"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Tool 5:" />
-            <TextView
-                android:id="@+id/tv_ptool5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:theme="@style/TextView"
-                android:text="yes" />
-         </LinearLayout>
-
-         <View
-             android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
-
-         <LinearLayout
-             android:id="@+id/linear_p_tool6a"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Tool 6a:" />
-            <TextView
-                android:id="@+id/tv_ptool6a"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:theme="@style/TextView"
-                android:text="yes" />
-         </LinearLayout>
-         <View
-             android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
-
-         <LinearLayout
-             android:id="@+id/linear_p_tool6b"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Tool 6b:" />
-            <TextView
-                android:id="@+id/tv_ptool6b"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:theme="@style/TextView"
-                android:text="yes" />
-         </LinearLayout>
-
-         <View
-             android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
-
-         <LinearLayout
-             android:id="@+id/linear_p_tool7"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Tool 7:" />
-            <TextView
-                android:id="@+id/tv_ptool7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:theme="@style/TextView"
-                android:text="yes" />
-         </LinearLayout>
-
-         <View
-             android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
+             android:layout_height="25dp"></View>
 
          <LinearLayout
              android:id="@+id/linear_p_enroll"
@@ -538,21 +374,21 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Enroll:" />
+                android:text="Enroll:"
+                android:theme="@style/TextViewHeading" />
+
             <TextView
                 android:id="@+id/tv_pEnroll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:theme="@style/TextView"
-                android:text="yes" />
+                android:text="yes"
+                android:theme="@style/TextView" />
          </LinearLayout>
 
          <View
              android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
+             android:layout_height="25dp"></View>
 
          <LinearLayout
              android:id="@+id/linear_p_isSync"
@@ -562,43 +398,451 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextViewHeading"
-                android:text="Sync Data" />
+                android:text="Sync Data"
+                android:theme="@style/TextViewHeading" />
+
             <TextView
                 android:id="@+id/tv_pSyncData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:theme="@style/TextView"
-                android:text="yes" />
+                android:text="yes"
+                android:theme="@style/TextView" />
          </LinearLayout>
 
          <View
-             android:layout_below="@id/linear_p_consenttaken"
              android:layout_width="match_parent"
-             android:layout_height="30dp">
-         </View>
+             android:layout_height="25dp"></View>
+
+         <LinearLayout
+             android:id="@+id/linear_Tools"
+             android:layout_width="wrap_content"
+             android:orientation="vertical"
+             android:layout_height="wrap_content">
+
+         <android.support.v7.widget.CardView
+             android:layout_width="match_parent"
+             android:layout_height="180dp"
+             android:layout_marginLeft="10dp"
+             android:layout_marginRight="10dp"
+             android:layout_marginTop="20dp"
+             app:cardElevation="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:layout_margin="10dp"
+                   android:text="Tool 1"
+                   android:textSize="20dp"
+                   android:theme="@style/TextViewHeading" />
+
+               <TextView
+                   android:id="@+id/tv_ptool1"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:layout_marginLeft="6dp"
+                   android:text="Incomplete"
+                   android:theme="@style/TextView" />
+
+               <Button
+                   android:id="@+id/btn_ptool1detail"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="6dp"
+                   android:text="Tool1 Detail"
+                   android:layout_gravity="center_horizontal"
+                   android:textAllCaps="false"
+                   android:theme="@style/Button" />
+
+            </LinearLayout>
+
+         </android.support.v7.widget.CardView>
+
 
          <View
-             android:id="@+id/view_participate"
              android:layout_width="match_parent"
-             android:layout_height="25dp">
-         </View>
+             android:layout_height="25dp"></View>
+
+
+         <android.support.v7.widget.CardView
+             android:layout_width="match_parent"
+             android:layout_height="180dp"
+             android:layout_marginLeft="10dp"
+             android:layout_marginRight="10dp"
+             android:layout_marginTop="20dp"
+             app:cardElevation="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:layout_margin="10dp"
+                   android:text="Tool 2"
+                   android:theme="@style/TextViewHeading" />
+
+               <TextView
+                   android:id="@+id/tv_ptool2"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:layout_marginLeft="6dp"
+                   android:text="InComplete"
+                   android:theme="@style/TextView" />
+
+               <Button
+                   android:id="@+id/btn_ptool2detail"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="6dp"
+                   android:layout_gravity="center_horizontal"
+                   android:text="Tool2Detail"
+                   android:textAllCaps="false"
+                   android:theme="@style/Button" />
+
+            </LinearLayout>
+
+         </android.support.v7.widget.CardView>
+
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="25dp"></View>
+
+         <android.support.v7.widget.CardView
+             android:layout_width="match_parent"
+             android:layout_height="180dp"
+             android:layout_marginLeft="10dp"
+             android:layout_marginRight="10dp"
+             android:layout_marginTop="20dp"
+             app:cardElevation="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:layout_margin="10dp"
+                   android:text="Tool 3"
+                   android:theme="@style/TextViewHeading" />
+
+
+               <TextView
+                   android:id="@+id/tv_ptool3"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:layout_marginLeft="6dp"
+                   android:text="Incomplete"
+                   android:theme="@style/TextView" />
+
+
+               <Button
+                   android:id="@+id/btn_ptool3detail"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="6dp"
+                   android:text="Tool3 Detail"
+                   android:layout_gravity="center_horizontal"
+                   android:textAllCaps="false"
+                   android:theme="@style/Button" />
+
+            </LinearLayout>
+
+         </android.support.v7.widget.CardView>
+
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="25dp"></View>
+
+         <android.support.v7.widget.CardView
+             android:layout_width="match_parent"
+             android:layout_height="180dp"
+             android:layout_marginLeft="10dp"
+             android:layout_marginRight="10dp"
+             android:layout_marginTop="20dp"
+             app:cardElevation="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:layout_margin="10dp"
+                   android:text="Tool 4"
+                   android:theme="@style/TextViewHeading" />
+               <TextView
+                   android:id="@+id/tv_ptool4"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:layout_marginLeft="6dp"
+                   android:text="Incomplete"
+                   android:theme="@style/TextView" />
+
+               <Button
+                   android:id="@+id/btn_ptool4detail"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="6dp"
+                   android:text="Tool4Detail"
+                   android:layout_gravity="center_horizontal"
+                   android:textAllCaps="false"
+                   android:theme="@style/Button" />
+
+            </LinearLayout>
+
+         </android.support.v7.widget.CardView>
+
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="25dp"></View>
+
+         <android.support.v7.widget.CardView
+             android:layout_width="match_parent"
+             android:layout_height="180dp"
+             android:layout_marginLeft="10dp"
+             android:layout_marginRight="10dp"
+             android:layout_marginTop="20dp"
+             app:cardElevation="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:layout_margin="10dp"
+                   android:text="Tool 5"
+                   android:theme="@style/TextViewHeading" />
+               <TextView
+                   android:id="@+id/tv_ptool5"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:layout_marginLeft="6dp"
+                   android:text="Incomplete"
+                   android:theme="@style/TextView" />
+
+               <Button
+                   android:id="@+id/btn_ptool5detail"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:layout_marginLeft="6dp"
+                   android:text="Tool5 Detail"
+                   android:textAllCaps="false"
+                   android:theme="@style/Button" />
+
+            </LinearLayout>
+
+         </android.support.v7.widget.CardView>
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="25dp"></View>
+
+         <android.support.v7.widget.CardView
+             android:layout_width="match_parent"
+             android:layout_height="180dp"
+             android:layout_marginLeft="10dp"
+             android:layout_marginRight="10dp"
+             android:layout_marginTop="20dp"
+             app:cardElevation="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:layout_margin="10dp"
+                   android:text="Tool 6a"
+                   android:theme="@style/TextViewHeading" />
+               <TextView
+                   android:id="@+id/tv_ptool6a"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:layout_marginLeft="2dp"
+                   android:text="Incomplete"
+                   android:theme="@style/TextView" />
+
+               <Button
+                   android:id="@+id/btn_ptool6adetail"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="2dp"
+                   android:layout_gravity="center_horizontal"
+                   android:text="Tool6a Detail"
+                   android:textAllCaps="false"
+                   android:theme="@style/Button" />
+
+            </LinearLayout>
+
+         </android.support.v7.widget.CardView>
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="25dp"></View>
+
+
+         <android.support.v7.widget.CardView
+             android:layout_width="match_parent"
+             android:layout_height="180dp"
+             android:layout_marginLeft="10dp"
+             android:layout_marginRight="10dp"
+             android:layout_marginTop="20dp"
+             app:cardElevation="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:layout_margin="10dp"
+                   android:text="Tool 6b"
+                   android:theme="@style/TextViewHeading" />
+
+
+               <TextView
+                   android:id="@+id/tv_ptool6b"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:layout_marginLeft="2dp"
+                   android:text="Incomplete"
+                   android:theme="@style/TextView" />
+
+               <Button
+                   android:id="@+id/btn_ptool6bdetail"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:layout_marginLeft="2dp"
+                   android:text="Tool6b Detail"
+                   android:textAllCaps="false"
+                   android:theme="@style/Button" />
+
+            </LinearLayout>
+
+         </android.support.v7.widget.CardView>
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="25dp"></View>
+
+         <android.support.v7.widget.CardView
+             android:layout_width="match_parent"
+             android:layout_height="180dp"
+             android:layout_marginLeft="10dp"
+             android:layout_marginRight="10dp"
+             android:layout_marginTop="20dp"
+             app:cardElevation="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:layout_margin="10dp"
+                   android:text="Tool 7"
+                   android:theme="@style/TextViewHeading" />
+
+
+               <TextView
+                   android:id="@+id/tv_ptool7"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:layout_marginLeft="6dp"
+                   android:text="Incomplete"
+                   android:theme="@style/TextView" />
+
+               <Button
+                   android:id="@+id/btn_ptool7detail"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="6dp"
+                   android:layout_gravity="center_horizontal"
+                   android:text="Tool7 Detail"
+                   android:textAllCaps="false"
+                   android:theme="@style/Button" />
+
+            </LinearLayout>
+
+         </android.support.v7.widget.CardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/linear_p_consenttaken"></View>
+         </LinearLayout>
+
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="30dp"
+             android:layout_below="@id/linear_p_consenttaken"></View>
+
 
          <Button
-             android:id="@+id/showTool1Data"
+             android:id="@+id/rgParti"
              android:layout_width="160dp"
              android:layout_height="wrap_content"
-             android:layout_gravity="center"
              android:layout_alignBottom="@+id/patient_Data"
              android:layout_alignEnd="@+id/patient_Data"
+             android:layout_gravity="center"
              android:background="@drawable/rounded_button"
-             android:text="Patient Tools Detail"
+             android:text="Register Participant"
              android:theme="@style/Button" />
 
       </LinearLayout>
 
 
-   </LinearLayout>
+   </ScrollView>
 
-</ScrollView>
+</LinearLayout>

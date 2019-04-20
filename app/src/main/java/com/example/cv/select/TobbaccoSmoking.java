@@ -1,10 +1,12 @@
 package com.example.cv.select;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -18,17 +20,16 @@ public class TobbaccoSmoking extends AppCompatActivity {
     private DatabaseHelperRP mDatabaseHelper;
     private RadioButton radiovalueQ1, radiovalueQ2;
     private Toolbar toolbar;
-    private String ContactNo, tool6a_Q1, tool6a_Q2,tool1,tool2,tool3;
+    private String ContactNo, tool6a_Q1, tool6a_Q2, tool1, tool2, tool3;
     private RadioGroup rd_TS_Q1, rd_TS_Q2;
-    private boolean switchState;
-    private Switch syncData;
-    private Button btn_TS_submit;
+    private Button btn_TS_submit, btn_TS_saveExit;
+    Context ctx = this;
+    Lister ls;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tobbacco_smoking);
-
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Tobacco Smoking");
@@ -38,75 +39,209 @@ public class TobbaccoSmoking extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(TobbaccoSmoking.this, Modules.class);
-                startActivity(intent);
+                finish();
             }
         });
 
+        Intent intent = getIntent();
+        ContactNo = intent.getStringExtra("ContactNo");
+        tool1 = intent.getStringExtra("tool1");
+        tool2 = intent.getStringExtra("tool2");
+        tool3 = intent.getStringExtra("tool3");
+        Toast.makeText(this, "" + ContactNo, Toast.LENGTH_SHORT).show();
 
-        Intent intent=getIntent();
-        ContactNo=intent.getStringExtra("ContactNo");
-        tool1=intent.getStringExtra("tool1");
-        tool2=intent.getStringExtra("tool2");
-        tool3=intent.getStringExtra("tool3");
-        Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
+        mDatabaseHelper = new DatabaseHelperRP(this);
+        ls = new Lister(ctx);
 
-        mDatabaseHelper=new DatabaseHelperRP(this);
+        rd_TS_Q1 = (RadioGroup) findViewById(R.id.rd_TS_Q1);
+        rd_TS_Q2 = (RadioGroup) findViewById(R.id.rd_TS_Q2);
 
-        rd_TS_Q1=(RadioGroup)findViewById(R.id.rd_TS_Q1);
-        rd_TS_Q2=(RadioGroup)findViewById(R.id.rd_TS_Q2);
+        btn_TS_submit = (Button) findViewById(R.id.btn_TS_submit);
+        btn_TS_submit.setVisibility(View.GONE);
 
-        syncData=(Switch)findViewById(R.id.syncData);
-        syncData.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        try {
+            boolean mflag = isCompleted(ContactNo);
+            setData(ContactNo);
+            if (mflag == true) {
+                // Toast.makeText(this, "Tool1 Completed", Toast.LENGTH_SHORT).show();
+            } else {
+                // Toast.makeText(this, "Tool1 not Completed", Toast.LENGTH_SHORT).show();
+            }
+
+        } catch (Exception e) {
+        }
+
+        btn_TS_saveExit = (Button) findViewById(R.id.btn_TS_saveExit);
+        btn_TS_saveExit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(syncData.isChecked()){
-                    switchState=true;
-                }
-                else{
-                    switchState=false;
-                }
+            public void onClick(View v) {
+                addTool6aData();
+                String tool6a = "0";
+                mDatabaseHelper.updateTool6aStatus(ContactNo, tool6a);
+                Toast.makeText(TobbaccoSmoking.this, "Tool6a Completed", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
 
-        btn_TS_submit=(Button)findViewById(R.id.btn_TS_submit);
         btn_TS_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addTool6aData();
-                String tool6a="Completed";
-                mDatabaseHelper.updateTool6aStatus(ContactNo,tool6a);
+                String tool6a = "1";
+                mDatabaseHelper.updateTool6aStatus(ContactNo, tool6a);
                 Toast.makeText(TobbaccoSmoking.this, "Tool6a Completed", Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(TobbaccoSmoking.this, Modules.class);
-                intent.putExtra("ContactNo", ContactNo);
-                intent.putExtra("ContactNo", ContactNo);
-                intent.putExtra("tool1", tool1);
-                intent.putExtra("tool2", tool2);
-                intent.putExtra("tool3", tool3);
-                startActivity(intent);
+                finish();
             }
         });
-
-
-
+        rd_TS_Q1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (rd_TS_Q1.getCheckedRadioButtonId() != -1 && rd_TS_Q2.getCheckedRadioButtonId() != -1) {
+                    btn_TS_submit.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        rd_TS_Q2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (rd_TS_Q1.getCheckedRadioButtonId() != -1 && rd_TS_Q2.getCheckedRadioButtonId() != -1) {
+                    btn_TS_submit.setVisibility(View.VISIBLE);
+                }
+            }
+        });
     }
 
+
     private void addTool6aData() {
-        radiovalueQ1 = (RadioButton) this.findViewById(rd_TS_Q1.getCheckedRadioButtonId());
-        tool6a_Q1 = radiovalueQ1.getText().toString();
+        if (rd_TS_Q1.getCheckedRadioButtonId() != -1) {
+            radiovalueQ1 = (RadioButton) this.findViewById(rd_TS_Q1.getCheckedRadioButtonId());
+            tool6a_Q1 = radiovalueQ1.getText().toString();
+        }
 
-        radiovalueQ2 = (RadioButton) this.findViewById(rd_TS_Q2.getCheckedRadioButtonId());
-        tool6a_Q2 = radiovalueQ2.getText().toString();
+        if (rd_TS_Q2.getCheckedRadioButtonId() != -1) {
+            radiovalueQ2 = (RadioButton) this.findViewById(rd_TS_Q2.getCheckedRadioButtonId());
+            tool6a_Q2 = radiovalueQ2.getText().toString();
+        }
 
-        boolean isInserted = mDatabaseHelper.addTool6aData(ContactNo, tool6a_Q1, tool6a_Q2,switchState);
-        if (isInserted == true) {
-            Toast.makeText(this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
+        try {
+            Log.d("000333", "save and exit");
 
+            String[][] mData = ls.executeReader("Select *from tool6a where ContactSim  = '" + ContactNo + "'");
+
+            if (mData != null) {
+                boolean mFlag = ls.executeNonQuery("Update tool6a set " +
+                        "tool6a_Q1 = '" + tool6a_Q1 + "', " +
+                        "tool6a_Q2 = '" + tool6a_Q2 + "' " +
+                        " where ContactSim  = '" + ContactNo + "'");
+                if (mFlag == true) {
+                    Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Data Not Updated Successfully", Toast.LENGTH_SHORT).show();
+                }
+
+            } else {
+                boolean isInserted = mDatabaseHelper.addTool6aData(ContactNo, tool6a_Q1, tool6a_Q2);
+                if (isInserted == true) {
+                    Toast.makeText(this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+            finish();
+        } catch (Exception e) {
+
+            Toast.makeText(ctx, "=-=-=-=Exception  " + e, Toast.LENGTH_SHORT).show();
+            Log.e("000333", "Exception " + e);
         }
     }
 
+    public boolean isCompleted(String mPhone) {
+
+        Lister lister = new Lister(ctx);
+
+        String[][] mData = lister.executeReader("Select * From tool6a where ContactSim = '" + mPhone + "'");
+
+        try {
+
+            if (mData.length > 0){
+                Log.d("000111", "mData[0][1] =  " + mData[0][1]);
+                Log.d("000111", "mData[0][2] =  " + mData[0][2]);
+                Log.d("000111", "mData[0][3] =  " + mData[0][3]);
+                Log.d("000111", "mData[0][4] =  " + mData[0][4]);
+                Log.d("000111", "mData[0][5] =  " + mData[0][5]);
+                Log.d("000111", "mData[0][6] =  " + mData[0][6]);
+                Log.d("000111", "mData[0][7] =  " + mData[0][7]);
+                Log.d("000111", "mData[0][8] =  " + mData[0][8]);
+                return  true;
+
+            }else {
+                return false;
+            }
+
+        }
+
+        catch (Exception e) {
+            Log.d("111", e.getMessage());
+            return false;
+        }
+
 
     }
 
+    private void setData(String contactNo) {
+
+        Lister lister = new Lister(ctx);
+
+        String[][] mData = lister.executeReader("Select * From tool6a where ContactSim = '" + contactNo + "'");
+
+        try {
+
+            if (mData.length > 0) {
+
+                Log.d("000111", "mData[0][1] =  " + mData[0][1]);
+                Log.d("000111", "mData[0][2] =  " + mData[0][2]);
+
+
+                if (mData[0][1].equalsIgnoreCase("Daily")) {
+                    rd_TS_Q1.check(R.id.rd_TS_Q1_daily);
+                }
+                if(mData[0][1].equalsIgnoreCase("Less than Daily")){
+                    rd_TS_Q1.check(R.id.rd_TS_Q1_less);
+                }
+                if(mData[0][1].equalsIgnoreCase("Not At All")){
+                    rd_TS_Q1.check(R.id.rd_TS_Q1_not);
+                }
+                if(mData[0][1].equalsIgnoreCase("Dont Know")){
+                    rd_TS_Q1.check(R.id.rd_TS_Q1_dntknw);
+                }
+                if(mData[0][1].equalsIgnoreCase("Refused")){
+                    rd_TS_Q1.check(R.id.rd_TS_Q1_refused);
+                }
+
+                if (mData[0][2].equalsIgnoreCase("Daily")) {
+                    rd_TS_Q2.check(R.id.rd_TS_Q2_daily);
+                }
+
+                if(mData[0][2].equalsIgnoreCase("Less than Daily")){
+                    rd_TS_Q2.check(R.id.rd_TS_Q2_less);
+                }
+                if(mData[0][2].equalsIgnoreCase("Not At All")){
+                    rd_TS_Q2.check(R.id.rd_TS_Q2_not);
+                }
+                if(mData[0][2].equalsIgnoreCase("Dont Know")){
+                    rd_TS_Q2.check(R.id.rd_TS_Q2_dntknw);
+                }
+                if(mData[0][2].equalsIgnoreCase("Refused")){
+                    rd_TS_Q2.check(R.id.rd_TS_Q2_refused);
+                }
+            } else {
+
+            }
+
+        } catch (Exception e) {
+            Log.d("111", e.getMessage());
+
+        }
+    }
+}

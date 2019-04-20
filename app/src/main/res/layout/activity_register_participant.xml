@@ -9,6 +9,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
             android:orientation="vertical">
 
             <android.support.v7.widget.Toolbar
@@ -47,6 +49,32 @@
 
                 <View
                     android:id="@+id/view_pname"
+                    android:layout_below="@id/linear_pname"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp">
+                </View>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:id="@+id/ed_pdateOfBirth"
+                            android:theme="@style/EditText"
+                            android:hint="Date Of Birth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusableInTouchMode="false"/>
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+
+
+                <View
                     android:layout_below="@id/linear_pname"
                     android:layout_width="match_parent"
                     android:layout_height="25dp">
@@ -106,7 +134,7 @@
 
 
                         <RadioButton
-                            android:id="@+id/female"
+                            android:id="@+id/rd_female"
                             android:text="Female"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -188,7 +216,9 @@
                             android:id="@+id/ed_paddress"
                             android:theme="@style/EditText"
                             android:hint="Address"
-                            android:inputType="text"
+                            android:minLines="2"
+                            android:maxLines="3"
+                            android:inputType="textMultiLine"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </android.support.design.widget.TextInputLayout>
@@ -219,16 +249,15 @@
                         android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-
                         <RadioButton
-                            android:id="@+id/rd_plives_yes"
-                            android:text="Yes"
+                            android:id="@+id/rd_plives_no"
+                            android:text="No"
                             android:theme="@style/RadioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <RadioButton
-                            android:id="@+id/rd_plives_no"
-                            android:text="No"
+                            android:id="@+id/rd_plives_yes"
+                            android:text="Yes"
                             android:theme="@style/RadioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -252,7 +281,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:theme="@style/TextView"
-                        android:text="Not moving out in the next 6 months" />
+                        android:text="Are you moving out in the next 6 months?" />
 
                     <RadioGroup
                         android:id="@+id/rd_p_notmoving"
@@ -260,20 +289,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <RadioButton
-                            android:id="@+id/rd_p_notmoving_yes"
-                            android:theme="@style/RadioButton"
-                            android:text="Yes"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <RadioButton
                             android:id="@+id/rd_p_notmoving_no"
                             android:text="No"
                             android:theme="@style/RadioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
-
-
+                        <RadioButton
+                            android:id="@+id/rd_p_notmoving_yes"
+                            android:theme="@style/RadioButton"
+                            android:text="Yes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -303,21 +329,18 @@
                         android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-
-                        <RadioButton
-                            android:id="@+id/rd_p_smrtph_yes"
-                            android:text="Yes"
-                            android:theme="@style/RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
                         <RadioButton
                             android:id="@+id/rd_p_smrtph_no"
                             android:text="No"
                             android:theme="@style/RadioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
-
+                        <RadioButton
+                            android:id="@+id/rd_p_smrtph_yes"
+                            android:text="Yes"
+                            android:theme="@style/RadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -346,16 +369,15 @@
                         android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-
                         <RadioButton
-                            android:id="@+id/rd_participate_yes"
-                            android:text="Yes"
+                            android:id="@+id/rd_participate_no"
+                            android:text="No"
                             android:theme="@style/RadioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <RadioButton
-                            android:id="@+id/rd_participate_no"
-                            android:text="No"
+                            android:id="@+id/rd_participate_yes"
+                            android:text="Yes"
                             android:theme="@style/RadioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -388,33 +410,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <RadioButton
-                            android:id="@+id/rd_p_consenttaken_yes"
-                            android:text="Yes"
-                            android:theme="@style/RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <RadioButton
                             android:id="@+id/rd_p_consenttaken_no"
                             android:theme="@style/RadioButton"
                             android:text="No"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+                        <RadioButton
+                            android:id="@+id/rd_p_consenttaken_yes"
+                            android:text="Yes"
+                            android:theme="@style/RadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
                     </RadioGroup>
                 </LinearLayout>
-
-                <View
-                    android:layout_below="@id/linear_p_consenttaken"
-                    android:layout_width="match_parent"
-                    android:layout_height="25dp">
-                </View>
-
-
-                <Switch
-                    android:id="@+id/syncData"
-                    android:text="Sync Data"
-                    android:theme="@style/Switch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
 
                 <View
                     android:id="@+id/view_p_consenttaken"
@@ -422,7 +430,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp">
                 </View>
-
 
                 <Button
                     android:id="@+id/btn_p_register"
@@ -433,7 +440,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/view_p_consenttaken"
                     android:text="Submit"/>
-                <Button
+
+              <!--  <Button
                     android:id="@+id/btn_p_update"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -441,11 +449,9 @@
                     android:background="@drawable/rounded_button"
                     android:theme="@style/Button"
                     android:layout_centerHorizontal="true"
-                    android:text="Update Patient Detail"/>
+                    android:text="Update Patient Detail"/>-->
 
             </LinearLayout>
-
-
         </LinearLayout>
 
 </ScrollView>

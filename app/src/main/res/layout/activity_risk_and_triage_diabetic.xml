@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".RiskAndTriageDiabetic">
 
-    <LinearLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/ToolBar"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:theme="@style/ToolBar"
-            android:background="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -168,21 +168,22 @@
                         android:theme="@style/Checkbox" />
                 </LinearLayout>
             </LinearLayout>
+
             <View
-                android:layout_below="@id/linear_p_consenttaken"
                 android:layout_width="match_parent"
-                android:layout_height="25dp">
+                android:layout_height="30dp">
             </View>
 
-
-            <Switch
-                android:id="@+id/syncData"
-                android:text="Sync Data"
-                android:theme="@style/Switch"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btn_rtD_saveExit"
+                android:text="Save And Exit"
+                android:theme="@style/Button"
+                android:background="@drawable/rounded_button"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
             <View
+                android:id="@+id/view_rt_saveExit"
                 android:layout_width="match_parent"
                 android:layout_height="30dp">
             </View>
@@ -199,5 +200,5 @@
 
         </LinearLayout>
 
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</LinearLayout>

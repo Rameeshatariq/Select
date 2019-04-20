@@ -21,7 +21,6 @@ public class ShowTool7Data extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView tv_tl7_contact, tv_tl7_Q1, tv_tl7_Q2,tv_tl7_Q3,tv_tl7_Q4,tv_tl7_Q5,tv_tl7_Q6,tv_tl7_Q7;
     String ContactNo;
-    Button next;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,16 +56,6 @@ public class ShowTool7Data extends AppCompatActivity {
         Intent intent = getIntent();
         ContactNo = intent.getStringExtra("ContactNo");
         Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
-
-        next=(Button)findViewById(R.id.nextTool);
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(ShowTool7Data.this, ShowSummary.class );
-                intent.putExtra("ContactNo",ContactNo);
-                startActivity(intent);
-            }
-        });
 
         viewAllTool7Data();
     }

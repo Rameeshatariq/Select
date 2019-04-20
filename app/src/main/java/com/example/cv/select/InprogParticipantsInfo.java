@@ -10,16 +10,12 @@ public class InprogParticipantsInfo {
     public InprogParticipantsInfo() {
     }
 
-    public static final class participantsInfo implements BaseColumns{
-        public static final String TABLE_NAME="patient";
-        public static final String COLUMN_NAME="Name";
-        public static final String COLUMN_Contact="ContactSim";
-    }
 
     public InprogParticipantsInfo(String participantName, String participantContact) {
         this.participantName = participantName;
         this.participantContact = participantContact;
     }
+
 
     public String getParticipantName() {
         return participantName;

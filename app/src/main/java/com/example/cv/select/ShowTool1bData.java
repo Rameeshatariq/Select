@@ -52,15 +52,6 @@ public class ShowTool1bData extends AppCompatActivity {
         tv_tl2_Q2=(TextView)findViewById(R.id.tv_rtMI_Q2);
         tv_tl2_Q3=(TextView)findViewById(R.id.tv_rtMI_Q3);
 
-        next=(Button)findViewById(R.id.nextTool);
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(ShowTool1bData.this, ShowTool2Data.class );
-                intent.putExtra("ContactNo", ContactNo);
-                startActivity(intent);
-            }
-        });
         viewAllTool1bData();
     }
 

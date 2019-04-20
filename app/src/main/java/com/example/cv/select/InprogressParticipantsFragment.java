@@ -22,12 +22,9 @@ public class InprogressParticipantsFragment extends Fragment {
     private RecyclerView recyclerView;
     private InProgRecyclerViewAdapter recyclerViewAdapter;
     private SQLiteDatabase mDatabase;
+    private List<CompParticipantsInfo> lstInCompParticipants;
     private DatabaseHelperRP mDatabaseHelper;
 
-
-    public InprogressParticipantsFragment() {
-        // Required empty public constructor
-    }
 
 
 
@@ -46,24 +43,21 @@ public class InprogressParticipantsFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        mDatabaseHelper=new DatabaseHelperRP(getActivity());
-        mDatabase=mDatabaseHelper.getWritableDatabase();
 
         v =inflater.inflate(R.layout.fragment_completed_participants,container,false);
+
+        lstInCompParticipants=new ArrayList<CompParticipantsInfo>();
+        mDatabaseHelper=new DatabaseHelperRP(getContext());
+        lstInCompParticipants=mDatabaseHelper.getIncompPartidata();
+
         recyclerView=(RecyclerView) v.findViewById(R.id.rvcompparticipants);
-        recyclerViewAdapter=new InProgRecyclerViewAdapter(getContext(),getAll());
+        recyclerViewAdapter=new InProgRecyclerViewAdapter(getContext(),lstInCompParticipants);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(recyclerViewAdapter);
         return v;
 
     }
 
-    private Cursor getAll(){
-
-        return mDatabase.query(
-                InprogParticipantsInfo.participantsInfo.TABLE_NAME,
-                null, null, null, null,null, InprogParticipantsInfo.participantsInfo.COLUMN_Contact);
-    }
 
 
 }

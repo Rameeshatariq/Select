@@ -20,8 +20,7 @@ public class ShowTool5Data extends AppCompatActivity {
 
     private DatabaseHelperRP mDatabaseHeperRP;
     private Toolbar toolbar;
-    private TextView tv_tl5_contact, tv_tl5_Q1, tv_tl5_Q1_days, tv_tl5_Q2, tv_tl5_Q3, tv_tl5_Q3_days, tv_tl5_Q4, tv_tl5_Q5,tv_tl5_Q5_days, tv_tl5_Q6;
-    Button next;
+    private TextView tv_tl5_contact, tv_tl5_Q1, tv_tl5_Q1_days, tv_tl5_Q2_hours,tv_tl5_Q2_mins, tv_tl5_Q3, tv_tl5_Q3_days, tv_tl5_Q4_hours,tv_tl5_Q4_mins, tv_tl5_Q5,tv_tl5_Q5_days, tv_tl5_Q6_hours, tv_tl5_Q6_mins;
     String ContactNo;
 
     @Override
@@ -34,13 +33,17 @@ public class ShowTool5Data extends AppCompatActivity {
         tv_tl5_contact=(TextView)findViewById(R.id.pcontact);
         tv_tl5_Q1=(TextView)findViewById(R.id.tv_PA_Q1);
         tv_tl5_Q1_days=(TextView)findViewById(R.id.tv_PA_Q1_days);
-        tv_tl5_Q2=(TextView)findViewById(R.id.tv_PA_Q2);
+        tv_tl5_Q2_hours=(TextView)findViewById(R.id.tv_PA_Q2_hours);
+        tv_tl5_Q2_mins=(TextView)findViewById(R.id.tv_PA_Q2_mins);
         tv_tl5_Q3=(TextView)findViewById(R.id.tv_PA_Q3);
         tv_tl5_Q3_days=(TextView)findViewById(R.id.tv_PA_Q3_days);
-        tv_tl5_Q4=(TextView)findViewById(R.id.tv_PA_Q4);
+        tv_tl5_Q4_hours=(TextView)findViewById(R.id.tv_PA_Q4_hours);
+        tv_tl5_Q4_mins=(TextView)findViewById(R.id.tv_PA_Q4_mins);
         tv_tl5_Q5=(TextView)findViewById(R.id.tv_PA_Q5);
         tv_tl5_Q5_days=(TextView)findViewById(R.id.tv_PA_Q5_days);
-        tv_tl5_Q6=(TextView)findViewById(R.id.tv_PA_Q6);
+        tv_tl5_Q6_hours=(TextView)findViewById(R.id.tv_PA_Q6_hours);
+        tv_tl5_Q6_mins=(TextView)findViewById(R.id.tv_PA_Q6_mins);
+
 
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -60,16 +63,6 @@ public class ShowTool5Data extends AppCompatActivity {
         Intent intent = getIntent();
         ContactNo = intent.getStringExtra("ContactNo");
         Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
-
-        next=(Button)findViewById(R.id.nextTool);
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(ShowTool5Data.this, ShowTool6aData.class );
-                intent.putExtra("ContactNo", ContactNo);
-                startActivity(intent);
-            }
-        });
         viewAllTool5Data();
     }
 
@@ -84,13 +77,16 @@ public class ShowTool5Data extends AppCompatActivity {
             tv_tl5_contact.setText(data.getString(0));
             tv_tl5_Q1.setText(data.getString(1));
             tv_tl5_Q1_days.setText(data.getString(2));
-            tv_tl5_Q2.setText(data.getString(3));
-            tv_tl5_Q3.setText(data.getString(4));
-            tv_tl5_Q3_days.setText(data.getString(5));
-            tv_tl5_Q4.setText(data.getString(6));
-            tv_tl5_Q5.setText(data.getString(7));
-            tv_tl5_Q5_days.setText(data.getString(8));
-            tv_tl5_Q6.setText(data.getString(9));
+            tv_tl5_Q2_hours.setText(data.getString(3));
+            tv_tl5_Q2_mins.setText(data.getString(4));
+            tv_tl5_Q3.setText(data.getString(5));
+            tv_tl5_Q3_days.setText(data.getString(6));
+            tv_tl5_Q4_hours.setText(data.getString(7));
+            tv_tl5_Q4_mins.setText(data.getString(8));
+            tv_tl5_Q5.setText(data.getString(9));
+            tv_tl5_Q5_days.setText(data.getString(10));
+            tv_tl5_Q6_hours.setText(data.getString(11));
+            tv_tl5_Q6_mins.setText(data.getString(12));
 
         }
 

@@ -59,15 +59,6 @@ public class ShowToolsDetails extends AppCompatActivity {
         });
 
 
-        next=(Button)findViewById(R.id.nextTool);
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(ShowToolsDetails.this, ShowTool1bData.class);
-                intent.putExtra("ContactNo", ContactNo);
-                startActivity(intent);
-            }
-        });
         viewAllTool1Data();
     }
 

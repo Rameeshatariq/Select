@@ -63,15 +63,6 @@ public class ShowTool2Data extends AppCompatActivity {
         ContactNo = intent.getStringExtra("ContactNo");
         Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
 
-       next=(Button)findViewById(R.id.nextTool);
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(ShowTool2Data.this, ShowTool4Data.class );
-                intent.putExtra("ContactNo", ContactNo);
-                startActivity(intent);
-            }
-        });
         viewAllTool3Data();
     }
 

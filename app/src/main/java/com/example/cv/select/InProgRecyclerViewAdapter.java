@@ -18,13 +18,13 @@ import java.util.List;
 public class InProgRecyclerViewAdapter extends RecyclerView.Adapter<InProgRecyclerViewAdapter.MyViewHolder> {
 
     Context mContext;
-    Cursor cursor;
+    List<CompParticipantsInfo> mData;
+    Cursor mCursor;
 
-    public InProgRecyclerViewAdapter(Context mContext, Cursor cursor){
+    public InProgRecyclerViewAdapter(Context mContext, List<CompParticipantsInfo> mData){
         this.mContext=mContext;
-        this.cursor = cursor;
+        this.mData = mData;
     }
-
 
 
 
@@ -53,28 +53,19 @@ public class InProgRecyclerViewAdapter extends RecyclerView.Adapter<InProgRecycl
                         context.startActivity(intent);
                     }
                 });
-        if(!cursor.moveToPosition(position)){
+       /* if(!mCursor.moveToPosition(position)){
             return;
-        }
-        holder.tvinprogpartiname.setText(cursor.getString(cursor.getColumnIndex(InprogParticipantsInfo.participantsInfo.COLUMN_NAME)));
-        holder.tvinprogparticontact.setText(cursor.getString(cursor.getColumnIndex(InprogParticipantsInfo.participantsInfo.COLUMN_Contact)));
+        }*/
+        holder.tvinprogpartiname.setText(mData.get(position).getParticipantName());
+        holder.tvinprogparticontact.setText(mData.get(position).getParticipantContact());
 
     }
 
     @Override
     public int getItemCount() {
-        return cursor.getCount();
+        return mData.size();
     }
 
-    public void swapCursor(Cursor newCursor) {
-        if (cursor != null) {
-            cursor.close();
-        }
-        cursor = newCursor;
-        if(newCursor != null){
-            notifyDataSetChanged();
-        }
-    }
 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
@@ -82,6 +73,7 @@ public class InProgRecyclerViewAdapter extends RecyclerView.Adapter<InProgRecycl
         private TextView tvinprogpartiname;
         private TextView tvinprogparticontact;
         private View.OnClickListener onItemClickListener;
+        private DatabaseHelperRP databaseHelperRP;
 
         public void setItemClickListener(View.OnClickListener clickListener) {
             onItemClickListener = clickListener;

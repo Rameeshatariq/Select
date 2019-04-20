@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".RiskAndTriageCVA">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/ToolBar"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <LinearLayout
+    <ScrollView
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:theme="@style/ToolBar"
-            android:background="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,14 +54,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <RadioButton
-                        android:id="@+id/rd_rt_Q1_yes"
-                        android:text="Yes"
+                        android:id="@+id/rd_rt_Q1_no"
+                        android:text="No"
                         android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <RadioButton
-                        android:id="@+id/rd_rt_Q1_no"
-                        android:text="No"
+                        android:id="@+id/rd_rt_Q1_yes"
+                        android:text="Yes"
                         android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -95,14 +95,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <RadioButton
-                        android:id="@+id/rd_rt_Q2_yes"
-                        android:text="Yes"
+                        android:id="@+id/rd_rt_Q2_no"
+                        android:text="No"
                         android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <RadioButton
-                        android:id="@+id/rd_rt_Q2_no"
-                        android:text="No"
+                        android:id="@+id/rd_rt_Q2_yes"
+                        android:text="Yes"
                         android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -135,18 +135,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <RadioButton
-                        android:id="@+id/rd_rt_Q3_yes"
-                        android:theme="@style/RadioButton"
-                        android:text="Yes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <RadioButton
                         android:id="@+id/rd_rt_Q3_no"
                         android:text="No"
                         android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-
+                    <RadioButton
+                        android:id="@+id/rd_rt_Q3_yes"
+                        android:theme="@style/RadioButton"
+                        android:text="Yes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -176,15 +175,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <RadioButton
-                        android:id="@+id/rd_rt_Q4_yes"
-                        android:text="Yes"
+                        android:id="@+id/rd_rt_Q4_no"
+                        android:text="No"
                         android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-
                     <RadioButton
-                        android:id="@+id/rd_rt_Q4_no"
-                        android:text="No"
+                        android:id="@+id/rd_rt_Q4_yes"
+                        android:text="Yes"
                         android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -218,14 +216,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <RadioButton
-                        android:id="@+id/rd_rt_Q5_yes"
-                        android:text="Yes"
+                        android:id="@+id/rd_rt_Q5_no"
+                        android:text="No"
                         android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <RadioButton
-                        android:id="@+id/rd_rt_Q5_no"
-                        android:text="No"
+                        android:id="@+id/rd_rt_Q5_yes"
+                        android:text="Yes"
                         android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -258,14 +256,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <RadioButton
-                        android:id="@+id/rd_rt_Q6_yes"
-                        android:text="Yes"
+                        android:id="@+id/rd_rt_Q6_no"
+                        android:text="No"
                         android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <RadioButton
-                        android:id="@+id/rd_rt_Q6_no"
-                        android:text="No"
+                        android:id="@+id/rd_rt_Q6_yes"
+                        android:text="Yes"
                         android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -298,14 +296,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <RadioButton
-                        android:id="@+id/rd_rt_Q7_yes"
-                        android:text="Yes"
+                        android:id="@+id/rd_rt_Q7_no"
+                        android:text="No"
                         android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <RadioButton
-                        android:id="@+id/rd_rt_Q7_no"
-                        android:text="No"
+                        android:id="@+id/rd_rt_Q7_yes"
+                        android:text="Yes"
                         android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -338,14 +336,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <RadioButton
-                        android:id="@+id/rd_rt_Q8_yes"
-                        android:text="Yes"
+                        android:id="@+id/rd_rt_Q8_no"
+                        android:text="No"
                         android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <RadioButton
-                        android:id="@+id/rd_rt_Q8_no"
-                        android:text="No"
+                        android:id="@+id/rd_rt_Q8_yes"
+                        android:text="Yes"
                         android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -353,21 +351,22 @@
             </LinearLayout>
 
             <View
-                android:layout_below="@id/linear_p_consenttaken"
+                android:id="@+id/view_rt_Q8"
+                android:layout_below="@id/linear_rt_Q8"
                 android:layout_width="match_parent"
-                android:layout_height="25dp">
+                android:layout_height="30dp">
             </View>
 
-
-            <Switch
-                android:id="@+id/syncData"
-                android:text="Sync Data"
-                android:theme="@style/Switch"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btn_rt_saveExit"
+                android:text="Save And Exit"
+                android:theme="@style/Button"
+                android:background="@drawable/rounded_button"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
             <View
-                android:id="@+id/view_rt_Q8"
+                android:id="@+id/view_rt_saveExit"
                 android:layout_below="@id/linear_rt_Q8"
                 android:layout_width="match_parent"
                 android:layout_height="30dp">
@@ -380,9 +379,9 @@
                 android:theme="@style/Button"
                 android:background="@drawable/rounded_button"
                 android:layout_gravity="center"
-                android:layout_below="@+id/view_rt_Q8"
                 android:text="Submit" />
+
         </LinearLayout>
 
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</LinearLayout>

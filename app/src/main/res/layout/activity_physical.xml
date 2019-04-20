@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".PhysicalActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/ToolBar"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-        <LinearLayout
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:theme="@style/ToolBar"
-                android:background="?attr/colorPrimary"
-                app:layout_scrollFlags="scroll|enterAlways"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -55,15 +56,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" >
                         <RadioButton
-                            android:id="@+id/rd_PA_Q1_yes"
-                            android:theme="@style/RadioButton"
-                            android:text="Yes Vigorous Exercise"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <RadioButton
                             android:id="@+id/rd_PA_Q1_no"
                             android:theme="@style/RadioButton"
                             android:text="No Vigorous Exercise"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <RadioButton
+                            android:id="@+id/rd_PA_Q1_yes"
+                            android:theme="@style/RadioButton"
+                            android:text="Yes Vigorous Exercise"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </RadioGroup>
@@ -102,6 +103,8 @@
                             android:id="@+id/ed_PA_Q2_hours"
                             android:theme="@style/EditText"
                             android:ems="3"
+                            android:inputType="number"
+                            android:maxLength="2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <TextView
@@ -113,6 +116,8 @@
                             android:id="@+id/ed_PA_Q2_days"
                             android:theme="@style/EditText"
                             android:ems="3"
+                            android:inputType="number"
+                            android:maxLength="2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <TextView
@@ -124,7 +129,7 @@
                     <CheckBox
                         android:id="@+id/ck_PA_Q2"
                         android:theme="@style/Checkbox"
-                        android:text="Don't know/Not sure"
+                        android:text="Dont know"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -153,15 +158,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" >
                         <RadioButton
-                            android:id="@+id/rd_PA_Q3_yes"
-                            android:theme="@style/RadioButton"
-                            android:text="Yes Moderate Exercise"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <RadioButton
                             android:id="@+id/rd_PA_Q3_no"
                             android:theme="@style/RadioButton"
                             android:text="No Moderate Exercise"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <RadioButton
+                            android:id="@+id/rd_PA_Q3_yes"
+                            android:theme="@style/RadioButton"
+                            android:text="Yes Moderate Exercise"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </RadioGroup>
@@ -201,6 +206,8 @@
                             android:id="@+id/ed_PA_Q4_hours"
                             android:theme="@style/EditText"
                             android:ems="3"
+                            android:inputType="number"
+                            android:maxLength="2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <TextView
@@ -212,6 +219,8 @@
                             android:id="@+id/ed_PA_Q4_days"
                             android:theme="@style/EditText"
                             android:ems="3"
+                            android:inputType="number"
+                            android:maxLength="2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <TextView
@@ -223,7 +232,7 @@
                     <CheckBox
                         android:id="@+id/ck_PA_Q4"
                         android:theme="@style/Checkbox"
-                        android:text="Don't know/Not sure"
+                        android:text="Dont know"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -253,15 +262,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" >
                         <RadioButton
-                            android:id="@+id/rd_PA_Q5_yes"
-                            android:theme="@style/RadioButton"
-                            android:text="Yes Walk"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <RadioButton
                             android:id="@+id/rd_PA_Q5_no"
                             android:theme="@style/RadioButton"
                             android:text="No Walk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <RadioButton
+                            android:id="@+id/rd_PA_Q5_yes"
+                            android:theme="@style/RadioButton"
+                            android:text="Yes Walk"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </RadioGroup>
@@ -301,6 +310,8 @@
                             android:id="@+id/ed_PA_Q6_hours"
                             android:theme="@style/EditText"
                             android:ems="3"
+                            android:inputType="number"
+                            android:maxLength="2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <TextView
@@ -312,6 +323,8 @@
                             android:id="@+id/ed_PA_Q6_days"
                             android:theme="@style/EditText"
                             android:ems="3"
+                            android:inputType="number"
+                            android:maxLength="2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <TextView
@@ -323,27 +336,28 @@
                     <CheckBox
                         android:id="@+id/ck_PA_Q6"
                         android:theme="@style/Checkbox"
-                        android:text="Don't know/Not sure"
+                        android:text="Dont know"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
-                <View
-                    android:layout_below="@id/linear_p_consenttaken"
-                    android:layout_width="match_parent"
-                    android:layout_height="25dp">
-                </View>
-
-
-                <Switch
-                    android:id="@+id/syncData"
-                    android:text="Sync Data"
-                    android:theme="@style/Switch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
 
                 <View
                     android:id="@+id/view_PA_Q6"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp">
+                </View>
+
+
+                <Button
+                    android:id="@+id/btn_PA_saveExit"
+                    android:theme="@style/Button"
+                    android:text="Save And Exit"
+                    android:background="@drawable/rounded_button"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="30dp">
                 </View>
@@ -358,5 +372,5 @@
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
-        </LinearLayout>
-</ScrollView>
+        </ScrollView>
+</LinearLayout>

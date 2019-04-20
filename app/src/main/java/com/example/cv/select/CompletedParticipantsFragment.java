@@ -21,6 +21,7 @@ public class CompletedParticipantsFragment extends Fragment {
         private RecyclerView recyclerView;
         private List<CompParticipantsInfo> lstCompParticipants;
         private RecyclerViewAdapter recyclerViewAdapter;
+        private DatabaseHelperRP databaseHelperRP;
 
 
 
@@ -35,6 +36,11 @@ public class CompletedParticipantsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         v =inflater.inflate(R.layout.fragment_completed_participants,container,false);
+
+        lstCompParticipants=new ArrayList<CompParticipantsInfo>();
+        databaseHelperRP=new DatabaseHelperRP(getContext());
+        lstCompParticipants=databaseHelperRP.getCompPartidata();
+
         recyclerView=(RecyclerView) v.findViewById(R.id.rvcompparticipants);
         recyclerViewAdapter=new RecyclerViewAdapter(getContext(),lstCompParticipants);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -46,12 +52,7 @@ public class CompletedParticipantsFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        lstCompParticipants = new ArrayList<>();
-        lstCompParticipants.add(new CompParticipantsInfo("Rameesha", "03362451199"));
-        lstCompParticipants.add(new CompParticipantsInfo("Maham", "03352431524"));
-        lstCompParticipants.add(new CompParticipantsInfo("Sara", "0331724356"));
-        lstCompParticipants.add(new CompParticipantsInfo("Nimra", "03348765434"));
-        lstCompParticipants.add(new CompParticipantsInfo("Farzana", "03343125437"));
+
 
     }
 }
