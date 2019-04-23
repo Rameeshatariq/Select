@@ -28,6 +28,7 @@ public class DietLifestyle extends AppCompatActivity {
     int tl7_Q3, tl7_Q4, tl7_Q5, tl7_Q6, tl7_Q7;
     DatabaseHelperRP mDatabaseHelper;
     Context ctx = this;
+    static String result;
     Lister ls;
 
     @Override
@@ -219,6 +220,10 @@ public class DietLifestyle extends AppCompatActivity {
         });
     }
 
+    public static String getInstance(){
+        return result;
+    }
+
     private void addtool7Data() {
         if (rd_tl7_Q1.getCheckedRadioButtonId() != -1) {
             radiovalueQ1 = (RadioButton) this.findViewById(rd_tl7_Q1.getCheckedRadioButtonId());
@@ -280,66 +285,67 @@ public class DietLifestyle extends AppCompatActivity {
         tl7_Q7 = Integer.parseInt(sp_tl7_Q7.getSelectedItem().toString());
 
         if(rd_tl7_Q1_yes.isChecked() == true){
-            Toast.makeText(this, "1. High Risk", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "1. High Risk", Toast.LENGTH_SHORT).show();
             Q1="Q1 High Risk";
         }
         else{
-            Toast.makeText(this, "1. Normal Risk", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "1. Normal Risk", Toast.LENGTH_SHORT).show();
             Q1="Q1 Normal Risk";
 
         }
         if(rd_tl7_Q2_yes.isChecked() == true){
-            Toast.makeText(this, "2. High Risk", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "2. High Risk", Toast.LENGTH_SHORT).show();
             Q2="Q2 High Risk";
 
         }
         else{
-            Toast.makeText(this, "2. Normal Risk", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "2. Normal Risk", Toast.LENGTH_SHORT).show();
             Q2="Q2 Normal Risk";
 
         }
 
         if(tl7_Q3 < 5){
-            Toast.makeText(this, "3. High Risk", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "3. High Risk", Toast.LENGTH_SHORT).show();
             Q3="Q3 High Risk";
 
         }
         else{
-            Toast.makeText(this, "3. Normal Risk", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "3. Normal Risk", Toast.LENGTH_SHORT).show();
             Q3="Q3 Normal Risk";
         }
         if(tl7_Q4 < 3){
-            Toast.makeText(this, "4. Normal Risk", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "4. Normal Risk", Toast.LENGTH_SHORT).show();
             Q4="Q4 Normal Risk";
         }
         else{
-            Toast.makeText(this, "4. High Risk", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "4. High Risk", Toast.LENGTH_SHORT).show();
             Q4="Q4 High Risk";
         }
         if(tl7_Q5 < 3){
-            Toast.makeText(this, "5. Normal Risk", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "5. Normal Risk", Toast.LENGTH_SHORT).show();
             Q5="Q5 Normal Risk";
         }
         else{
-            Toast.makeText(this, "5. High Risk", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "5. High Risk", Toast.LENGTH_SHORT).show();
             Q5="Q5 High Risk";
         }
         if(tl7_Q6 < 3){
-            Toast.makeText(this, "6. Normal Risk", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "6. Normal Risk", Toast.LENGTH_SHORT).show();
             Q6="Q6 Normal Risk";
         }
         else{
-            Toast.makeText(this, "6. High Risk", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "6. High Risk", Toast.LENGTH_SHORT).show();
             Q6="Q6 High Risk";
         }
         if(tl7_Q7 > 2){
-            Toast.makeText(this, "7. Normal Risk", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "7. Normal Risk", Toast.LENGTH_SHORT).show();
             Q7="Q7 Normal Risk";
         }
         else{
-            Toast.makeText(this, "7. High Risk", Toast.LENGTH_SHORT).show();
             Q7="Q7 High Risk";
         }
+         result = Q1 + ", " + Q2 + ", " + Q3 + ", " + Q4 + ", " + Q5 + ", " + Q6 + ", " + Q7;
+        Toast.makeText(ctx, "Result Tool 7:"+result, Toast.LENGTH_SHORT).show();
     }
 
 

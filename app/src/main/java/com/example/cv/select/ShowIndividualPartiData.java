@@ -27,7 +27,7 @@ public class ShowIndividualPartiData extends AppCompatActivity {
     private DatabaseHelperRP mDatabaseHeperRP;
     Context ctx = ShowIndividualPartiData.this;
     Button btn_rgParti, btn_ptool1, btn_ptool2,btn_ptool3,btn_ptool4,btn_ptool5,btn_ptool6a,btn_ptool6b,btn_ptool7, btn_pDetailTool1,btn_pDetailTool2,
-            btn_pDetailTool3,btn_pDetailTool4,btn_pDetailTool5,btn_pDetailTool6a,btn_pDetailTool6b,btn_pDetailTool7;
+            btn_pDetailTool3,btn_pDetailTool4,btn_pDetailTool5,btn_pDetailTool6a,btn_pDetailTool6b,btn_pDetailTool7, btn_psummarydetail;
     private String ContactNo;
     private Toolbar toolbar;
     String tool1, Tool1, Tool2, Tool3, Tool7;
@@ -42,10 +42,6 @@ public class ShowIndividualPartiData extends AppCompatActivity {
 
         Intent intent = getIntent();
         ContactNo = intent.getStringExtra("ContactNo");
-        Tool1=intent.getStringExtra("tool1");
-        Tool2=intent.getStringExtra("tool2");
-        Tool3=intent.getStringExtra("tool3");
-        Tool7=intent.getStringExtra("tool7");
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Patient Detail");
@@ -94,6 +90,7 @@ public class ShowIndividualPartiData extends AppCompatActivity {
         btn_pDetailTool6a=(Button)findViewById(R.id.btn_ptool6adetail);
         btn_pDetailTool6b=(Button)findViewById(R.id.btn_ptool6bdetail);
         btn_pDetailTool7=(Button)findViewById(R.id.btn_ptool7detail);
+        btn_psummarydetail=(Button)findViewById(R.id.btn_psummarydetail);
 
         btn_rgParti=(Button)findViewById(R.id.rgParti);
         btn_rgParti.setOnClickListener(new View.OnClickListener() {
@@ -138,12 +135,10 @@ public class ShowIndividualPartiData extends AppCompatActivity {
                     Intent intent = new Intent(ShowIndividualPartiData.this, RiskAndTriageMI.class);
                     Toast.makeText(ShowIndividualPartiData.this, "Tool2 is not Completed", Toast.LENGTH_SHORT).show();
                     intent.putExtra("ContactNo", ContactNo);
-                    intent.putExtra("tool1", Tool1);
                     startActivity(intent);
                 } else {
                     Intent intent = new Intent(ShowIndividualPartiData.this, ShowTool1bData.class);
                     intent.putExtra("ContactNo", ContactNo);
-                    intent.putExtra("tool1", Tool1);
                     startActivity(intent);
                 }
             }
@@ -156,14 +151,10 @@ public class ShowIndividualPartiData extends AppCompatActivity {
                     Intent intent = new Intent(ShowIndividualPartiData.this, RiskAndTriageDiabetic.class);
                     Toast.makeText(ShowIndividualPartiData.this, "Tool3 is not Completed", Toast.LENGTH_SHORT).show();
                     intent.putExtra("ContactNo", ContactNo);
-                    intent.putExtra("tool1", Tool1);
-                    intent.putExtra("tool2", Tool2);
                     startActivity(intent);
                 } else {
                     Intent intent = new Intent(ShowIndividualPartiData.this, ShowTool2Data.class);
                     intent.putExtra("ContactNo", ContactNo);
-                    intent.putExtra("tool1", Tool1);
-                    intent.putExtra("tool2", Tool2);
                     startActivity(intent);
                 }
             }
@@ -176,16 +167,10 @@ public class ShowIndividualPartiData extends AppCompatActivity {
                     Intent intent = new Intent(ShowIndividualPartiData.this, IDRSModified.class);
                     Toast.makeText(ShowIndividualPartiData.this, "Tool4 is not Completed", Toast.LENGTH_SHORT).show();
                     intent.putExtra("ContactNo", ContactNo);
-                    intent.putExtra("tool1", Tool1);
-                    intent.putExtra("tool2", Tool2);
-                    intent.putExtra("tool3", Tool3);
                     startActivity(intent);
                 } else {
                     Intent intent = new Intent(ShowIndividualPartiData.this, ShowTool4Data.class);
                     intent.putExtra("ContactNo", ContactNo);
-                    intent.putExtra("tool1", Tool1);
-                    intent.putExtra("tool2", Tool2);
-                    intent.putExtra("tool3", Tool3);
                     startActivity(intent);
                 }
             }
@@ -198,16 +183,10 @@ public class ShowIndividualPartiData extends AppCompatActivity {
                     Intent intent = new Intent(ShowIndividualPartiData.this, PhysicalActivity.class);
                     Toast.makeText(ShowIndividualPartiData.this, "Tool5 is not Completed", Toast.LENGTH_SHORT).show();
                     intent.putExtra("ContactNo", ContactNo);
-                    intent.putExtra("tool1", Tool1);
-                    intent.putExtra("tool2", Tool2);
-                    intent.putExtra("tool3", Tool3);
                     startActivity(intent);
                 } else {
                     Intent intent = new Intent(ShowIndividualPartiData.this, ShowTool5Data.class);
                     intent.putExtra("ContactNo", ContactNo);
-                    intent.putExtra("tool1", Tool1);
-                    intent.putExtra("tool2", Tool2);
-                    intent.putExtra("tool3", Tool3);
                     startActivity(intent);
                 }
             }
@@ -220,16 +199,10 @@ public class ShowIndividualPartiData extends AppCompatActivity {
                     Intent intent = new Intent(ShowIndividualPartiData.this, TobbaccoSmoking.class);
                     Toast.makeText(ShowIndividualPartiData.this, "Tool6a is not Completed", Toast.LENGTH_SHORT).show();
                     intent.putExtra("ContactNo", ContactNo);
-                    intent.putExtra("tool1", Tool1);
-                    intent.putExtra("tool2", Tool2);
-                    intent.putExtra("tool3", Tool3);
                     startActivity(intent);
                 } else {
                     Intent intent = new Intent(ShowIndividualPartiData.this, ShowTool6aData.class);
                     intent.putExtra("ContactNo", ContactNo);
-                    intent.putExtra("tool1", Tool1);
-                    intent.putExtra("tool2", Tool2);
-                    intent.putExtra("tool3", Tool3);
                     startActivity(intent);
                 }
             }
@@ -242,16 +215,10 @@ public class ShowIndividualPartiData extends AppCompatActivity {
                     Intent intent = new Intent(ShowIndividualPartiData.this, TobbaccoSmokingSL.class);
                     Toast.makeText(ShowIndividualPartiData.this, "Tool6b is not Completed", Toast.LENGTH_SHORT).show();
                     intent.putExtra("ContactNo", ContactNo);
-                    intent.putExtra("tool1", Tool1);
-                    intent.putExtra("tool2", Tool2);
-                    intent.putExtra("tool3", Tool3);
                     startActivity(intent);
                 } else {
                     Intent intent = new Intent(ShowIndividualPartiData.this, ShowTool6bData.class);
                     intent.putExtra("ContactNo", ContactNo);
-                    intent.putExtra("tool1", Tool1);
-                    intent.putExtra("tool2", Tool2);
-                    intent.putExtra("tool3", Tool3);
                     startActivity(intent);
                 }
             }
@@ -264,20 +231,24 @@ public class ShowIndividualPartiData extends AppCompatActivity {
                     Intent intent = new Intent(ShowIndividualPartiData.this, DietLifestyle.class);
                     Toast.makeText(ShowIndividualPartiData.this, "Tool7 is not Completed", Toast.LENGTH_SHORT).show();
                     intent.putExtra("ContactNo", ContactNo);
-                    intent.putExtra("tool1", Tool1);
-                    intent.putExtra("tool2", Tool2);
-                    intent.putExtra("tool3", Tool3);
                     startActivity(intent);
                 } else {
                     Intent intent = new Intent(ShowIndividualPartiData.this, ShowTool7Data.class);
                     intent.putExtra("ContactNo", ContactNo);
-                    intent.putExtra("tool1", Tool1);
-                    intent.putExtra("tool2", Tool2);
-                    intent.putExtra("tool3", Tool3);
                     startActivity(intent);
                 }
             }
         });
+
+        btn_psummarydetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    Intent intent = new Intent(ShowIndividualPartiData.this, Summary.class);
+                    intent.putExtra("ContactNo", ContactNo);
+                    startActivity(intent);
+                }
+        });
+
 
        /* btn_toolDetails.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -404,6 +375,54 @@ public class ShowIndividualPartiData extends AppCompatActivity {
         Log.d("000222", "onResume");
         viewAllPatientData();
 
+        if ((tv_ptool1.getText().toString()).equals("0")) {
+            btn_pDetailTool1.setText("Edit Tool 1");
+        }
+        else{
+            btn_pDetailTool1.setText("Tool1 Detail");
+        }
+        if ((tv_ptool2.getText().toString()).equals("0")) {
+            btn_pDetailTool2.setText("Edit Tool 2");
+        }
+        else{
+            btn_pDetailTool2.setText("Tool2 Detail");
+        }
+        if ((tv_ptool3.getText().toString()).equals("0")) {
+            btn_pDetailTool3.setText("Edit Tool 3");
+        }
+        else{
+            btn_pDetailTool3.setText("Tool3 Detail");
+        }
+        if ((tv_ptool4.getText().toString()).equals("0")) {
+            btn_pDetailTool4.setText("Edit Tool 4");
+        }
+        else{
+            btn_pDetailTool4.setText("Tool4 Detail");
+        }
+        if ((tv_ptool5.getText().toString()).equals("0")) {
+            btn_pDetailTool5.setText("Edit Tool 5");
+        }
+        else{
+            btn_pDetailTool5.setText("Tool5 Detail");
+        }
+        if ((tv_ptool6a.getText().toString()).equals("0")) {
+            btn_pDetailTool6a.setText("Edit Tool 6a");
+        }
+        else{
+            btn_pDetailTool6a.setText("Tool6a Detail");
+        }
+        if ((tv_ptool6b.getText().toString()).equals("0")) {
+            btn_pDetailTool6b.setText("Edit Tool 6b");
+        }
+        else{
+            btn_pDetailTool6b.setText("Tool6b Detail");
+        }
+        if ((tv_ptool7.getText().toString()).equals("0")) {
+            btn_pDetailTool7.setText("Edit Tool 7");
+        }
+        else{
+            btn_pDetailTool7.setText("Tool7 Detail");
+        }
 
     }
 }

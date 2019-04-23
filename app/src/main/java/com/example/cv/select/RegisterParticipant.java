@@ -48,6 +48,7 @@ public class RegisterParticipant extends AppCompatActivity {
     String ContactNo;
     AlertDialog alertDialog;
     Context ctx = this;
+    boolean mFlagReasonable = true;
 
 
     @Override
@@ -368,12 +369,25 @@ public class RegisterParticipant extends AppCompatActivity {
                 Enroll);
 
 
+        Log.d("000000", "inserted");
+
+        if(mFlagReasonable){
+            Toast.makeText(ctx, "mFlagReasonable "+mFlagReasonable, Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(ctx, "mFlagReasonable "+mFlagReasonable, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(ctx, ShowIndividualPartiData.class);
+            intent.putExtra("ContactNo", pContactSim);
+            startActivity(intent);
+
+//            finish();
+        }
+
         Log.d("111", "tool 1: "+Tool1);
         if (isInserted == true) {
             Toast.makeText(this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
+
         } else {
             Toast.makeText(this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
-            finish();
         }
 
     }
@@ -455,7 +469,8 @@ public class RegisterParticipant extends AppCompatActivity {
 
         if (isUpdate) {
             Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
-           // Intent intent=new Intent(RegisterParticipant.this, MainActivity.class);
+           // Intent intent=new Intent(RegisterParticipant.this, ShowIndividualPartiData.class);
+           // intent.putExtra("ContactNo", pContactSim );
             //startActivity(intent);
 
 
@@ -495,6 +510,8 @@ public class RegisterParticipant extends AppCompatActivity {
     }
 
     private void isPatEligible() {
+
+        Log.d("000000", "isPatEligible");
         if (rd_plives_yes.isChecked() == true && rd_pnotmoving_no.isChecked() == true && rd_participate_yes.isChecked() == true && rd_psmartphone_yes.isChecked() == true) {
             Toast.makeText(this, "This participant is Eligible", Toast.LENGTH_SHORT).show();
             Enroll="1";
@@ -510,8 +527,11 @@ public class RegisterParticipant extends AppCompatActivity {
 //            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 //            intent.putExtra("ContactNo", pContactSim);
 //            startActivity(intent);
+            mFlagReasonable = false;
+
         } else {
             Toast.makeText(this, "This Participant is not Eligible", Toast.LENGTH_SHORT).show();
+            mFlagReasonable = true;
             dialogBuilder = new AlertDialog.Builder(this);
             LayoutInflater inflater = this.getLayoutInflater();
             dialogView = inflater.inflate(R.layout.alert_dialog, null);
@@ -540,6 +560,10 @@ public class RegisterParticipant extends AppCompatActivity {
 
                     if (isUpdate) {
                         Toast.makeText(RegisterParticipant.this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ctx, "mFlagReasonable "+mFlagReasonable, Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(ctx, ShowIndividualPartiData.class);
+                        intent.putExtra("ContactNo", pContactSim);
+                        startActivity(intent);
                     }
                 }
             });

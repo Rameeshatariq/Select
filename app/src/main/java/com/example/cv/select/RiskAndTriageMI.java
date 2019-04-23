@@ -23,7 +23,9 @@ public class RiskAndTriageMI extends AppCompatActivity {
     private RadioButton radiovalueQ1, radiovalueQ2, radiovalueQ3;
     String tool1bQ1, tool1bQ2, tool1bQ3;
     private Toolbar toolbar;
-    String Angina, AnginaorMyocardialInfarction, MyocardialInfarction, ContactNo,tool1;
+    static String Angina, AnginaorMyocardialInfarction, MyocardialInfarction, result;
+    String ContactNo;
+    String tool1;
     private RadioGroup rd_tl1b_Q1, rd_tl1b_Q2, rd_tl1b_Q3;
     private RadioButton rd_tl1b_Q1_yes, rd_tl1b_Q1_no, rd_tl1b_Q2_yes, rd_tl1b_Q2_no, rd_tl1b_Q3_yes, rd_tl1b_Q3_no;
     private Button submit_RTMI, btn_rtMI_saveExit;
@@ -145,21 +147,23 @@ public class RiskAndTriageMI extends AppCompatActivity {
 
     }
 
+    public static String getInstance(){
+        return result ;
+    }
+
+
 
     private void checkData() {
         if (rd_tl1b_Q1_yes.isChecked() == true) {
-            Toast.makeText(this, "Angina or Myocardial Infarction", Toast.LENGTH_SHORT).show();
             Angina="Angina";
-
         } if (rd_tl1b_Q2_yes.isChecked() == true) {
-            Toast.makeText(this, "Angina or Myocardial Infarction", Toast.LENGTH_SHORT).show();
             AnginaorMyocardialInfarction="Angina or Myocardial Infarction";
         } if (rd_tl1b_Q3_yes.isChecked() == true) {
-            Toast.makeText(this, " Myocardial Infarction", Toast.LENGTH_SHORT).show();
             MyocardialInfarction="Myocardial Infarction";
-
         }
 
+        result= Angina + ", " +AnginaorMyocardialInfarction + ", " +MyocardialInfarction;
+        Toast.makeText(ctx, "Result Tool 2:"+result, Toast.LENGTH_SHORT).show();
     }
 
     private void addTool1bData() {

@@ -4,7 +4,6 @@
     <style name="ToolBar" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:titleTextColor">@android:color/white</item>
         <item name="colorControlNormal">@android:color/white</item>
-        <item name="android:background">@color/colorPrimary</item>
         <item name="android:backgroundTint">@color/colorPrimary</item>
 
     </style>

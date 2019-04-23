@@ -2,7 +2,6 @@ package com.example.cv.select;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,10 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Switch;
 import android.widget.Toast;
 
 
@@ -210,13 +207,19 @@ public class RiskAndTriageCVA extends AppCompatActivity {
                }
            }
        });
+
+
     }
 
-    public void checkData() {
+    public static String getInstance(){
+        return CVAEvent;
+    }
+
+    public boolean checkData() {
         if (rd_tl1a_Q1_yes.isChecked() == true || rd_tl1a_Q2_yes.isChecked() == true || rd_tl1a_Q3_yes.isChecked() == true || rd_tl1a_Q4_yes.isChecked() == true
                 || rd_tl1a_Q5_yes.isChecked() == true || rd_tl1a_Q6_yes.isChecked() == true || rd_tl1a_Q7_yes.isChecked() == true || rd_tl1a_Q8_yes.isChecked() == true) {
 
-            Toast.makeText(RiskAndTriageCVA.this, "CVA Event", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RiskAndTriageCVA.this, "Result Tool1: CVA Event", Toast.LENGTH_SHORT).show();
             CVAEvent = "CVA Event";
 
             String tool1 = "1";
@@ -224,10 +227,12 @@ public class RiskAndTriageCVA extends AppCompatActivity {
             Toast.makeText(RiskAndTriageCVA.this, "Tool1 Completed", Toast.LENGTH_SHORT).show();
 
             addTool1Data();
-
+            return true;
 
         } else {
             addTool1Data();
+            return false;
+
 
         }
     }

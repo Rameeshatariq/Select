@@ -9,14 +9,19 @@ import android.graphics.Color;
 import android.util.Log;
 import android.widget.Switch;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelperRP extends SQLiteOpenHelper {
     private static final String TAG = "DatabaseHelper";
     public static final String DATABASE_NAME = "select.db";
+    public static File Database_Path = null;
 
-    private static final String TABLE_NAME = "patient";
+    public static final String TABLE_NAME = "patient";
     private static final String COL2 = "Name";
     private static final String COL3 = "Dob";
     private static final String COL4 = "Age";
@@ -126,6 +131,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
 
     public DatabaseHelperRP(Context context) {
         super(context, DATABASE_NAME, null, 1);
+        Database_Path = context.getDatabasePath(DatabaseHelperRP.DATABASE_NAME);
     }
 
     @Override
@@ -1020,6 +1026,4 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
         }
         return data;
     }
-
-
 }

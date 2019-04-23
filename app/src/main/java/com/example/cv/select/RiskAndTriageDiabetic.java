@@ -30,6 +30,9 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
             ck_rtD_Q1_ht_altMed, ck_rtD_Q1_ht_pnrMed;
     CheckBox ck_rtD_Q1_DM, ck_rtD_Q1_Hyp;
     private DatabaseHelperRP mDatabaseHelper;
+    static String result;
+    String Hyper_result;
+    String Diabetic_result;
     Button btn_RTD_submit, btnRTD_saveExit;
     Context ctx = this;
     Lister ls;
@@ -112,7 +115,6 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
             public void onClick(View v) {
                 addTool3data();
                 String tool3="1";
-                String tool3_Result=Diabetic + ", " + Hypertension;
                 mDatabaseHelper.updateTool3Status(ContactNo,tool3);
                 Toast.makeText(RiskAndTriageDiabetic.this, "Tool3 Completed", Toast.LENGTH_SHORT).show();
                 finish();
@@ -155,6 +157,9 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
         });
     }
 
+    public static String getInstance(){
+        return result;
+    }
 
     private void addTool3data() {
         diabetic = "Not Present";
@@ -173,7 +178,7 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
         if (ck_rtD_Q1_DM.isChecked()) {
             diabetic = "Yes";
             Diabetic = ck_rtD_Q1_DM.getText().toString();
-            Toast.makeText(this, "Diabetic", Toast.LENGTH_SHORT).show();
+            Diabetic_result= "Diabetic";
         }
 
         if (ck_rtD_Q1_DM_med.isChecked()) {
@@ -194,7 +199,7 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
         if (ck_rtD_Q1_Hyp.isChecked()) {
             hypertension = "Yes";
             Hypertension = ck_rtD_Q1_Hyp.getText().toString();
-            Toast.makeText(this, "Hypertension", Toast.LENGTH_SHORT).show();
+            Hyper_result="Hypertension";
         }
         if (ck_rtD_Q1_ht_notMedicines.isChecked()) {
             hypertenControlByNotMedicines = "Yes";
@@ -211,6 +216,9 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
         if (ck_rtD_Q1_ht_altMed.isChecked()) {
             hypertenControlByAlternateMed = "Yes";
         }
+
+        result = Diabetic_result + "," +Hyper_result;
+        Toast.makeText(ctx, "Result Tool 3: "+result, Toast.LENGTH_SHORT).show();
 
         try {
             Log.d("000333", "save and exit");

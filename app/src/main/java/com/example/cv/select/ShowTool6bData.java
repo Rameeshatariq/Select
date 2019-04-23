@@ -42,8 +42,7 @@ public class ShowTool6bData extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(ShowTool6bData.this, MainActivity.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 
