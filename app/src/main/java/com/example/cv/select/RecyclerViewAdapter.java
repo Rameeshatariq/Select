@@ -48,6 +48,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.tvcomppartiname.setText(mData.get(position).getParticipantName());
         holder.tvcompparticontact.setText(mData.get(position).getParticipantContact());
+        holder.tvcomppartienroll.setText(mData.get(position).getParticipantEnroll());
 
     }
 
@@ -61,12 +62,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         private TextView tvcomppartiname;
         private TextView tvcompparticontact;
+        private TextView tvcomppartienroll;
 
         public MyViewHolder(View itemView){
             super(itemView);
 
             tvcomppartiname=(TextView) itemView.findViewById(R.id.tvcomppartiname);
             tvcompparticontact=(TextView) itemView.findViewById(R.id.tvcompparticontact);
+            tvcomppartienroll=(TextView) itemView.findViewById(R.id.tvcomppartienroll);
+
 
 
 

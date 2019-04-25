@@ -41,7 +41,7 @@
                             android:id="@+id/ed_pname"
                             android:theme="@style/EditText"
                             android:hint="Participant Name"
-                            android:inputType="textPersonName"
+                            android:inputType="textCapWords"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </android.support.design.widget.TextInputLayout>
@@ -218,7 +218,7 @@
                             android:hint="Address"
                             android:minLines="2"
                             android:maxLines="3"
-                            android:inputType="textMultiLine"
+                            android:inputType="textMultiLine|textCapWords"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </android.support.design.widget.TextInputLayout>

@@ -32,7 +32,7 @@ public class ShowIndividualPartiData extends AppCompatActivity {
     private Toolbar toolbar;
     String tool1, Tool1, Tool2, Tool3, Tool7;
     LinearLayout linear_ptool1,linear_ptool2,linear_ptool3,linear_ptool4,linear_ptool5,linear_ptool6a,linear_ptool6b,linear_ptool7;
-    private TextView tv_pname, tv_pdob, tv_page, tv_pgender, tv_pcontact, tv_paltSim, tv_paddress, tv_plives, tv_pnotmoving, tv_psmartphone, tv_pparticipate,
+    private TextView tv_UserID, tv_pname, tv_pdob, tv_page, tv_pgender, tv_pcontact, tv_paltSim, tv_paddress, tv_plives, tv_pnotmoving, tv_psmartphone, tv_pparticipate,
     tv_pinformedconsent, tv_pReason, tv_ptool1, tv_ptool2, tv_ptool3, tv_ptool4, tv_ptool5, tv_ptool6a, tv_ptool6b, tv_ptool7, tv_pEnroll, tv_pSyncData;
 
     @Override
@@ -57,6 +57,7 @@ public class ShowIndividualPartiData extends AppCompatActivity {
 
         mDatabaseHeperRP = new DatabaseHelperRP(this);
 
+        tv_UserID=(TextView)findViewById(R.id.tv_pUserID);
         tv_pname=(TextView)findViewById(R.id.tv_pname);
         tv_pdob=(TextView)findViewById(R.id.tv_pdob);
         tv_page=(TextView)findViewById(R.id.tv_page);
@@ -340,28 +341,29 @@ public class ShowIndividualPartiData extends AppCompatActivity {
             Log.d("000222", "viewAllPatientData   "+data.getString(11));
 
 
-            tv_pname.setText(data.getString(0));
-            tv_pdob.setText(data.getString(1));
-            tv_page.setText(data.getString(2));
-            tv_pgender.setText(data.getString(3));
-            tv_pcontact.setText(data.getString(4));
-            tv_paltSim.setText(data.getString(5));
-            tv_paddress.setText(data.getString(6));
-            tv_plives.setText(data.getString(7));
-            tv_pnotmoving.setText(data.getString(8));
-            tv_psmartphone.setText(data.getString(9));
-            tv_pparticipate.setText(data.getString(10));
-            tv_pinformedconsent.setText(data.getString(11));
-            tv_pReason.setText(data.getString(12));
-            tv_ptool1.setText(data.getString(13));
-            tv_ptool2.setText(data.getString(14));
-            tv_ptool3.setText(data.getString(15));
-            tv_ptool4.setText(data.getString(16));
-            tv_ptool5.setText(data.getString(17));
-            tv_ptool6a.setText(data.getString(18));
-            tv_ptool6b.setText(data.getString(19));
-            tv_ptool7.setText(data.getString(20));
-            tv_pEnroll.setText(data.getString(21));
+            tv_UserID.setText(data.getString(0));
+            tv_pname.setText(data.getString(1));
+            tv_pdob.setText(data.getString(2));
+            tv_page.setText(data.getString(3));
+            tv_pgender.setText(data.getString(4));
+            tv_pcontact.setText(data.getString(5));
+            tv_paltSim.setText(data.getString(6));
+            tv_paddress.setText(data.getString(7));
+            tv_plives.setText(data.getString(8));
+            tv_pnotmoving.setText(data.getString(9));
+            tv_psmartphone.setText(data.getString(10));
+            tv_pparticipate.setText(data.getString(11));
+            tv_pinformedconsent.setText(data.getString(12));
+            tv_pReason.setText(data.getString(13));
+            tv_ptool1.setText(data.getString(14));
+            tv_ptool2.setText(data.getString(15));
+            tv_ptool3.setText(data.getString(16));
+            tv_ptool4.setText(data.getString(17));
+            tv_ptool5.setText(data.getString(18));
+            tv_ptool6a.setText(data.getString(19));
+            tv_ptool6b.setText(data.getString(20));
+            tv_ptool7.setText(data.getString(21));
+            tv_pEnroll.setText(data.getString(22));
 
 
         }

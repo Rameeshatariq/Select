@@ -5,13 +5,15 @@ import android.provider.BaseColumns;
 public class CompParticipantsInfo {
     private String participantName;
     private String participantContact;
+    private String participantEnroll;
 
     public CompParticipantsInfo() {
     }
 
-    public CompParticipantsInfo(String participantName, String participantContact) {
+    public CompParticipantsInfo(String participantName, String participantContact, String participantEnroll) {
         this.participantName = participantName;
         this.participantContact = participantContact;
+        this.participantEnroll = participantEnroll;
     }
 
     public static final class participantsInfo implements BaseColumns {
@@ -34,5 +36,13 @@ public class CompParticipantsInfo {
 
     public void setParticipantContact(String participantContact) {
         this.participantContact = participantContact;
+    }
+
+    public String getParticipantEnroll() {
+        return participantEnroll;
+    }
+
+    public void setParticipantEnroll(String participantEnroll) {
+        this.participantEnroll = participantEnroll;
     }
 }

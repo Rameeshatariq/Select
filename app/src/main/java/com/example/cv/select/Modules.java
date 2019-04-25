@@ -45,6 +45,8 @@ public class Modules extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_item1) {
             Toast.makeText(Modules.this, "Action clicked", Toast.LENGTH_LONG).show();
+            Intent i = new Intent(Modules.this, sync.class);
+            startActivity(i);
             return true;
         }
 

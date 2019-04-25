@@ -22,6 +22,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
     public static File Database_Path = null;
 
     public static final String TABLE_NAME = "patient";
+    private static final String COL1 = "UserID";
     private static final String COL2 = "Name";
     private static final String COL3 = "Dob";
     private static final String COL4 = "Age";
@@ -139,6 +140,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
 
         String createTable = "CREATE TABLE " + TABLE_NAME + "(" +
                 //"ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                "UserID VARCHAR(10) NULL, " +
                 "Name VARCHAR(100) NULL, " +
                 "Dob VARCHAR(20) NULL, " +
                 "Age VARCHAR(5) NULL, " +
@@ -282,11 +284,12 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addData(String name, String dob, String age, String gender, String contactSim, String altSim, String address, String livesInMalir, String notMoving,
+    public boolean addData(String userID, String name, String dob, String age, String gender, String contactSim, String altSim, String address, String livesInMalir, String notMoving,
                            String smartphone, String participate, String informedconsent, String reason, String Tool1, String Tool2,
                            String Tool3, String Tool4, String Tool5, String Tool6a, String Tool6b, String Tool7, String Enroll) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        contentValues.put(COL1, userID);
         contentValues.put(COL2, name);
         contentValues.put(COL3, dob);
         contentValues.put(COL4, age);
@@ -994,8 +997,10 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
             dataModel = new CompParticipantsInfo();
             String name = cursor.getString(cursor.getColumnIndexOrThrow("Name"));
             String contact = cursor.getString(cursor.getColumnIndexOrThrow("ContactSim"));
+            String enroll = cursor.getString(cursor.getColumnIndexOrThrow("Enroll"));
             dataModel.setParticipantName(name);
             dataModel.setParticipantContact(contact);
+            dataModel.setParticipantEnroll(enroll);
             stringBuffer.append(dataModel);
             // stringBuffer.append(dataModel);
             data.add(dataModel);
@@ -1018,8 +1023,10 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
             dataModel = new CompParticipantsInfo();
             String name = cursor.getString(cursor.getColumnIndexOrThrow("Name"));
             String contact = cursor.getString(cursor.getColumnIndexOrThrow("ContactSim"));
+            String enroll = cursor.getString(cursor.getColumnIndexOrThrow("Enroll"));
             dataModel.setParticipantName(name);
             dataModel.setParticipantContact(contact);
+            dataModel.setParticipantEnroll(enroll);
             stringBuffer.append(dataModel);
             // stringBuffer.append(dataModel);
             data.add(dataModel);

@@ -28,10 +28,36 @@
           android:padding="10dp">
 
          <LinearLayout
+             android:id="@+id/linear_pUserID"
+             android:layout_width="wrap_content"
+             android:layout_marginTop="30dp"
+             android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User ID:"
+                android:theme="@style/TextViewHeading" />
+
+            <TextView
+                android:id="@+id/tv_pUserID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="User ID"
+                android:theme="@style/TextView" />
+         </LinearLayout>
+
+         <View
+             android:id="@+id/view_pname"
+             android:layout_width="match_parent"
+             android:layout_height="25dp"></View>
+
+
+         <LinearLayout
              android:id="@+id/linear_pname"
              android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="30dp">
+             android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -48,8 +74,9 @@
                 android:theme="@style/TextView" />
          </LinearLayout>
 
+
          <View
-             android:id="@+id/view_pname"
+             android:id="@+id/view_pUserId"
              android:layout_width="match_parent"
              android:layout_height="25dp"></View>
 

@@ -58,6 +58,7 @@ public class InProgRecyclerViewAdapter extends RecyclerView.Adapter<InProgRecycl
         }*/
         holder.tvinprogpartiname.setText(mData.get(position).getParticipantName());
         holder.tvinprogparticontact.setText(mData.get(position).getParticipantContact());
+        holder.tvinprogpartienroll.setText(mData.get(position).getParticipantEnroll());
 
     }
 
@@ -72,6 +73,7 @@ public class InProgRecyclerViewAdapter extends RecyclerView.Adapter<InProgRecycl
 
         private TextView tvinprogpartiname;
         private TextView tvinprogparticontact;
+        private TextView tvinprogpartienroll;
         private View.OnClickListener onItemClickListener;
         private DatabaseHelperRP databaseHelperRP;
 
@@ -88,6 +90,7 @@ public class InProgRecyclerViewAdapter extends RecyclerView.Adapter<InProgRecycl
 
             tvinprogpartiname=(TextView) itemView.findViewById(R.id.tvinprogpartiname);
             tvinprogparticontact=(TextView) itemView.findViewById(R.id.tvinprogparticontact);
+            tvinprogpartienroll=(TextView)itemView.findViewById(R.id.tvinprogpartienroll);
 
         }
     }

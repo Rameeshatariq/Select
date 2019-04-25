@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        floatingModulesBtn = (FloatingActionButton) findViewById(R.id.floatbtn_modules);
+      floatingModulesBtn = (FloatingActionButton) findViewById(R.id.floatbtn_modules);
         floatingModulesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

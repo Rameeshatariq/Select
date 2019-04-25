@@ -39,13 +39,14 @@ public class RegisterParticipant extends AppCompatActivity {
     private RadioButton rd_pgender_male, rd_pgender_female, rd_plives_yes, rd_plives_no, rd_psmartphone_yes, rd_psmartphone_no, rd_pnotmoving_yes, rd_pnotmoving_no, rd_participate_yes, rd_participate_no, rd_pconsenttaken_yes, rd_pconsenttaken_no;
     private RadioButton radiovalueGender, radiovalueLives, radiovalueNotmoving, radiovalueParticipate, radiovalueSmartphone, radiovalueConsentTaken;
     private DatabaseHelperRP mDatabaseHelperRP;
+    String UserID;
     String Tool1, Tool2, Tool3, Tool4, Tool5, Tool6a, Tool6b, Tool7, Enroll;
     View dialogView;
     private Toolbar toolbar;
     AlertDialog.Builder dialogBuilder;
     private DatePickerDialog.OnDateSetListener dateSetListener;
     int year, month, day;
-    String ContactNo;
+    String ContactNo,regxStr;
     AlertDialog alertDialog;
     Context ctx = this;
     boolean mFlagReasonable = true;
@@ -55,8 +56,6 @@ public class RegisterParticipant extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_participant);
-
-
 
         et_pname = (EditText) findViewById(R.id.ed_pname);
         et_paddress = (EditText) findViewById(R.id.ed_paddress);
@@ -79,6 +78,9 @@ public class RegisterParticipant extends AppCompatActivity {
         rd_pconsenttaken=(RadioGroup)findViewById(R.id.rd_p_consenttaken);
         rd_psmartphone=(RadioGroup)findViewById(R.id.rd_p_smrtph);
         rd_participate=(RadioGroup)findViewById(R.id.rd_participate);
+
+        UserID=LoginActivity.getInstance();
+       // Toast.makeText(ctx, "UserID"+UserID, Toast.LENGTH_SHORT).show();
 
         try {
 
@@ -199,48 +201,48 @@ public class RegisterParticipant extends AppCompatActivity {
                 Log.d("000111", "mData[0][10] =  "+mData[0][10]);
                 Log.d("000111", "mData[0][11] =  "+mData[0][11]);
 
-                et_pname.setText(mData[0][0]);
-                et_pdateOfBirth.setText(mData[0][1]);
-                et_page.setText(mData[0][2]);
+                et_pname.setText(mData[0][1]);
+                et_pdateOfBirth.setText(mData[0][2]);
+                et_page.setText(mData[0][3]);
 
-                if(mData[0][3].equalsIgnoreCase("Male")){
+                if(mData[0][4].equalsIgnoreCase("Male")){
                     rd_pgender.check(R.id.rd_male);
                 }else {
                     rd_pgender.check(R.id.rd_female);
                 }
-                et_contactSim.setText(mData[0][4]);
-                et_altSim.setText(mData[0][5]);
-                et_paddress.setText(mData[0][6]);
+                et_contactSim.setText(mData[0][5]);
+                et_altSim.setText(mData[0][6]);
+                et_paddress.setText(mData[0][7]);
 
-                if(mData[0][7].equalsIgnoreCase("Yes")){
+                if(mData[0][8].equalsIgnoreCase("Yes")){
 
                     rd_plives.check(R.id.rd_plives_yes);
                 }else {
                     rd_plives.check(R.id.rd_plives_no);
 
                 }
-                if(mData[0][8].equalsIgnoreCase("Yes")){
+                if(mData[0][9].equalsIgnoreCase("Yes")){
 
                     rd_pnotmoving.check(R.id.rd_p_notmoving_yes);
                 }else {
                     rd_pnotmoving.check(R.id.rd_p_notmoving_no);
 
                 }
-                if(mData[0][9].equalsIgnoreCase("Yes")){
+                if(mData[0][10].equalsIgnoreCase("Yes")){
 
                     rd_psmartphone.check(R.id.rd_p_smrtph_yes);
                 }else {
                     rd_psmartphone.check(R.id.rd_p_smrtph_no);
 
                 }
-                if(mData[0][10].equalsIgnoreCase("Yes")){
+                if(mData[0][11].equalsIgnoreCase("Yes")){
 
                     rd_participate.check(R.id.rd_participate_yes);
                 }else {
                     rd_participate.check(R.id.rd_participate_no);
 
                 }
-                if(mData[0][11].equalsIgnoreCase("Yes")){
+                if(mData[0][12].equalsIgnoreCase("Yes")){
 
                     rd_pconsenttaken.check(R.id.rd_p_consenttaken_yes);
                 }else {
@@ -270,7 +272,7 @@ public class RegisterParticipant extends AppCompatActivity {
         pAddress = et_paddress.getText().toString();
         pContactSim = et_contactSim.getText().toString();
         pAltSim = et_altSim.getText().toString();
-        String regxStr= "^[0][3][\\d]{2}[\\d]{7}$";
+        regxStr= "^[0][3][\\d]{2}[\\d]{7}$";
        // pContactSim = "03451212123";
 
         if (TextUtils.isEmpty(pName)) {
@@ -292,11 +294,9 @@ public class RegisterParticipant extends AppCompatActivity {
             return false;
 
 
-        } else if (TextUtils.isEmpty(pAltSim) || pAltSim.length() < 11 || pAltSim.length() > 11 || pAltSim.matches(regxStr)==false) {
-            Toast.makeText(this, "Invalid Contact Sim Number", Toast.LENGTH_SHORT).show();
+        } else if (!TextUtils.isEmpty(pAltSim) && pAltSim.matches(regxStr)==false){
+                Toast.makeText(this, "Invalid Alternate Sim Number", Toast.LENGTH_SHORT).show();
             return false;
-
-
         } else if(rd_pgender.getCheckedRadioButtonId() == -1){
             Toast.makeText(this, "Please Select Gender", Toast.LENGTH_SHORT).show();
             return false;
@@ -335,6 +335,7 @@ public class RegisterParticipant extends AppCompatActivity {
         }
     }
 
+
     private void insertPatient() {
 
         pName = et_pname.getText().toString();
@@ -364,7 +365,7 @@ public class RegisterParticipant extends AppCompatActivity {
         pConsentTaken = radiovalueConsentTaken.getText().toString();
 
 
-        boolean isInserted = mDatabaseHelperRP.addData(pName, pDob, pAge, pgender, pContactSim, pAltSim, pAddress, pLivesInMalir,
+        boolean isInserted = mDatabaseHelperRP.addData(UserID, pName, pDob, pAge, pgender, pContactSim, pAltSim, pAddress, pLivesInMalir,
                 pNotMoving, pHaveSmartphone, participate, pConsentTaken,pReason, Tool1, Tool2, Tool3, Tool4, Tool5, Tool6a, Tool6b, Tool7,
                 Enroll);
 
@@ -372,9 +373,7 @@ public class RegisterParticipant extends AppCompatActivity {
         Log.d("000000", "inserted");
 
         if(mFlagReasonable){
-            Toast.makeText(ctx, "mFlagReasonable "+mFlagReasonable, Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(ctx, "mFlagReasonable "+mFlagReasonable, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(ctx, ShowIndividualPartiData.class);
             intent.putExtra("ContactNo", pContactSim);
             startActivity(intent);
@@ -450,6 +449,7 @@ public class RegisterParticipant extends AppCompatActivity {
 
         Lister ls = new Lister(ctx);
         boolean isUpdate = ls.executeNonQuery("UPDATE patient set " +
+                "UserID = '"+UserID+"' , " +
                 "Name = '"+pName+"' , " +
                 "Dob = '"+pDob+"' , " +
                 "Age = '"+pAge+"' , " +

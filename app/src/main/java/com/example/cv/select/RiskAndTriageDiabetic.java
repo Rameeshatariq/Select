@@ -88,6 +88,9 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
             boolean mflag= isCompleted(ContactNo);
             setData(ContactNo);
             if(mflag == true){
+                linear_rtD_Q1_DM_otions.setVisibility(View.VISIBLE);
+                linear_rtD_Q1_ht_otions.setVisibility(View.VISIBLE);
+
                 // Toast.makeText(this, "Tool1 Completed", Toast.LENGTH_SHORT).show();
             }
             else{
@@ -226,6 +229,8 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
             String[][] mData = ls.executeReader("Select *from tool3 where ContactSim  = '" + ContactNo + "'");
 
             if (mData != null) {
+                linear_rtD_Q1_DM_otions.setVisibility(View.VISIBLE);
+                linear_rtD_Q1_ht_otions.setVisibility(View.VISIBLE);
 
                 boolean mFlag = ls.executeNonQuery("Update tool3 set " +
                         "Diabetic = '" + diabetic + "', " +

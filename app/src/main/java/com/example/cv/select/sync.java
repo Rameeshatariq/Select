@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import data.Post;
 import data.remote.APIService;
@@ -15,9 +16,13 @@ import data.remote.ApiUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class sync extends AppCompatActivity {
 
+    private static final String TAG = "Sync" ;
     private TextView mResponseTv;
     private APIService mAPIService;
 
@@ -52,16 +57,17 @@ public class sync extends AppCompatActivity {
 
                 if(response.isSuccessful()) {
                     showResponse(response.body().toString());
-                    Log.i("Response", "post submitted to API." + response.body().toString());
+                    Log.i(TAG, "post submitted to API." + response.body().toString());
                 }
             }
 
             @Override
             public void onFailure(Call<Post> call, Throwable t) {
-                Log.e("Error", "Unable to submit post to API.");
+                Log.e(TAG, "Unable to submit post to API.");
             }
         });
     }
+
 
     public void showResponse(String response) {
         if(mResponseTv.getVisibility() == View.GONE) {

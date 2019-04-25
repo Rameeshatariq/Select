@@ -43,8 +43,8 @@ public class PhysicalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_physical);
 
-        reqxStrHour="[0-2][0-4]$";
-        regxStrMin="[0-5][0-9]$";
+        reqxStrHour="([01]\\d|2[0-3])$";
+        regxStrMin="([0-5]\\d)$";
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Tool 5");
@@ -98,6 +98,10 @@ public class PhysicalActivity extends AppCompatActivity {
         linear_PA_Q2.setVisibility(View.GONE);
         linear_PA_Q4.setVisibility(View.GONE);
         linear_PA_Q6.setVisibility(View.GONE);
+        sp_PA_Q1.setVisibility(View.GONE);
+        sp_PA_Q3.setVisibility(View.GONE);
+        sp_PA_Q5.setVisibility(View.GONE);
+
 
         rd_PA_Q1_yes.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -161,7 +165,18 @@ public class PhysicalActivity extends AppCompatActivity {
             setData(ContactNo);
 
             if(mflag == true){
-                // Toast.makeText(this, "Tool1 Completed", Toast.LENGTH_SHORT).show();
+                if(rd_PA_Q1_yes.isChecked() == true) {
+                    linear_PA_Q2.setVisibility(View.VISIBLE);
+                    sp_PA_Q1.setVisibility(View.VISIBLE);
+                }
+                if(rd_PA_Q3_yes.isChecked() == true) {
+                    linear_PA_Q4.setVisibility(View.VISIBLE);
+                    sp_PA_Q3.setVisibility(View.VISIBLE);
+                }
+                if (rd_PA_Q5_yes.isChecked() == true) {
+                    linear_PA_Q6.setVisibility(View.VISIBLE);
+                    sp_PA_Q5.setVisibility(View.VISIBLE);
+                }
             }
             else{
                 // Toast.makeText(this, "Tool1 not Completed", Toast.LENGTH_SHORT).show();
@@ -177,21 +192,23 @@ public class PhysicalActivity extends AppCompatActivity {
         btn_PA_saveExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validateData();
-                String tool5="0";
-                databaseHelperRP.updateTool5Status(ContactNo,tool5);
-                Toast.makeText(PhysicalActivity.this, "Tool5 is not Completed", Toast.LENGTH_SHORT).show();
-                finish();
+                boolean isValidatedFlag = validateData();
+                if(isValidatedFlag == true) {
+                    String tool5 = "0";
+                    databaseHelperRP.updateTool5Status(ContactNo, tool5);
+                    Toast.makeText(PhysicalActivity.this, "Tool5 is not Completed", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         btn_PAsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validateData();
-                String tool5="1";
-                databaseHelperRP.updateTool5Status(ContactNo,tool5);
-                Toast.makeText(PhysicalActivity.this, "Tool5 Completed", Toast.LENGTH_SHORT).show();
-                finish();
+                boolean isValidatedFlag = validateData();
+                if (isValidatedFlag == true) {
+                    String tool5 = "1";
+                    databaseHelperRP.updateTool5Status(ContactNo, tool5);
+                    Toast.makeText(PhysicalActivity.this, "Tool5 Completed", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -222,7 +239,7 @@ public class PhysicalActivity extends AppCompatActivity {
         });
     }
 
-    private void validateData() {
+    private boolean validateData() {
 
         tool5_Q2_hours = et_PA_Q2_hours.getText().toString();
         tool5_Q2_mins = et_PA_Q2_mins.getText().toString();
@@ -233,40 +250,35 @@ public class PhysicalActivity extends AppCompatActivity {
         tool5_Q6_hours = et_PA_Q6_hours.getText().toString();
         tool5_Q6_mins = et_PA_Q6_mins.getText().toString();
 
-        if (!TextUtils.isEmpty(tool5_Q2_hours)) {
-            if (tool5_Q2_hours.matches(reqxStrHour) == false) {
+        if (!TextUtils.isEmpty(tool5_Q2_hours) && tool5_Q2_hours.matches(reqxStrHour) == false) {
                 Toast.makeText(PhysicalActivity.this, "Invalid Hours" + tool5_Q2_hours, Toast.LENGTH_SHORT).show();
-            }
+                return false;
         }
-        else if (!TextUtils.isEmpty(tool5_Q2_mins)) {
-            if (tool5_Q2_mins.matches(regxStrMin) == false) {
+        else if (!TextUtils.isEmpty(tool5_Q2_mins) && tool5_Q2_mins.matches(regxStrMin) == false) {
                 Toast.makeText(PhysicalActivity.this, "Invalid Mins" + tool5_Q2_mins, Toast.LENGTH_SHORT).show();
-            }
+        return false;
         }
-        else if (!TextUtils.isEmpty(tool5_Q4_hours)) {
-            if (tool5_Q4_hours.matches(reqxStrHour) == false) {
+
+        else if (!TextUtils.isEmpty(tool5_Q4_hours) && tool5_Q4_hours.matches(reqxStrHour) == false) {
                 Toast.makeText(PhysicalActivity.this, "Invalid Hours" + tool5_Q4_hours, Toast.LENGTH_SHORT).show();
-            }
+                return false;
         }
-        else if (!TextUtils.isEmpty(tool5_Q4_mins)) {
-            if (tool5_Q4_mins.matches(regxStrMin) == false) {
+        else if (!TextUtils.isEmpty(tool5_Q4_mins) && tool5_Q4_mins.matches(regxStrMin) == false) {
                 Toast.makeText(PhysicalActivity.this, "Invalid Mins" + tool5_Q4_mins, Toast.LENGTH_SHORT).show();
-            }
+            return false;
         }
-        else if (!TextUtils.isEmpty(tool5_Q6_hours)) {
-            if (tool5_Q6_hours.matches(reqxStrHour) == false) {
+        else if (!TextUtils.isEmpty(tool5_Q6_hours) && tool5_Q6_hours.matches(reqxStrHour) == false) {
                 Toast.makeText(PhysicalActivity.this, "Invalid Hours" + tool5_Q6_hours, Toast.LENGTH_SHORT).show();
-            }
+            return false;
         }
-        else if (!TextUtils.isEmpty(tool5_Q6_mins)) {
-            if (tool5_Q6_mins.matches(regxStrMin) == false) {
+        else if (!TextUtils.isEmpty(tool5_Q6_mins) && tool5_Q6_mins.matches(regxStrMin) == false) {
                 Toast.makeText(PhysicalActivity.this, "Invalid Mins" + tool5_Q6_mins, Toast.LENGTH_SHORT).show();
-            }
+            return false;
         }
-
+        else {
             addTool5Data();
-
-
+            return true;
+        }
     }
 
     private void addTool5Data() {

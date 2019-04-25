@@ -44,6 +44,7 @@
     <string name="DietLifestyleQ7">7. How many fish do you consume per week?</string>
 
     <string-array name="DietLifestyle">
+        <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
