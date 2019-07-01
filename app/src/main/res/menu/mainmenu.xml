@@ -9,5 +9,11 @@
         android:iconTint="@android:color/white"
         android:title="Sync"
         app:showAsAction="never"></item>
+    <item
+        android:id="@+id/logout"
+        android:orderInCategory="300"
+        android:iconTint="@android:color/white"
+        android:title="Logout"
+        app:showAsAction="never"></item>
 
 </menu>

@@ -4,17 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/bgcompressed"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
+                app:titleTextColor="@color/colorPrimaryDark"
                 android:layout_height="?attr/actionBarSize"
+                android:paddingRight="16dp"
                 android:theme="@style/ToolBar"
                 android:background="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Participant List"
+        android:layout_marginTop="15dp"
+        android:textSize="15dp"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+        android:textColor="@color/colorPrimaryDark" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabs"
@@ -22,17 +36,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/toolbar"
-        android:background="?attr/colorPrimary"
+        android:background="@color/colorPrimaryDark"
         android:elevation="4dp"
         android:minHeight="?attr/actionBarSize"
         app:tabGravity="fill"
         app:tabMode="fixed"
         app:tabSelectedTextColor="@android:color/white"
-        app:tabTextColor="#f98484"></android.support.design.widget.TabLayout>
+        app:tabTextColor="@android:color/white"></android.support.design.widget.TabLayout>
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"
-            android:layout_marginTop="110dp"
+            android:layout_marginTop="140dp"
+            android:background="@mipmap/bgcompressed"
             android:layout_width="match_parent"
             android:layout_height="match_parent"  />
 
@@ -58,7 +73,7 @@
         android:contextClickable="true"
         android:src="@drawable/useradd" />-->
 
-    <android.support.design.widget.FloatingActionButton
+   <!-- <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatbtn_modules"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,6 +81,6 @@
         android:layout_alignStart="@+id/floatbtn"
         android:backgroundTint="@color/colorPrimary"
         android:contextClickable="true"
-        android:src="@drawable/module1600" />
+        android:src="@drawable/module1600" />-->
 
 </RelativeLayout>

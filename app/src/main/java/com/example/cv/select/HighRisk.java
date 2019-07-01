@@ -19,8 +19,8 @@ public class HighRisk extends AppCompatActivity {
         setContentView(R.layout.activity_high_risk);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("High Risk");
-        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle("");
+       // toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

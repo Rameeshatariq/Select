@@ -2,9 +2,11 @@ package com.example.cv.select;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -15,6 +17,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -29,11 +33,57 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton floatingActionButton, floatingModulesBtn, floatingShowPatientDataBtn;
     boolean doubleBackToExitPressedOnce = false;
     Context ctx = this;
+    String UserID;
+    SharedPreferences sharedPreferences;
+    private int[] tabIcons = {
+            R.drawable.inprogress2,
+            R.drawable.completed1,
+    };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.mainmenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_item1) {
+          //  Toast.makeText(MainActivity.this, "Action clicked", Toast.LENGTH_LONG).show();
+            Intent i = new Intent(MainActivity.this, syncTools.class);
+            startActivity(i);
+            return true;
+        }
+        if(id == R.id.logout){
+            SharedPreferences blockSession = this.getSharedPreferences("loginref", MODE_PRIVATE);
+            SharedPreferences.Editor blockEdit = blockSession.edit();
+            blockEdit.putBoolean("savelogin", false);
+            blockEdit.commit();
+
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);;
+            startActivity(intent);
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+       sharedPreferences=getSharedPreferences("loginref",MODE_PRIVATE);
+        String username=sharedPreferences.getString("username",null);
+
+
 
         floatingActionButton = (FloatingActionButton) findViewById(R.id.floatbtn);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -44,14 +94,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-      floatingModulesBtn = (FloatingActionButton) findViewById(R.id.floatbtn_modules);
+     /* floatingModulesBtn = (FloatingActionButton) findViewById(R.id.floatbtn_modules);
         floatingModulesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Modules.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
    /*     floatingShowPatientDataBtn=(FloatingActionButton)findViewById(R.id.floatbtnShowPatientData);
         floatingShowPatientDataBtn.setOnClickListener(new View.OnClickListener() {
@@ -62,15 +112,49 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
 
+        SharedPreferences pref = getSharedPreferences("loginref",MODE_PRIVATE);
+        username = pref.getString("username", null);
+
+        try {
+
+            if (username.equals("user1")) {
+                UserID = "1";
+            } else if (username.equals("user2")) {
+                UserID = "2";
+            } else if (username.equals("user3")) {
+                UserID = "3";
+            } else if (username.equals("user4")) {
+                UserID = "4";
+            } else if (username.equals("user5")) {
+                UserID = "5";
+            }
+        }
+        catch (Exception e){
+            Toast.makeText(MainActivity.this, "Please Login Again", Toast.LENGTH_SHORT).show();
+            SharedPreferences blockSession = getSharedPreferences("loginref",MODE_PRIVATE);
+            SharedPreferences.Editor blockEdit = blockSession.edit();
+            blockEdit.putBoolean("savelogin", false);
+            blockEdit.commit();
+
+            Intent intent=new Intent(MainActivity.this, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);;;
+            startActivity(intent);
+
+        }
+
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Select");
-        toolbar.setTitleTextColor(Color.WHITE);
+        // toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
 
+    }
+
+    private void setupTabIcons() {
+        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
+        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
     }
 
     @Override
@@ -106,8 +190,15 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+        setupTabIcons();
 
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Intent intent= new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
 }
 

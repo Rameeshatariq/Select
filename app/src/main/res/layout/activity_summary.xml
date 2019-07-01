@@ -1,27 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/bgcompressed"
     tools:context=".Summary">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/ToolBar"
+        android:background="?attr/colorPrimary"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Summary"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:textSize="15dp"
+        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+        android:textColor="@color/colorPrimaryDark" />
 
+    <TextView
+        android:id="@+id/summaryHeading"
+        android:text="low risk"
+        style="@style/TextViewHeading"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/summaryHeading"
+        android:orientation="vertical">
 
     <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
         android:orientation="vertical">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:theme="@style/ToolBar"
-            android:background="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,10 +55,10 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <LinearLayout
+      <!--      <LinearLayout
                 android:id="@+id/linear_s_contact"
                 android:orientation="horizontal"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -48,27 +74,37 @@
                     android:layout_marginLeft="10dp"
                     android:theme="@style/TextView"
                     android:text="contact" />
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="25dp">
-            </View>
-            <TextView
+            </LinearLayout>-->
+
+            <!--<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:theme="@style/TextViewHeading"
-                android:text="Tool 1:"/>
-            <TextView
-                android:id="@+id/tool1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextView"
-                android:text="Tool 1:"/>
+                android:text="Tool 1:"/>-->
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:background="@drawable/input_design"
+                  android:padding="10dp"
+                  android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:theme="@style/TextView"
+                        android:text="1. "/>
+                    <TextView
+                        android:id="@+id/tool1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:theme="@style/TextView"
+                        android:text="Tool 1:"/>
+              </LinearLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="25dp">
             </View>
-
+<!--
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -79,14 +115,59 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:theme="@style/TextView"
+                android:text="Tool 1:"/>-->
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:background="@drawable/input_design"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:theme="@style/TextView"
+                android:text="2. "/>
+            <TextView
+                android:id="@+id/tool2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:theme="@style/TextView"
                 android:text="Tool 1:"/>
+        </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="25dp">
             </View>
 
-            <TextView
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:padding="10dp"
+                  android:background="@drawable/input_design"
+                  android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:theme="@style/TextView"
+                        android:text="3. "/>
+                    <TextView
+                        android:id="@+id/tool3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:theme="@style/TextView"
+                        android:text="Tool 1:"/>
+              </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+            </View>
+
+          <!--  <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:theme="@style/TextViewHeading"
@@ -97,41 +178,289 @@
                 android:layout_height="wrap_content"
                 android:theme="@style/TextView"
                 android:text="Tool 1:"/>
+-->
+              <LinearLayout
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:padding="10dp"
+                  android:background="@drawable/input_design"
+                  android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:text="4. Diet"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                          <TextView
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textColor="@color/colorPrimary"
+                              android:theme="@style/TextView"
+                              android:text="Cooked in Ghee:"/>
+                          <TextView
+                              android:id="@+id/tool7a"
+                              android:layout_marginLeft="10dp"
+                              android:layout_width="wrap_content"
+                              android:textColor="@color/colorPrimary"
+                              android:layout_height="wrap_content"
+                              android:theme="@style/TextView"
+                              android:textStyle="bold"
+                              android:text="Cooked in Ghee"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                          <TextView
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:theme="@style/TextView"
+                              android:textColor="@color/colorPrimary"
+                              android:text="Added salt at the table:"/>
+                          <TextView
+                              android:id="@+id/tool7b"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:theme="@style/TextView"
+                              android:textColor="@color/colorPrimary"
+                              android:layout_marginLeft="10dp"
+                              android:textStyle="bold"
+                              android:text="Added salt at the table"/>
+                    </LinearLayout>
+                   <LinearLayout
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal">
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:theme="@style/TextView"
+                             android:textColor="@color/colorPrimary"
+                             android:text="Fruits/vegetables consumed:"/>
+                         <TextView
+                             android:id="@+id/tool7c"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:theme="@style/TextView"
+                             android:textColor="@color/colorPrimary"
+                             android:text="High Risk"
+                             android:layout_marginLeft="10dp"
+                             android:textStyle="bold"/>
+                   </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                          <TextView
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:theme="@style/TextView"
+                              android:textColor="@color/colorPrimary"
+                              android:text="Bakery products and refined sugar consumed:"/>
+                          <TextView
+                              android:id="@+id/tool7d"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:theme="@style/TextView"
+                              android:textStyle="bold"
+                              android:textColor="@color/colorPrimary"
+                              android:text="High Risk"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                          <TextView
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:theme="@style/TextView"
+                              android:textColor="@color/colorPrimary"
+                              android:text="Pizzas, burgers etc. (Western diet) consumed:"/>
+                          <TextView
+                              android:id="@+id/tool7e"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:theme="@style/TextView"
+                              android:textStyle="bold"
+                              android:textColor="@color/colorPrimary"
+                              android:text="Pizzas, burgers etc. (Western diet) consumed"/>
+                    </LinearLayout>
+
+                  <LinearLayout
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content">
+
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="Plates of white rice consumed:"
+                          android:textColor="@color/colorPrimary"
+                          android:theme="@style/TextView" />
+
+                      <TextView
+                          android:id="@+id/tool7f"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="10dp"
+                          android:text="Plates of white rice consumed"
+                          android:textColor="@color/colorPrimary"
+                          android:textStyle="bold"
+                          android:theme="@style/TextView" />
+                  </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                          <TextView
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:theme="@style/TextView"
+                              android:textColor="@color/colorPrimary"
+                              android:text="Fish consumed"/>
+                          <TextView
+                              android:id="@+id/tool7g"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:theme="@style/TextView"
+                              android:textColor="@color/colorPrimary"
+                              android:layout_marginLeft="10dp"
+                              android:textStyle="bold"
+                              android:text="Fish consumed:"/>
+                    </LinearLayout>
+
+              </LinearLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="25dp">
             </View>
 
-            <TextView
+           <!-- <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:theme="@style/TextViewHeading"
-                android:text="Tool 7:"/>
+                android:text="Tool 4:"/>
             <TextView
-                android:id="@+id/tool7"
+                android:id="@+id/tool4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:theme="@style/TextView"
-                android:text="Tool 1:"/>
+                android:text="Tool 4:"/>-->
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:padding="10dp"
+                  android:background="@drawable/input_design"
+                  android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:theme="@style/TextView"
+                        android:text="5. Physical Activity"/>
 
+                    <TextView
+                        android:id="@+id/tool4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:theme="@style/TextView"
+                        android:text="Physical Activity"/>
+              </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="25dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="@drawable/input_design">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:theme="@style/TextView"
+                    android:text="6. IDRS"/>
+                <TextView
+                    android:id="@+id/tool5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:theme="@style/TextView"
+                    android:text="IDRS"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+            </View>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:orientation="vertical"
+                android:background="@drawable/input_design">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextView"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="7. Tobacco Smoking:"/>
+            <TextView
+                android:id="@+id/tool6a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextView"
+                android:textColor="@color/colorPrimary"
+                android:text="Tool 6:"/>
+              <TextView
+                  android:id="@+id/tool6b"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:theme="@style/TextView"
+                  android:textColor="@color/colorPrimary"
+                  android:text="Tool 6:"/>
+              <TextView
+                  android:id="@+id/tool6c"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:theme="@style/TextView"
+                  android:textColor="@color/colorPrimary"
+                  android:text="Tool 6:"/>
+              <TextView
+                  android:id="@+id/tool6d"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:theme="@style/TextView"
+                  android:textColor="@color/colorPrimary"
+                  android:text="Tool 6:"/>
+
+            </LinearLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="30dp">
             </View>
 
             <Button
-                android:id="@+id/submitSummary"
-                android:layout_width="wrap_content"
+                android:id="@+id/next"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/Button"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/rounded_button"
-                android:text="Save Summary"/>
+                android:text="Next"/>
 
         </LinearLayout>
 
 </LinearLayout>
+    </ScrollView>
 
-</LinearLayout>
+</RelativeLayout>

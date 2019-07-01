@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/bgcompressed"
     tools:context=".ShowTool5Data">
 
     <android.support.v7.widget.Toolbar
@@ -14,10 +15,21 @@
         android:theme="@style/ToolBar"
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Physical Activity"
+        android:layout_marginTop="15dp"
+        android:textSize="15dp"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+        android:textColor="@color/colorPrimaryDark" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
         android:orientation="vertical">
 
         <LinearLayout
@@ -26,35 +38,33 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <TextView
-                android:id="@+id/tvHeading"
-                android:text="Physical Activity"
-                android:layout_gravity="center"
-                android:theme="@style/TextViewHeading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <LinearLayout
+           <!-- <RelativeLayout
                 android:id="@+id/linear_PA_contact"
                 android:orientation="horizontal"
-                android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
-                    android:text="Contact Sim:" />
-                <TextView
-                    android:id="@+id/pcontact"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:theme="@style/TextView"
-                    android:text="contact" />
+                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="Contact Sim:" />
+                    <TextView
+                        android:id="@+id/pcontact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:theme="@style/TextView"
+                        android:text="03362451199" />
+                </LinearLayout>
 
-            </LinearLayout>
+            </RelativeLayout>-->
 
             <LinearLayout
                 android:id="@+id/linear_PA_Q1"
@@ -65,10 +75,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:layout_marginTop="25dp"
                     android:text="@string/PhysicalActivityQ1" />
-                <TextView
+               <!-- <TextView
                     android:id="@+id/tv_PA_Q1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -80,6 +90,31 @@
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
                     android:text="@string/PhysicalActivityQ1" />
+           -->
+                <EditText
+                    android:id="@+id/tv_PA_Q1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"/>
+                <EditText
+                    android:id="@+id/tv_PA_Q1_days"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"/>
             </LinearLayout>
 
             <View
@@ -96,9 +131,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:text="@string/PhysicalActivityQ2" />
-                <TextView
+               <!-- <TextView
                     android:id="@+id/tv_PA_Q2_hours"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -110,7 +145,31 @@
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
                     android:text="@string/PhysicalActivityQ2" />
-
+-->
+                <EditText
+                    android:id="@+id/tv_PA_Q2_hours"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"/>
+                <EditText
+                    android:id="@+id/tv_PA_Q2_mins"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"/>
             </LinearLayout>
 
             <View
@@ -128,9 +187,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:text="@string/PhysicalActivityQ3" />
-                <TextView
+               <!-- <TextView
                     android:id="@+id/tv_PA_Q3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -142,7 +201,31 @@
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
                     android:text="@string/PhysicalActivityQ3" />
-
+-->
+                <EditText
+                    android:id="@+id/tv_PA_Q3"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"/>
+                <EditText
+                    android:id="@+id/tv_PA_Q3_days"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"/>
             </LinearLayout>
 
             <View
@@ -160,9 +243,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:text="@string/PhysicalActivityQ4" />
-                <TextView
+               <!-- <TextView
                     android:id="@+id/tv_PA_Q4_hours"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -174,7 +257,31 @@
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
                     android:text="@string/PhysicalActivityQ4" />
-
+-->
+                <EditText
+                    android:id="@+id/tv_PA_Q4_hours"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"/>
+                <EditText
+                    android:id="@+id/tv_PA_Q4_mins"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"/>
             </LinearLayout>
 
             <View
@@ -192,9 +299,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:text="@string/PhysicalActivityQ5" />
-                <TextView
+                <!--<TextView
                     android:id="@+id/tv_PA_Q5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -206,7 +313,31 @@
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
                     android:text="@string/PhysicalActivityQ5" />
-
+-->
+                <EditText
+                    android:id="@+id/tv_PA_Q5"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"/>
+                <EditText
+                    android:id="@+id/tv_PA_Q5_days"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"/>
             </LinearLayout>
 
             <View
@@ -224,9 +355,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:text="@string/PhysicalActivityQ6" />
-                <TextView
+               <!-- <TextView
                     android:id="@+id/tv_PA_Q6_hours"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -238,7 +369,31 @@
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
                     android:text="@string/PhysicalActivityQ6" />
-
+-->
+                <EditText
+                    android:id="@+id/tv_PA_Q6_hours"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"/>
+                <EditText
+                    android:id="@+id/tv_PA_Q6_mins"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -247,4 +402,4 @@
 
 
 
-</LinearLayout>
+</RelativeLayout>

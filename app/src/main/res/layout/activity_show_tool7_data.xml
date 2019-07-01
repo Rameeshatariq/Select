@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/bgcompressed"
     tools:context=".ShowTool7Data">
 
     <android.support.v7.widget.Toolbar
@@ -14,10 +15,21 @@
         android:theme="@style/ToolBar"
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diet Lifestyle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:textSize="15dp"
+        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+        android:textColor="@color/colorPrimaryDark" />
 
     <ScrollView
         android:orientation="vertical"
         android:layout_width="match_parent"
+        android:layout_below="@+id/toolbar"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -26,54 +38,65 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <TextView
-                android:id="@+id/tvHeading"
-                android:text="Diet Lifestyle"
-                android:layout_gravity="center"
-                android:theme="@style/TextViewHeading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <LinearLayout
+            <!--<RelativeLayout
                 android:id="@+id/linear_DL_contact"
                 android:orientation="horizontal"
-                android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
-                    android:text="Contact Sim:" />
-                <TextView
-                    android:id="@+id/pcontact"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:theme="@style/TextView"
-                    android:text="contact" />
-            </LinearLayout>
+                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="Contact Sim:" />
+                    <TextView
+                        android:id="@+id/pcontact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:theme="@style/TextView"
+                        android:text="03362451199" />
+                </LinearLayout>
+
+            </RelativeLayout>-->
 
             <LinearLayout
                 android:id="@+id/linear_DL_Q1"
                 android:orientation="vertical"
                 android:layout_marginTop="25dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvHeading">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:text="@string/DietLifestyleQ1" />
-                <TextView
+              <!--  <TextView
                     android:id="@+id/tv_DL_Q1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
-                    android:text="@string/DietLifestyleQ1" />
+                    android:text="@string/DietLifestyleQ1" />-->
+                <EditText
+                    android:id="@+id/tv_DL_Q1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"/>
 
             </LinearLayout>
 
@@ -94,15 +117,27 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:text="@string/DietLifestyleQ2" />
-                <TextView
+               <!-- <TextView
                     android:id="@+id/tv_DL_Q2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
                     android:text="@string/DietLifestyleQ2" />
-
+-->
+                <EditText
+                    android:id="@+id/tv_DL_Q2"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"/>
             </LinearLayout>
 
             <View
@@ -122,15 +157,27 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:text="@string/DietLifestyleQ3" />
-                <TextView
+               <!-- <TextView
                     android:id="@+id/tv_DL_Q3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
                     android:text="@string/DietLifestyleQ3" />
-
+-->
+                <EditText
+                    android:id="@+id/tv_DL_Q3"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"/>
             </LinearLayout>
             <View
                 android:id="@+id/view_DL_Q3"
@@ -149,15 +196,27 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:text="@string/DietLifestyleQ4" />
-                <TextView
+               <!-- <TextView
                     android:id="@+id/tv_DL_Q4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
                     android:text="@string/DietLifestyleQ4" />
-
+-->
+                <EditText
+                    android:id="@+id/tv_DL_Q4"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"/>
             </LinearLayout>
 
             <View
@@ -177,15 +236,27 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:text="@string/DietLifestyleQ5" />
-                <TextView
+                <!--<TextView
                     android:id="@+id/tv_DL_Q5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
                     android:text="@string/DietLifestyleQ5" />
-
+-->
+                <EditText
+                    android:id="@+id/tv_DL_Q5"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"/>
             </LinearLayout>
 
             <View
@@ -205,15 +276,27 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:text="@string/DietLifestyleQ6" />
-                <TextView
+                <!--<TextView
                     android:id="@+id/tv_DL_Q6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
                     android:text="@string/DietLifestyleQ6" />
-
+-->
+                <EditText
+                    android:id="@+id/tv_DL_Q6"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"/>
             </LinearLayout>
 
             <View
@@ -233,16 +316,30 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
-                    android:text="@string/DietLifestyleQ7" />
-                <TextView
-                    android:id="@+id/tv_DL_Q7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:theme="@style/TextView"
-                    android:text="@string/DietLifestyleQ7" />
+                 android:text="@string/DietLifestyleQ7" />
+                <!--     <TextView
+                      android:id="@+id/tv_DL_Q7"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:theme="@style/TextView"
+                      android:text="@string/DietLifestyleQ7" />
+            -->
+                <EditText
+                    android:id="@+id/tv_DL_Q7"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"/>
+
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+</RelativeLayout>

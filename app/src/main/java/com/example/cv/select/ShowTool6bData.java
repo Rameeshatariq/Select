@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,7 +20,8 @@ import java.util.ArrayList;
 public class ShowTool6bData extends AppCompatActivity {
     private DatabaseHelperRP mDatabaseHeperRP;
     private Toolbar toolbar;
-    private TextView tv_tl6b_contact, tv_tl6b_Q1, tv_tl6b_Q2;
+    private TextView tv_tl6b_contact;
+    EditText tv_tl6b_Q1, tv_tl6b_Q2;
     String ContactNo;
 
     @Override
@@ -29,14 +31,14 @@ public class ShowTool6bData extends AppCompatActivity {
 
         mDatabaseHeperRP = new DatabaseHelperRP(this);
 
-        tv_tl6b_contact=(TextView)findViewById(R.id.pcontact);
-        tv_tl6b_Q1=(TextView)findViewById(R.id.tv_TS_SL_Q1);
-        tv_tl6b_Q2=(TextView)findViewById(R.id.tv_TS_SL_Q2);
+      //  tv_tl6b_contact=(TextView)findViewById(R.id.pcontact);
+        tv_tl6b_Q1=(EditText)findViewById(R.id.tv_TS_SL_Q1);
+        tv_tl6b_Q2=(EditText)findViewById(R.id.tv_TS_SL_Q2);
 
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Tool 6b Details");
-        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle("");
+       // toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -49,20 +51,20 @@ public class ShowTool6bData extends AppCompatActivity {
 
         Intent intent = getIntent();
         ContactNo = intent.getStringExtra("ContactNo");
-        Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
 
-        viewAllTool6bData();
+      //  viewAllTool6bData();
     }
 
     private void viewAllTool6bData() {
-        Cursor data = mDatabaseHeperRP.getPartiTool6bData(ContactNo);
+        Cursor data = mDatabaseHeperRP.getPartiTool6aData(ContactNo);
         if (data.getCount() == 0) {
             return;
         }
 
         while (data.moveToNext()) {
 
-            tv_tl6b_contact.setText(data.getString(0));
+        //    tv_tl6b_contact.setText(data.getString(0));
             tv_tl6b_Q1.setText(data.getString(1));
             tv_tl6b_Q2.setText(data.getString(2));
         }

@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,7 +20,8 @@ import java.util.ArrayList;
 public class ShowTool7Data extends AppCompatActivity {
     private DatabaseHelperRP mDatabaseHeperRP;
     private Toolbar toolbar;
-    private TextView tv_tl7_contact, tv_tl7_Q1, tv_tl7_Q2,tv_tl7_Q3,tv_tl7_Q4,tv_tl7_Q5,tv_tl7_Q6,tv_tl7_Q7;
+    private TextView tv_tl7_contact;
+    EditText tv_tl7_Q1, tv_tl7_Q2,tv_tl7_Q3,tv_tl7_Q4,tv_tl7_Q5,tv_tl7_Q6,tv_tl7_Q7;
     String ContactNo;
 
     @Override
@@ -29,19 +31,18 @@ public class ShowTool7Data extends AppCompatActivity {
 
         mDatabaseHeperRP = new DatabaseHelperRP(this);
 
-        tv_tl7_contact=(TextView)findViewById(R.id.pcontact);
-        tv_tl7_Q1=(TextView)findViewById(R.id.tv_DL_Q1);
-        tv_tl7_Q2=(TextView)findViewById(R.id.tv_DL_Q2);
-        tv_tl7_Q3=(TextView)findViewById(R.id.tv_DL_Q3);
-        tv_tl7_Q4=(TextView)findViewById(R.id.tv_DL_Q4);
-        tv_tl7_Q5=(TextView)findViewById(R.id.tv_DL_Q5);
-        tv_tl7_Q6=(TextView)findViewById(R.id.tv_DL_Q6);
-        tv_tl7_Q7=(TextView)findViewById(R.id.tv_DL_Q7);
-
+     //   tv_tl7_contact=(TextView)findViewById(R.id.pcontact);
+        tv_tl7_Q1=(EditText)findViewById(R.id.tv_DL_Q1);
+        tv_tl7_Q2=(EditText)findViewById(R.id.tv_DL_Q2);
+        tv_tl7_Q3=(EditText)findViewById(R.id.tv_DL_Q3);
+        tv_tl7_Q4=(EditText)findViewById(R.id.tv_DL_Q4);
+        tv_tl7_Q5=(EditText)findViewById(R.id.tv_DL_Q5);
+        tv_tl7_Q6=(EditText)findViewById(R.id.tv_DL_Q6);
+        tv_tl7_Q7=(EditText)findViewById(R.id.tv_DL_Q7);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Tool 7 Details");
-        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle("");
+     //   toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -54,7 +55,7 @@ public class ShowTool7Data extends AppCompatActivity {
 
         Intent intent = getIntent();
         ContactNo = intent.getStringExtra("ContactNo");
-        Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
+     //   Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
 
         viewAllTool7Data();
     }
@@ -67,7 +68,7 @@ public class ShowTool7Data extends AppCompatActivity {
 
         while (data.moveToNext()) {
 
-            tv_tl7_contact.setText(data.getString(0));
+           // tv_tl7_contact.setText(data.getString(0));
             tv_tl7_Q1.setText(data.getString(1));
             tv_tl7_Q2.setText(data.getString(2));
             tv_tl7_Q3.setText(data.getString(3));

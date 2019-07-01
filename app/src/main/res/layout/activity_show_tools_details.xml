@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/bgcompressed"
     tools:context=".ShowToolsDetails">
 
     <android.support.v7.widget.Toolbar
@@ -14,11 +15,22 @@
         android:theme="@style/ToolBar"
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Risk and Triage Screening for CVA target event"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="45dp"
+        android:textSize="15dp"
+        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+        android:textColor="@color/colorPrimaryDark" />
 
 
     <ScrollView
         android:orientation="vertical"
         android:layout_width="match_parent"
+        android:layout_below="@+id/toolbar"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -26,37 +38,34 @@
             android:layout_height="match_parent"
             android:padding="16dp"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tvHeading"
-                android:text="Risk and Triage Screening for CVA target event (rb)"
-                android:gravity="center"
-                android:theme="@style/TextViewHeading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <LinearLayout
+            <!--<RelativeLayout
                 android:id="@+id/linear_rt_contact"
                 android:orientation="horizontal"
-                android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
-                    android:text="Contact Sim:" />
-                <TextView
-                    android:id="@+id/pcontact"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:theme="@style/TextView"
-                    android:text="contact" />
+                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextView"
+                        android:text="Contact Sim:" />
+                    <TextView
+                        android:id="@+id/pcontact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:theme="@style/TextView"
+                        android:text="03362451199" />
+                </LinearLayout>
 
-            </LinearLayout>
-
+            </RelativeLayout>
+-->
             <LinearLayout
                 android:id="@+id/linear_rt_Q1"
                 android:orientation="vertical"
@@ -68,15 +77,28 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:text="@string/RiskAndTriageQ1" />
-                <TextView
+               <!-- <TextView
                     android:id="@+id/tv_rt_Q1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
                     android:text="@string/RiskAndTriageQ1" />
-
+-->
+                <EditText
+                    android:id="@+id/tv_rt_Q1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textColor="@android:color/white"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/answer"
+                    android:text="yes"/>
             </LinearLayout>
 
             <View
@@ -97,16 +119,28 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:text="@string/RiskAndTriageQ2" />
-                <TextView
+               <!-- <TextView
                     android:id="@+id/tv_rt_Q2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
                     android:text="@string/RiskAndTriageQ2" />
-
-
+-->
+                <EditText
+                    android:id="@+id/tv_rt_Q2"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:layout_marginTop="5dp"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/answer"
+                    android:text="yes"/>
             </LinearLayout>
 
             <View
@@ -126,14 +160,27 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:text="@string/RiskAndTriageQ3" />
-                <TextView
+                <!--<TextView
                     android:id="@+id/tv_rt_Q3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
-                    android:text="@string/RiskAndTriageQ3" />
+                    android:text="@string/RiskAndTriageQ3" />-->
+                <EditText
+                    android:id="@+id/tv_rt_Q3"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:layout_marginTop="5dp"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/answer"
+                    android:text="yes"/>
 
             </LinearLayout>
 
@@ -154,14 +201,28 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:text="@string/RiskAndTriageQ4" />
-                <TextView
+                <!--<TextView
                     android:id="@+id/tv_rt_Q4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
-                    android:text="@string/RiskAndTriageQ4" />
+                    android:textColor="@color/colorPrimary"
+                    android:text="@string/RiskAndTriageQ4" />-->
+                <EditText
+                    android:id="@+id/tv_rt_Q4"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:layout_marginTop="5dp"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/answer"
+                    android:text="yes"/>
 
             </LinearLayout>
 
@@ -182,15 +243,28 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:text="@string/RiskAndTriageQ5" />
 
-                <TextView
+               <!-- <TextView
                     android:id="@+id/tv_rt_Q5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
-                    android:text="@string/RiskAndTriageQ5" />
+                    android:text="@string/RiskAndTriageQ5" />-->
+                <EditText
+                    android:id="@+id/tv_rt_Q5"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:layout_marginTop="5dp"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/answer"
+                    android:text="yes"/>
             </LinearLayout>
 
             <View
@@ -210,14 +284,27 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:text="@string/RiskAndTriageQ6" />
-                <TextView
+                <!--<TextView
                     android:id="@+id/tv_rt_Q6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
-                    android:text="@string/RiskAndTriageQ6" />
+                    android:text="@string/RiskAndTriageQ6" />-->
+                <EditText
+                    android:id="@+id/tv_rt_Q6"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:layout_marginTop="5dp"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/answer"
+                    android:text="yes"/>
 
             </LinearLayout>
 
@@ -238,14 +325,27 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:text="@string/RiskAndTriageQ7" />
-                <TextView
+             <!--   <TextView
                     android:id="@+id/tv_rt_Q7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
-                    android:text="@string/RiskAndTriageQ7" />
+                    android:text="@string/RiskAndTriageQ7" />-->
+                <EditText
+                    android:id="@+id/tv_rt_Q7"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:layout_marginTop="5dp"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/answer"
+                    android:text="yes"/>
             </LinearLayout>
 
             <View
@@ -265,22 +365,34 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextViewHeading"
+                    android:theme="@style/TextView"
                     android:text="@string/RiskAndTriageQ8" />
-                <TextView
+              <!--  <TextView
                     android:id="@+id/tv_rt_Q8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/TextView"
-                    android:text="@string/RiskAndTriageQ8" />
-
+                    android:text="@string/RiskAndTriageQ8" />-->
+                <EditText
+                    android:id="@+id/tv_rt_Q8"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/EditText"
+                    android:layout_marginTop="5dp"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/answer"
+                    android:text="yes"/>
             </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 

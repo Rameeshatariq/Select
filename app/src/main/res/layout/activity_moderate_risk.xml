@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorPrimaryDark"
     tools:context=".ModerateRisk">
 
     <android.support.v7.widget.Toolbar
@@ -15,38 +16,46 @@
         android:background="?attr/colorPrimary"
         app:layout_scrollFlags="scroll|enterAlways"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Moderate Risk"
+        android:layout_marginTop="15dp"
+        android:textSize="15dp"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+        android:textColor="@color/colorPrimaryDark" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:padding="16dp"
+        android:layout_below="@+id/toolbar"
         android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/tvHeading"
-            android:text="Moderate Risk"
-            android:theme="@style/TextViewHeading"
-            android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:id="@+id/linear_MR_VE"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:background="@drawable/input_design"
             android:orientation="vertical"
             android:layout_below="@id/tvHeading">
             <TextView
                 android:id="@+id/tv_MR_vascularEvent"
                 android:text="Target Vascular Event"
-                android:theme="@style/TextView"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/tv_MR_VE_np"
-                android:theme="@style/TextView"
                 android:text="- Not Present"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -54,53 +63,63 @@
 
         <LinearLayout
             android:id="@+id/linear_MR_VR"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:background="@drawable/input_design"
             android:orientation="vertical"
             android:layout_below="@id/linear_MR_VE">
             <TextView
                 android:id="@+id/tv_MR_vascularRisk"
                 android:text="Target Vascular Risk"
                 android:theme="@style/TextViewHighlighted"
+                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/tv_MR_VR_diabetic"
-                android:theme="@style/TextView"
                 android:text="- Diabetic"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/tv_MR_VR_hyper"
-                android:theme="@style/TextView"
                 android:text="- Hypertensive"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linear_MR_other"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:background="@drawable/input_design"
             android:orientation="vertical"
             android:layout_below="@id/linear_MR_VR">
             <TextView
                 android:id="@+id/tv_MR_other"
                 android:text="Others/Optional"
-                android:theme="@style/TextView"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/tv_MR_other_IDRS"
-                android:theme="@style/TextView"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:text="- IDRS Modified >= 30"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/tv_MR_other_LS"
-                android:theme="@style/TextView"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:text="- Lifestyle Choices >=2/3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -108,8 +127,9 @@
                 android:id="@+id/tv_MR_other_risk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="- Risk (Diet, Activity, Smoking)"
-                android:theme="@style/TextView"/>
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="- Risk (Diet, Activity, Smoking)"/>
         </LinearLayout>
 
         <Button
@@ -119,9 +139,10 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="1dp"
+            android:layout_marginTop="20dp"
             android:text="Next"
             android:theme="@style/Button" />
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

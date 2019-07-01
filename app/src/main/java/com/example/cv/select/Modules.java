@@ -195,7 +195,7 @@ public class Modules extends AppCompatActivity {
         btn_tobaccoSmoking_SL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean check = mDatabaseHelper.columnExistsTool6b(ContactNo);
+                boolean check = mDatabaseHelper.columnExistsTool6a(ContactNo);
                 if (check == true) {
                     Toast.makeText(Modules.this, "The Patient Holding This Contact No has Already Completed Tool 6b", Toast.LENGTH_SHORT).show();
                 } else {

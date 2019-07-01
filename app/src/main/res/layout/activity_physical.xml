@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/bgcompressed"
     tools:context=".PhysicalActivity">
 
     <android.support.v7.widget.Toolbar
@@ -14,11 +15,21 @@
         android:theme="@style/ToolBar"
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Physical Activity"
+        android:layout_marginTop="15dp"
+        android:textSize="15dp"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+        android:textColor="@color/colorPrimaryDark" />
 
-
-        <ScrollView
+    <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
             android:orientation="vertical">
 
 
@@ -27,14 +38,6 @@
                 android:orientation="vertical"
                 android:padding="16dp"
                 android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/tvHeading"
-                    android:text="Physical Activity"
-                    android:layout_gravity="center"
-                    android:theme="@style/TextViewHeading"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
 
                 <LinearLayout
                     android:id="@+id/linear_PA_Q1"
@@ -48,7 +51,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:theme="@style/TextView"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="20dp"
                         android:text="@string/PhysicalActivityQ1" />
 
                     <RadioGroup
@@ -58,12 +61,14 @@
                         <RadioButton
                             android:id="@+id/rd_PA_Q1_no"
                             android:theme="@style/RadioButton"
+                            android:textColor="@android:color/white"
                             android:text="No Vigorous Exercise"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <RadioButton
                             android:id="@+id/rd_PA_Q1_yes"
                             android:theme="@style/RadioButton"
+                            android:textColor="@android:color/white"
                             android:text="Yes Vigorous Exercise"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -73,6 +78,7 @@
                         android:id="@+id/sp_PA_Q1"
                         android:text="Days/Weeks"
                         android:theme="@style/Spinner"
+                        android:textColor="@android:color/white"
                         android:entries="@array/PhysicalActivity"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content" />
@@ -103,6 +109,7 @@
                             android:id="@+id/ed_PA_Q2_hours"
                             android:theme="@style/EditText"
                             android:ems="3"
+                            android:textColor="@android:color/white"
                             android:inputType="number"
                             android:maxLength="2"
                             android:layout_width="wrap_content"
@@ -115,6 +122,7 @@
                         <EditText
                             android:id="@+id/ed_PA_Q2_days"
                             android:theme="@style/EditText"
+                            android:textColor="@android:color/white"
                             android:ems="3"
                             android:inputType="number"
                             android:maxLength="2"
@@ -130,6 +138,7 @@
                         android:id="@+id/ck_PA_Q2"
                         android:theme="@style/Checkbox"
                         android:text="Dont know"
+                        android:textColor="@android:color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -161,12 +170,14 @@
                             android:id="@+id/rd_PA_Q3_no"
                             android:theme="@style/RadioButton"
                             android:text="No Moderate Exercise"
+                            android:textColor="@android:color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <RadioButton
                             android:id="@+id/rd_PA_Q3_yes"
                             android:theme="@style/RadioButton"
                             android:text="Yes Moderate Exercise"
+                            android:textColor="@android:color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </RadioGroup>
@@ -174,6 +185,7 @@
                     <Spinner
                         android:id="@+id/sp_PA_Q3"
                         android:text="Days/Weeks"
+                        android:textColor="@android:color/white"
                         android:theme="@style/Spinner"
                         android:entries="@array/PhysicalActivity"
                         android:layout_width="200dp"
@@ -206,6 +218,7 @@
                             android:id="@+id/ed_PA_Q4_hours"
                             android:theme="@style/EditText"
                             android:ems="3"
+                            android:textColor="@android:color/white"
                             android:inputType="number"
                             android:maxLength="2"
                             android:layout_width="wrap_content"
@@ -219,6 +232,7 @@
                             android:id="@+id/ed_PA_Q4_days"
                             android:theme="@style/EditText"
                             android:ems="3"
+                            android:textColor="@android:color/white"
                             android:inputType="number"
                             android:maxLength="2"
                             android:layout_width="wrap_content"
@@ -233,6 +247,7 @@
                         android:id="@+id/ck_PA_Q4"
                         android:theme="@style/Checkbox"
                         android:text="Dont know"
+                        android:textColor="@android:color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -265,12 +280,14 @@
                             android:id="@+id/rd_PA_Q5_no"
                             android:theme="@style/RadioButton"
                             android:text="No Walk"
+                            android:textColor="@android:color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <RadioButton
                             android:id="@+id/rd_PA_Q5_yes"
                             android:theme="@style/RadioButton"
                             android:text="Yes Walk"
+                            android:textColor="@android:color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </RadioGroup>
@@ -279,6 +296,7 @@
                         android:id="@+id/sp_PA_Q5"
                         android:text="Days/Weeks"
                         android:theme="@style/Spinner"
+                        android:textColor="@android:color/white"
                         android:entries="@array/PhysicalActivity"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content" />
@@ -310,6 +328,7 @@
                             android:id="@+id/ed_PA_Q6_hours"
                             android:theme="@style/EditText"
                             android:ems="3"
+                            android:textColor="@android:color/white"
                             android:inputType="number"
                             android:maxLength="2"
                             android:layout_width="wrap_content"
@@ -323,6 +342,7 @@
                             android:id="@+id/ed_PA_Q6_days"
                             android:theme="@style/EditText"
                             android:ems="3"
+                            android:textColor="@android:color/white"
                             android:inputType="number"
                             android:maxLength="2"
                             android:layout_width="wrap_content"
@@ -337,6 +357,7 @@
                         android:id="@+id/ck_PA_Q6"
                         android:theme="@style/Checkbox"
                         android:text="Dont know"
+                        android:textColor="@android:color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -348,29 +369,30 @@
                     android:layout_height="30dp">
                 </View>
 
-
-                <Button
-                    android:id="@+id/btn_PA_saveExit"
-                    android:theme="@style/Button"
-                    android:text="Save And Exit"
-                    android:background="@drawable/rounded_button"
-                    android:layout_centerHorizontal="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp">
-                </View>
-
-                <Button
-                    android:id="@+id/btn_PA_submit"
-                    android:theme="@style/Button"
-                    android:text="Submit"
-                    android:background="@drawable/rounded_button"
-                    android:layout_centerHorizontal="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+                    <Button
+                        android:id="@+id/btn_PA_saveExit"
+                        android:theme="@style/Button"
+                        android:text="Save And Exit"
+                        android:background="@drawable/rounded_button"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content" />
+                    <Button
+                        android:id="@+id/btn_PA_submit"
+                        android:theme="@style/Button"
+                        android:text="Submit"
+                        android:layout_marginLeft="30dp"
+                        android:background="@drawable/rounded_button"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
 
             </LinearLayout>
         </ScrollView>
-</LinearLayout>
+</RelativeLayout>

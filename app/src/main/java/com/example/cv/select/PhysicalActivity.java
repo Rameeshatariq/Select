@@ -21,6 +21,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 public class PhysicalActivity extends AppCompatActivity {
+    private static final String TAG = "abc";
     private RadioGroup rd_PA_Q1, rd_PA_Q3, rd_PA_Q5;
     private RadioButton rd_PA_Q1_yes, rd_PA_Q1_no, rd_PA_Q3_yes, rd_PA_Q3_no, rd_PA_Q5_yes, rd_PA_Q5_no;
     RadioButton radiovalueQ1, radiovalueQ3, radiovalueQ5;
@@ -31,10 +32,13 @@ public class PhysicalActivity extends AppCompatActivity {
     CheckBox ck_PA_Q2, ck_PA_Q4, ck_PA_Q6;
     private DatabaseHelperRP databaseHelperRP;
     private Toolbar toolbar;
+    boolean isInserted;
     Button btn_PAsubmit,btn_PA_saveExit;
     String reqxStrHour, regxStrMin;
     String tool5_Q2_hours, tool5_Q2_mins, tool5_Q4_hours, tool5_Q4_mins, tool5_Q6_hours, tool5_Q6_mins,tool1,tool2,tool3;
     Context ctx = this;
+    float Q1weeks, Q2mins, Q3weeks, Q4mins, Q5weeks, Q6mins, formula1,formula2,formula3, total,Q2hours, Q2totalmins, Q4hours, Q6hours,Q4totalmins,Q6totalmins;
+    static String result;
     Lister ls;
 
 
@@ -43,12 +47,12 @@ public class PhysicalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_physical);
 
-        reqxStrHour="([01]\\d|2[0-3])$";
-        regxStrMin="([0-5]\\d)$";
+        reqxStrHour="([0-9]|1[0-9]|2[0-3])$";
+        regxStrMin="([0-9]|1[0-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9])$";
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Tool 5");
-        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle("");
+        //toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -194,9 +198,9 @@ public class PhysicalActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean isValidatedFlag = validateData();
                 if(isValidatedFlag == true) {
-                    String tool5 = "0";
+                    String tool5 = null;
                     databaseHelperRP.updateTool5Status(ContactNo, tool5);
-                    Toast.makeText(PhysicalActivity.this, "Tool5 is not Completed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PhysicalActivity.this, "Saving Answers", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -204,10 +208,16 @@ public class PhysicalActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean isValidatedFlag = validateData();
+                if (isInserted == true) {
+                  //  Toast.makeText(PhysicalActivity.this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
+
+                } else {
+                   // Toast.makeText(PhysicalActivity.this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
+                }
                 if (isValidatedFlag == true) {
                     String tool5 = "1";
                     databaseHelperRP.updateTool5Status(ContactNo, tool5);
-                    Toast.makeText(PhysicalActivity.this, "Tool5 Completed", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(PhysicalActivity.this, "Tool5 Completed", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -297,6 +307,31 @@ public class PhysicalActivity extends AppCompatActivity {
             radiovalueQ5 = (RadioButton) this.findViewById(rd_PA_Q5.getCheckedRadioButtonId());
             tool5_Q5 = radiovalueQ5.getText().toString();
         }
+       // sp_Q1 = sp_PA_Q1.getSelectedItem().toString();
+       // sp_Q3 = sp_PA_Q3.getSelectedItem().toString();
+       // sp_Q5 = sp_PA_Q5.getSelectedItem().toString();
+
+        if(rd_PA_Q1_yes.isChecked()==true) {
+            sp_Q1 = sp_PA_Q1.getSelectedItem().toString();
+        }
+        else{
+            sp_Q1 = "";
+        }
+        if(rd_PA_Q3_yes.isChecked()==true) {
+            sp_Q3 = sp_PA_Q3.getSelectedItem().toString();
+        }
+        else{
+            sp_Q3 = "";
+        }
+        if(rd_PA_Q5_yes.isChecked()==true){
+            sp_Q5 = sp_PA_Q5.getSelectedItem().toString();
+        }
+        else{
+            sp_Q5="";
+        }
+
+
+
 
         tool5_Q2_hours = et_PA_Q2_hours.getText().toString();
         tool5_Q2_mins = et_PA_Q2_mins.getText().toString();
@@ -306,10 +341,6 @@ public class PhysicalActivity extends AppCompatActivity {
 
         tool5_Q6_hours = et_PA_Q6_hours.getText().toString();
         tool5_Q6_mins = et_PA_Q6_mins.getText().toString();
-
-        sp_Q1 = sp_PA_Q1.getSelectedItem().toString();
-        sp_Q3 = sp_PA_Q3.getSelectedItem().toString();
-        sp_Q5 = sp_PA_Q5.getSelectedItem().toString();
 
         if (ck_PA_Q2.isChecked()) {
             tool5_Q2 = ck_PA_Q2.getText().toString();
@@ -334,7 +365,8 @@ public class PhysicalActivity extends AppCompatActivity {
             String[][] mData = ls.executeReader("Select *from tool5 where ContactSim  = '" + ContactNo + "'");
 
             if (mData != null) {
-                boolean mFlag = ls.executeNonQuery("Update tool5 set " +
+                formula();
+                isInserted = ls.executeNonQuery("Update tool5 set " +
                         "VigourousExercise = '" + tool5_Q1 + "', " +
                         "DaysOfVigourous = '" + sp_Q1 + "', " +
                         "HoursOfVigorous = '" + tool5_Q2_hours + "', " +
@@ -346,25 +378,19 @@ public class PhysicalActivity extends AppCompatActivity {
                         "Walk = '" + tool5_Q5 + "' , " +
                         "DaysOfWalk = '" + sp_Q5 + "' , " +
                         "HoursOfWalk = '" + tool5_Q6_hours + "' , " +
-                        "MinsOfWalk = '" + tool5_Q6_mins + "'  " +
+                        "MinsOfWalk = '" + tool5_Q6_mins + "' , " +
+                        "result = '" + result + "'  " +
                         " where ContactSim  = '" + ContactNo + "'");
-                if (mFlag == true) {
-                    Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
+                if (isInserted == true) {
+                   // Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Data Not Updated Successfully", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(this, "Data Not Updated Successfully", Toast.LENGTH_SHORT).show();
                 }
 
             } else {
-
-                boolean isInserted = databaseHelperRP.addTool5Data(ContactNo, tool5_Q1, sp_Q1, tool5_Q2_hours, tool5_Q2_mins, tool5_Q3, sp_Q3, tool5_Q4_hours, tool5_Q4_mins,
-                        tool5_Q5, sp_Q5, tool5_Q6_hours, tool5_Q6_mins);
-                if (isInserted == true) {
-                    Toast.makeText(this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
-
-                } else {
-                    Toast.makeText(this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
-
-                }
+                formula();
+                isInserted = databaseHelperRP.addTool5Data(ContactNo, tool5_Q1, sp_Q1, tool5_Q2_hours, tool5_Q2_mins, tool5_Q3, sp_Q3, tool5_Q4_hours, tool5_Q4_mins,
+                        tool5_Q5, sp_Q5, tool5_Q6_hours, tool5_Q6_mins,result);
             }
             finish();
         } catch (Exception e) {
@@ -444,7 +470,7 @@ public class PhysicalActivity extends AppCompatActivity {
                     sp_PA_Q1.setSelection(4);
                 } else if (mData[0][2].equalsIgnoreCase("6 days")) {
                     sp_PA_Q1.setSelection(5);
-                } else if (mData[0][2].equalsIgnoreCase("1 week")) {
+                } else if (mData[0][2].equalsIgnoreCase("7 days")) {
                     sp_PA_Q1.setSelection(6);
                 }
 
@@ -481,7 +507,7 @@ public class PhysicalActivity extends AppCompatActivity {
                 sp_PA_Q3.setSelection(4);
             } else if (mData[0][6].equalsIgnoreCase("6 days")) {
                 sp_PA_Q3.setSelection(5);
-            } else if (mData[0][6].equalsIgnoreCase("1 week")) {
+            } else if (mData[0][6].equalsIgnoreCase("7 days")) {
                 sp_PA_Q3.setSelection(6);
             }
 
@@ -522,7 +548,7 @@ public class PhysicalActivity extends AppCompatActivity {
             else if(mData[0][10].equalsIgnoreCase("6 days")){
                 sp_PA_Q5.setSelection(5);
             }
-            else if(mData[0][10].equalsIgnoreCase("1 week")){
+            else if(mData[0][10].equalsIgnoreCase("7 days")){
                 sp_PA_Q5.setSelection(6);
             }
 
@@ -543,5 +569,178 @@ public class PhysicalActivity extends AppCompatActivity {
             Log.d("111", e.getMessage());
 
         }
+    }
+    public String formula()
+    {
+        if(sp_Q1.equals("1 day")){
+            Q1weeks=Float.parseFloat("1");
+        }
+       else if(sp_Q1.equals("2 days")){
+            Q1weeks=Float.parseFloat("2");
+        }
+        else if(sp_Q1.equals("3 days")){
+            Q1weeks=Float.parseFloat("3");
+        }
+        else if(sp_Q1.equals("4 days")){
+            Q1weeks=Float.parseFloat("4");
+        }
+        else if(sp_Q1.equals("5 days")){
+            Q1weeks=Float.parseFloat("5");
+        }
+        else if(sp_Q1.equals("6 days")){
+            Q1weeks=Float.parseFloat("6");
+        }
+        else if(sp_Q1.equals("7 days")){
+            Q1weeks=Float.parseFloat("7");
+        }
+        else{
+            Q1weeks=Float.parseFloat("0");
+        }
+
+
+        if(sp_Q3.equals("1 day")){
+            Q3weeks=Float.parseFloat("1");
+        }
+      else  if(sp_Q3.equals("2 days")){
+            Q3weeks=Float.parseFloat("2");
+        }
+        else if(sp_Q3.equals("3 days")){
+            Q3weeks=Float.parseFloat("3");
+        }
+        else if(sp_Q3.equals("4 days")){
+            Q3weeks=Float.parseFloat("4");
+        }
+        else if(sp_Q3.equals("5 days")){
+            Q3weeks=Float.parseFloat("5");
+        }
+        else if(sp_Q3.equals("6 days")){
+            Q3weeks=Float.parseFloat("6");
+        }
+       else if(sp_Q3.equals("7 days")){
+            Q3weeks=Float.parseFloat("7");
+        }
+        else {
+            Q3weeks=Float.parseFloat("0");
+        }
+
+        if(sp_Q5.equals("1 day")){
+            Q5weeks=Float.parseFloat("1");
+        }
+       else if(sp_Q5.equals("2 days")){
+            Q5weeks=Float.parseFloat("2");
+        }
+        else if(sp_Q5.equals("3 days")){
+            Q5weeks=Float.parseFloat("3");
+        }
+        else if(sp_Q5.equals("4 days")){
+            Q5weeks=Float.parseFloat("4");
+        }
+        else if(sp_Q5.equals("5 days")){
+            Q5weeks=Float.parseFloat("5");
+        }
+        else if(sp_Q5.equals("6 days")){
+            Q5weeks=Float.parseFloat("6");
+        }
+        else if(sp_Q5.equals("7 days")){
+            Q5weeks=Float.parseFloat("7");
+        }
+        else{
+            Q5weeks=Float.parseFloat("0");
+        }
+
+
+        if(tool5_Q2_mins.equals("Dont know")){
+            Q2mins=Float.parseFloat("1");
+        }
+        else if(tool5_Q2_mins.length() == 0){
+            Q2mins=Float.parseFloat("0");
+        }
+        else{
+            Q2mins=Float.parseFloat(tool5_Q2_mins);
+        }
+        if(tool5_Q2_hours.equals("Dont know")){
+            Q2hours=Float.parseFloat("0");
+        }
+        else if(tool5_Q2_hours.length() == 0){
+            Q2hours=Float.parseFloat("0");
+        }
+        else{
+            Q2hours=Float.parseFloat(tool5_Q2_hours);
+        }
+        Q2totalmins=Q2mins+(Q2hours * 60);
+
+        if(tool5_Q4_mins.equals("Dont know")){
+            Q4mins=Float.parseFloat("1");
+        }
+        else if(tool5_Q4_mins.length() == 0){
+            Q4mins=Float.parseFloat("0");
+        }
+        else{
+            Q4mins=Float.parseFloat(tool5_Q4_mins);
+        }
+        if(tool5_Q4_hours.equals("Dont know")){
+            Q4hours=Float.parseFloat("0");
+        }
+        else if(tool5_Q4_hours.length() == 0){
+            Q4hours=Float.parseFloat("0");
+        }
+        else{
+            Q4hours=Float.parseFloat(tool5_Q4_hours);
+        }
+        Q4totalmins=Q4mins+(Q4hours * 60);
+
+
+        if(tool5_Q6_mins.equals("Dont know")){
+            Q6mins=Float.parseFloat("1");
+        }
+        else if(tool5_Q6_mins.length() == 0){
+            Q6mins=Float.parseFloat("0");
+        }
+        else {
+            Q6mins=Float.parseFloat(tool5_Q6_mins);
+        }
+        if(tool5_Q6_hours.equals("Dont know")){
+            Q6hours=Float.parseFloat("0");
+        }
+        else if(tool5_Q6_hours.length() == 0){
+            Q6hours=Float.parseFloat("0");
+        }
+        else{
+            Q6hours=Float.parseFloat(tool5_Q6_hours);
+        }
+        Q6totalmins=Q6mins+(Q6hours * 60);
+
+
+        //   Q2mins=Float.parseFloat(tool5_Q2_mins);
+        formula1= 8* Q1weeks * Q2totalmins;
+
+        // Q4mins=Float.parseFloat(tool5_Q4_mins);
+        formula2= 4* Q3weeks * Q4totalmins;
+
+        //      Q6mins=Float.parseFloat(tool5_Q6_mins);
+        formula3= (float) (3.3* Q5weeks * Q6totalmins);
+
+        total= formula1 + formula2 + formula3;
+       // Toast.makeText(ctx, ""+total, Toast.LENGTH_SHORT).show();
+
+        if(total >= 3000){
+            result="High Activity";
+        //    Toast.makeText(this, ""+result, Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "formulaH: "+result);
+
+        }
+        else if(total >= 600){
+            result="Moderate Activity";
+        //    Toast.makeText(this, ""+result, Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "formulaM: "+result);
+        }
+        else{
+            result ="Low Activity";
+          //  Toast.makeText(this, ""+result, Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "formulaL: "+result);
+        }
+        //Toast.makeText(this, ""+result, Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "formula: "+result);
+        return result;
     }
 }

@@ -24,6 +24,7 @@ public class TobbaccoSmokingSL extends AppCompatActivity {
     private RadioGroup rd_TS_SL_Q1, rd_TS_SL_Q2;
     private Button btn_TS_SL_submit, btn_TS_SL_saveExit;
     Context ctx = this;
+    boolean isInserted;
     Lister ls;
 
     @Override
@@ -36,11 +37,11 @@ public class TobbaccoSmokingSL extends AppCompatActivity {
         tool1 = intent.getStringExtra("tool1");
         tool2 = intent.getStringExtra("tool2");
         tool3 = intent.getStringExtra("tool3");
-        Toast.makeText(this, "" + ContactNo, Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, "" + ContactNo, Toast.LENGTH_SHORT).show();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Tobacco Smoking SL");
-        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle("");
+       // toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -75,10 +76,10 @@ public class TobbaccoSmokingSL extends AppCompatActivity {
         btn_TS_SL_saveExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addTool6bData();
-                String tool6b = "0";
-                mDatabaseHelper.updateTool6bStatus(ContactNo, tool6b);
-                Toast.makeText(TobbaccoSmokingSL.this, "Tool6b is not Completed", Toast.LENGTH_SHORT).show();
+           //     addTool6bData();
+                String tool6b = null;
+             //   mDatabaseHelper.updateTool6bStatus(ContactNo, tool6b);
+                Toast.makeText(TobbaccoSmokingSL.this, "Saving Answers", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -86,10 +87,15 @@ public class TobbaccoSmokingSL extends AppCompatActivity {
         btn_TS_SL_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addTool6bData();
+             //   addTool6bData();
+                if (isInserted == true) {
+                    Toast.makeText(TobbaccoSmokingSL.this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(TobbaccoSmokingSL.this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
+                }
                 String tool6b = "1";
-                mDatabaseHelper.updateTool6bStatus(ContactNo, tool6b);
-                Toast.makeText(TobbaccoSmokingSL.this, "Tool6b Completed", Toast.LENGTH_SHORT).show();
+             //   mDatabaseHelper.updateTool6bStatus(ContactNo, tool6b);
+              //  Toast.makeText(TobbaccoSmokingSL.this, "Tool6b Completed", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -129,23 +135,18 @@ public class TobbaccoSmokingSL extends AppCompatActivity {
             String[][] mData = ls.executeReader("Select *from tool6b where ContactSim  = '" + ContactNo + "'");
 
             if (mData != null) {
-                boolean mFlag = ls.executeNonQuery("Update tool6b set " +
+                isInserted = ls.executeNonQuery("Update tool6b set " +
                         "tool6b_Q1 = '" + tool6b_Q1 + "', " +
                         "tool6b_Q2 = '" + tool6b_Q2 + "' " +
                         " where ContactSim  = '" + ContactNo + "'");
-                if (mFlag == true) {
-                    Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
+                if (isInserted == true) {
+                  //  Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Data Not Updated Successfully", Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(this, "Data Not Updated Successfully", Toast.LENGTH_SHORT).show();
                 }
 
             } else {
-                boolean isInserted = mDatabaseHelper.addTool6bData(ContactNo, tool6b_Q1, tool6b_Q2);
-                if (isInserted == true) {
-                    Toast.makeText(this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
-                }
+               // isInserted = mDatabaseHelper.addTool6bData(ContactNo, tool6b_Q1, tool6b_Q2);
             }
             finish();
         } catch (Exception e) {

@@ -18,12 +18,13 @@ import android.widget.Toast;
 public class TobbaccoSmoking extends AppCompatActivity {
 
     private DatabaseHelperRP mDatabaseHelper;
-    private RadioButton radiovalueQ1, radiovalueQ2;
+    private RadioButton radiovalueQ1, radiovalueQ2, radiovalueQ3, radiovalueQ4;
     private Toolbar toolbar;
-    private String ContactNo, tool6a_Q1, tool6a_Q2, tool1, tool2, tool3;
-    private RadioGroup rd_TS_Q1, rd_TS_Q2;
+    private String ContactNo, tool6a_Q1, tool6a_Q2, tool6b_Q1, tool6b_Q2, tool1, tool2, tool3;
+    private RadioGroup rd_TS_Q1, rd_TS_Q2, rd_TS_SL_Q1, rd_TS_SL_Q2;
     private Button btn_TS_submit, btn_TS_saveExit;
     Context ctx = this;
+    boolean isInserted;
     Lister ls;
 
     @Override
@@ -32,8 +33,8 @@ public class TobbaccoSmoking extends AppCompatActivity {
         setContentView(R.layout.activity_tobbacco_smoking);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Tobacco Smoking");
-        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle("");
+        //toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -48,13 +49,15 @@ public class TobbaccoSmoking extends AppCompatActivity {
         tool1 = intent.getStringExtra("tool1");
         tool2 = intent.getStringExtra("tool2");
         tool3 = intent.getStringExtra("tool3");
-        Toast.makeText(this, "" + ContactNo, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "" + ContactNo, Toast.LENGTH_SHORT).show();
 
         mDatabaseHelper = new DatabaseHelperRP(this);
         ls = new Lister(ctx);
 
         rd_TS_Q1 = (RadioGroup) findViewById(R.id.rd_TS_Q1);
         rd_TS_Q2 = (RadioGroup) findViewById(R.id.rd_TS_Q2);
+        rd_TS_SL_Q1 = (RadioGroup) findViewById(R.id.rd_TS_SL_Q1);
+        rd_TS_SL_Q2 = (RadioGroup) findViewById(R.id.rd_TS_SL_Q2);
 
         btn_TS_submit = (Button) findViewById(R.id.btn_TS_submit);
         btn_TS_submit.setVisibility(View.GONE);
@@ -76,9 +79,9 @@ public class TobbaccoSmoking extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addTool6aData();
-                String tool6a = "0";
+                String tool6a = null;
                 mDatabaseHelper.updateTool6aStatus(ContactNo, tool6a);
-                Toast.makeText(TobbaccoSmoking.this, "Tool6a Completed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TobbaccoSmoking.this, "Saving Answers", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -87,9 +90,14 @@ public class TobbaccoSmoking extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addTool6aData();
+                if (isInserted == true) {
+              //      Toast.makeText(TobbaccoSmoking.this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                //    Toast.makeText(TobbaccoSmoking.this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
+                }
                 String tool6a = "1";
                 mDatabaseHelper.updateTool6aStatus(ContactNo, tool6a);
-                Toast.makeText(TobbaccoSmoking.this, "Tool6a Completed", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(TobbaccoSmoking.this, "Tool6a Completed", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -109,6 +117,22 @@ public class TobbaccoSmoking extends AppCompatActivity {
                 }
             }
         });
+        rd_TS_SL_Q1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (rd_TS_SL_Q1.getCheckedRadioButtonId() != -1 && rd_TS_SL_Q2.getCheckedRadioButtonId() != -1) {
+                    btn_TS_submit.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        rd_TS_SL_Q2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (rd_TS_SL_Q1.getCheckedRadioButtonId() != -1 && rd_TS_SL_Q2.getCheckedRadioButtonId() != -1) {
+                    btn_TS_submit.setVisibility(View.VISIBLE);
+                }
+            }
+        });
     }
 
 
@@ -122,6 +146,15 @@ public class TobbaccoSmoking extends AppCompatActivity {
             radiovalueQ2 = (RadioButton) this.findViewById(rd_TS_Q2.getCheckedRadioButtonId());
             tool6a_Q2 = radiovalueQ2.getText().toString();
         }
+        if (rd_TS_SL_Q1.getCheckedRadioButtonId() != -1) {
+            radiovalueQ3 = (RadioButton) this.findViewById(rd_TS_SL_Q1.getCheckedRadioButtonId());
+            tool6b_Q1 = radiovalueQ3.getText().toString();
+        }
+
+        if (rd_TS_SL_Q2.getCheckedRadioButtonId() != -1) {
+            radiovalueQ4 = (RadioButton) this.findViewById(rd_TS_SL_Q2.getCheckedRadioButtonId());
+            tool6b_Q2 = radiovalueQ4.getText().toString();
+        }
 
         try {
             Log.d("000333", "save and exit");
@@ -129,24 +162,20 @@ public class TobbaccoSmoking extends AppCompatActivity {
             String[][] mData = ls.executeReader("Select *from tool6a where ContactSim  = '" + ContactNo + "'");
 
             if (mData != null) {
-                boolean mFlag = ls.executeNonQuery("Update tool6a set " +
+                isInserted = ls.executeNonQuery("Update tool6a set " +
                         "tool6a_Q1 = '" + tool6a_Q1 + "', " +
-                        "tool6a_Q2 = '" + tool6a_Q2 + "' " +
+                        "tool6a_Q2 = '" + tool6a_Q2 + "', " +
+                        "tool6a_Q3 = '" + tool6b_Q1 + "', " +
+                        "tool6a_Q4 = '" + tool6b_Q2 + "' " +
                         " where ContactSim  = '" + ContactNo + "'");
-                if (mFlag == true) {
-                    Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
+                if (isInserted == true) {
+                 //   Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Data Not Updated Successfully", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(this, "Data Not Updated Successfully", Toast.LENGTH_SHORT).show();
                 }
 
             } else {
-                boolean isInserted = mDatabaseHelper.addTool6aData(ContactNo, tool6a_Q1, tool6a_Q2);
-                if (isInserted == true) {
-                    Toast.makeText(this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
-
-                }
+                isInserted = mDatabaseHelper.addTool6aData(ContactNo, tool6a_Q1, tool6a_Q2, tool6b_Q1,tool6b_Q2);
             }
             finish();
         } catch (Exception e) {
@@ -234,6 +263,38 @@ public class TobbaccoSmoking extends AppCompatActivity {
                 }
                 if(mData[0][2].equalsIgnoreCase("Refused")){
                     rd_TS_Q2.check(R.id.rd_TS_Q2_refused);
+                }
+
+                if (mData[0][3].equalsIgnoreCase("Daily")) {
+                    rd_TS_SL_Q1.check(R.id.rd_TS_SL_Q1_daily);
+                }
+                if(mData[0][3].equalsIgnoreCase("Less than Daily")){
+                    rd_TS_SL_Q1.check(R.id.rd_TS_SL_Q1_less);
+                }
+                if(mData[0][3].equalsIgnoreCase("Not At All")){
+                    rd_TS_SL_Q1.check(R.id.rd_TS_SL_Q1_not);
+                }
+                if(mData[0][3].equalsIgnoreCase("Dont Know")){
+                    rd_TS_SL_Q1.check(R.id.rd_TS_SL_Q1_dntknw);
+                }
+                if(mData[0][3].equalsIgnoreCase("Refused")){
+                    rd_TS_SL_Q1.check(R.id.rd_TS_SL_Q1_refused);
+                }
+
+                if (mData[0][4].equalsIgnoreCase("Daily")) {
+                    rd_TS_SL_Q2.check(R.id.rd_TS_SL_Q2_daily);
+                }
+                if(mData[0][4].equalsIgnoreCase("Less than Daily")){
+                    rd_TS_SL_Q2.check(R.id.rd_TS_SL_Q2_less);
+                }
+                if(mData[0][4].equalsIgnoreCase("Not At All")){
+                    rd_TS_SL_Q2.check(R.id.rd_TS_SL_Q2_not);
+                }
+                if(mData[0][4].equalsIgnoreCase("Dont Know")){
+                    rd_TS_SL_Q2.check(R.id.rd_TS_SL_Q2_dntknw);
+                }
+                if(mData[0][4].equalsIgnoreCase("Refused")){
+                    rd_TS_SL_Q2.check(R.id.rd_TS_SL_Q2_refused);
                 }
             } else {
 

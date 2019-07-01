@@ -32,8 +32,8 @@
     <string name="TobbaccoSmokingQ1">1. Do you currently smoke tobacco on daily basis, less than daily, or not at all?</string>
     <string name="TobbaccoSmokingQ2">2. In the ‘past’, have you smoked tobacco on daily basis, less than daily, or not at all?</string>
 
-    <string name="TobbaccoSmokingSLQ1">1. Do you currently smoke tobacco on daily basis, less than daily, or not at all?</string>
-    <string name="TobbaccoSmokingSLQ2">2. In the past have you used smokeless tobacco on daily basis, less than daily ,or not at all?</string>
+    <string name="TobbaccoSmokingSLQ1">3. Do you currently smoke smokeless tobacco on daily basis, less than daily, or not at all?</string>
+    <string name="TobbaccoSmokingSLQ2">4. In the past have you used smokeless tobacco on daily basis, less than daily ,or not at all?</string>
 
     <string name="DietLifestyleQ1">1. Do you cook in ghee?</string>
     <string name="DietLifestyleQ2">2. Do you add salt at the table while consuming food?</string>
@@ -74,7 +74,7 @@
         <item>4 days</item>
         <item>5 days</item>
         <item>6 days</item>
-        <item>1 week</item>
+        <item>7 days</item>
     </string-array>
 
 

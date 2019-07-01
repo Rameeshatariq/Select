@@ -31,6 +31,7 @@ public class RiskAndTriageMI extends AppCompatActivity {
     private Button submit_RTMI, btn_rtMI_saveExit;
     private DatabaseHelperRP mDatabaseHelper;
     Context ctx = this;
+    boolean isInserted;
     Lister ls;
 
     @Override
@@ -48,8 +49,8 @@ public class RiskAndTriageMI extends AppCompatActivity {
 
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Tool 2");
-        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle("");
+      //  toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -59,7 +60,7 @@ public class RiskAndTriageMI extends AppCompatActivity {
             }
         });
 
-        Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
 
         rd_tl1b_Q1_yes = (RadioButton) findViewById(R.id.rd_rtMI_Q1_yes);
         rd_tl1b_Q1_no = (RadioButton) findViewById(R.id.rd_rtMI_Q1_no);
@@ -98,10 +99,10 @@ public class RiskAndTriageMI extends AppCompatActivity {
             public void onClick(View v) {
                 checkData();
                 addTool1bData();
-                String tool2="0";
+                String tool2=null;
                 String tool2Result=Angina + ", " + AnginaorMyocardialInfarction + ", " + MyocardialInfarction;
                 mDatabaseHelper.updateTool2Status(ContactNo,tool2);
-                Toast.makeText(RiskAndTriageMI.this, "Tool2 is not Completed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RiskAndTriageMI.this, "Saving Answers", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -112,10 +113,16 @@ public class RiskAndTriageMI extends AppCompatActivity {
             public void onClick(View v) {
                 checkData();
                 addTool1bData();
+                if (isInserted == true) {
+                //    Toast.makeText(ctx, "Result Tool 2:"+result, Toast.LENGTH_SHORT).show();
+                //    Toast.makeText(RiskAndTriageMI.this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                  //  Toast.makeText(RiskAndTriageMI.this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
+                }
                 String tool2="1";
                 String tool2Result=Angina + ", " + AnginaorMyocardialInfarction + ", " + MyocardialInfarction;
                 mDatabaseHelper.updateTool2Status(ContactNo,tool2);
-                Toast.makeText(RiskAndTriageMI.this, "Tool2 Completed", Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(RiskAndTriageMI.this, "Tool2 Completed", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -155,16 +162,30 @@ public class RiskAndTriageMI extends AppCompatActivity {
 
     private void checkData() {
         if (rd_tl1b_Q1_yes.isChecked() == true) {
-            Angina="Angina";
-        } if (rd_tl1b_Q2_yes.isChecked() == true) {
-            AnginaorMyocardialInfarction="Angina or Myocardial Infarction";
-        } if (rd_tl1b_Q3_yes.isChecked() == true) {
-            MyocardialInfarction="Myocardial Infarction";
+            Angina="Angina is Present";
+            result="MI present";
         }
-
-        result= Angina + ", " +AnginaorMyocardialInfarction + ", " +MyocardialInfarction;
-        Toast.makeText(ctx, "Result Tool 2:"+result, Toast.LENGTH_SHORT).show();
-    }
+        else {
+            Angina="Angina not Present";
+            result="MI not present";
+        }
+        if (rd_tl1b_Q2_yes.isChecked() == true) {
+                AnginaorMyocardialInfarction="Angina or Myocardial Infarction is present";
+            result="MI present";
+        }
+        else{
+            AnginaorMyocardialInfarction="Angina or Myocardial Infarction not Present";
+            result="MI not present";
+        }
+         if (rd_tl1b_Q3_yes.isChecked() == true) {
+            MyocardialInfarction="Myocardial Infarction is present";
+             result="MI present";
+         }
+        else{
+             MyocardialInfarction="Myocardial Infarction not Present";
+             result="MI not present";
+         }
+         }
 
     private void addTool1bData() {
         if (rd_tl1b_Q1.getCheckedRadioButtonId() != -1) {
@@ -189,27 +210,23 @@ public class RiskAndTriageMI extends AppCompatActivity {
 
             if (mData != null) {
 
-                Toast.makeText(ctx, "Updating Tool2 Data", Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(ctx, "Updating Tool2 Data", Toast.LENGTH_SHORT).show();
 
-                boolean mFlag = ls.executeNonQuery("Update tool2 set " +
+                isInserted = ls.executeNonQuery("Update tool2 set " +
                         "tool2_Q1 = '" + tool1bQ1 + "', " +
                         "tool2_Q2 = '" + tool1bQ2 + "', " +
-                        "tool2_Q3 = '" + tool1bQ3 + "' " +
+                        "tool2_Q3 = '" + tool1bQ3 + "', " +
+                        "result = '" + result + "' " +
                         " where ContactSim  = '" + ContactNo + "'");
-                if (mFlag == true) {
-                    Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
+                if (isInserted == true) {
                 } else {
-                    Toast.makeText(this, "Data Not Updated Successfully", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(this, "Data Not Updated Successfully", Toast.LENGTH_SHORT).show();
                 }
             }
             else {
 
-                boolean isInserted = mDatabaseHelper.addTool2Data(ContactNo, tool1bQ1, tool1bQ2, tool1bQ3);
-                if (isInserted == true) {
-                    Toast.makeText(this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
-                }
+                    isInserted = mDatabaseHelper.addTool2Data(ContactNo, tool1bQ1, tool1bQ2, tool1bQ3, result);
+
             }
             finish();
         }

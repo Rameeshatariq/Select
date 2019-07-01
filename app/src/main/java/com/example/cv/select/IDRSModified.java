@@ -2,6 +2,7 @@ package com.example.cv.select;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +24,11 @@ public class IDRSModified extends AppCompatActivity {
     private Toolbar toolbar;
     private Button btn_IDRS_submit, btn_IDRS_saveExit;
     Context ctx = this;
+    boolean isInserted;
+    private String familyHistory, physicalActivityscore, ageScore;
+    private String physicalActivity, age;
+    public static float score;
+    float FHscore, PHscore, AgeScore;
     Lister ls;
 
 
@@ -33,8 +39,8 @@ public class IDRSModified extends AppCompatActivity {
         setContentView(R.layout.activity_idrsmodified);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Tool 4");
-        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle("");
+       // toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -49,7 +55,7 @@ public class IDRSModified extends AppCompatActivity {
         tool1=intent.getStringExtra("tool1");
         tool2=intent.getStringExtra("tool2");
         tool3=intent.getStringExtra("tool3");
-        Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
 
         mDatabaseHelper=new DatabaseHelperRP(this);
         ls = new Lister(ctx);
@@ -62,9 +68,9 @@ public class IDRSModified extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addTool4Data();
-                String tool4="0";
+                String tool4=null;
                 mDatabaseHelper.updateTool4Status(ContactNo,tool4);
-                Toast.makeText(IDRSModified.this, "Tool4 is not Completed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(IDRSModified.this, "Saving Answers", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -74,9 +80,14 @@ public class IDRSModified extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addTool4Data();
+                if (isInserted == true) {
+              //      Toast.makeText(IDRSModified.this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                //    Toast.makeText(IDRSModified.this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
+                }
                 String tool4="1";
                 mDatabaseHelper.updateTool4Status(ContactNo,tool4);
-                Toast.makeText(IDRSModified.this, "Tool4 Completed", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(IDRSModified.this, "Tool4 Completed", Toast.LENGTH_SHORT).show();
                finish();
             }
         });
@@ -108,6 +119,7 @@ public class IDRSModified extends AppCompatActivity {
             radiovalueQ1 = (RadioButton) this.findViewById(rd_IDRS_Q1.getCheckedRadioButtonId());
             tool4_Q1 = radiovalueQ1.getText().toString();
         }
+        formula();
 
         try {
             Log.d("000333", "save and exit");
@@ -115,24 +127,19 @@ public class IDRSModified extends AppCompatActivity {
             String[][] mData = ls.executeReader("Select *from tool4 where ContactSim  = '" + ContactNo + "'");
 
             if (mData != null) {
-                boolean mFlag = ls.executeNonQuery("Update tool4 set " +
-                        "tool4_Q1 = '" + tool4_Q1 + "' " +
+                isInserted = ls.executeNonQuery("Update tool4 set " +
+                        "tool4_Q1 = '" + tool4_Q1 + "' , " +
+                        "result = '" + score + "'  " +
                         " where ContactSim  = '" + ContactNo + "'");
 
-                if (mFlag == true) {
-                    Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
+                if (isInserted == true) {
+                   // Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Data Not Updated Successfully", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this, "Data Not Updated Successfully", Toast.LENGTH_SHORT).show();
                 }
             } else {
 
-                boolean isInserted = mDatabaseHelper.addTool4Data(ContactNo, tool4_Q1);
-                if (isInserted == true) {
-                    Toast.makeText(this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
-
-                }
+                isInserted = mDatabaseHelper.addTool4Data(ContactNo, tool4_Q1,score);
             }
             finish();
         }catch (Exception e){
@@ -198,5 +205,61 @@ public class IDRSModified extends AppCompatActivity {
             Log.d("111", e.getMessage());
 
         }
+    }
+
+    public float formula(){
+        if(tool4_Q1.equals("None")){
+           familyHistory ="0";
+        }
+        else if(tool4_Q1.equals("Either Parents")){
+            familyHistory="10";
+        }
+        else if(tool4_Q1.equals("Both Parents")){
+            familyHistory="20";
+        }
+
+        Cursor physicalActivityScore = mDatabaseHelper.getPartiTool5Data(ContactNo);
+        if (physicalActivityScore.getCount() == 0) {
+            return 0;
+        }
+
+        while (physicalActivityScore.moveToNext()) {
+          physicalActivity = physicalActivityScore.getString(13);
+        }
+        if(physicalActivity.equals("High Activity")){
+            physicalActivityscore="0";
+        }
+        else if(physicalActivity.equals("Moderate Activity")){
+            physicalActivityscore="20";
+        }
+        else if(physicalActivity.equals("Low Activity")){
+            physicalActivityscore="30";
+        }
+
+        Cursor partiAge = mDatabaseHelper.getPartiData(ContactNo);
+        if (partiAge.getCount() == 0) {
+            return 0;
+        }
+
+        while (partiAge.moveToNext()) {
+          age = partiAge.getString(3);
+        }
+
+        if (Integer.parseInt(age) < 35){
+            ageScore="0";
+        }
+        else if(Integer.parseInt(age) >= 35 || Integer.parseInt(age) <= 49){
+            ageScore="20";
+        }
+        else if(Integer.parseInt(age) >= 50){
+            ageScore="30";
+        }
+
+        FHscore=Float.parseFloat(familyHistory);
+        PHscore=Float.parseFloat(physicalActivityscore);
+        AgeScore=Float.parseFloat(ageScore);
+
+        score=FHscore+PHscore+AgeScore;
+        return score;
     }
 }

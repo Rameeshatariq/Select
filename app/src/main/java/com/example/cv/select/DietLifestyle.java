@@ -29,6 +29,7 @@ public class DietLifestyle extends AppCompatActivity {
     DatabaseHelperRP mDatabaseHelper;
     Context ctx = this;
     static String result;
+    boolean isInserted;
     Lister ls;
 
     @Override
@@ -40,8 +41,8 @@ public class DietLifestyle extends AppCompatActivity {
         ls = new Lister(ctx);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Tool 7");
-        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle("");
+        //toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -73,7 +74,7 @@ public class DietLifestyle extends AppCompatActivity {
         sp_tl7_Q6 = (Spinner) findViewById(R.id.sp_DL_Q6);
         sp_tl7_Q7 = (Spinner) findViewById(R.id.sp_DL_Q7);
 
-        btn_next = (Button) findViewById(R.id.btn_next);
+     //   btn_next = (Button) findViewById(R.id.btn_next);
 
         btn_submit_DL = (Button) findViewById(R.id.btn_DL_submit);
         btn_submit_DL.setVisibility(View.GONE);
@@ -84,10 +85,10 @@ public class DietLifestyle extends AppCompatActivity {
             public void onClick(View v) {
                 checkData();
                 addtool7Data();
-                String tool7 = "0";
+                String tool7 = null;
                 String tool7Result = Q1 + ", " + Q2 + ", " + Q3 + ", " + Q4 + ", " + Q5 + ", " + Q6 + ", " + Q7;
                 mDatabaseHelper.updateTool7Status(ContactNo, tool7);
-                Toast.makeText(DietLifestyle.this, "Tool7 is not Completed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DietLifestyle.this, "Saving Answers", Toast.LENGTH_SHORT).show();
                finish();
             }
         });
@@ -107,22 +108,28 @@ public class DietLifestyle extends AppCompatActivity {
         }catch (Exception e){
         }
 
-        btn_next.setOnClickListener(new View.OnClickListener() {
+       /* btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DietLifestyle.this, HighRisk.class);
                 startActivity(intent);
             }
-        });
+        });*/
         btn_submit_DL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 checkData();
                 addtool7Data();
+                if (isInserted == true) {
+                //    Toast.makeText(ctx, "Result Tool 7:"+result, Toast.LENGTH_SHORT).show();
+                 //   Toast.makeText(DietLifestyle.this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                   // Toast.makeText(DietLifestyle.this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
+                }
                 String tool7 = "1";
                 String tool7Result = Q1 + ", " + Q2 + ", " + Q3 + ", " + Q4 + ", " + Q5 + ", " + Q6 + ", " + Q7;
                 mDatabaseHelper.updateTool7Status(ContactNo, tool7);
-                Toast.makeText(DietLifestyle.this, "Tool7 Completed", Toast.LENGTH_SHORT).show();
+            //    Toast.makeText(DietLifestyle.this, "Tool7 Completed", Toast.LENGTH_SHORT).show();
              finish();
             }
         });
@@ -246,29 +253,25 @@ public class DietLifestyle extends AppCompatActivity {
             String[][] mData = ls.executeReader("Select *from tool7 where ContactSim  = '" + ContactNo + "'");
 
             if (mData != null) {
-                boolean mFlag = ls.executeNonQuery("Update tool7 set " +
+                isInserted = ls.executeNonQuery("Update tool7 set " +
                         "tool7_Q1 = '" + tl7_Q1 + "', " +
                         "tool7_Q2 = '" + tl7_Q2 + "', " +
                         "tool7_Q3 = '" + tl7_Q3 + "', " +
                         "tool7_Q4 = '" + tl7_Q4 + "', " +
                         "tool7_Q5 = '" + tl7_Q5 + "', " +
                         "tool7_Q6 = '" + tl7_Q6 + "', " +
-                        "tool7_Q7 = '" + tl7_Q7 + "' " +
+                        "tool7_Q7 = '" + tl7_Q7 + "', " +
+                        "result = '" + result + "' " +
                         " where ContactSim  = '" + ContactNo + "'");
-                if (mFlag == true) {
-                    Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
+                if (isInserted == true) {
+                  //  Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Data Not Updated Successfully", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(this, "Data Not Updated Successfully", Toast.LENGTH_SHORT).show();
                 }
 
             } else {
 
-                boolean isInserted = mDatabaseHelper.addTool7Data(ContactNo, tl7_Q1, tl7_Q2, tl7_Q3, tl7_Q4, tl7_Q5, tl7_Q6, tl7_Q7);
-                if (isInserted == true) {
-                    Toast.makeText(this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
-                }
+                isInserted = mDatabaseHelper.addTool7Data(ContactNo, tl7_Q1, tl7_Q2, tl7_Q3, tl7_Q4, tl7_Q5, tl7_Q6, tl7_Q7, result);
             }
             finish();
         } catch (Exception e) {
@@ -345,7 +348,6 @@ public class DietLifestyle extends AppCompatActivity {
             Q7="Q7 High Risk";
         }
          result = Q1 + ", " + Q2 + ", " + Q3 + ", " + Q4 + ", " + Q5 + ", " + Q6 + ", " + Q7;
-        Toast.makeText(ctx, "Result Tool 7:"+result, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -413,215 +415,225 @@ public class DietLifestyle extends AppCompatActivity {
                 }
 
 
-                if (mData[0][3].equalsIgnoreCase("1")) {
+                if (mData[0][3].equalsIgnoreCase("0")) {
                     sp_tl7_Q3.setSelection(0);
-                } else if (mData[0][3].equalsIgnoreCase("2")) {
+                } else if (mData[0][3].equalsIgnoreCase("1")) {
                     sp_tl7_Q3.setSelection(1);
-                } else if (mData[0][3].equalsIgnoreCase("3")) {
+                } else if (mData[0][3].equalsIgnoreCase("2")) {
                     sp_tl7_Q3.setSelection(2);
-                } else if (mData[0][3].equalsIgnoreCase("4")) {
+                } else if (mData[0][3].equalsIgnoreCase("3")) {
                     sp_tl7_Q3.setSelection(3);
-                } else if (mData[0][3].equalsIgnoreCase("5")) {
+                } else if (mData[0][3].equalsIgnoreCase("4")) {
                     sp_tl7_Q3.setSelection(4);
-                } else if (mData[0][3].equalsIgnoreCase("6")) {
+                } else if (mData[0][3].equalsIgnoreCase("5")) {
                     sp_tl7_Q3.setSelection(5);
-                } else if (mData[0][3].equalsIgnoreCase("7")) {
+                } else if (mData[0][3].equalsIgnoreCase("6")) {
                     sp_tl7_Q3.setSelection(6);
-                } else if (mData[0][3].equalsIgnoreCase("8")) {
+                } else if (mData[0][3].equalsIgnoreCase("7")) {
                     sp_tl7_Q3.setSelection(7);
-                } else if (mData[0][3].equalsIgnoreCase("9")) {
+                } else if (mData[0][3].equalsIgnoreCase("8")) {
                     sp_tl7_Q3.setSelection(8);
-                } else if (mData[0][3].equalsIgnoreCase("10")) {
+                } else if (mData[0][3].equalsIgnoreCase("9")) {
                     sp_tl7_Q3.setSelection(9);
-                } else if (mData[0][3].equalsIgnoreCase("11")) {
+                } else if (mData[0][3].equalsIgnoreCase("10")) {
                     sp_tl7_Q3.setSelection(10);
-                } else if (mData[0][3].equalsIgnoreCase("12")) {
+                } else if (mData[0][3].equalsIgnoreCase("11")) {
                     sp_tl7_Q3.setSelection(11);
-                } else if (mData[0][3].equalsIgnoreCase("13")) {
+                } else if (mData[0][3].equalsIgnoreCase("12")) {
                     sp_tl7_Q3.setSelection(12);
-                } else if (mData[0][3].equalsIgnoreCase("14")) {
+                } else if (mData[0][3].equalsIgnoreCase("13")) {
                     sp_tl7_Q3.setSelection(13);
-                } else if (mData[0][3].equalsIgnoreCase("15")) {
+                } else if (mData[0][3].equalsIgnoreCase("14")) {
                     sp_tl7_Q3.setSelection(14);
-                } else if (mData[0][3].equalsIgnoreCase("16")) {
+                } else if (mData[0][3].equalsIgnoreCase("15")) {
                     sp_tl7_Q3.setSelection(15);
-                } else if (mData[0][3].equalsIgnoreCase("17")) {
+                } else if (mData[0][3].equalsIgnoreCase("16")) {
                     sp_tl7_Q3.setSelection(16);
-                } else if (mData[0][3].equalsIgnoreCase("18")) {
+                } else if (mData[0][3].equalsIgnoreCase("17")) {
                     sp_tl7_Q3.setSelection(17);
-                } else if (mData[0][3].equalsIgnoreCase("19")) {
+                } else if (mData[0][3].equalsIgnoreCase("18")) {
                     sp_tl7_Q3.setSelection(18);
-                } else if (mData[0][3].equalsIgnoreCase("20")) {
+                } else if (mData[0][3].equalsIgnoreCase("19")) {
                     sp_tl7_Q3.setSelection(19);
+                } else if (mData[0][3].equalsIgnoreCase("20")) {
+                    sp_tl7_Q3.setSelection(20);
                 }
 
 
-                if (mData[0][4].equalsIgnoreCase("1")) {
+                if (mData[0][4].equalsIgnoreCase("0")) {
                     sp_tl7_Q4.setSelection(0);
-                } else if (mData[0][4].equalsIgnoreCase("2")) {
+                } else if (mData[0][4].equalsIgnoreCase("1")) {
                     sp_tl7_Q4.setSelection(1);
-                } else if (mData[0][4].equalsIgnoreCase("3")) {
+                } else if (mData[0][4].equalsIgnoreCase("2")) {
                     sp_tl7_Q4.setSelection(2);
-                } else if (mData[0][4].equalsIgnoreCase("4")) {
+                } else if (mData[0][4].equalsIgnoreCase("3")) {
                     sp_tl7_Q4.setSelection(3);
-                } else if (mData[0][4].equalsIgnoreCase("5")) {
+                } else if (mData[0][4].equalsIgnoreCase("4")) {
                     sp_tl7_Q4.setSelection(4);
-                } else if (mData[0][4].equalsIgnoreCase("6")) {
+                } else if (mData[0][4].equalsIgnoreCase("5")) {
                     sp_tl7_Q4.setSelection(5);
-                } else if (mData[0][4].equalsIgnoreCase("7")) {
+                } else if (mData[0][4].equalsIgnoreCase("6")) {
                     sp_tl7_Q4.setSelection(6);
-                } else if (mData[0][4].equalsIgnoreCase("8")) {
+                } else if (mData[0][4].equalsIgnoreCase("7")) {
                     sp_tl7_Q4.setSelection(7);
-                } else if (mData[0][4].equalsIgnoreCase("9")) {
+                } else if (mData[0][4].equalsIgnoreCase("8")) {
                     sp_tl7_Q4.setSelection(8);
-                } else if (mData[0][4].equalsIgnoreCase("10")) {
+                } else if (mData[0][4].equalsIgnoreCase("9")) {
                     sp_tl7_Q4.setSelection(9);
-                } else if (mData[0][4].equalsIgnoreCase("11")) {
+                } else if (mData[0][4].equalsIgnoreCase("10")) {
                     sp_tl7_Q4.setSelection(10);
-                } else if (mData[0][4].equalsIgnoreCase("12")) {
+                } else if (mData[0][4].equalsIgnoreCase("11")) {
                     sp_tl7_Q4.setSelection(11);
-                } else if (mData[0][4].equalsIgnoreCase("13")) {
+                } else if (mData[0][4].equalsIgnoreCase("12")) {
                     sp_tl7_Q4.setSelection(12);
-                } else if (mData[0][4].equalsIgnoreCase("14")) {
+                } else if (mData[0][4].equalsIgnoreCase("13")) {
                     sp_tl7_Q4.setSelection(13);
-                } else if (mData[0][4].equalsIgnoreCase("15")) {
+                } else if (mData[0][4].equalsIgnoreCase("14")) {
                     sp_tl7_Q4.setSelection(14);
-                } else if (mData[0][4].equalsIgnoreCase("16")) {
+                } else if (mData[0][4].equalsIgnoreCase("15")) {
                     sp_tl7_Q4.setSelection(15);
-                } else if (mData[0][4].equalsIgnoreCase("17")) {
+                } else if (mData[0][4].equalsIgnoreCase("16")) {
                     sp_tl7_Q4.setSelection(16);
-                } else if (mData[0][4].equalsIgnoreCase("18")) {
+                } else if (mData[0][4].equalsIgnoreCase("17")) {
                     sp_tl7_Q4.setSelection(17);
-                } else if (mData[0][4].equalsIgnoreCase("19")) {
+                } else if (mData[0][4].equalsIgnoreCase("18")) {
                     sp_tl7_Q4.setSelection(18);
-                } else if (mData[0][4].equalsIgnoreCase("20")) {
+                } else if (mData[0][4].equalsIgnoreCase("19")) {
                     sp_tl7_Q4.setSelection(19);
+                }else if (mData[0][4].equalsIgnoreCase("20")) {
+                    sp_tl7_Q4.setSelection(20);
                 }
 
-                if (mData[0][5].equalsIgnoreCase("1")) {
+                if (mData[0][5].equalsIgnoreCase("0")) {
                     sp_tl7_Q5.setSelection(0);
-                } else if (mData[0][5].equalsIgnoreCase("2")) {
+                } else if (mData[0][5].equalsIgnoreCase("1")) {
                     sp_tl7_Q5.setSelection(1);
-                } else if (mData[0][5].equalsIgnoreCase("3")) {
+                } else if (mData[0][5].equalsIgnoreCase("2")) {
                     sp_tl7_Q5.setSelection(2);
-                } else if (mData[0][5].equalsIgnoreCase("4")) {
+                } else if (mData[0][5].equalsIgnoreCase("3")) {
                     sp_tl7_Q5.setSelection(3);
-                } else if (mData[0][5].equalsIgnoreCase("5")) {
+                } else if (mData[0][5].equalsIgnoreCase("4")) {
                     sp_tl7_Q5.setSelection(4);
-                } else if (mData[0][5].equalsIgnoreCase("6")) {
+                } else if (mData[0][5].equalsIgnoreCase("5")) {
                     sp_tl7_Q5.setSelection(5);
-                } else if (mData[0][5].equalsIgnoreCase("7")) {
+                } else if (mData[0][5].equalsIgnoreCase("6")) {
                     sp_tl7_Q5.setSelection(6);
-                } else if (mData[0][5].equalsIgnoreCase("8")) {
+                } else if (mData[0][5].equalsIgnoreCase("7")) {
                     sp_tl7_Q5.setSelection(7);
-                } else if (mData[0][5].equalsIgnoreCase("9")) {
+                } else if (mData[0][5].equalsIgnoreCase("8")) {
                     sp_tl7_Q5.setSelection(8);
-                } else if (mData[0][5].equalsIgnoreCase("10")) {
+                } else if (mData[0][5].equalsIgnoreCase("9")) {
                     sp_tl7_Q5.setSelection(9);
-                } else if (mData[0][5].equalsIgnoreCase("11")) {
+                } else if (mData[0][5].equalsIgnoreCase("10")) {
                     sp_tl7_Q5.setSelection(10);
-                } else if (mData[0][5].equalsIgnoreCase("12")) {
+                } else if (mData[0][5].equalsIgnoreCase("11")) {
                     sp_tl7_Q5.setSelection(11);
-                } else if (mData[0][5].equalsIgnoreCase("13")) {
+                } else if (mData[0][5].equalsIgnoreCase("12")) {
                     sp_tl7_Q5.setSelection(12);
-                } else if (mData[0][5].equalsIgnoreCase("14")) {
+                } else if (mData[0][5].equalsIgnoreCase("13")) {
                     sp_tl7_Q5.setSelection(13);
-                } else if (mData[0][5].equalsIgnoreCase("15")) {
+                } else if (mData[0][5].equalsIgnoreCase("14")) {
                     sp_tl7_Q5.setSelection(14);
-                } else if (mData[0][5].equalsIgnoreCase("16")) {
+                } else if (mData[0][5].equalsIgnoreCase("15")) {
                     sp_tl7_Q5.setSelection(15);
-                } else if (mData[0][5].equalsIgnoreCase("17")) {
+                } else if (mData[0][5].equalsIgnoreCase("16")) {
                     sp_tl7_Q5.setSelection(16);
-                } else if (mData[0][5].equalsIgnoreCase("18")) {
+                } else if (mData[0][5].equalsIgnoreCase("17")) {
                     sp_tl7_Q5.setSelection(17);
-                } else if (mData[0][5].equalsIgnoreCase("19")) {
+                } else if (mData[0][5].equalsIgnoreCase("18")) {
                     sp_tl7_Q5.setSelection(18);
-                } else if (mData[0][5].equalsIgnoreCase("20")) {
+                } else if (mData[0][5].equalsIgnoreCase("19")) {
                     sp_tl7_Q5.setSelection(19);
+                }else if (mData[0][5].equalsIgnoreCase("20")) {
+                    sp_tl7_Q5.setSelection(20);
                 }
 
-                if (mData[0][6].equalsIgnoreCase("1")) {
+                if (mData[0][6].equalsIgnoreCase("0")) {
                     sp_tl7_Q6.setSelection(0);
-                } else if (mData[0][6].equalsIgnoreCase("2")) {
+                } else if (mData[0][6].equalsIgnoreCase("1")) {
                     sp_tl7_Q6.setSelection(1);
-                } else if (mData[0][6].equalsIgnoreCase("3")) {
+                } else if (mData[0][6].equalsIgnoreCase("2")) {
                     sp_tl7_Q6.setSelection(2);
-                } else if (mData[0][6].equalsIgnoreCase("4")) {
+                } else if (mData[0][6].equalsIgnoreCase("3")) {
                     sp_tl7_Q6.setSelection(3);
-                } else if (mData[0][6].equalsIgnoreCase("5")) {
+                } else if (mData[0][6].equalsIgnoreCase("4")) {
                     sp_tl7_Q6.setSelection(4);
-                } else if (mData[0][6].equalsIgnoreCase("6")) {
+                } else if (mData[0][6].equalsIgnoreCase("5")) {
                     sp_tl7_Q6.setSelection(5);
-                } else if (mData[0][6].equalsIgnoreCase("7")) {
+                } else if (mData[0][6].equalsIgnoreCase("6")) {
                     sp_tl7_Q6.setSelection(6);
-                } else if (mData[0][6].equalsIgnoreCase("8")) {
+                } else if (mData[0][6].equalsIgnoreCase("7")) {
                     sp_tl7_Q6.setSelection(7);
-                } else if (mData[0][6].equalsIgnoreCase("9")) {
+                } else if (mData[0][6].equalsIgnoreCase("8")) {
                     sp_tl7_Q6.setSelection(8);
-                } else if (mData[0][6].equalsIgnoreCase("10")) {
+                } else if (mData[0][6].equalsIgnoreCase("9")) {
                     sp_tl7_Q6.setSelection(9);
-                } else if (mData[0][6].equalsIgnoreCase("11")) {
+                } else if (mData[0][6].equalsIgnoreCase("10")) {
                     sp_tl7_Q6.setSelection(10);
-                } else if (mData[0][6].equalsIgnoreCase("12")) {
+                } else if (mData[0][6].equalsIgnoreCase("11")) {
                     sp_tl7_Q6.setSelection(11);
-                } else if (mData[0][6].equalsIgnoreCase("13")) {
+                } else if (mData[0][6].equalsIgnoreCase("12")) {
                     sp_tl7_Q6.setSelection(12);
-                } else if (mData[0][6].equalsIgnoreCase("14")) {
+                } else if (mData[0][6].equalsIgnoreCase("13")) {
                     sp_tl7_Q6.setSelection(13);
-                } else if (mData[0][6].equalsIgnoreCase("15")) {
+                } else if (mData[0][6].equalsIgnoreCase("14")) {
                     sp_tl7_Q6.setSelection(14);
-                } else if (mData[0][6].equalsIgnoreCase("16")) {
+                } else if (mData[0][6].equalsIgnoreCase("15")) {
                     sp_tl7_Q6.setSelection(15);
-                } else if (mData[0][6].equalsIgnoreCase("17")) {
+                } else if (mData[0][6].equalsIgnoreCase("16")) {
                     sp_tl7_Q6.setSelection(16);
-                } else if (mData[0][6].equalsIgnoreCase("18")) {
+                } else if (mData[0][6].equalsIgnoreCase("17")) {
                     sp_tl7_Q6.setSelection(17);
-                } else if (mData[0][6].equalsIgnoreCase("19")) {
+                } else if (mData[0][6].equalsIgnoreCase("18")) {
                     sp_tl7_Q6.setSelection(18);
-                } else if (mData[0][6].equalsIgnoreCase("20")) {
+                } else if (mData[0][6].equalsIgnoreCase("19")) {
                     sp_tl7_Q6.setSelection(19);
+                }else if (mData[0][6].equalsIgnoreCase("20")) {
+                    sp_tl7_Q6.setSelection(20);
                 }
 
-                if (mData[0][7].equalsIgnoreCase("1")) {
+                if (mData[0][7].equalsIgnoreCase("0")) {
                     sp_tl7_Q7.setSelection(0);
-                } else if (mData[0][7].equalsIgnoreCase("2")) {
+                } else if (mData[0][7].equalsIgnoreCase("1")) {
                     sp_tl7_Q7.setSelection(1);
-                } else if (mData[0][7].equalsIgnoreCase("3")) {
+                } else if (mData[0][7].equalsIgnoreCase("2")) {
                     sp_tl7_Q7.setSelection(2);
-                } else if (mData[0][7].equalsIgnoreCase("4")) {
+                } else if (mData[0][7].equalsIgnoreCase("3")) {
                     sp_tl7_Q7.setSelection(3);
-                } else if (mData[0][7].equalsIgnoreCase("5")) {
+                } else if (mData[0][7].equalsIgnoreCase("4")) {
                     sp_tl7_Q7.setSelection(4);
-                } else if (mData[0][7].equalsIgnoreCase("6")) {
+                } else if (mData[0][7].equalsIgnoreCase("5")) {
                     sp_tl7_Q7.setSelection(5);
-                } else if (mData[0][7].equalsIgnoreCase("7")) {
+                } else if (mData[0][7].equalsIgnoreCase("6")) {
                     sp_tl7_Q7.setSelection(6);
-                } else if (mData[0][7].equalsIgnoreCase("8")) {
+                } else if (mData[0][7].equalsIgnoreCase("7")) {
                     sp_tl7_Q7.setSelection(7);
-                } else if (mData[0][7].equalsIgnoreCase("9")) {
+                } else if (mData[0][7].equalsIgnoreCase("8")) {
                     sp_tl7_Q7.setSelection(8);
-                } else if (mData[0][7].equalsIgnoreCase("10")) {
+                } else if (mData[0][7].equalsIgnoreCase("9")) {
                     sp_tl7_Q7.setSelection(9);
-                } else if (mData[0][7].equalsIgnoreCase("11")) {
+                } else if (mData[0][7].equalsIgnoreCase("10")) {
                     sp_tl7_Q7.setSelection(10);
-                } else if (mData[0][7].equalsIgnoreCase("12")) {
+                } else if (mData[0][7].equalsIgnoreCase("11")) {
                     sp_tl7_Q7.setSelection(11);
-                } else if (mData[0][7].equalsIgnoreCase("13")) {
+                } else if (mData[0][7].equalsIgnoreCase("12")) {
                     sp_tl7_Q7.setSelection(12);
-                } else if (mData[0][7].equalsIgnoreCase("14")) {
+                } else if (mData[0][7].equalsIgnoreCase("13")) {
                     sp_tl7_Q7.setSelection(13);
-                } else if (mData[0][7].equalsIgnoreCase("15")) {
+                } else if (mData[0][7].equalsIgnoreCase("14")) {
                     sp_tl7_Q7.setSelection(14);
-                } else if (mData[0][7].equalsIgnoreCase("16")) {
+                } else if (mData[0][7].equalsIgnoreCase("15")) {
                     sp_tl7_Q7.setSelection(15);
-                } else if (mData[0][7].equalsIgnoreCase("17")) {
+                } else if (mData[0][7].equalsIgnoreCase("16")) {
                     sp_tl7_Q7.setSelection(16);
-                } else if (mData[0][7].equalsIgnoreCase("18")) {
+                } else if (mData[0][7].equalsIgnoreCase("17")) {
                     sp_tl7_Q7.setSelection(17);
-                } else if (mData[0][7].equalsIgnoreCase("19")) {
+                } else if (mData[0][7].equalsIgnoreCase("18")) {
                     sp_tl7_Q7.setSelection(18);
-                } else if (mData[0][7].equalsIgnoreCase("20")) {
+                } else if (mData[0][7].equalsIgnoreCase("19")) {
                     sp_tl7_Q7.setSelection(19);
+                }else if (mData[0][7].equalsIgnoreCase("20")) {
+                    sp_tl7_Q7.setSelection(20);
                 }
             }
 

@@ -25,7 +25,9 @@ public class RiskAndTriageCVA extends AppCompatActivity {
     private RadioButton radiovalueQ1, radiovalueQ2, radiovalueQ3, radiovalueQ4, radiovalueQ5, radiovalueQ6, radiovalueQ7, radiovalueQ8;
     private DatabaseHelperRP mDatabaseHelper;
     String ContactNo;
+    int tool1_syncData=0;
     Context ctx = this;
+    boolean isInserted;
     Lister ls;
 
     @Override
@@ -33,13 +35,12 @@ public class RiskAndTriageCVA extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_risk_and_triage_cv);
 
-
         mDatabaseHelper = new DatabaseHelperRP(this);
         ls = new Lister(ctx);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Tool 1");
-        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle("");
+       // toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -95,9 +96,9 @@ public class RiskAndTriageCVA extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addTool1Data();
-                String tool1 = "0";
+                String tool1 = null;
                 mDatabaseHelper.updateTool1Status(ContactNo, tool1);
-                Toast.makeText(RiskAndTriageCVA.this, "Tool1 not Completed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RiskAndTriageCVA.this, "Saving Answers", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -106,7 +107,11 @@ public class RiskAndTriageCVA extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkData();
-
+                if (isInserted == true) {
+                  //  Toast.makeText(RiskAndTriageCVA.this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                //    Toast.makeText(RiskAndTriageCVA.this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -218,22 +223,21 @@ public class RiskAndTriageCVA extends AppCompatActivity {
     public boolean checkData() {
         if (rd_tl1a_Q1_yes.isChecked() == true || rd_tl1a_Q2_yes.isChecked() == true || rd_tl1a_Q3_yes.isChecked() == true || rd_tl1a_Q4_yes.isChecked() == true
                 || rd_tl1a_Q5_yes.isChecked() == true || rd_tl1a_Q6_yes.isChecked() == true || rd_tl1a_Q7_yes.isChecked() == true || rd_tl1a_Q8_yes.isChecked() == true) {
-
-            Toast.makeText(RiskAndTriageCVA.this, "Result Tool1: CVA Event", Toast.LENGTH_SHORT).show();
-            CVAEvent = "CVA Event";
-
+            CVAEvent = "CVA Event Present";
+            addTool1Data();
             String tool1 = "1";
             mDatabaseHelper.updateTool1Status(ContactNo, tool1);
-            Toast.makeText(RiskAndTriageCVA.this, "Tool1 Completed", Toast.LENGTH_SHORT).show();
-
-            addTool1Data();
+         //   Toast.makeText(RiskAndTriageCVA.this, "Tool1 Completed", Toast.LENGTH_SHORT).show();
+         //   Toast.makeText(RiskAndTriageCVA.this, "Result Tool1: CVA Event Present", Toast.LENGTH_SHORT).show();
             return true;
 
         } else {
+            CVAEvent = "CVA Event not Present";
             addTool1Data();
+            String tool1 = "1";
+            mDatabaseHelper.updateTool1Status(ContactNo, tool1);
+         //   Toast.makeText(RiskAndTriageCVA.this, "Result Tool1: CVA Event not Present", Toast.LENGTH_SHORT).show();
             return false;
-
-
         }
     }
 
@@ -281,7 +285,7 @@ public class RiskAndTriageCVA extends AppCompatActivity {
             String [][] mData = ls.executeReader("Select *from tool1 where ContactSim  = '"+ContactNo+"'");
 
             if(mData != null){
-                boolean mFlag = ls.executeNonQuery("Update tool1 set " +
+                 isInserted = ls.executeNonQuery("Update tool1 set " +
                         "tool1_Q1 = '"+tool1_Q1+"', " +
                         "tool1_Q2 = '"+tool1_Q2+"', " +
                         "tool1_Q3 = '"+tool1_Q3+"', " +
@@ -289,22 +293,19 @@ public class RiskAndTriageCVA extends AppCompatActivity {
                         "tool1_Q5 = '"+tool1_Q5+"', " +
                         "tool1_Q6 = '"+tool1_Q6+"', " +
                         "tool1_Q7 = '"+tool1_Q7+"', " +
-                        "tool1_Q8 = '"+tool1_Q8+"' " +
+                        "tool1_Q8 = '"+tool1_Q8+"', " +
+                        "cvaEvent = '"+CVAEvent+"' "+
                         " where ContactSim  = '"+ContactNo+"'");
-                if (mFlag == true) {
-                    Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
+                if (isInserted == true) {
+                   // Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Data Not Updated Successfully", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this, "Data Not Updated Successfully", Toast.LENGTH_SHORT).show();
                 }
 
             }else {
-                boolean isInserted = mDatabaseHelper.addTool1Data(ContactNo, tool1_Q1, tool1_Q2, tool1_Q3, tool1_Q4, tool1_Q5,
-                        tool1_Q6, tool1_Q7, tool1_Q8);
-                if (isInserted == true) {
-                    Toast.makeText(this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
-                }
+                isInserted = mDatabaseHelper.addTool1Data(ContactNo, tool1_Q1, tool1_Q2, tool1_Q3, tool1_Q4, tool1_Q5,
+                        tool1_Q6, tool1_Q7, tool1_Q8, CVAEvent,tool1_syncData);
+               // Toast.makeText(ctx, ""+isInserted, Toast.LENGTH_SHORT).show();
             }
             finish();
         }catch (Exception e){

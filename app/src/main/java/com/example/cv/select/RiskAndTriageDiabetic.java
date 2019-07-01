@@ -35,6 +35,7 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
     String Diabetic_result;
     Button btn_RTD_submit, btnRTD_saveExit;
     Context ctx = this;
+    boolean isInserted;
     Lister ls;
 
     @Override
@@ -43,8 +44,8 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
         setContentView(R.layout.activity_risk_and_triage_diabetic);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Tool 3");
-        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle("");
+       // toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -61,7 +62,7 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
 
         ls = new Lister(ctx);
 
-        Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
+     //   Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
 
         linear_rtD_Q1_DM_otions = (LinearLayout) findViewById(R.id.linear_rtD_Q1_DM_options);
         linear_rtD_Q1_ht_otions = (LinearLayout) findViewById(R.id.linear_rtD_Q1_ht_otions);
@@ -106,9 +107,9 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addTool3data();
-                String tool3="0";
+                String tool3=null;
                 mDatabaseHelper.updateTool3Status(ContactNo,tool3);
-                Toast.makeText(RiskAndTriageDiabetic.this, "Tool3 is not Completed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RiskAndTriageDiabetic.this, "Saving Answers", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -117,9 +118,15 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addTool3data();
+                if (isInserted == true) {
+               //     Toast.makeText(ctx, "Result Tool 3: "+result, Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(RiskAndTriageDiabetic.this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                 //   Toast.makeText(RiskAndTriageDiabetic.this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
+                }
                 String tool3="1";
                 mDatabaseHelper.updateTool3Status(ContactNo,tool3);
-                Toast.makeText(RiskAndTriageDiabetic.this, "Tool3 Completed", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(RiskAndTriageDiabetic.this, "Tool3 Completed", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -165,7 +172,7 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
     }
 
     private void addTool3data() {
-        diabetic = "Not Present";
+        Diabetic_result = "Not Present";
         diabeticControlByMedicines = "Not Present";
         diabeticControlByDiet = "Not Present";
         diabeticControlByIsulin = "Not Present";
@@ -179,49 +186,84 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
         hypertenControlByAlternateMed = "Not Present";
 
         if (ck_rtD_Q1_DM.isChecked()) {
-            diabetic = "Yes";
-            Diabetic = ck_rtD_Q1_DM.getText().toString();
-            Diabetic_result= "Diabetic";
+           // diabetic = "Yes";
+            //Diabetic = ck_rtD_Q1_DM.getText().toString();
+            Diabetic_result= "Diabetic is present";
+        }
+        else{
+            Diabetic_result="-";
         }
 
         if (ck_rtD_Q1_DM_med.isChecked()) {
-            diabeticControlByMedicines = "Yes";
+            diabeticControlByMedicines = "Medicines";
+        }
+        else{
+            diabeticControlByMedicines="-";
         }
         if (ck_rtD_Q1_DM_insulin.isChecked()) {
-            diabeticControlByIsulin = "Yes";
+            diabeticControlByIsulin = "Insulin";
+        }
+        else{
+            diabeticControlByIsulin="-";
         }
         if (ck_rtD_Q1_DM_diet.isChecked()) {
-            diabeticControlByDiet = "Yes";
+            diabeticControlByDiet = "Diet";
+        }
+        else{
+            diabeticControlByDiet="-";
         }
         if (ck_rtD_Q1_DM_altMed.isChecked()) {
-            diabeticControlByAlternateMed = "Yes";
+            diabeticControlByAlternateMed = "Alernative Medicines";
+        }
+        else{
+            diabeticControlByAlternateMed="-";
         }
         if (ck_rtD_Q1_DM_pnrMed.isChecked()) {
-            diabeticControlByPnrMed = "Yes";
+            diabeticControlByPnrMed = "PNR Medicines";
+        }
+        else {
+            diabeticControlByPnrMed="-";
         }
         if (ck_rtD_Q1_Hyp.isChecked()) {
-            hypertension = "Yes";
-            Hypertension = ck_rtD_Q1_Hyp.getText().toString();
-            Hyper_result="Hypertension";
+          //  hypertension = "Yes";
+           // Hypertension = ck_rtD_Q1_Hyp.getText().toString();
+            Hyper_result="Hypertension is present";
+        }
+        else{
+            Hyper_result="-";
         }
         if (ck_rtD_Q1_ht_notMedicines.isChecked()) {
-            hypertenControlByNotMedicines = "Yes";
+            hypertenControlByNotMedicines = "Not by Medicines";
+        }
+        else{
+            hypertenControlByNotMedicines="-";
         }
         if (ck_rtD_Q1_ht_med.isChecked()) {
-            hypertenControlByMedicines = "Yes";
+            hypertenControlByMedicines = "Medicines";
+        }
+        else{
+            hypertenControlByMedicines="-";
         }
         if (ck_rtD_Q1_ht_dietOrMed.isChecked()) {
-            hypertenControlByDietOrtMed = "Yes";
+            hypertenControlByDietOrtMed = "Diet Or Medicines";
+        }
+        else{
+            hypertenControlByDietOrtMed="-";
         }
         if (ck_rtD_Q1_ht_pnrMed.isChecked()) {
-            hypertenControlByPnrMed = "Yes";
+            hypertenControlByPnrMed = "PNR Medicines";
+        }
+        else{
+            hypertenControlByPnrMed="-";
         }
         if (ck_rtD_Q1_ht_altMed.isChecked()) {
-            hypertenControlByAlternateMed = "Yes";
+            hypertenControlByAlternateMed = "Alternate Medicines";
+        }
+        else{
+            hypertenControlByAlternateMed="-";
         }
 
         result = Diabetic_result + "," +Hyper_result;
-        Toast.makeText(ctx, "Result Tool 3: "+result, Toast.LENGTH_SHORT).show();
 
         try {
             Log.d("000333", "save and exit");
@@ -232,14 +274,14 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
                 linear_rtD_Q1_DM_otions.setVisibility(View.VISIBLE);
                 linear_rtD_Q1_ht_otions.setVisibility(View.VISIBLE);
 
-                boolean mFlag = ls.executeNonQuery("Update tool3 set " +
-                        "Diabetic = '" + diabetic + "', " +
+                isInserted = ls.executeNonQuery("Update tool3 set " +
+                        "Diabetic = '" + Diabetic_result + "', " +
                         "DiabeticControlByMedicines = '" + diabeticControlByMedicines + "', " +
                         "DiabeticControlByInsulin = '" + diabeticControlByIsulin + "', " +
                         "DiabeticControlByDiet = '" + diabeticControlByDiet + "', " +
                         "DiabeticControlByPNRMedication = '" + diabeticControlByPnrMed + "', " +
                         "DiabeticControlByAlternateMedication = '" + diabeticControlByAlternateMed + "', " +
-                        "Hypertension = '" + hypertension + "', " +
+                        "Hypertension = '" + Hyper_result + "', " +
                         "HypertensionNotControlByMedicines = '" + hypertenControlByNotMedicines + "', " +
                         "HypertensionControlByMedicines = '" + hypertenControlByMedicines + "', " +
                         "HypertensionControlByDietOrMedicines = '" + hypertenControlByDietOrtMed + "', " +
@@ -247,22 +289,17 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
                         "HypertensionControlByAlternateMedication = '" + hypertenControlByAlternateMed + "' " +
                         " where ContactSim  = '" + ContactNo + "'");
 
-                if (mFlag == true) {
-                    Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
+                if (isInserted == true) {
+                    //Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Data Not Updated Successfully", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this, "Data Not Updated Successfully", Toast.LENGTH_SHORT).show();
                 }
 
             } else {
 
-                boolean isInserted = mDatabaseHelper.addTool3Data(ContactNo, diabetic, diabeticControlByMedicines, diabeticControlByIsulin, diabeticControlByDiet,
-                        diabeticControlByPnrMed, diabeticControlByAlternateMed, hypertension, hypertenControlByNotMedicines, hypertenControlByMedicines, hypertenControlByDietOrtMed,
+                isInserted = mDatabaseHelper.addTool3Data(ContactNo, Diabetic_result, diabeticControlByMedicines, diabeticControlByIsulin, diabeticControlByDiet,
+                        diabeticControlByPnrMed, diabeticControlByAlternateMed, Hyper_result, hypertenControlByNotMedicines, hypertenControlByMedicines, hypertenControlByDietOrtMed,
                         hypertenControlByPnrMed, hypertenControlByAlternateMed);
-                if (isInserted == true) {
-                    Toast.makeText(this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(this, "Data Not Inserted Successfully", Toast.LENGTH_SHORT).show();
-                }
             }
             finish();
         }catch (Exception e){
@@ -326,63 +363,63 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
                 Log.d("000111", "mData[0][11] =  " + mData[0][8]);
                 Log.d("000111", "mData[0][12] =  " + mData[0][8]);
 
-                if (mData[0][1].equalsIgnoreCase("Yes")) {
+                if (mData[0][1].equalsIgnoreCase("Diabetic is present")) {
                     ck_rtD_Q1_DM.setChecked(true);
                 } else {
                     ck_rtD_Q1_DM.setChecked(false);
                 }
 
-                if (mData[0][2].equalsIgnoreCase("Yes")) {
+                if (mData[0][2].equalsIgnoreCase("Medicines")) {
                     ck_rtD_Q1_DM_med.setChecked(true);
                 } else {
                     ck_rtD_Q1_DM_med.setChecked(false);
                 }
-                if (mData[0][3].equalsIgnoreCase("Yes")) {
+                if (mData[0][3].equalsIgnoreCase("Insulin")) {
                     ck_rtD_Q1_DM_insulin.setChecked(true);
                 } else {
                     ck_rtD_Q1_DM_insulin.setChecked(false);
                 }
-                if (mData[0][4].equalsIgnoreCase("Yes")) {
+                if (mData[0][4].equalsIgnoreCase("Diet")) {
                     ck_rtD_Q1_DM_diet.setChecked(true);
                 } else {
                     ck_rtD_Q1_DM_diet.setChecked(false);
                 }
-                if (mData[0][5].equalsIgnoreCase("Yes")) {
+                if (mData[0][5].equalsIgnoreCase("PNR Medicines")) {
                     ck_rtD_Q1_DM_pnrMed.setChecked(true);
                 } else {
                     ck_rtD_Q1_DM_pnrMed.setChecked(false);
                 }
-                if (mData[0][6].equalsIgnoreCase("Yes")) {
+                if (mData[0][6].equalsIgnoreCase("Alernative Medicines")) {
                     ck_rtD_Q1_DM_altMed.setChecked(true);
                 } else {
                     ck_rtD_Q1_DM_altMed.setChecked(false);
                 }
-                if (mData[0][7].equalsIgnoreCase("Yes")) {
+                if (mData[0][7].equalsIgnoreCase("Hypertension is present")) {
                     ck_rtD_Q1_Hyp.setChecked(true);
                 } else {
                     ck_rtD_Q1_Hyp.setChecked(false);
                 }
-                if (mData[0][8].equalsIgnoreCase("Yes")) {
+                if (mData[0][8].equalsIgnoreCase("Not by Medicines")) {
                     ck_rtD_Q1_ht_notMedicines.setChecked(true);
                 } else {
                     ck_rtD_Q1_ht_notMedicines.setChecked(false);
                 }
-                if (mData[0][9].equalsIgnoreCase("Yes")) {
+                if (mData[0][9].equalsIgnoreCase("Medicines")) {
                     ck_rtD_Q1_ht_med.setChecked(true);
                 } else {
                     ck_rtD_Q1_ht_med.setChecked(false);
                 }
-                if (mData[0][10].equalsIgnoreCase("Yes")) {
+                if (mData[0][10].equalsIgnoreCase("Diet Or Medicines")) {
                     ck_rtD_Q1_ht_dietOrMed.setChecked(true);
                 } else {
                     ck_rtD_Q1_ht_dietOrMed.setChecked(false);
                 }
-                if (mData[0][11].equalsIgnoreCase("Yes")) {
+                if (mData[0][11].equalsIgnoreCase("PNR Medicines")) {
                     ck_rtD_Q1_ht_pnrMed.setChecked(true);
                 } else {
                     ck_rtD_Q1_ht_pnrMed.setChecked(false);
                 }
-                if (mData[0][12].equalsIgnoreCase("Yes")) {
+                if (mData[0][12].equalsIgnoreCase("Alternate Medicines")) {
                     ck_rtD_Q1_ht_altMed.setChecked(true);
                 } else {
                     ck_rtD_Q1_ht_altMed.setChecked(false);

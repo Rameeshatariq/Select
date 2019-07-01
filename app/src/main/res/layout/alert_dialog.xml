@@ -11,6 +11,7 @@
         android:text="Participant is not Eligible"
         android:layout_gravity="center"
         android:theme="@style/TextViewHeading"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_marginBottom="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

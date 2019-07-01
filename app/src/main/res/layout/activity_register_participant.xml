@@ -2,11 +2,12 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@mipmap/bgcompressed"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterParticipant">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusableInTouchMode="true"
@@ -21,215 +22,260 @@
                 android:background="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Registration"
+                android:textSize="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_centerHorizontal="true"
+                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                android:textColor="@color/colorPrimaryDark" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="30dp">
 
-                <LinearLayout
+        <LinearLayout
                     android:id="@+id/linear_pname"
-                    android:layout_marginTop="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/tvHeading"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <android.support.design.widget.TextInputLayout
+                    android:layout_marginTop="50dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Participant Name"
+                        android:theme="@style/TextViewWhite" />
+
+                    <EditText
+                        android:id="@+id/ed_pname"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <EditText
-                            android:id="@+id/ed_pname"
-                            android:theme="@style/EditText"
-                            android:hint="Participant Name"
-                            android:inputType="textCapWords"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-                    </android.support.design.widget.TextInputLayout>
+                        android:layout_height="45dp"
+                        android:background="@drawable/input_design"
+                        android:ems="10"
+                        android:hint="John Doe"
+                        android:inputType="textCapWords"
+                        android:paddingLeft="10dp"
+                        android:theme="@style/EditText" />
                 </LinearLayout>
 
                 <View
                     android:id="@+id/view_pname"
-                    android:layout_below="@id/linear_pname"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp">
-                </View>
+                    android:layout_height="25dp"
+                    android:layout_below="@id/linear_pname"></View>
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Date Of Birth"
+                            android:theme="@style/TextViewWhite" />
+
                         <EditText
                             android:id="@+id/ed_pdateOfBirth"
-                            android:theme="@style/EditText"
-                            android:hint="Date Of Birth"
-                            android:layout_width="match_parent"
+                            android:layout_width="150dp"
+                            android:layout_height="45dp"
+                            android:background="@drawable/input_design"
+                            android:focusableInTouchMode="false"
+                            android:hint="dd/mm/yy"
+                            android:paddingLeft="10dp"
+                            android:theme="@style/EditText" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear_page"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:focusableInTouchMode="false"/>
-                    </android.support.design.widget.TextInputLayout>
+                            android:text="Age"
+                            android:theme="@style/TextViewWhite" />
 
-                </LinearLayout>
-
-
-
-                <View
-                    android:layout_below="@id/linear_pname"
-                    android:layout_width="match_parent"
-                    android:layout_height="25dp">
-                </View>
-
-                <LinearLayout
-                    android:id="@+id/linear_page"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
                         <EditText
                             android:id="@+id/ed_page"
-                            android:theme="@style/EditText"
-                            android:hint="Age"
+                            android:layout_width="140dp"
+                            android:layout_height="45dp"
+                            android:focusableInTouchMode="false"
+                            android:editable="false"
+                            android:maxLength="2"
+                            android:background="@drawable/input_design"
+                            android:hint="40"
                             android:inputType="number"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
+                            android:paddingLeft="10dp"
+                            android:theme="@style/EditText" />
+                    </LinearLayout>
+                </RelativeLayout>
 
                 <View
                     android:id="@+id/view_page"
-                    android:layout_below="@id/linear_page"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp">
-                </View>
+                    android:layout_height="25dp"
+                    android:layout_below="@id/linear_page"></View>
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/linear_pgender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/view_page"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tv_pgender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:theme="@style/TextView"
-                        android:text="Gender" />
+                        android:layout_gravity="center"
+                        android:text="Gender"
+                        android:theme="@style/TextViewWhite" />
 
                     <RadioGroup
                         android:id="@+id/rd_pgender"
+                        android:layout_alignParentRight="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_pgender">
+                        android:layout_marginLeft="110dp"
+                        android:orientation="horizontal">
 
                         <RadioButton
                             android:id="@+id/rd_male"
-                            android:text="Male"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Male"
+                            android:textColor="@android:color/white"
                             android:theme="@style/RadioButton" />
 
 
                         <RadioButton
                             android:id="@+id/rd_female"
-                            android:text="Female"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Female"
+                            android:textColor="@android:color/white"
                             android:theme="@style/RadioButton" />
-
                     </RadioGroup>
-                </LinearLayout>
+                </RelativeLayout>
 
                 <View
                     android:id="@+id/view_pgender"
-                    android:layout_below="@id/linear_pgender"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp">
-                </View>
+                    android:layout_height="25dp"
+                    android:layout_below="@id/linear_pgender"></View>
 
-                <LinearLayout
-                    android:id="@+id/linear_pcontact"
-                    android:layout_below="@+id/view_pgender"
+                <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:id="@+id/linear_pcontact"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/view_pgender"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Contact Sim"
+                            android:theme="@style/TextViewWhite" />
+
                         <EditText
                             android:id="@+id/ed_pcontact"
-                            android:theme="@style/EditText"
-                            android:hint="Contact Sim"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@drawable/input_design"
+                            android:hint="03356257367"
+                            android:paddingLeft="10dp"
                             android:inputType="number"
                             android:maxLength="11"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
+                            android:theme="@style/EditText" />
+                    </LinearLayout>
 
-                <View
-                    android:id="@+id/view_pcontact"
-                    android:layout_below="@id/linear_pcontact"
-                    android:layout_width="match_parent"
-                    android:layout_height="25dp">
-                </View>
+                    <LinearLayout
+                        android:id="@+id/linear_p_altsim"
+                        android:layout_width="140dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/linear_p_altsim"
-                    android:layout_below="@+id/view_pcontact"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Alternate Sim"
+                            android:theme="@style/TextViewWhite" />
+
                         <EditText
                             android:id="@+id/ed_p_altsim"
-                            android:theme="@style/EditText"
-                            android:hint="Alternate Sim"
-                            android:maxLength="11"
-                            android:inputType="number"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
+                            android:layout_height="45dp"
+                            android:background="@drawable/input_design"
+                            android:hint="03354252636"
+                            android:paddingLeft="10dp"
+                            android:inputType="number"
+                            android:maxLength="11"
+                            android:theme="@style/EditText" />
+                    </LinearLayout>
+
+                </RelativeLayout>
 
                 <View
                     android:id="@+id/view_paltsim"
-                    android:layout_below="@id/linear_p_altsim"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp">
-                </View>
+                    android:layout_height="25dp"
+                    android:layout_below="@id/linear_p_altsim"></View>
 
                 <LinearLayout
                     android:id="@+id/linear_paddress"
-                    android:layout_below="@+id/view_paltsim"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_below="@+id/view_paltsim">
 
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextViewWhite"
+                        android:text="Address" />
+
                         <EditText
                             android:id="@+id/ed_paddress"
-                            android:theme="@style/EditText"
-                            android:hint="Address"
-                            android:minLines="2"
-                            android:maxLines="3"
-                            android:inputType="textMultiLine|textCapWords"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-                    </android.support.design.widget.TextInputLayout>
+                            android:layout_height="80dp"
+                            android:hint="Address"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="10dp"
+                            android:background="@drawable/input_design"
+                            android:inputType="textMultiLine|textCapWords"
+                            android:maxLines="3"
+                            android:minLines="2"
+                            android:theme="@style/EditText" />
                 </LinearLayout>
 
                 <View
                     android:id="@+id/view_paddress"
-                    android:layout_below="@id/linear_paddress"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp">
-                </View>
+                    android:layout_height="25dp"
+                    android:layout_below="@id/linear_paddress"></View>
 
                 <LinearLayout
                     android:id="@+id/linear_plives"
@@ -241,34 +287,39 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:theme="@style/TextView"
-                        android:text="Lives in Malir" />
+                        android:text="Lives in Malir"
+                        android:theme="@style/TextViewWhite" />
 
                     <RadioGroup
                         android:id="@+id/rd_plives"
-                        android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <RadioButton
-                            android:id="@+id/rd_plives_no"
-                            android:text="No"
-                            android:theme="@style/RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:theme="@style/RadioButton">
                         <RadioButton
                             android:id="@+id/rd_plives_yes"
-                            android:text="Yes"
-                            android:theme="@style/RadioButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="Yes"
+                            android:textColor="@android:color/white"
+                            android:theme="@style/RadioButton" />
+                        <RadioButton
+                            android:id="@+id/rd_plives_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="@android:color/white"
+                            android:theme="@style/RadioButton" />
+
                     </RadioGroup>
                 </LinearLayout>
+
                 <View
                     android:id="@+id/view_plives"
-                    android:layout_below="@id/linear_plives"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp">
-                </View>
+                    android:layout_height="25dp"
+                    android:layout_below="@id/linear_plives"></View>
 
                 <LinearLayout
                     android:id="@+id/linear_p_notmoving"
@@ -280,36 +331,39 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:theme="@style/TextView"
-                        android:text="Are you moving out in the next 6 months?" />
+                        android:text="Are you moving out in the next 6 months?"
+                        android:theme="@style/TextViewWhite" />
 
                     <RadioGroup
                         android:id="@+id/rd_p_notmoving"
-                        android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <RadioButton
-                            android:id="@+id/rd_p_notmoving_no"
-                            android:text="No"
-                            android:theme="@style/RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:theme="@style/RadioButton">
                         <RadioButton
                             android:id="@+id/rd_p_notmoving_yes"
-                            android:theme="@style/RadioButton"
-                            android:text="Yes"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="Yes"
+                            android:textColor="@android:color/white"
+                            android:theme="@style/RadioButton" />
+                        <RadioButton
+                            android:id="@+id/rd_p_notmoving_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="@android:color/white"
+                            android:text="No"
+                            android:theme="@style/RadioButton" />
                     </RadioGroup>
 
                 </LinearLayout>
 
                 <View
                     android:id="@+id/view_p_notmoving"
-                    android:layout_below="@id/linear_p_notmoving"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp">
-                </View>
+                    android:layout_height="25dp"
+                    android:layout_below="@id/linear_p_notmoving"></View>
 
                 <LinearLayout
                     android:id="@+id/linear_smartphone"
@@ -321,36 +375,42 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:theme="@style/TextView"
-                        android:text="Smart phone to receive SMS?" />
+                        android:text="Smart phone to receive SMS?"
+                        android:layout_gravity="center"
+                        android:theme="@style/TextViewWhite" />
 
                     <RadioGroup
                         android:id="@+id/rd_p_smrtph"
-                        android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <RadioButton
-                            android:id="@+id/rd_p_smrtph_no"
-                            android:text="No"
-                            android:theme="@style/RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:theme="@style/RadioButton">
+
                         <RadioButton
                             android:id="@+id/rd_p_smrtph_yes"
-                            android:text="Yes"
-                            android:theme="@style/RadioButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="Yes"
+                            android:textColor="@android:color/white"
+                            android:theme="@style/RadioButton" />
+                        <RadioButton
+                            android:id="@+id/rd_p_smrtph_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:textColor="@android:color/white"
+                            android:layout_marginLeft="10dp"
+                            android:theme="@style/RadioButton" />
                     </RadioGroup>
 
                 </LinearLayout>
 
                 <View
                     android:id="@+id/view_smartphone"
-                    android:layout_below="@id/linear_smartphone"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp">
-                </View>
+                    android:layout_height="25dp"
+                    android:layout_below="@id/linear_smartphone"></View>
+
                 <LinearLayout
                     android:id="@+id/linear_participate"
                     android:layout_width="wrap_content"
@@ -361,35 +421,38 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:theme="@style/TextView"
-                        android:text="Willing to participate for 6 months ?" />
+                        android:text="Willing to participate for 6 months?"
+                        android:theme="@style/TextViewWhite" />
 
                     <RadioGroup
                         android:id="@+id/rd_participate"
-                        android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <RadioButton
-                            android:id="@+id/rd_participate_no"
-                            android:text="No"
-                            android:theme="@style/RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:theme="@style/RadioButton">
                         <RadioButton
                             android:id="@+id/rd_participate_yes"
-                            android:text="Yes"
-                            android:theme="@style/RadioButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="Yes"
+                            android:textColor="@android:color/white"
+                            android:theme="@style/RadioButton" />
+                        <RadioButton
+                            android:id="@+id/rd_participate_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:textColor="@android:color/white"
+                            android:layout_marginLeft="10dp"
+                            android:theme="@style/RadioButton" />
                     </RadioGroup>
                 </LinearLayout>
 
                 <View
                     android:id="@+id/view_participate"
-                    android:layout_below="@id/linear_participate"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp">
-                </View>
+                    android:layout_height="25dp"
+                    android:layout_below="@id/linear_participate"></View>
 
                 <LinearLayout
                     android:id="@+id/linear_p_consenttaken"
@@ -401,47 +464,159 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:theme="@style/TextView"
-                        android:text="Informed consent taken" />
+                        android:text="Informed consent taken?"
+                        android:layout_gravity="center"
+                        android:theme="@style/TextViewWhite" />
 
                     <RadioGroup
                         android:id="@+id/rd_p_consenttaken"
-                        android:theme="@style/RadioButton"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <RadioButton
-                            android:id="@+id/rd_p_consenttaken_no"
-                            android:theme="@style/RadioButton"
-                            android:text="No"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:theme="@style/RadioButton">
                         <RadioButton
                             android:id="@+id/rd_p_consenttaken_yes"
-                            android:text="Yes"
-                            android:theme="@style/RadioButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="Yes"
+                            android:textColor="@android:color/white"
+                            android:theme="@style/RadioButton" />
+
+                        <RadioButton
+                            android:id="@+id/rd_p_consenttaken_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:textColor="@android:color/white"
+                            android:layout_marginLeft="10dp"
+                            android:theme="@style/RadioButton" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view_p_respondedtoIVR"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_below="@id/linear_p_consenttaken"></View>
+
+                <LinearLayout
+                    android:id="@+id/linear_p_respondedtoIVR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view_p_respondedtoIVR"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Responded to IVR?"
+                        android:layout_gravity="center"
+                        android:theme="@style/TextViewWhite" />
+
+                    <RadioGroup
+                        android:id="@+id/rd_p_respondedtoIVR"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:theme="@style/RadioButton">
+                        <RadioButton
+                            android:id="@+id/rd_p_respondedtoIVR_yes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Yes"
+                            android:textColor="@android:color/white"
+                            android:theme="@style/RadioButton" />
+
+                        <RadioButton
+                            android:id="@+id/rd_p_respondedtoIVR_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:textColor="@android:color/white"
+                            android:layout_marginLeft="10dp"
+                            android:theme="@style/RadioButton" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view_p_respondedtoSMS"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_below="@id/linear_p_respondedtoIVR"></View>
+
+                <LinearLayout
+                    android:id="@+id/linear_p_respondedtoSMS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view_p_respondedtoSMS"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Responded to SMS?"
+                        android:layout_gravity="center"
+                        android:theme="@style/TextViewWhite" />
+
+                    <RadioGroup
+                        android:id="@+id/rd_p_respondedtoSMS"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:theme="@style/RadioButton">
+                        <RadioButton
+                            android:id="@+id/rd_p_respondedtoSMS_yes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Yes"
+                            android:textColor="@android:color/white"
+                            android:theme="@style/RadioButton" />
+
+                        <RadioButton
+                            android:id="@+id/rd_p_respondedtoSMS_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:textColor="@android:color/white"
+                            android:layout_marginLeft="10dp"
+                            android:theme="@style/RadioButton" />
                     </RadioGroup>
                 </LinearLayout>
 
                 <View
                     android:id="@+id/view_p_consenttaken"
-                    android:layout_below="@id/linear_p_consenttaken"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp">
-                </View>
+                    android:layout_height="30dp"
+                    android:layout_below="@id/linear_p_respondedtoSMS"></View>
 
-                <Button
-                    android:id="@+id/btn_p_register"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_button"
-                    android:theme="@style/Button"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/view_p_consenttaken"
-                    android:text="Submit"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content">
 
-              <!--  <Button
+                    <Button
+                        android:id="@+id/btn_p_register"
+                        android:layout_width="127dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/view_p_consenttaken"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/rounded_button"
+                        android:text="Submit"
+                        android:theme="@style/Button" />
+                    <Button
+                        android:id="@+id/btn_p_cancel"
+                        android:layout_width="127dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/view_p_consenttaken"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="30dp"
+                        android:background="@drawable/rounded_button"
+                        android:text="Cancel"
+                        android:theme="@style/Button" />
+                </LinearLayout>
+
+
+                <!--  <Button
                     android:id="@+id/btn_p_update"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -452,6 +627,6 @@
                     android:text="Update Patient Detail"/>-->
 
             </LinearLayout>
-        </LinearLayout>
+        </RelativeLayout>
 
 </ScrollView>

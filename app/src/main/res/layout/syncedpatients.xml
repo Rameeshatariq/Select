@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginRight="16dp"
+    android:background="@drawable/input_design">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="vertical">
+
+
+        <!-- <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Participant Name:"
+             android:theme="@style/TextViewHeading" />
+         <View
+             android:layout_width="wrap_content"
+             android:layout_height="10dp"></View>-->
+
+        <TextView
+            android:id="@+id/tvsyncName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Participant Name"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/colorToolbar"
+            android:textSize="18dp"
+            android:theme="@style/TextViewHeading" />
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="5dp"></View>
+
+        <!--       <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Participant Contact:"
+                   android:theme="@style/TextViewHeading" />
+               <View
+                   android:layout_width="wrap_content"
+                   android:layout_height="10dp"></View>-->
+
+        <TextView
+            android:id="@+id/tvsyncContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Participant Contact"
+            android:paddingLeft="10dp"
+            android:paddingBottom="5dp"
+            android:layout_below="@+id/tvsyncName"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12dp"
+            android:theme="@style/TextView" />
+
+        <!--  <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Participant Enroll:"
+              android:theme="@style/TextViewHeading" />
+          <View
+              android:layout_width="wrap_content"
+              android:layout_height="10dp"></View>-->
+
+
+    </RelativeLayout>
+
+</LinearLayout>

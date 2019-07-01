@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,7 +19,8 @@ import java.util.ArrayList;
 
 public class ShowTool1bData extends AppCompatActivity {
     private DatabaseHelperRP mDatabaseHeperRP;
-    private TextView tv_tl2_contact, tv_tl2_Q1, tv_tl2_Q2, tv_tl2_Q3;
+    private TextView tv_tl2_contact;
+    private EditText tv_tl2_Q1, tv_tl2_Q2, tv_tl2_Q3;
     private Button next;
     private Toolbar toolbar;
     private String ContactNo;
@@ -30,13 +32,13 @@ public class ShowTool1bData extends AppCompatActivity {
 
         Intent intent = getIntent();
         ContactNo = intent.getStringExtra("ContactNo");
-        Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, ""+ContactNo, Toast.LENGTH_SHORT).show();
 
         mDatabaseHeperRP = new DatabaseHelperRP(this);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Tool 2 Details");
-        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle("");
+       // toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -46,10 +48,10 @@ public class ShowTool1bData extends AppCompatActivity {
             }
         });
 
-        tv_tl2_contact=(TextView)findViewById(R.id.pcontact);
-        tv_tl2_Q1=(TextView)findViewById(R.id.tv_rtMI_Q1);
-        tv_tl2_Q2=(TextView)findViewById(R.id.tv_rtMI_Q2);
-        tv_tl2_Q3=(TextView)findViewById(R.id.tv_rtMI_Q3);
+       // tv_tl2_contact=(TextView)findViewById(R.id.pcontact);
+        tv_tl2_Q1=(EditText)findViewById(R.id.tv_rtMI_Q1);
+        tv_tl2_Q2=(EditText) findViewById(R.id.tv_rtMI_Q2);
+        tv_tl2_Q3=(EditText) findViewById(R.id.tv_rtMI_Q3);
 
         viewAllTool1bData();
     }
@@ -62,7 +64,7 @@ public class ShowTool1bData extends AppCompatActivity {
 
         while (data.moveToNext()) {
 
-            tv_tl2_contact.setText(data.getString(0));
+       //     tv_tl2_contact.setText(data.getString(0));
             tv_tl2_Q1.setText(data.getString(1));
             tv_tl2_Q2.setText(data.getString(2));
             tv_tl2_Q3.setText(data.getString(3));

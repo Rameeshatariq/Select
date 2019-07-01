@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/bgcompressed"
     tools:context=".IDRSModified">
 
     <android.support.v7.widget.Toolbar
@@ -16,9 +17,21 @@
         app:layout_scrollFlags="scroll|enterAlways"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="IDRS Modified"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:textSize="15dp"
+        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+        android:textColor="@color/colorPrimaryDark" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true">
 
@@ -33,20 +46,11 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <TextView
-                    android:id="@+id/tvHeading"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_centerHorizontal="true"
-                    android:text="IDRS Modified"
-                    android:theme="@style/TextViewHeading" />
-
                 <LinearLayout
                     android:id="@+id/linear_IDRS_Q1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
                     android:layout_below="@+id/tvHeading"
                     android:orientation="vertical">
 
@@ -57,14 +61,17 @@
                         android:text="@string/IDRSModifiedQ1"
                         android:theme="@style/TextView" />
 
+
                     <RadioGroup
                         android:id="@+id/rd_IDRS_Q1"
+                        android:orientation="horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
                         <RadioButton
                             android:id="@+id/rd_IDRS_Q1_none"
                             android:text="None"
+                            android:textColor="@android:color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:theme="@style/RadioButton" />
@@ -72,6 +79,8 @@
                         <RadioButton
                             android:id="@+id/rd_IDRS_Q1_ep"
                             android:text="Either Parents"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="@android:color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:theme="@style/RadioButton" />
@@ -80,6 +89,8 @@
                             android:id="@+id/rd_IDRS_Q1_bp"
                             android:text="Both Parents"
                             android:layout_width="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="@android:color/white"
                             android:layout_height="wrap_content"
                             android:theme="@style/RadioButton" />
                     </RadioGroup>
@@ -91,37 +102,37 @@
                     android:id="@+id/view_IDRS_Q1"
                     android:layout_below="@id/linear_IDRS_Q1"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp">
-                </View>
-
-                <Button
-                    android:id="@+id/btn_IDRS_saveExit"
-                    android:text="Save And Exit"
-                    android:theme="@style/Button"
-                    android:background="@drawable/rounded_button"
                     android:layout_gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <View
-                    android:id="@+id/view_rt_saveExit"
-                    android:layout_below="@id/linear_rt_Q8"
-                    android:layout_width="match_parent"
                     android:layout_height="30dp">
                 </View>
 
-                <Button
-                    android:id="@+id/btn_IDRS_submit"
-                    android:theme="@style/Button"
-                    android:text="Submit"
-                    android:background="@drawable/rounded_button"
-                    android:layout_below="@id/view_IDRS_Q1"
-                    android:layout_centerHorizontal="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+                    <Button
+                        android:id="@+id/btn_IDRS_saveExit"
+                        android:text="Save And Exit"
+                        android:theme="@style/Button"
+                        android:background="@drawable/rounded_button"
+                        android:layout_gravity="center"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content" />
+                    <Button
+                        android:id="@+id/btn_IDRS_submit"
+                        android:theme="@style/Button"
+                        android:text="Submit"
+                        android:background="@drawable/rounded_button"
+                        android:layout_below="@id/view_IDRS_Q1"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="140dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
 
-</LinearLayout>
+</RelativeLayout>
