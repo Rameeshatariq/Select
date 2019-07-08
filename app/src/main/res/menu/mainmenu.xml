@@ -10,6 +10,12 @@
         android:title="Sync"
         app:showAsAction="never"></item>
     <item
+        android:id="@+id/search"
+        android:orderInCategory="300"
+        android:iconTint="@android:color/white"
+        android:title="Search"
+        app:showAsAction="never"></item>
+    <item
         android:id="@+id/logout"
         android:orderInCategory="300"
         android:iconTint="@android:color/white"

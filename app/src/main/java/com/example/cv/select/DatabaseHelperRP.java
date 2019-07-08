@@ -1108,7 +1108,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
     public List<syncedPatients> syncPatients(String userId) {
         List<syncedPatients> data = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select * from " + TABLE_NAME + " WHERE (UserID = '" +userId + "') AND (SyncData = 0);", null);
+        Cursor cursor = db.rawQuery("select * from " + TABLE_NAME + " WHERE (UserID = '" +userId + "') AND (SyncData = 0 OR 1);", null);
         StringBuffer stringBuffer = new StringBuffer();
         syncedPatients dataModel = null;
         while (cursor.moveToNext()) {
@@ -1160,6 +1160,31 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
         while (cursor.moveToNext()) {
             dataModel = new CompParticipantsInfo();
             String name = cursor.getString(cursor.getColumnIndexOrThrow("Name"));
+            String contact = cursor.getString(cursor.getColumnIndexOrThrow("ContactSim"));
+            String enroll = cursor.getString(cursor.getColumnIndexOrThrow("Enroll"));
+            dataModel.setParticipantName(name);
+            dataModel.setParticipantContact(contact);
+            dataModel.setParticipantEnroll(enroll);
+            stringBuffer.append(dataModel);
+            // stringBuffer.append(dataModel);
+            data.add(dataModel);
+        }
+        return data;
+    }
+
+    public List<CompParticipantsInfo> SearchIncompPartidata(String userid, String name) {
+        // DataModel dataModel = new DataModel();
+        List<CompParticipantsInfo> data = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from " + TABLE_NAME + " WHERE (UserID = '" + userid + "') AND (Tool1 = 0 OR Tool2 = 0 OR " +
+                "Tool3 = 0 OR Tool4 = 0 OR Tool5 = 0 OR Tool6a = 0 " +
+                " OR Tool7 = 0 ) AND NAME LIKE '" +name+'%'+ "' ORDER BY Name;", null);
+
+        StringBuffer stringBuffer = new StringBuffer();
+        CompParticipantsInfo dataModel = null;
+        while (cursor.moveToNext()) {
+            dataModel = new CompParticipantsInfo();
+            String names = cursor.getString(cursor.getColumnIndexOrThrow("Name"));
             String contact = cursor.getString(cursor.getColumnIndexOrThrow("ContactSim"));
             String enroll = cursor.getString(cursor.getColumnIndexOrThrow("Enroll"));
             dataModel.setParticipantName(name);

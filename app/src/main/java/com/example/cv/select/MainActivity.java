@@ -61,6 +61,13 @@ public class MainActivity extends AppCompatActivity {
             startActivity(i);
             return true;
         }
+
+        if (id == R.id.search) {
+            //  Toast.makeText(MainActivity.this, "Action clicked", Toast.LENGTH_LONG).show();
+            Intent i = new Intent(MainActivity.this, search.class);
+            startActivity(i);
+            return true;
+        }
         if(id == R.id.logout){
             SharedPreferences blockSession = this.getSharedPreferences("loginref", MODE_PRIVATE);
             SharedPreferences.Editor blockEdit = blockSession.edit();
