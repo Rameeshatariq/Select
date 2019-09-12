@@ -71,4 +71,15 @@
             android:text="Teleconsultation Schedule"/>
     </LinearLayout>
 
+    <Button
+        android:id="@+id/highrisk_home"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/linear_HR_VE"
+        android:theme="@style/Button"
+        android:background="@drawable/input_design"
+        android:text="Home"/>
+
 </RelativeLayout>

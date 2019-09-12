@@ -2,6 +2,7 @@ package com.example.cv.select;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -23,13 +24,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.opencsv.CSVWriter;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -37,6 +46,7 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static com.example.cv.select.DatabaseHelperRP.DATABASE_NAME;
 import static com.example.cv.select.DatabaseHelperRP.Database_Path;
 import static com.example.cv.select.DatabaseHelperRP.TABLE_NAME;
+import static com.example.cv.select.DatabaseHelperRP.TABLE_NAME_0;
 import static com.example.cv.select.DatabaseHelperRP.TABLE_NAME_10;
 import static com.example.cv.select.DatabaseHelperRP.TABLE_NAME_11;
 import static com.example.cv.select.DatabaseHelperRP.TABLE_NAME_2;
@@ -47,16 +57,22 @@ import static com.example.cv.select.DatabaseHelperRP.TABLE_NAME_6;
 import static com.example.cv.select.DatabaseHelperRP.TABLE_NAME_7;
 //import static com.example.cv.select.DatabaseHelperRP.TABLE_NAME_8;
 import static com.example.cv.select.DatabaseHelperRP.TABLE_NAME_9;
+import static com.example.cv.select.SyncedPatientsRecyclerViewAdapter.MyViewHolder.URL_SAVE_NAME;
+import static com.example.cv.select.SyncedPatientsRecyclerViewAdapter.MyViewHolder.URL_SAVE_NAME2;
 
 public class LoginActivity extends AppCompatActivity {
     private Button login;
     private EditText edtemail, edtpassword;
     static String UserID = null;
     Toolbar toolbar;
+    Lister ls;
     TextView textView;
+    public static DatabaseHelperRP databaseHelperRP;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     Boolean saveLogin;
+    Button syncUsers;
+    Context  ctx;
     String User1ID, UserName1, UserPassword1, User2ID, UserName2, UserPassword2, User3ID, UserName3, UserPassword3, User4ID, UserName4,
             UserPassword4, User5ID, UserName5, UserPassword5;
 
@@ -82,31 +98,24 @@ public class LoginActivity extends AppCompatActivity {
         edtemail = (EditText) findViewById(R.id.email);
         edtpassword = (EditText) findViewById(R.id.password);
         textView=(TextView)findViewById(R.id.version);
+        syncUsers=(Button)findViewById(R.id.syncUsers);
 
         textView.setText("Version: "+BuildConfig.VERSION_NAME);
 
         sharedPreferences=getSharedPreferences("loginref",MODE_PRIVATE);
         editor=sharedPreferences.edit();
 
-        User1ID="1";
-        UserName1="user1";
-        UserPassword1="user1";
 
-        User2ID="2";
-        UserName2="user2";
-        UserPassword2="user2";
 
-        User3ID="3";
-        UserName3="user3";
-        UserPassword3="user3";
+        databaseHelperRP=new DatabaseHelperRP(this);
+        syncUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                syncUsers();
+            }
+        });
 
-        User4ID="4";
-        UserName4="user4";
-        UserPassword4="user4";
 
-        User5ID="5";
-        UserName5="user5";
-        UserPassword5="user5";
 
 
         PackageManager manager = this.getPackageManager();
@@ -151,6 +160,7 @@ public class LoginActivity extends AppCompatActivity {
         //exportTool6bDB();
         exportTool7DB();
         exportTeleconsultation();
+        exportUsers();
       //  exportSummaryDB();
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -172,9 +182,45 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    private void exportUsers() {
+        DatabaseHelperRP dbhelper = new DatabaseHelperRP(getApplicationContext());
+        File exportDir = new File(Environment.getExternalStorageDirectory(), "Select");
+        if (!exportDir.exists())
+        {
+            exportDir.mkdirs();
+        }
+
+        File file = new File(exportDir, "users.csv");
+        try
+        {
+            file.createNewFile();
+            CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
+            SQLiteDatabase db = dbhelper.getReadableDatabase();
+            Cursor curCSV = db.rawQuery("SELECT * FROM " +TABLE_NAME_0,null);
+            csvWrite.writeNext(curCSV.getColumnNames());
+            while(curCSV.moveToNext())
+            {
+                //Which column you want to export
+                String arrStr[] ={curCSV.getString(0),curCSV.getString(1), curCSV.getString(2)};
+                csvWrite.writeNext(arrStr);
+            }
+            csvWrite.close();
+            curCSV.close();
+        }
+        catch(Exception sqlEx)
+        {
+
+            Log.d("000000", "exception "+sqlEx.getMessage());
+            Log.e("LoginActivity", sqlEx.getMessage(), sqlEx);
+        }
+    }
+
     private void userlogin() {
         final String email = edtemail.getText().toString().trim();
         final String password = edtpassword.getText().toString().trim();
+        boolean login=  databaseHelperRP.checkUser(email,password);
+       // Toast.makeText(this, ""+login, Toast.LENGTH_SHORT).show();
+
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(this, "Please Enter Email", Toast.LENGTH_LONG).show();
@@ -185,17 +231,22 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-       else if (email.equals(UserName1) && password.equals(UserPassword1)) {
-            Toast.makeText(this, "User1 Logged in", Toast.LENGTH_SHORT).show();
-            UserID=User1ID;
+
+       else if (login == true) {
+            Toast.makeText(this, ""+email+" Logged in", Toast.LENGTH_SHORT).show();
             editor.putBoolean("savelogin",true);
             editor.putString("username",email);
             editor.putString("password",password);
             editor.commit();
             Intent i = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(i);
+            return;
         }
-       else if (email.equals(UserName2) && password.equals(UserPassword2)) {
+        else if (login == false) {
+            Toast.makeText(LoginActivity.this, "ERROR: Invaild Email or Password.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+    /*   else if (email.equals(UserName2) && password.equals(UserPassword2)) {
             Toast.makeText(this, "User2 Logged in", Toast.LENGTH_SHORT).show();
             UserID = User2ID;
             editor.putBoolean("savelogin",true);
@@ -233,8 +284,8 @@ public class LoginActivity extends AppCompatActivity {
             editor.putString("password",password);
             editor.commit();
             Intent i = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(i);
-        } else {
+            startActivity(i);*/
+         else {
             Toast.makeText(LoginActivity.this, "ERROR: Invaild Email or Password.", Toast.LENGTH_SHORT).show();
         }
         saveLogin=sharedPreferences.getBoolean("savelogin",true);
@@ -643,5 +694,79 @@ public class LoginActivity extends AppCompatActivity {
             Log.d("000000", "exception "+sqlEx.getMessage());
         }
     }
+
+    public void syncUsers() {
+
+        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
+        progressDialog.setTitle("Please wait!");
+        progressDialog.setMessage("Sync User Data...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_SAVE_NAME2,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+
+                        try {
+                            JSONObject mainObj = new JSONObject(response);
+
+                            Log.d("0009991", "response: "+mainObj);
+
+                            JSONObject resultObj = mainObj.getJSONObject("result");
+
+                            if(resultObj.getString("status").equals("success")){
+                                JSONArray contact= mainObj.getJSONArray("response");
+
+                                for(int i=0; i<contact.length(); i++){
+                                    JSONObject dataobj = contact.getJSONObject(i);
+                                    String id= dataobj.getString("id");
+                                    String username= dataobj.getString("username");
+                                    String password= dataobj.getString("password");
+                                    String Usercontact= dataobj.getString("phone_number");
+
+
+                                    boolean isinsert= databaseHelperRP.addUsersData(id,username,password,Usercontact);
+                                    if(isinsert){
+
+                                    }
+                                }
+                                Toast.makeText(LoginActivity.this, "Users synced", Toast.LENGTH_SHORT).show();
+
+                            }else {
+                                Toast.makeText(LoginActivity.this, "Users not synced", Toast.LENGTH_SHORT).show();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Log.d("0009992", "response:syncTool2  "+error.getMessage());
+                        error.printStackTrace();
+                        Toast.makeText(LoginActivity.this, ""+error, Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+
+
+
+                Log.d("TAG", "getParams:"+params);
+                return params;
+            }
+        };
+        VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
+
+
+
+
+    }
+
 
 }

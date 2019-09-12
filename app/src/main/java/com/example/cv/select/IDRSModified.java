@@ -25,6 +25,7 @@ public class IDRSModified extends AppCompatActivity {
     private Button btn_IDRS_submit, btn_IDRS_saveExit;
     Context ctx = this;
     boolean isInserted;
+    int tool4_syncData = 0;
     private String familyHistory, physicalActivityscore, ageScore;
     private String physicalActivity, age;
     public static float score;
@@ -67,8 +68,12 @@ public class IDRSModified extends AppCompatActivity {
         btn_IDRS_saveExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(rd_IDRS_Q1.getCheckedRadioButtonId() != -1) {
+                    radiovalueQ1 = (RadioButton) findViewById(rd_IDRS_Q1.getCheckedRadioButtonId());
+                    tool4_Q1 = radiovalueQ1.getText().toString();
+                }
                 addTool4Data();
-                String tool4=null;
+                String tool4="2";
                 mDatabaseHelper.updateTool4Status(ContactNo,tool4);
                 Toast.makeText(IDRSModified.this, "Saving Answers", Toast.LENGTH_SHORT).show();
                 finish();
@@ -79,6 +84,11 @@ public class IDRSModified extends AppCompatActivity {
         btn_IDRS_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(rd_IDRS_Q1.getCheckedRadioButtonId() != -1) {
+                    radiovalueQ1 = (RadioButton) findViewById(rd_IDRS_Q1.getCheckedRadioButtonId());
+                    tool4_Q1 = radiovalueQ1.getText().toString();
+                }
+                formula();
                 addTool4Data();
                 if (isInserted == true) {
               //      Toast.makeText(IDRSModified.this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
@@ -112,15 +122,10 @@ public class IDRSModified extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     private void addTool4Data() {
-        if(rd_IDRS_Q1.getCheckedRadioButtonId() != -1) {
-            radiovalueQ1 = (RadioButton) this.findViewById(rd_IDRS_Q1.getCheckedRadioButtonId());
-            tool4_Q1 = radiovalueQ1.getText().toString();
-        }
-        formula();
-
         try {
             Log.d("000333", "save and exit");
 
@@ -139,7 +144,7 @@ public class IDRSModified extends AppCompatActivity {
                 }
             } else {
 
-                isInserted = mDatabaseHelper.addTool4Data(ContactNo, tool4_Q1,score);
+                isInserted = mDatabaseHelper.addTool4Data(ContactNo, tool4_Q1,score,tool4_syncData);
             }
             finish();
         }catch (Exception e){
@@ -259,7 +264,12 @@ public class IDRSModified extends AppCompatActivity {
         PHscore=Float.parseFloat(physicalActivityscore);
         AgeScore=Float.parseFloat(ageScore);
 
+        Log.d("ABC", "formula: "+FHscore);
+        Log.d("ABC", "formula: "+PHscore);
+        Log.d("ABC", "formula: "+AgeScore);
+
         score=FHscore+PHscore+AgeScore;
+        Log.d("ABC", "formula: "+score);
         return score;
     }
 }

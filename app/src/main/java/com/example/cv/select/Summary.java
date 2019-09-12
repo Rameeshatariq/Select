@@ -26,6 +26,7 @@ public class Summary extends AppCompatActivity {
     Context ctx = this;
     Button recommendation;
     Lister ls;
+    int summarySync=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,8 @@ public class Summary extends AppCompatActivity {
         ls = new Lister(ctx);
         final Intent intent = getIntent();
         contact = intent.getStringExtra("ContactNo");
+
+
 
        // s_contact = (TextView) findViewById(R.id.pcontact);
         heading=(TextView)findViewById(R.id.summaryHeading);
@@ -145,21 +148,33 @@ public class Summary extends AppCompatActivity {
 
         if(tobaccoSmoking1.equals("Daily") || tobaccoSmoking1.equals("Less than Daily")){
             tobaccoSmokingQ1="Current Smoker (smoke tobacco)";
-            tobaccoSmokingQ2="Past Smoker (smoke tobacco)";
         }
         else{
             tobaccoSmokingQ1="Not a Smoker";
+        }
+
+
+        if(tobaccoSmoking2.equals("Daily") || tobaccoSmoking2.equals("Less than Daily")){
+            tobaccoSmokingQ2="Past Smoker (smoke tobacco)";
+        }
+        else{
             tobaccoSmokingQ2="Not a Smoker";
         }
 
-        if(tobaccoSmoking3.equals("Daily") || tobaccoSmoking4.equals("Less than Daily")){
+        if(tobaccoSmoking3.equals("Daily") || tobaccoSmoking3.equals("Less than Daily")){
             tobaccoSmokingQ3="Current Smoker(smokeless tobacco)";
-            tobaccoSmokingQ4="Past Smoker (smokeless tobacco)";
         }
         else{
             tobaccoSmokingQ3="Not a Smoker";
+        }
+
+        if(tobaccoSmoking4.equals("Daily") || tobaccoSmoking4.equals("Less than Daily")){
+            tobaccoSmokingQ4="Past Smoker (smokeless tobacco)";
+        }
+        else{
             tobaccoSmokingQ4="Not a Smoker";
         }
+
         Cursor Tool7data = databaseHelperRP.getPartiTool7Data(contact);
         if (Tool7data.getCount() == 0) {
             return;
@@ -223,6 +238,11 @@ public class Summary extends AppCompatActivity {
         }
 
 
+
+
+        // submit.setOnClickListener(new View.OnClickListener() {
+
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
        // toolbar.setTitleTextColor(Color.WHITE);
@@ -275,41 +295,34 @@ public class Summary extends AppCompatActivity {
             }
         });
 
-
-    }
-
-      /*  try {
+        try {
             boolean mflag= isCompleted(contact);
 
-            setData(contact);
+            //  setData(contact);
 
             if(mflag == true){
                 // Toast.makeText(this, "Tool1 Completed", Toast.LENGTH_SHORT).show();
             }
             else{
+                addToolsSummary();
                 // Toast.makeText(this, "Tool1 not Completed", Toast.LENGTH_SHORT).show();
+
             }
 
         }catch (Exception e){
-        }*/
+        }
 
 
-      /* // submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addToolsSummary();
-            }
-        });
+    }
 
-    }*/
 
-   /* private void addToolsSummary() {
+    public void addToolsSummary() {
 
         try {
             String[][] mData = ls.executeReader("Select *from summary where ContactSim  = '" + contact + "'");
 
             if (mData != null) {
-                boolean mFlag = ls.executeNonQuery("Update summary set " +
+               /* boolean mFlag = ls.executeNonQuery("Update summary set " +
                         "ContactSim = '" + contact + "', " +
                         "tool1 = '" + riskAndTriageCVA + "', " +
                         "tool2 = '" + riskAndTriageMI + "', " +
@@ -320,18 +333,19 @@ public class Summary extends AppCompatActivity {
                     Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(this, "Data Not Updated Successfully", Toast.LENGTH_SHORT).show();
-                }
+                }*/
 
             } else {
 
-                boolean isInserted = databaseHelperRP.addToolsSummary(contact, riskAndTriageCVA, riskAndTriageMI, riskAndTriageDiabetic, dietLifestyle);
+                boolean isInserted = databaseHelperRP.addToolsSummary(contact, riskAndTriageCVA, riskAndTriageMI, riskAndTriageDiabetic, physicalActivity,IDRSModified,tobaccoSmokingQ1,
+                        tobaccoSmokingQ2,tobaccoSmokingQ3,tobaccoSmokingQ4,dietLifestyleQ1,dietLifestyleQ2,dietLifestyleQ3,dietLifestyleQ4,dietLifestyleQ5,dietLifestyleQ6,dietLifestyleQ7,
+                        summarySync);
                 if (isInserted == true) {
                     Toast.makeText(this, "Summary Saved In Database Successfully", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(this, "Summary not Saved In Database Successfully", Toast.LENGTH_SHORT).show();
                 }
             }
-            finish();
         } catch (Exception e) {
 
             Toast.makeText(ctx, "=-=-=-=Exception  " + e, Toast.LENGTH_SHORT).show();
@@ -353,6 +367,19 @@ public class Summary extends AppCompatActivity {
                 Log.d("000111", "mData[0][2] =  " + mData[0][2]);
                 Log.d("000111", "mData[0][3] =  " + mData[0][3]);
                 Log.d("000111", "mData[0][4] =  " + mData[0][4]);
+                Log.d("000111", "mData[0][4] =  " + mData[0][5]);
+                Log.d("000111", "mData[0][4] =  " + mData[0][6]);
+                Log.d("000111", "mData[0][4] =  " + mData[0][7]);
+                Log.d("000111", "mData[0][4] =  " + mData[0][8]);
+                Log.d("000111", "mData[0][4] =  " + mData[0][9]);
+                Log.d("000111", "mData[0][4] =  " + mData[0][10]);
+                Log.d("000111", "mData[0][4] =  " + mData[0][11]);
+                Log.d("000111", "mData[0][4] =  " + mData[0][12]);
+                Log.d("000111", "mData[0][4] =  " + mData[0][13]);
+                Log.d("000111", "mData[0][4] =  " + mData[0][14]);
+                Log.d("000111", "mData[0][4] =  " + mData[0][15]);
+                Log.d("000111", "mData[0][4] =  " + mData[0][16]);
+
                 return  true;
 
             }else {
@@ -369,7 +396,7 @@ public class Summary extends AppCompatActivity {
 
     }
 
-    private void setData(String contactNo) {
+/*    private void setData(String contactNo) {
 
         Lister lister = new Lister(Summary.this);
 
@@ -398,15 +425,14 @@ public class Summary extends AppCompatActivity {
         } catch (Exception e) {
             Log.d("111", e.getMessage());
 
-        }
-    }*/
+        }*/
+
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        if(riskAndTriageCVA.equals("CVA Event Present") || riskAndTriageMI.equals("Angina is Present") || riskAndTriageMI.equals("Angina or Myocardial Infarction is present")
-                || riskAndTriageMI.equals("Myocardial Infarction is present")){
+        if(riskAndTriageCVA.equals("CVA Event Present") || riskAndTriageMI.equals("MI present")){
             heading.setText("High Risk");
         }
         else if (diabetic.equals("Diabetic is present") || hypertension.equals("Hypertension is present")){

@@ -112,10 +112,10 @@ public class Tools extends AppCompatActivity {
         relative_tool1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((tv_ptool1.getText().toString()).equals("0") || (tv_ptool1.getText().toString()).equals("")) {
+                if ((tv_ptool1.getText().toString()).equals("0") || (tv_ptool1.getText().toString()).equals("2")) {
                     //    tool1_icon.setImageDrawable(res2);
                     Intent intent = new Intent(Tools.this, RiskAndTriageCVA.class);
-                //    Toast.makeText(Tools.this, "Tool1 is not Completed", Toast.LENGTH_SHORT).show();
+                //    Toast.makeText(Tools.this, "Tool1 is not Completed", Tow -*/////ast.LENGTH_SHORT).show();
                     intent.putExtra("ContactNo", ContactNo);
                     startActivity(intent);
                 } else {
@@ -130,7 +130,7 @@ public class Tools extends AppCompatActivity {
         relative_tool2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((tv_ptool2.getText().toString()).equals("0") || (tv_ptool2.getText().toString()).equals("")) {
+                if ((tv_ptool2.getText().toString()).equals("0") || (tv_ptool2.getText().toString()).equals("2")) {
                     //     tool2_icon.setImageDrawable(res2);
                     Intent intent = new Intent(Tools.this, RiskAndTriageMI.class);
                   //  Toast.makeText(Tools.this, "Tool2 is not Completed", Toast.LENGTH_SHORT).show();
@@ -148,7 +148,7 @@ public class Tools extends AppCompatActivity {
         relative_tool3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((tv_ptool3.getText().toString()).equals("0") || (tv_ptool3.getText().toString()).equals("")) {
+                if ((tv_ptool3.getText().toString()).equals("0") || (tv_ptool3.getText().toString()).equals("2")) {
                     //     tool3_icon.setImageDrawable(res2);
                     Intent intent = new Intent(Tools.this, RiskAndTriageDiabetic.class);
                 //    Toast.makeText(Tools.this, "Tool3 is not Completed", Toast.LENGTH_SHORT).show();
@@ -166,7 +166,7 @@ public class Tools extends AppCompatActivity {
         relative_tool4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((tv_ptool4.getText().toString()).equals("0") || (tv_ptool4.getText().toString()).equals("")) {
+                if ((tv_ptool4.getText().toString()).equals("0") || (tv_ptool4.getText().toString()).equals("2")) {
                     //    tool4_icon.setImageDrawable(res2);
                     Intent intent = new Intent(Tools.this, IDRSModified.class);
               //      Toast.makeText(Tools.this, "Tool4 is not Completed", Toast.LENGTH_SHORT).show();
@@ -185,7 +185,7 @@ public class Tools extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //   tool5_icon.setImageDrawable(res2);
-                if ((tv_ptool5.getText().toString()).equals("0") || (tv_ptool5.getText().toString()).equals("")) {
+                if ((tv_ptool5.getText().toString()).equals("0") || (tv_ptool5.getText().toString()).equals("2")) {
                     Intent intent = new Intent(Tools.this, PhysicalActivity.class);
                  //   Toast.makeText(Tools.this, "Tool5 is not Completed", Toast.LENGTH_SHORT).show();
                     intent.putExtra("ContactNo", ContactNo);
@@ -202,7 +202,7 @@ public class Tools extends AppCompatActivity {
         relative_tool6a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((tv_ptool6a.getText().toString()).equals("0") || (tv_ptool6a.getText().toString()).equals("")) {
+                if ((tv_ptool6a.getText().toString()).equals("0") || (tv_ptool6a.getText().toString()).equals("2")) {
                     //   tool6a_icon.setImageDrawable(res2);
                     Intent intent = new Intent(Tools.this, TobbaccoSmoking.class);
                  //   Toast.makeText(Tools.this, "Tool6a is not Completed", Toast.LENGTH_SHORT).show();
@@ -239,7 +239,7 @@ public class Tools extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //tool7_icon.setImageDrawable(res2);
-                if ((tv_ptool7.getText().toString()).equals("0") || (tv_ptool7.getText().toString()).equals("")) {
+                if ((tv_ptool7.getText().toString()).equals("0") || (tv_ptool7.getText().toString()).equals("2")) {
                     Intent intent = new Intent(Tools.this, DietLifestyle.class);
                    // Toast.makeText(Tools.this, "Tool7 is not Completed", Toast.LENGTH_SHORT).show();
                     intent.putExtra("ContactNo", ContactNo);

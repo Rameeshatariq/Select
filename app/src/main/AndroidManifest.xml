@@ -11,7 +11,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo_placeholder"
-        android:label="@string/app_name"
+        android:label="Meri Shifa"
         android:roundIcon="@drawable/logo_placeholder"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">

@@ -24,6 +24,7 @@ public class TobbaccoSmoking extends AppCompatActivity {
     private RadioGroup rd_TS_Q1, rd_TS_Q2, rd_TS_SL_Q1, rd_TS_SL_Q2;
     private Button btn_TS_submit, btn_TS_saveExit;
     Context ctx = this;
+    int tool6a_syncData = 0;
     boolean isInserted;
     Lister ls;
 
@@ -79,7 +80,7 @@ public class TobbaccoSmoking extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addTool6aData();
-                String tool6a = null;
+                String tool6a = "2";
                 mDatabaseHelper.updateTool6aStatus(ContactNo, tool6a);
                 Toast.makeText(TobbaccoSmoking.this, "Saving Answers", Toast.LENGTH_SHORT).show();
                 finish();
@@ -104,7 +105,7 @@ public class TobbaccoSmoking extends AppCompatActivity {
         rd_TS_Q1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (rd_TS_Q1.getCheckedRadioButtonId() != -1 && rd_TS_Q2.getCheckedRadioButtonId() != -1) {
+                if (rd_TS_Q1.getCheckedRadioButtonId() != -1 && rd_TS_Q2.getCheckedRadioButtonId() != -1 && rd_TS_SL_Q1.getCheckedRadioButtonId() != -1 && rd_TS_SL_Q2.getCheckedRadioButtonId() !=-1) {
                     btn_TS_submit.setVisibility(View.VISIBLE);
                 }
             }
@@ -112,7 +113,7 @@ public class TobbaccoSmoking extends AppCompatActivity {
         rd_TS_Q2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (rd_TS_Q1.getCheckedRadioButtonId() != -1 && rd_TS_Q2.getCheckedRadioButtonId() != -1) {
+                if (rd_TS_Q1.getCheckedRadioButtonId() != -1 && rd_TS_Q2.getCheckedRadioButtonId() != -1 && rd_TS_SL_Q1.getCheckedRadioButtonId() != -1 && rd_TS_SL_Q2.getCheckedRadioButtonId() !=-1) {
                     btn_TS_submit.setVisibility(View.VISIBLE);
                 }
             }
@@ -120,7 +121,7 @@ public class TobbaccoSmoking extends AppCompatActivity {
         rd_TS_SL_Q1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (rd_TS_SL_Q1.getCheckedRadioButtonId() != -1 && rd_TS_SL_Q2.getCheckedRadioButtonId() != -1) {
+                if (rd_TS_Q1.getCheckedRadioButtonId() != -1 && rd_TS_Q2.getCheckedRadioButtonId() != -1 && rd_TS_SL_Q1.getCheckedRadioButtonId() != -1 && rd_TS_SL_Q2.getCheckedRadioButtonId() != -1) {
                     btn_TS_submit.setVisibility(View.VISIBLE);
                 }
             }
@@ -128,7 +129,7 @@ public class TobbaccoSmoking extends AppCompatActivity {
         rd_TS_SL_Q2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (rd_TS_SL_Q1.getCheckedRadioButtonId() != -1 && rd_TS_SL_Q2.getCheckedRadioButtonId() != -1) {
+                if (rd_TS_Q1.getCheckedRadioButtonId() != -1 && rd_TS_Q2.getCheckedRadioButtonId() != -1 && rd_TS_SL_Q1.getCheckedRadioButtonId() != -1 && rd_TS_SL_Q2.getCheckedRadioButtonId() != -1) {
                     btn_TS_submit.setVisibility(View.VISIBLE);
                 }
             }
@@ -175,7 +176,7 @@ public class TobbaccoSmoking extends AppCompatActivity {
                 }
 
             } else {
-                isInserted = mDatabaseHelper.addTool6aData(ContactNo, tool6a_Q1, tool6a_Q2, tool6b_Q1,tool6b_Q2);
+                isInserted = mDatabaseHelper.addTool6aData(ContactNo, tool6a_Q1, tool6a_Q2, tool6b_Q1,tool6b_Q2,tool6a_syncData);
             }
             finish();
         } catch (Exception e) {

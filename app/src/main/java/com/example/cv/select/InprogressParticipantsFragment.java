@@ -40,19 +40,46 @@ public class InprogressParticipantsFragment extends Fragment {
         SharedPreferences pref = getActivity().getSharedPreferences("loginref",MODE_PRIVATE);
         username = pref.getString("username", null);
 
+        mDatabaseHelper=new DatabaseHelperRP(getContext());
+
         try {
 
-            if (username.equals("user1")) {
-                UserID = "1";
-            } else if (username.equals("user2")) {
-                UserID = "2";
-            } else if (username.equals("user3")) {
-                UserID = "3";
-            } else if (username.equals("user4")) {
-                UserID = "4";
-            } else if (username.equals("user5")) {
-                UserID = "5";
+            Cursor cursor = mDatabaseHelper.getUserID(username);
+            if (cursor.getCount() == 0) {
+                return;
             }
+
+            while (cursor.moveToNext()) {
+
+                UserID = cursor.getString(0);
+            }
+
+           // Toast.makeText(getContext(), "" + UserID, Toast.LENGTH_SHORT).show();
+
+       /* try {
+
+            if (username.equals("raheel.allana")) {
+                UserID = "4";
+            } else if (username.equals("zainab.kazim")) {
+                UserID = "5";
+            } else if (username.equals("maheen.fazal")) {
+                UserID = "6";
+            } else if (username.equals("sehar.gillani")) {
+                UserID = "7";
+            } else if (username.equals("gulnayab.khan")) {
+                UserID = "8";
+            }else if (username.equals("sultan.nasim")) {
+                UserID = "9";
+            }else if (username.equals("hina.khan")) {
+                UserID = "10";
+            }else if (username.equals("nadia.mushtaq")) {
+                UserID = "11";
+            }else if (username.equals("user.one")) {
+                UserID = "12";
+            }else if (username.equals("user.two")) {
+                UserID = "13";
+            }
+        }*/
         }
         catch (Exception e){
            /* Toast.makeText(getActivity(), "Please Login Again", Toast.LENGTH_SHORT).show();

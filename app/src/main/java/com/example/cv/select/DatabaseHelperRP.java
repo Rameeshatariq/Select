@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.awt.font.TextAttribute;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,12 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
     private static final String TAG = "DatabaseHelper";
     public static final String DATABASE_NAME = "select.db";
     public static File Database_Path = null;
+
+    public static final String TABLE_NAME_0 = "users";
+    private static final String userContact = "UserContact";
+    private static final String userID = "userid";
+    private static final String userName = "UserName";
+    private static final String userPass = "UserPass";
 
     public static final String TABLE_NAME = "patient";
     private static final String COL1 = "UserID";
@@ -42,7 +49,15 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
     private static final String COL22 = "Tool7";
     private static final String COL23 = "Enroll";
     private static final String COL24 = "SyncData";
-
+    private static final String TOOL1_SyncData = "tool1_syncData";
+    private static final String TOOL2_SyncData = "tool2_syncData";
+    private static final String TOOL3_SyncData = "tool3_syncData";
+    private static final String TOOL4_SyncData = "tool4_syncData";
+    private static final String TOOL5_SyncData = "tool5_syncData";
+    private static final String TOOL6a_SyncData = "tool6a_syncData";
+    private static final String TOOL7_SyncData = "tool7_syncData";
+    private static final String Teleconsultation_SyncData = "teleconsultation_syncData";
+    private static final String Summary_SyncData = "summary_syncData";
 
     public static final String TABLE_NAME_2 = "tool1";
     private static final String TOOL1_Q1 = "tool1_Q1";
@@ -53,15 +68,15 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
     private static final String TOOL1_Q6 = "tool1_Q6";
     private static final String TOOL1_Q7 = "tool1_Q7";
     private static final String TOOL1_Q8 = "tool1_Q8";
-    private static final String TOOL1_SyncData = "tool1_syncData";
     private static final String CVAEVENT = "cvaEvent";
+    private static final String TOOL1_Sync = "tool1_sync";
 
     public static final String TABLE_NAME_3 = "tool2";
     private static final String TOOL2_Q1 = "tool2_Q1";
     private static final String TOOL2_Q2 = "tool2_Q2";
     private static final String TOOL2_Q3 = "tool2_Q3";
     private static final String TOOL2_Result= "result";
-    private static final String TOOL2_SyncData = "tool2_syncData";
+    private static final String TOOL2_Sync = "tool2_sync";
 
     public static final String TABLE_NAME_4 = "tool3";
     private static final String TOOL3_Q1_Diabetic = "Diabetic";
@@ -76,13 +91,12 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
     private static final String TOOL3_Hypertension_ControlBy_DietOrMed = "HypertensionControlByDietOrMedicines";
     private static final String TOOL3_Hypertension_ControlBy_PnrMed = "HypertensionNotControlByPNRMedication";
     private static final String TOOL3_Hypertension_ControlBy_AlternateMed = "HypertensionControlByAlternateMedication";
-    private static final String TOOL3_SyncData = "tool3_syncData";
-
+    private static final String TOOL3_Sync = "tool3_sync";
 
     public static final String TABLE_NAME_5 = "tool4";
     private static final String Tool4_Q1 = "tool4_Q1";
     private static final String Tool4_RESULT = "result";
-    private static final String TOOL4_SyncData = "tool4_syncData";
+    private static final String TOOL4_Sync = "tool4_sync";
 
 
     public static final String TABLE_NAME_6 = "tool5";
@@ -99,15 +113,14 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
     private static final String TOOL5_Q6_hours = "HoursOfWalk";
     private static final String TOOL5_Q6_mins = "MinsOfWalk";
     private static final String RESULT = "result";
-    private static final String TOOL5_SyncData = "tool5_syncData";
-
+    private static final String TOOL5_Sync = "tool5_sync";
 
     public static final String TABLE_NAME_7 = "tool6a";
     private static final String Tool6a_Q1 = "tool6a_Q1";
     private static final String Tool6a_Q2 = "tool6a_Q2";
     private static final String Tool6a_Q3 = "tool6a_Q3";
     private static final String Tool6a_Q4 = "tool6a_Q4";
-    private static final String TOOL6a_SyncData = "tool6a_syncData";
+    private static final String TOOL6a_Sync = "tool6a_sync";
 
    /* public static final String TABLE_NAME_8 = "tool6b";
     private static final String Tool6b_Q1 = "tool6b_Q1";
@@ -123,17 +136,31 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
     private static final String Tool7_Q6 = "tool7_Q6";
     private static final String Tool7_Q7 = "tool7_Q7";
     private static final String Tool7_Result = "result";
-    private static final String TOOL7_SyncData = "tool7_syncData";
+    private static final String TOOL7_Sync = "tool7_sync";
 
     public static final String TABLE_NAME_10 = "summary";
     private static final String Tool1 = "tool1";
     private static final String Tool2 = "tool2";
     private static final String Tool3 = "tool3";
-    private static final String Tool7 = "tool7";
+    private static final String Tool5 = "tool5";
+    private static final String Tool4 = "tool4";
+    private static final String Tool6_Q1 = "tool6_q1";
+    private static final String Tool6_Q2 = "tool6_q2";
+    private static final String Tool6_Q3 = "tool6_q3";
+    private static final String Tool6_Q4 = "tool6_q4";
+    private static final String Tool7_q1 = "tool7_q1";
+    private static final String Tool7_q2 = "tool7_q2";
+    private static final String Tool7_q3 = "tool7_q3";
+    private static final String Tool7_q4 = "tool7_q4";
+    private static final String Tool7_q5 = "tool7_q5";
+    private static final String Tool7_q6 = "tool7_q6";
+    private static final String Tool7_q7 = "tool7_q7";
+    private static final String SUMMARY_Sync = "summary_sync";
 
     public static final String TABLE_NAME_11 = "teleconsultation";
     private static final String Date = "date";
     private static final String Time = "time";
+    private static final String Teleconsultation_Sync= "teleconsultation_sync";
 
     public DatabaseHelperRP(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -142,6 +169,15 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+        String createTable0 = "CREATE TABLE " + TABLE_NAME_0 + "(" +
+                //"ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                "userid VARCHAR(10) NULL, " +
+                "UserName VARCHAR(100) NULL, " +
+                "UserPass VARCHAR(20) NULL, " +
+                "UserContact VARCHAR(30) NULL " +
+                " )";
+        db.execSQL(createTable0);
 
         String createTable = "CREATE TABLE " + TABLE_NAME + "(" +
                 //"ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
@@ -161,15 +197,24 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
                 "RespondedToIVR VARCHAR(10) NULL, " +
                 "RespondedToSMS VARCHAR(10) NULL, " +
                 "Reason VARCHAR(200) NULL, " +
-                "Tool1 INTEGER(1) NULL, " +
-                "Tool2 INTEGER(1) NULL, " +
-                "Tool3 INTEGER(1) NULL, " +
-                "Tool4 INTEGER(1) NULL, " +
-                "Tool5 INTEGER(1) NULL, " +
-                "Tool6a INTEGER(1) NULL, " +
-                "Tool7 INTEGER(1) NULL, " +
-                "Enroll INTEGER(1) NULL, " +
-                "SyncData INTEGER(1) NULL " +
+                "Tool1 INTEGER(2) NULL, " +
+                "Tool2 INTEGER(2) NULL, " +
+                "Tool3 INTEGER(2) NULL, " +
+                "Tool4 INTEGER(2) NULL, " +
+                "Tool5 INTEGER(2) NULL, " +
+                "Tool6a INTEGER(2) NULL, " +
+                "Tool7 INTEGER(2) NULL, " +
+                "Enroll INTEGER(2) NULL, " +
+                "SyncData INTEGER(2) NULL, " +
+                "tool1_syncData INTEGER(2) NULL, "+
+                "tool2_syncData INTEGER(2) NULL, "+
+                "tool3_syncData INTEGER(2) NULL, "+
+                "tool4_syncData INTEGER(2) NULL, "+
+                "tool5_syncData INTEGER(2) NULL, "+
+                "tool6a_syncData INTEGER(2) NULL, "+
+                "tool7_syncData INTEGER(2) NULL, "+
+                "teleconsultation_syncData INTEGER(2) NULL, "+
+                "summary_syncData INTEGER(2) NULL "+
                 " )";
         db.execSQL(createTable);
 
@@ -184,7 +229,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
                 "tool1_Q7 VARCHAR(10) NULL, " +
                 "tool1_Q8 VARCHAR(10) NULL, " +
                 "cvaEvent VARCHAR(12) NULL, "+
-                "tool1_syncData VARCHAR(2) NULL, "+
+                "tool1_sync INTEGER(2) NULL, "+
                 " FOREIGN KEY (" + COL6 + ") REFERENCES  " + TABLE_NAME + "(" + COL6 + "))";
         db.execSQL(createTable2);
 
@@ -194,6 +239,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
                 "tool2_Q2 VARCHAR(10) NULL, " +
                 "tool2_Q3 VARCHAR(10) NULL, " +
                 "result VARCHAR(100) NULL, " +
+                "tool2_sync INTEGER(2) NULL, "+
                 " FOREIGN KEY (" + COL6 + ") REFERENCES " + TABLE_NAME + " ( " + COL6 + "))";
         db.execSQL(createTable3);
 
@@ -211,6 +257,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
                 TOOL3_Hypertension_ControlBy_DietOrMed + " VARCHAR(10) NULL, "
                 + TOOL3_Hypertension_ControlBy_PnrMed + " VARCHAR(10) NULL, " +
                 TOOL3_Hypertension_ControlBy_AlternateMed + " VARCHAR(10) NULL, " +
+                "tool3_sync INTEGER(2) NULL, "+
                 " FOREIGN KEY (" + COL6 + ") REFERENCES " + TABLE_NAME + " ( " + COL6 + "))";
         db.execSQL(createTable4);
 
@@ -218,6 +265,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
                 + COL6 + " VARCHAR(20), " +
                 "tool4_Q1 VARCHAR(20) NULL, " +
                 "result VARCHAR(20) NULL, " +
+                "tool4_sync INTEGER(2) NULL, "+
                 " FOREIGN KEY (" + COL6 + ") REFERENCES " + TABLE_NAME + " ( " + COL6 + "))";
         db.execSQL(createTable5);
 
@@ -236,6 +284,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
                 "HoursOfWalk VARCHAR(10) NULL, " +
                 "MinsOfWalk VARCHAR(10) NULL, " +
                 "result VARCHAR(100) NULL, " +
+                "tool5_sync INTEGER(2) NULL, "+
                 " FOREIGN KEY (" + COL6 + ") REFERENCES " + TABLE_NAME + " ( " + COL6 + "))";
         db.execSQL(createTable6);
 
@@ -245,6 +294,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
                 "tool6a_Q2 VARCHAR(40) NULL, " +
                 "tool6a_Q3 VARCHAR(40) NULL, " +
                 "tool6a_Q4 VARCHAR(40) NULL, " +
+                "tool6a_sync INTEGER(2) NULL, "+
                 " FOREIGN KEY (" + COL6 + ") REFERENCES " + TABLE_NAME + " ( " + COL6 + "))";
         db.execSQL(createTable7);
 
@@ -266,6 +316,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
                 "tool7_Q6 VARCHAR(10) NULL, " +
                 "tool7_Q7 VARCHAR(10) NULL, " +
                 "result VARCHAR(300) NULL, " +
+                "tool7_sync INTEGER(2) NULL, "+
                 " FOREIGN KEY (" + COL6 + ") REFERENCES  " + TABLE_NAME + "(" + COL6 + "))";
         db.execSQL(createTable9);
 
@@ -274,7 +325,20 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
                 "tool1 VARCHAR(20) NULL, " +
                 "tool2 VARCHAR(50) NULL, " +
                 "tool3 VARCHAR(30) NULL, " +
-                "tool7 VARCHAR(100) NULL, " +
+                "tool4 VARCHAR(30) NULL, " +
+                "tool5 VARCHAR(30) NULL, " +
+                "tool6_q1 VARCHAR(30) NULL, " +
+                "tool6_q2 VARCHAR(30) NULL, " +
+                "tool6_q3 VARCHAR(30) NULL, " +
+                "tool6_q4 VARCHAR(30) NULL, " +
+                "tool7_q1 VARCHAR(30) NULL, " +
+                "tool7_q2 VARCHAR(30) NULL, " +
+                "tool7_q3 VARCHAR(30) NULL, " +
+                "tool7_q4 VARCHAR(30) NULL, " +
+                "tool7_q5 VARCHAR(30) NULL, " +
+                "tool7_q6 VARCHAR(30) NULL, " +
+                "tool7_q7 VARCHAR(30) NULL, " +
+                "summary_sync INTEGER(2) NULL, " +
                 " FOREIGN KEY (" + COL6 + ") REFERENCES  " + TABLE_NAME + "(" + COL6 + "))";
         db.execSQL(createTable10);
 
@@ -282,6 +346,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
                 COL6 + " VARCHAR(20), " +
                 "date VARCHAR(30) NULL, " +
                 "time VARCHAR(30) NULL, " +
+                "teleconsultation_sync INTEGER(2) NULL, "+
                 " FOREIGN KEY (" + COL6 + ") REFERENCES  " + TABLE_NAME + "(" + COL6 + "))";
         db.execSQL(createTable11);
     }
@@ -300,9 +365,28 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public boolean addUsersData(String uid, String username, String userpass, String usercontact) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(userID, uid);
+        contentValues.put(userName, username);
+        contentValues.put(userPass, userpass);
+        contentValues.put(userContact, usercontact);
+
+        long result1 = db.insert(TABLE_NAME_0, null, contentValues);
+
+        if (result1 == -1) {
+            return false;
+        } else {
+            return true;
+
+        }
+    }
+
     public boolean addData(String userID, String name, String dob, String age, String gender, String contactSim, String altSim, String address, String livesInMalir, String notMoving,
                            String smartphone, String participate, String informedconsent, String respondedIVR, String respondedSMS, String reason, String Tool1, String Tool2,
-                           String Tool3, String Tool4, String Tool5, String Tool6a, String Tool7, String Enroll, int sync) {
+                           String Tool3, String Tool4, String Tool5, String Tool6a, String Tool7, String Enroll, int sync, int syncDataTool1,
+                           int syncDataTool2, int syncDataTool3, int syncDataTool4, int syncDataTool5, int syncDataTool6, int syncDatatTool7, int syncDataTele, int syncSummary) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL1, userID);
@@ -330,6 +414,15 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
         contentValues.put(COL22, Tool7);
         contentValues.put(COL23, Enroll);
         contentValues.put(COL24, sync);
+        contentValues.put(TOOL1_SyncData, syncDataTool1);
+        contentValues.put(TOOL2_SyncData, syncDataTool2);
+        contentValues.put(TOOL3_SyncData, syncDataTool3);
+        contentValues.put(TOOL4_SyncData, syncDataTool4);
+        contentValues.put(TOOL5_SyncData, syncDataTool5);
+        contentValues.put(TOOL6a_SyncData, syncDataTool6);
+        contentValues.put(TOOL7_SyncData, syncDatatTool7);
+        contentValues.put(Teleconsultation_SyncData, syncDataTele);
+        contentValues.put(Summary_SyncData, syncSummary);
 
         Log.d(TAG, "addData: Adding" + name + age + gender + contactSim + altSim + address + livesInMalir + notMoving + smartphone + participate + informedconsent +
                 reason + "to" + TABLE_NAME);
@@ -356,7 +449,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
         contentValues.put(TOOL1_Q7, Q7);
         contentValues.put(TOOL1_Q8, Q8);
         contentValues.put(CVAEVENT, CVAEvent);
-        contentValues.put(TOOL1_SyncData, syncData);
+        contentValues.put(TOOL1_Sync, syncData);
 
         Log.d(TAG, "addTool1Data: Adding" + ContactNo + Q1 + Q2 + Q3 + Q4 + Q5 + Q6 + Q7 + Q8 + "to" + TABLE_NAME_2);
         long result1 = db.insert(TABLE_NAME_2, null, contentValues);
@@ -369,7 +462,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
         }
     }
 
-    public boolean addTool2Data(String ContactNo, String tool1bQ1, String tool1bQ2, String tool1bQ3, String result) {
+    public boolean addTool2Data(String ContactNo, String tool1bQ1, String tool1bQ2, String tool1bQ3, String result, int syncData) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL6, ContactNo);
@@ -377,7 +470,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
         contentValues.put(TOOL2_Q2, tool1bQ2);
         contentValues.put(TOOL2_Q3, tool1bQ3);
         contentValues.put(TOOL2_Result, result);
-
+        contentValues.put(TOOL2_Sync, syncData);
 
         Log.d(TAG, "addTool2Data: Adding" + tool1bQ1 + tool1bQ2 + tool1bQ3 + "to" + TABLE_NAME_3);
         long result1 = db.insert(TABLE_NAME_3, null, contentValues);
@@ -393,7 +486,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
     public boolean addTool3Data(String ContactNo, String diabetic, String diabeticControlByMed, String diabeticControlByInsulin, String diabeticControlByDiet,
                                 String diabeticControlByPnrMed, String diabeticControlByAltMed, String hypertension, String hypertensionControlByNotMed,
                                 String hypertensionControlByMed, String hypertensionControlByDietOrMed, String hypertensionControlByPnrMed,
-                                String hypertensionControlByAltMed) {
+                                String hypertensionControlByAltMed, int syncData) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL6, ContactNo);
@@ -409,6 +502,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
         contentValues.put(TOOL3_Hypertension_ControlBy_DietOrMed, hypertensionControlByDietOrMed);
         contentValues.put(TOOL3_Hypertension_ControlBy_PnrMed, hypertensionControlByPnrMed);
         contentValues.put(TOOL3_Hypertension_ControlBy_AlternateMed, hypertensionControlByAltMed);
+        contentValues.put(TOOL3_Sync, syncData);
 
         Log.d(TAG, "addTool2Data: Adding" + COL6 + TOOL3_Q1_Diabetic + TOOL3_Diabetic_ControlBy_Medicines + TOOL3_Hypertension_ControlBy_AlternateMed + "to" + TABLE_NAME_3);
         long result1 = db.insert(TABLE_NAME_4, null, contentValues);
@@ -421,13 +515,13 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
         }
     }
 
-    public boolean addTool4Data(String ContactNo, String tool4Q1, float score) {
+    public boolean addTool4Data(String ContactNo, String tool4Q1, float score, int syncData) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL6, ContactNo);
         contentValues.put(Tool4_Q1, tool4Q1);
         contentValues.put(Tool7_Result,score);
-
+        contentValues.put(TOOL4_Sync, syncData);
 
         Log.d(TAG, "addTool4Data: Adding" + COL6 + Tool4_Q1 + "to" + TABLE_NAME_5);
         long result1 = db.insert(TABLE_NAME_5, null, contentValues);
@@ -441,7 +535,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
     }
 
     public boolean addTool5Data(String ContactNo, String vigourous, String vigorousDays, String vigourousHours, String vigourousMins, String moderate, String moderateDays,
-                                String moderateHours, String moderateMins, String walk, String walkDays, String walkHours, String walkMins, String result) {
+                                String moderateHours, String moderateMins, String walk, String walkDays, String walkHours, String walkMins, String result, int syncData) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL6, ContactNo);
@@ -458,6 +552,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
         contentValues.put(TOOL5_Q6_hours, walkHours);
         contentValues.put(TOOL5_Q6_mins, walkMins);
         contentValues.put(RESULT, result);
+        contentValues.put(TOOL5_Sync, syncData);
 
         Log.d(TAG, "addTool5Data: Adding" + ContactNo + vigourous + vigorousDays + vigourousHours + moderate + moderateDays +
                 moderateHours + walk + walkDays + walkHours + "to" + TABLE_NAME_6);
@@ -471,7 +566,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
         }
     }
 
-    public boolean addTool6aData(String contactNo, String tool6a_q1, String tool6a_q2, String tool6b_Q1, String tool6b_Q2) {
+    public boolean addTool6aData(String contactNo, String tool6a_q1, String tool6a_q2, String tool6b_Q1, String tool6b_Q2, int syncData) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL6, contactNo);
@@ -479,6 +574,8 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
         contentValues.put(Tool6a_Q2, tool6a_q2);
         contentValues.put(Tool6a_Q3,tool6b_Q1);
         contentValues.put(Tool6a_Q4,tool6b_Q2);
+        contentValues.put(TOOL6a_Sync, syncData);
+
         Log.d(TAG, "addTool5Data: Adding" + contactNo + tool6a_q1 + tool6a_q2 + "to" + TABLE_NAME_7);
         long result1 = db.insert(TABLE_NAME_7, null, contentValues);
 
@@ -509,7 +606,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
     }*/
 
     public boolean addTool7Data(String contactNo, String tl7_q1, String tl7_q2, int tl7_q3, int tl7_q4, int tl7_q5, int tl7_q6,
-                                int tl7_q7, String result) {
+                                int tl7_q7, String result, int syncData) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL6, contactNo);
@@ -521,6 +618,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
         contentValues.put(Tool7_Q6, tl7_q6);
         contentValues.put(Tool7_Q7, tl7_q7);
         contentValues.put(Tool7_Result, result);
+        contentValues.put(TOOL7_Sync, syncData);
 
         Log.d(TAG, "addTool7Data: Adding" + contactNo + tl7_q1 + tl7_q2 + "to" + TABLE_NAME_9);
         long result1 = db.insert(TABLE_NAME_9, null, contentValues);
@@ -533,12 +631,13 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
         }
     }
 
-    public boolean addTeleconsualtation(String contactNo, String date, String time) {
+    public boolean addTeleconsualtation(String contactNo, String date, String time, int syncData) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL6, contactNo);
         contentValues.put(Date, date);
         contentValues.put(Time, time);
+        contentValues.put(Teleconsultation_Sync, syncData);
 
         Log.d(TAG, "addTool7Data: Adding" + contactNo + date + time + "to" + TABLE_NAME_11);
         long result1 = db.insert(TABLE_NAME_11, null, contentValues);
@@ -551,17 +650,30 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
         }
     }
 
-    public boolean addToolsSummary(String contactNo, String tl1, String tl2, String tl3, String tl7) {
+    public boolean addToolsSummary(String contactNo, String tl1, String tl2, String tl3, String tl4, String tl5, String tl6_q1, String tl6_q2, String tl6_q3, String tl6_q4,
+                                   String tl7_q1, String tl7_q2, String tl7_q3, String tl7_q4, String tl7_q5, String tl7_q6, String tl7_q7, int summarySync) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL6, contactNo);
         contentValues.put(Tool1, tl1);
         contentValues.put(Tool2, tl2);
         contentValues.put(Tool3, tl3);
-        contentValues.put(Tool7, tl7);
+        contentValues.put(Tool4, tl4);
+        contentValues.put(Tool5, tl5);
+        contentValues.put(Tool6_Q1, tl6_q1);
+        contentValues.put(Tool6_Q2, tl6_q2);
+        contentValues.put(Tool6_Q3, tl6_q3);
+        contentValues.put(Tool6_Q4, tl6_q4);
+        contentValues.put(Tool7_q1, tl7_q1);
+        contentValues.put(Tool7_q2, tl7_q2);
+        contentValues.put(Tool7_q3, tl7_q3);
+        contentValues.put(Tool7_q4, tl7_q4);
+        contentValues.put(Tool7_q5, tl7_q5);
+        contentValues.put(Tool7_q6, tl7_q6);
+        contentValues.put(Tool7_q7, tl7_q7);
+        contentValues.put(SUMMARY_Sync, summarySync);
 
-
-        Log.d(TAG, "addTool7Data: Adding" + contactNo + tl1 + tl2 + tl3 + tl7 + "to" + TABLE_NAME_10);
+        Log.d(TAG, "addTool7Data: Adding" + contactNo + tl1 + tl2 + tl3 + "to" + TABLE_NAME_10);
         long result1 = db.insert(TABLE_NAME_10, null, contentValues);
 
         if (result1 == -1) {
@@ -711,6 +823,14 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME_10
                 + " WHERE ContactSim = '" + contactNo + "'";
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
+    public Cursor getUserID(String username) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME_0
+                + " WHERE UserName = '" + username + "'";
         Cursor data = db.rawQuery(query, null);
         return data;
     }
@@ -1108,7 +1228,9 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
     public List<syncedPatients> syncPatients(String userId) {
         List<syncedPatients> data = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select * from " + TABLE_NAME + " WHERE (UserID = '" +userId + "') AND (SyncData = 0 OR 1);", null);
+        Cursor cursor = db.rawQuery("select * from " + TABLE_NAME + " WHERE (UserID = '" +userId + "') AND (SyncData = 0 AND tool1_syncData = 0 " +
+                "AND tool2_syncData = 0 AND tool3_syncData = 0 AND tool4_syncData = 0 AND tool5_syncData = 0 AND tool6a_syncData = 0 AND tool7_syncData = 0) " +
+                " AND (Tool1 = 1 AND Tool2 = 1 AND Tool3 = 1 AND Tool4 = 1 AND Tool5 = 1 AND Tool6a =1 AND Tool7 = 1);", null);
         StringBuffer stringBuffer = new StringBuffer();
         syncedPatients dataModel = null;
         while (cursor.moveToNext()) {
@@ -1154,7 +1276,8 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from " + TABLE_NAME + " WHERE (UserID = '" + userid + "') AND (Tool1 = 0 OR Tool2 = 0 OR " +
                 "Tool3 = 0 OR Tool4 = 0 OR Tool5 = 0 OR Tool6a = 0 " +
-                " OR Tool7 = 0 ) ORDER BY Name;", null);
+                " OR Tool7 = 0 OR Tool1 = 2 OR Tool2 = 2 OR Tool3 = 2 OR Tool4 = 2 OR Tool5 = 2 OR Tool6a = 2 OR Tool7 = 2)" +
+                " AND (Enroll = 1)  ORDER BY Name;", null);
         StringBuffer stringBuffer = new StringBuffer();
         CompParticipantsInfo dataModel = null;
         while (cursor.moveToNext()) {
@@ -1176,9 +1299,8 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
         // DataModel dataModel = new DataModel();
         List<CompParticipantsInfo> data = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select * from " + TABLE_NAME + " WHERE (UserID = '" + userid + "') AND (Tool1 = 0 OR Tool2 = 0 OR " +
-                "Tool3 = 0 OR Tool4 = 0 OR Tool5 = 0 OR Tool6a = 0 " +
-                " OR Tool7 = 0 ) AND NAME LIKE '" +name+'%'+ "' ORDER BY Name;", null);
+        Cursor cursor = db.rawQuery("select * from " + TABLE_NAME + " WHERE (UserID = '" + userid + "') " +
+                "AND (Name LIKE '" +name+'%'+ "') ORDER BY Name;", null);
 
         StringBuffer stringBuffer = new StringBuffer();
         CompParticipantsInfo dataModel = null;
@@ -1187,7 +1309,7 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
             String names = cursor.getString(cursor.getColumnIndexOrThrow("Name"));
             String contact = cursor.getString(cursor.getColumnIndexOrThrow("ContactSim"));
             String enroll = cursor.getString(cursor.getColumnIndexOrThrow("Enroll"));
-            dataModel.setParticipantName(name);
+            dataModel.setParticipantName(names);
             dataModel.setParticipantContact(contact);
             dataModel.setParticipantEnroll(enroll);
             stringBuffer.append(dataModel);
@@ -1195,5 +1317,43 @@ public class DatabaseHelperRP extends SQLiteOpenHelper {
             data.add(dataModel);
         }
         return data;
+    }
+
+    public boolean checkUser(String username, String password) {
+
+        // array of columns to fetch
+        String[] columns = {
+                userID
+        };
+        SQLiteDatabase db = this.getReadableDatabase();
+        // selection criteria
+        String selection = userName + " = ?" + " AND " + userPass + " = ?";
+
+        // selection arguments
+        String[] selectionArgs = {username, password};
+
+        // query user table with conditions
+        /**
+         * Here query function is used to fetch records from user table this function works like we use sql query.
+         * SQL query equivalent to this query function is
+         * SELECT user_id FROM user WHERE user_email = 'jack@androidtutorialshub.com' AND user_password = 'qwerty';
+         */
+        Cursor cursor = db.query(TABLE_NAME_0, //Table to query
+                columns,                    //columns to return
+                selection,                  //columns for the WHERE clause
+                selectionArgs,              //The values for the WHERE clause
+                null,                       //group the rows
+                null,                       //filter by row groups
+                null);                      //The sort order
+
+        int cursorCount = cursor.getCount();
+
+        cursor.close();
+        db.close();
+        if (cursorCount > 0) {
+            return true;
+        }
+
+        return false;
     }
 }

@@ -132,6 +132,7 @@
 
 
 
+
         <Button
             android:id="@+id/login"
             android:layout_width="match_parent"
@@ -143,10 +144,20 @@
             android:padding="16dp"
             android:clickable="true"
             android:layout_marginTop="24dp"/>
-
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/syncUsers"
+                android:text="Sync Users"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/white"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:textAllCaps="false"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"/>
+
             <TextView
                 android:id="@+id/version"
                 android:text="Version: 1.1"
@@ -156,6 +167,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </RelativeLayout>
+
 
 
 

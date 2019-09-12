@@ -28,6 +28,7 @@ public class DietLifestyle extends AppCompatActivity {
     int tl7_Q3, tl7_Q4, tl7_Q5, tl7_Q6, tl7_Q7;
     DatabaseHelperRP mDatabaseHelper;
     Context ctx = this;
+    int tool7_syncData = 0;
     static String result;
     boolean isInserted;
     Lister ls;
@@ -85,7 +86,7 @@ public class DietLifestyle extends AppCompatActivity {
             public void onClick(View v) {
                 checkData();
                 addtool7Data();
-                String tool7 = null;
+                String tool7 = "2";
                 String tool7Result = Q1 + ", " + Q2 + ", " + Q3 + ", " + Q4 + ", " + Q5 + ", " + Q6 + ", " + Q7;
                 mDatabaseHelper.updateTool7Status(ContactNo, tool7);
                 Toast.makeText(DietLifestyle.this, "Saving Answers", Toast.LENGTH_SHORT).show();
@@ -271,7 +272,7 @@ public class DietLifestyle extends AppCompatActivity {
 
             } else {
 
-                isInserted = mDatabaseHelper.addTool7Data(ContactNo, tl7_Q1, tl7_Q2, tl7_Q3, tl7_Q4, tl7_Q5, tl7_Q6, tl7_Q7, result);
+                isInserted = mDatabaseHelper.addTool7Data(ContactNo, tl7_Q1, tl7_Q2, tl7_Q3, tl7_Q4, tl7_Q5, tl7_Q6, tl7_Q7, result, tool7_syncData);
             }
             finish();
         } catch (Exception e) {

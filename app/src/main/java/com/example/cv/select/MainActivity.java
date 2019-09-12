@@ -3,6 +3,7 @@ package com.example.cv.select;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Handler;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     boolean doubleBackToExitPressedOnce = false;
     Context ctx = this;
     String UserID;
+    DatabaseHelperRP databaseHelperRP;
     SharedPreferences sharedPreferences;
     private int[] tabIcons = {
             R.drawable.inprogress2,
@@ -122,19 +124,43 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences pref = getSharedPreferences("loginref",MODE_PRIVATE);
         username = pref.getString("username", null);
 
+        databaseHelperRP=new DatabaseHelperRP(this);
+
         try {
 
-            if (username.equals("user1")) {
-                UserID = "1";
-            } else if (username.equals("user2")) {
-                UserID = "2";
-            } else if (username.equals("user3")) {
-                UserID = "3";
-            } else if (username.equals("user4")) {
-                UserID = "4";
-            } else if (username.equals("user5")) {
-                UserID = "5";
+            Cursor cursor = databaseHelperRP.getUserID(username);
+            if (cursor.getCount() == 0) {
+                return;
             }
+
+            while (cursor.moveToNext()) {
+
+                UserID = cursor.getString(0);
+            }
+
+        //    Toast.makeText(ctx, ""+UserID, Toast.LENGTH_SHORT).show();
+
+      /*      if (username.equals("raheel.allana")) {
+                UserID = "4";
+            } else if (username.equals("zainab.kazim")) {
+                UserID = "5";
+            } else if (username.equals("maheen.fazal")) {
+                UserID = "6";
+            } else if (username.equals("sehar.gillani")) {
+                UserID = "7";
+            } else if (username.equals("gulnayab.khan")) {
+                UserID = "8";
+            }else if (username.equals("sultan.nasim")) {
+                UserID = "9";
+            }else if (username.equals("hina.khan")) {
+                UserID = "10";
+            }else if (username.equals("nadia.mushtaq")) {
+                UserID = "11";
+            }else if (username.equals("user.one")) {
+                UserID = "12";
+            }else if (username.equals("user.two")) {
+                UserID = "13";
+            }*/
         }
         catch (Exception e){
             Toast.makeText(MainActivity.this, "Please Login Again", Toast.LENGTH_SHORT).show();
@@ -190,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.AddFragment(new InprogressParticipantsFragment(), "Inprogress");
+        adapter.AddFragment(new InprogressParticipantsFragment(), "In-progress");
         adapter.AddFragment(new CompletedParticipantsFragment(), "Completed");
 
         viewPager.setAdapter(adapter);

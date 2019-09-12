@@ -96,7 +96,7 @@ public class RiskAndTriageCVA extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addTool1Data();
-                String tool1 = null;
+                String tool1 = "2";
                 mDatabaseHelper.updateTool1Status(ContactNo, tool1);
                 Toast.makeText(RiskAndTriageCVA.this, "Saving Answers", Toast.LENGTH_SHORT).show();
                 finish();

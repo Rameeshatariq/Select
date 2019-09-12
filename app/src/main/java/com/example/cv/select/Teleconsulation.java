@@ -30,6 +30,7 @@ public class Teleconsulation extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener dateSetListener;
     DatabaseHelperRP databaseHelperRP;
     Lister ls;
+    int teleconsultation_syncData = 0;
     int year, month, day;
 
     @Override
@@ -132,7 +133,7 @@ public class Teleconsulation extends AppCompatActivity {
                 month = month + 1;
                 Log.d("TAG", "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
 
-                String date = month + "/" + day + "/" + year;
+                String date = month + "-" + day + "-" + year;
                 selectDate.setText(date);
             }
 
@@ -163,7 +164,7 @@ public class Teleconsulation extends AppCompatActivity {
 
             }else {
 
-                boolean isInserted = databaseHelperRP.addTeleconsualtation(ContactNo, sekectedDate, selectedTime);
+                boolean isInserted = databaseHelperRP.addTeleconsualtation(ContactNo, sekectedDate, selectedTime, teleconsultation_syncData);
                 if (isInserted == true) {
                     Toast.makeText(this, "Teleconsultation Added", Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(Teleconsulation.this,MainActivity.class);

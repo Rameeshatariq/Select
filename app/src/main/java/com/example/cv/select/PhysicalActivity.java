@@ -33,6 +33,7 @@ public class PhysicalActivity extends AppCompatActivity {
     private DatabaseHelperRP databaseHelperRP;
     private Toolbar toolbar;
     boolean isInserted;
+    int tool5_syncData = 0;
     Button btn_PAsubmit,btn_PA_saveExit;
     String reqxStrHour, regxStrMin;
     String tool5_Q2_hours, tool5_Q2_mins, tool5_Q4_hours, tool5_Q4_mins, tool5_Q6_hours, tool5_Q6_mins,tool1,tool2,tool3;
@@ -198,7 +199,7 @@ public class PhysicalActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean isValidatedFlag = validateData();
                 if(isValidatedFlag == true) {
-                    String tool5 = null;
+                    String tool5 = "2";
                     databaseHelperRP.updateTool5Status(ContactNo, tool5);
                     Toast.makeText(PhysicalActivity.this, "Saving Answers", Toast.LENGTH_SHORT).show();
                 }
@@ -390,7 +391,7 @@ public class PhysicalActivity extends AppCompatActivity {
             } else {
                 formula();
                 isInserted = databaseHelperRP.addTool5Data(ContactNo, tool5_Q1, sp_Q1, tool5_Q2_hours, tool5_Q2_mins, tool5_Q3, sp_Q3, tool5_Q4_hours, tool5_Q4_mins,
-                        tool5_Q5, sp_Q5, tool5_Q6_hours, tool5_Q6_mins,result);
+                        tool5_Q5, sp_Q5, tool5_Q6_hours, tool5_Q6_mins,result, tool5_syncData);
             }
             finish();
         } catch (Exception e) {

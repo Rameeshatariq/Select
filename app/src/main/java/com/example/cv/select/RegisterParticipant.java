@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -44,7 +45,7 @@ public class RegisterParticipant extends AppCompatActivity {
     String UserID;
     String Tool1, Tool2, Tool3, Tool4, Tool5, Tool6a, Tool6b, Tool7, Enroll;
     View dialogView;
-    int syncPatient=0;
+    int syncPatient=0, syncTool1 = 0, syncTool2=0, syncTool3 = 0, syncTool4=0, syncTool5=0, syncTool6=0, syncTool7=0, synctele=0, syncSummary=0;
     private Toolbar toolbar;
     AlertDialog.Builder dialogBuilder;
     private DatePickerDialog.OnDateSetListener dateSetListener;
@@ -69,20 +70,50 @@ public class RegisterParticipant extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("loginref", MODE_PRIVATE);
         username = sharedPreferences.getString("username", null);
 
+        mDatabaseHelperRP=new DatabaseHelperRP(this);
+
         try {
 
-            if (username.equals("user1")) {
-                UserID = "1";
-            } else if (username.equals("user2")) {
-                UserID = "2";
-            } else if (username.equals("user3")) {
-                UserID = "3";
-            } else if (username.equals("user4")) {
-                UserID = "4";
-            } else if (username.equals("user5")) {
-                UserID = "5";
+            if (username != null) {
+
+                Cursor cursor = mDatabaseHelperRP.getUserID(username);
+                if (cursor.getCount() == 0) {
+                    return;
+                }
+
+                while (cursor.moveToNext()) {
+
+                    UserID = cursor.getString(0);
+                }
+
+              //  Toast.makeText(ctx, "" + UserID, Toast.LENGTH_SHORT).show();
             }
         }
+
+      /*  try {
+
+            if (username.equals("raheel.allana")) {
+                UserID = "4";
+            } else if (username.equals("zainab.kazim")) {
+                UserID = "5";
+            } else if (username.equals("maheen.fazal")) {
+                UserID = "6";
+            } else if (username.equals("sehar.gillani")) {
+                UserID = "7";
+            } else if (username.equals("gulnayab.khan")) {
+                UserID = "8";
+            }else if (username.equals("sultan.nasim")) {
+                UserID = "9";
+            }else if (username.equals("hina.khan")) {
+                UserID = "10";
+            }else if (username.equals("nadia.mushtaq")) {
+                UserID = "11";
+            }else if (username.equals("user.one")) {
+                UserID = "12";
+            }else if (username.equals("user.two")) {
+                UserID = "13";
+            }
+        }*/
         catch (Exception e){
             Toast.makeText(ctx, "Please Login Again", Toast.LENGTH_SHORT).show();
             SharedPreferences blockSession = this.getSharedPreferences("loginref", MODE_PRIVATE);
@@ -147,8 +178,6 @@ public class RegisterParticipant extends AppCompatActivity {
                 Log.d("000333", "Exception " + e);
             }
 
-            mDatabaseHelperRP = new DatabaseHelperRP(this);
-
             toolbar = (Toolbar) findViewById(R.id.toolbar);
             toolbar.setTitle("");
             //toolbar.setTitleTextColor(Color.WHITE);
@@ -189,7 +218,7 @@ public class RegisterParticipant extends AppCompatActivity {
                     month = month + 1;
                     Log.d("TAG", "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
 
-                    String date = month + "/" + day + "/" + year;
+                    String date = month + "-" + day + "-" + year;
                     et_pdateOfBirth.setText(date);
                     et_page.setText(getAge(year, month, day));
 
@@ -212,8 +241,9 @@ public class RegisterParticipant extends AppCompatActivity {
 
                     Log.d("000333", "is already " + mflag);
                     boolean isValidatedFlag = isValidated();
-                    if (!isValidatedFlag) {
-                        Toast.makeText(ctx, "Validate false", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(ctx, ""+isValidatedFlag, Toast.LENGTH_SHORT).show();
+                    if (isValidatedFlag == false) {
+                       // Toast.makeText(ctx, "Validate false", Toast.LENGTH_SHORT).show();
                         return;
                     } else {
                         if (mflag == true) {
@@ -378,11 +408,7 @@ public class RegisterParticipant extends AppCompatActivity {
             Toast.makeText(this, "Invalid Contact Sim Number", Toast.LENGTH_SHORT).show();
             return false;
         }
-        else if (TextUtils.isEmpty(pAltSim)) {
-            pAltSim="";
-            return true;
-
-        } else if (!TextUtils.isEmpty(pAltSim) && pAltSim.matches(regxStr)==false){
+        else if (!TextUtils.isEmpty(pAltSim) && pAltSim.matches(regxStr)==false){
                 Toast.makeText(this, "Invalid Alternate Sim Number", Toast.LENGTH_SHORT).show();
             return false;
         } else if(rd_pgender.getCheckedRadioButtonId() == -1){
@@ -439,31 +465,47 @@ public class RegisterParticipant extends AppCompatActivity {
             pAltSim = et_altSim.getText().toString();
 
 
-            radiovalueGender = (RadioButton) this.findViewById(rd_pgender.getCheckedRadioButtonId());
-            pgender = radiovalueGender.getText().toString();
+            if(rd_pgender.getCheckedRadioButtonId() != -1) {
+                radiovalueGender = (RadioButton) this.findViewById(rd_pgender.getCheckedRadioButtonId());
+                pgender = radiovalueGender.getText().toString();
+            }
 
-            radiovalueLives = (RadioButton) this.findViewById(rd_plives.getCheckedRadioButtonId());
-            pLivesInMalir = radiovalueLives.getText().toString();
+            if(rd_plives.getCheckedRadioButtonId() != -1) {
+                radiovalueLives = (RadioButton) this.findViewById(rd_plives.getCheckedRadioButtonId());
+                pLivesInMalir = radiovalueLives.getText().toString();
+            }
 
-            radiovalueParticipate = (RadioButton) this.findViewById(rd_participate.getCheckedRadioButtonId());
-            participate = radiovalueParticipate.getText().toString();
+            if(rd_participate.getCheckedRadioButtonId() != -1) {
+                radiovalueParticipate = (RadioButton) this.findViewById(rd_participate.getCheckedRadioButtonId());
+                participate = radiovalueParticipate.getText().toString();
+            }
 
-            radiovalueNotmoving = (RadioButton) this.findViewById(rd_pnotmoving.getCheckedRadioButtonId());
-            pNotMoving = radiovalueNotmoving.getText().toString();
+        if(rd_pnotmoving.getCheckedRadioButtonId() != -1) {
+                radiovalueNotmoving = (RadioButton) this.findViewById(rd_pnotmoving.getCheckedRadioButtonId());
+                pNotMoving = radiovalueNotmoving.getText().toString();
+            }
 
-            radiovalueSmartphone = (RadioButton) this.findViewById(rd_psmartphone.getCheckedRadioButtonId());
-            pHaveSmartphone = radiovalueSmartphone.getText().toString();
+        if(rd_psmartphone.getCheckedRadioButtonId() != -1) {
+                radiovalueSmartphone = (RadioButton) this.findViewById(rd_psmartphone.getCheckedRadioButtonId());
+                pHaveSmartphone = radiovalueSmartphone.getText().toString();
+            }
 
-            radiovalueConsentTaken = (RadioButton) this.findViewById(rd_pconsenttaken.getCheckedRadioButtonId());
-            pConsentTaken = radiovalueConsentTaken.getText().toString();
+        if(rd_pconsenttaken.getCheckedRadioButtonId() != -1) {
+                radiovalueConsentTaken = (RadioButton) this.findViewById(rd_pconsenttaken.getCheckedRadioButtonId());
+                pConsentTaken = radiovalueConsentTaken.getText().toString();
+            }
 
-            radioValueRespondedIVR = (RadioButton) this.findViewById(rd_prespondedIVR.getCheckedRadioButtonId());
-            pRespondedIVR = radioValueRespondedIVR.getText().toString();
+        if(rd_prespondedIVR.getCheckedRadioButtonId() != -1) {
+                radioValueRespondedIVR = (RadioButton) this.findViewById(rd_prespondedIVR.getCheckedRadioButtonId());
+                pRespondedIVR = radioValueRespondedIVR.getText().toString();
+            }
 
-            radioValueRespondedSMS = (RadioButton) this.findViewById(rd_prespondedSMS.getCheckedRadioButtonId());
-            pRespondedSMS = radioValueRespondedSMS.getText().toString();
+        if(rd_prespondedSMS.getCheckedRadioButtonId() != -1) {
+                radioValueRespondedSMS = (RadioButton) this.findViewById(rd_prespondedSMS.getCheckedRadioButtonId());
+                pRespondedSMS = radioValueRespondedSMS.getText().toString();
+            }
 
-            if(pAltSim.equals("")){
+        if(pAltSim.equals("")){
                 pAltSim="";
             }
             pReason = "0";
@@ -482,11 +524,7 @@ public class RegisterParticipant extends AppCompatActivity {
         } else {
             boolean isInserted = mDatabaseHelperRP.addData(UserID, pName, pDob, pAge, pgender, pContactSim, pAltSim, pAddress, pLivesInMalir,
                     pNotMoving, pHaveSmartphone, participate, pConsentTaken, pRespondedIVR, pRespondedSMS, pReason, Tool1, Tool2, Tool3, Tool4, Tool5, Tool6a, Tool7,
-                    Enroll,syncPatient);
-
-
-            Log.d("000000", "inserted");
-
+                    Enroll,syncPatient, syncTool1,syncTool2,syncTool3,syncTool4,syncTool5,syncTool6,syncTool7,synctele,syncSummary);
             if (mFlagReasonable) {
             } else {
                 Intent intent = new Intent(ctx, MainActivity.class);
@@ -668,28 +706,88 @@ public class RegisterParticipant extends AppCompatActivity {
             dialogBuilder = new AlertDialog.Builder(this);
             LayoutInflater inflater = this.getLayoutInflater();
             dialogView = inflater.inflate(R.layout.alert_dialog, null);
+
             btn_submitReason=(Button)dialogView.findViewById(R.id.add_reason);
+            et_reason = (EditText) dialogView.findViewById(R.id.reason);
+            InputFilter filter = new InputFilter() {
+                public CharSequence filter(CharSequence src, int start, int end,
+                                           Spanned d, int dstart, int dend) {
+                    String specialChars = "/*!@#$%^&*()\"{}_[]|\\?/<>,.:-'';§£¥...";
+                    for (int i = start; i < end; i++) {
+                        int type = Character.getType(src.charAt(i));
+                        if (type == Character.SURROGATE || type == Character.OTHER_SYMBOL || type == Character.MATH_SYMBOL || specialChars.contains("" + src) || Character.isWhitespace(0)) {
+                            return "";
+                        }
+                    }
+                    return null;
+                }
+            };
+
+            et_reason.setFilters(new InputFilter[]{filter});
+
+
             btn_submitReason.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Enroll = "0";
-                    et_reason = (EditText) alertDialog.findViewById(R.id.reason);
+
                     pReason = et_reason.getText().toString();
-                    Tool1 = "0";
-                    Tool2 = "0" ;
-                    Tool3 = "0";
-                    Tool4 = "0";
-                    Tool5 = "0";
-                    Tool6a = "0";
-                    Tool6b = "0";
-                    Tool7 = "0";
+                    Tool1 = "1";
+                    Tool2 = "1" ;
+                    Tool3 = "1";
+                    Tool4 = "1";
+                    Tool5 = "1";
+                    Tool6a = "1";
+                    Tool6b = "1";
+                    Tool7 = "1";
 
                     Lister ls = new Lister(ctx);
                     boolean isUpdate = ls.executeNonQuery("UPDATE patient set " +
                             "Enroll = '" + Enroll + "' , " +
+                            "Tool1 = '" + 1 + "' , " +
+                            "Tool2 = '" + 1 + "' , " +
+                            "Tool3 = '" + 1 + "' , " +
+                            "Tool4 = '" + 1 + "' , " +
+                            "Tool5 = '" + 1 + "' , " +
+                            "Tool6a = '" + 1 + "' , " +
+                            "Tool7 = '" + 1 + "' , " +
                             "Reason = '" + pReason + "'  " +
                             " where ContactSim = '" + pContactSim + "'" +
                             " ");
+/*
+                    boolean isUpdateTool1 = ls.executeNonQuery("UPDATE tool1 set " +
+                            "tool1_sync = 1  " +
+                            " where ContactSim = '" + pContactSim + "'" +
+                            " ");
+                    boolean isUpdateTool2 = ls.executeNonQuery("UPDATE tool2 set " +
+                            "tool2_sync = 1  " +
+                            " where ContactSim = '" + pContactSim + "'" +
+                            " ");
+                    boolean isUpdateTool3 = ls.executeNonQuery("UPDATE tool3 set " +
+                            "tool3_sync = 1  " +
+                            " where ContactSim = '" + pContactSim + "'" +
+                            " ");
+                    boolean isUpdateTool4 = ls.executeNonQuery("UPDATE tool4 set " +
+                            "tool4_sync = 1  " +
+                            " where ContactSim = '" + pContactSim + "'" +
+                            " ");
+                    boolean isUpdateTool5 = ls.executeNonQuery("UPDATE tool5 set " +
+                            "tool5_sync = 1  " +
+                            " where ContactSim = '" + pContactSim + "'" +
+                            " ");
+                    boolean isUpdateTool6a = ls.executeNonQuery("UPDATE tool6a set " +
+                            "tool6a_sync = 1  " +
+                            " where ContactSim = '" + pContactSim + "'" +
+                            " ");
+
+                    boolean isUpdateTool7 = ls.executeNonQuery("UPDATE tool7 set " +
+                            "tool7_sync = 1  " +
+                            " where ContactSim = '" + pContactSim + "'" +
+                            " ");
+                    boolean isUpdateTele = ls.executeNonQuery("UPDATE teleconsultation set " +
+                            "teleconsultation_sync = 1  " +
+                            " where ContactSim = '" + pContactSim + "'" +
+                            " ");*/
 
                     if (isUpdate) {
                       //  Toast.makeText(RegisterParticipant.this, "Reason Inserted Successfully", Toast.LENGTH_SHORT).show();
@@ -788,6 +886,17 @@ public class RegisterParticipant extends AppCompatActivity {
         }
 
 
+    }
+
+    public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+        String specialChars = "/*!@#$%^&*()\"{}_[]|\\?/<>,.:-'';§£¥...";
+        for (int i = start; i < end; i++) {
+            int type = Character.getType(source.charAt(i));
+            if (type == Character.SURROGATE || type == Character.OTHER_SYMBOL || type == Character.MATH_SYMBOL || specialChars.contains("" + source) || Character.isWhitespace(0)) {
+                return "";
+            }
+        }
+        return null;
     }
 
 }

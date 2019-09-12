@@ -26,6 +26,7 @@ public class RiskAndTriageMI extends AppCompatActivity {
     static String Angina, AnginaorMyocardialInfarction, MyocardialInfarction, result;
     String ContactNo;
     String tool1;
+    int tool2_syncData = 0;
     private RadioGroup rd_tl1b_Q1, rd_tl1b_Q2, rd_tl1b_Q3;
     private RadioButton rd_tl1b_Q1_yes, rd_tl1b_Q1_no, rd_tl1b_Q2_yes, rd_tl1b_Q2_no, rd_tl1b_Q3_yes, rd_tl1b_Q3_no;
     private Button submit_RTMI, btn_rtMI_saveExit;
@@ -99,7 +100,7 @@ public class RiskAndTriageMI extends AppCompatActivity {
             public void onClick(View v) {
                 checkData();
                 addTool1bData();
-                String tool2=null;
+                String tool2="2";
                 String tool2Result=Angina + ", " + AnginaorMyocardialInfarction + ", " + MyocardialInfarction;
                 mDatabaseHelper.updateTool2Status(ContactNo,tool2);
                 Toast.makeText(RiskAndTriageMI.this, "Saving Answers", Toast.LENGTH_SHORT).show();
@@ -225,7 +226,7 @@ public class RiskAndTriageMI extends AppCompatActivity {
             }
             else {
 
-                    isInserted = mDatabaseHelper.addTool2Data(ContactNo, tool1bQ1, tool1bQ2, tool1bQ3, result);
+                    isInserted = mDatabaseHelper.addTool2Data(ContactNo, tool1bQ1, tool1bQ2, tool1bQ3, result, tool2_syncData);
 
             }
             finish();

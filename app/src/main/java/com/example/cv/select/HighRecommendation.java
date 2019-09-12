@@ -9,7 +9,7 @@ import android.widget.Toolbar;
 
 public class HighRecommendation extends AppCompatActivity {
     private android.support.v7.widget.Toolbar toolbar;
-    private Button teleconsultation;
+    private Button teleconsultation,home;
     private String ContactNo;
 
     @Override
@@ -41,6 +41,13 @@ public class HighRecommendation extends AppCompatActivity {
                startActivity(intent);
             }
         });
-
+        home=(Button)findViewById(R.id.highrisk_home);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(HighRecommendation.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

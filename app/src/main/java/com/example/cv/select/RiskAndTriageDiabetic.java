@@ -32,6 +32,7 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
     private DatabaseHelperRP mDatabaseHelper;
     static String result;
     String Hyper_result;
+    int tool3_syncData;
     String Diabetic_result;
     Button btn_RTD_submit, btnRTD_saveExit;
     Context ctx = this;
@@ -107,7 +108,7 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addTool3data();
-                String tool3=null;
+                String tool3="2";
                 mDatabaseHelper.updateTool3Status(ContactNo,tool3);
                 Toast.makeText(RiskAndTriageDiabetic.this, "Saving Answers", Toast.LENGTH_SHORT).show();
                 finish();
@@ -299,7 +300,7 @@ public class RiskAndTriageDiabetic extends AppCompatActivity {
 
                 isInserted = mDatabaseHelper.addTool3Data(ContactNo, Diabetic_result, diabeticControlByMedicines, diabeticControlByIsulin, diabeticControlByDiet,
                         diabeticControlByPnrMed, diabeticControlByAlternateMed, Hyper_result, hypertenControlByNotMedicines, hypertenControlByMedicines, hypertenControlByDietOrtMed,
-                        hypertenControlByPnrMed, hypertenControlByAlternateMed);
+                        hypertenControlByPnrMed, hypertenControlByAlternateMed, tool3_syncData);
             }
             finish();
         }catch (Exception e){
