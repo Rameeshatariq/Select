@@ -248,6 +248,7 @@ public class RegisterParticipant extends AppCompatActivity {
                     } else {
                         if (mflag == true) {
                             if (!isFromRegistered) {
+                                isPatEligible();
                                 updatePatient();
                             } else {
                                 Toast.makeText(getApplicationContext(), "Phone number already existed " + et_contactSim.getText().toString(), Toast.LENGTH_LONG).show();
@@ -623,7 +624,7 @@ public class RegisterParticipant extends AppCompatActivity {
                 "InformedConsentTaken = '" + pConsentTaken + "' , " +
                 "RespondedToIVR = '" + pRespondedIVR + "' , " +
                 "RespondedToSMS = '" + pRespondedSMS + "' , " +
-                "Reason = '" + mData[0][15]+"'  " +
+                "Reason = '" + pReason+"'  " +
                 " where ContactSim = '" + pContactSim + "'" +
                 " ");
 
@@ -634,9 +635,9 @@ public class RegisterParticipant extends AppCompatActivity {
             // intent.putExtra("ContactNo", pContactSim );
             //startActivity(intent);
 
-            Intent intentt = new Intent(ctx, MainActivity.class);
-            intentt.putExtra("ContactNo", pContactSim);
-            startActivity(intentt);
+           // Intent intentt = new Intent(ctx, MainActivity.class);
+            //intentt.putExtra("ContactNo", pContactSim);
+            //startActivity(intentt);
 
             if (mFlagReasonable) {
             } else {
@@ -694,7 +695,23 @@ public class RegisterParticipant extends AppCompatActivity {
             Tool6a="0";
             Tool6b="0";
             Tool7="0";
+            pReason="0";
 //            addData();
+           /* Lister ls = new Lister(ctx);
+            boolean isUpdate = ls.executeNonQuery("UPDATE patient set " +
+                    "Enroll = '" + Enroll + "' , " +
+                    "Tool1 = '" + 0 + "' , " +
+                    "Tool2 = '" + 0 + "' , " +
+                    "Tool3 = '" + 0 + "' , " +
+                    "Tool4 = '" + 0 + "' , " +
+                    "Tool5 = '" + 0 + "' , " +
+                    "Tool6a = '" + 0 + "' , " +
+                    "Tool7 = '" + 0 + "' , " +
+                    "Reason = '" +pReason+ "' "+
+                    " where ContactSim = '" + pContactSim + "'" +
+                    " ");
+            Log.d("abcdef", "isPatEligible: "+Enroll);
+            Log.d("abcdef", "isPatEligible: "+pReason);*/
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             intent.putExtra("ContactNo", pContactSim);
             startActivity(intent);
@@ -730,7 +747,6 @@ public class RegisterParticipant extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Enroll = "0";
-
                     pReason = et_reason.getText().toString();
                     Tool1 = "1";
                     Tool2 = "1" ;

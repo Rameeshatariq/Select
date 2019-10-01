@@ -538,12 +538,12 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_below="@id/view_plives"
-             android:orientation="horizontal">
+             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Not moving out in the next 6 months?"
+                android:text="Are you not moving out in the next 6 months?"
                 android:theme="@style/TextView" />
 
             <TextView
@@ -551,10 +551,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Yes"
-                android:layout_marginLeft="20dp"
                 android:theme="@style/TextView" />
-
-
          </LinearLayout>
 
          <View
